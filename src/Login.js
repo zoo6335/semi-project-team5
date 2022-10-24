@@ -1,11 +1,37 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import KakaoLogin from "react-kakao-login";
+import kakaoImage from "./images/kakao_login.png";
 
+const Box = styled.div`
+  
+  background-color: cornsilk;
+  margin: 100px auto;
+  padding: 1rem;
+  height: 700px;
+  width: 400px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  
+`;
 
+const InputLogin = styled.input`
+  width: 300px;
+  height: 30px;
+  border-radius: 20px;
+  border: 0.1px solid white;
+`;
 
+const ButtonLogin = styled.button`
+  width: 150px;
+  height: 30px;
+  margin: 0 0 0 25px;
+  border-radius: 20px;
+  border: 0.1px solid cornflowerblue;
+  background-color: cornflowerblue;
 
-
+`
 
 const Login = () => {
 
@@ -25,6 +51,11 @@ const Login = () => {
   // 입력 오류 시 표시할 메세지
   const [idMessage, setIdMessage] = useState("");
   const [pwMessage, setPwMessage] = useState("");
+
+  
+  const REST_API_KEY = "60ef127fd63a8c35d27940735ce12e74";
+  const REDIRECT_URI = "https://localhost:3000/oauth";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const onChangeId = (e) => {
     setInputId(e.target.value);
@@ -52,25 +83,33 @@ const Login = () => {
   }
 
   return (
+    <Box>
+    
     <div>
+      
       <div>
-        <input value={inputId} onChange={onChangeId} />
+        <InputLogin value={inputId} onChange={onChangeId} />
         <div>
           {/* span 태그의 class에 다른 props 넣어서 false일 때 메세지가 나오도록 수정해야함 */}
           {inputId > 0 && {isId} ? null : <span>{idMessage}</span>} 
         </div>
         <br />
         <div>  
-          <input value={inputPw} onChange={onChangePw} />
+          <InputLogin value={inputPw} onChange={onChangePw} />
         </div>
         <br />
-        <button onClick={onClickLogin}>Login</button>
-        <button>Cancle</button>
+        <ButtonLogin onClick={onClickLogin}>Login</ButtonLogin>
+        <ButtonLogin>Cancle</ButtonLogin>
+        <br />
+        <br />
         <div>
-          {/* <button className="kakaoBtn" onClick={onClickKakao}></button> */}
+          <a href={KAKAO_AUTH_URL} target="_blank" rel="noreferrer noopener">
+            <img src={kakaoImage} alt="kakao login" />
+          </a>
         </div>
       </div>
     </div>
+    </Box>
   ) 
 }
 
