@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "./images/kakao_login.png";
+import SignUp from "./signup/SignUp";
 
 const Box = styled.div`
   
@@ -31,7 +33,7 @@ const ButtonLogin = styled.button`
   border: 0.1px solid cornflowerblue;
   background-color: cornflowerblue;
 
-`
+`;
 
 const Login = () => {
 
@@ -88,24 +90,28 @@ const Login = () => {
     <div>
       
       <div>
-        <InputLogin value={inputId} onChange={onChangeId} />
+        <InputLogin placeholder="아이디" value={inputId} onChange={onChangeId} />
         <div>
           {/* span 태그의 class에 다른 props 넣어서 false일 때 메세지가 나오도록 수정해야함 */}
+          {/* <span className={`message ${isId ? 'success' : 'error'}`}></span> */}
           {inputId > 0 && {isId} ? null : <span>{idMessage}</span>} 
         </div>
         <br />
         <div>  
-          <InputLogin value={inputPw} onChange={onChangePw} />
+          <InputLogin placeholder="패스워드" value={inputPw} onChange={onChangePw} />
         </div>
         <br />
         <ButtonLogin onClick={onClickLogin}>Login</ButtonLogin>
         <ButtonLogin>Cancle</ButtonLogin>
         <br />
         <br />
-        <div>
           <a href={KAKAO_AUTH_URL} target="_blank" rel="noreferrer noopener">
             <img src={kakaoImage} alt="kakao login" />
           </a>
+        <br />
+        <br />
+        <div>
+          <Link to ={"./signup"}  style={{ textDecoration: 'none' }}>아이디가 없으신가요?</Link>
         </div>
       </div>
     </div>
