@@ -1,8 +1,19 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Await, Link } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "./images/kakao_login.png";
 import SignUp from "./signup/SignUp";
+import axios from "axios";
+import Modal from "./util/Modal";
+import KhApi from "./api/KhApi";
+import mainLogo from "./images/logo.PNG"
+
+
+const Logo = styled.div`
+  margin-top: -100px;
+  margin-bottom: 80px;
+  
+`
 
 const Box = styled.div`
   
@@ -54,6 +65,18 @@ const Login = () => {
   const [idMessage, setIdMessage] = useState("");
   const [pwMessage, setPwMessage] = useState("");
 
+  //팝업
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = () => {
+      setModalOpen(true);
+  };
+  const closeModal = () => {
+      setModalOpen(false);
+  };
+
+  useEffect(() => {
+  });
+
   
   const REST_API_KEY = "60ef127fd63a8c35d27940735ce12e74";
   const REDIRECT_URI = "https://localhost:3000/oauth";
@@ -80,15 +103,32 @@ const Login = () => {
     else setIsPw(true);
   }
 
-  const onClickLogin = () => {
-    
+  const onClickLogin = async() => {
+    try {
+      // 로그인을 위한 axios 호출
+      const res = await KhApi.userLogin(inputId, inputPw);
+      console.log(res.data.result);
+      if(res.data.result === "OK") {
+          window.localStorage.setItem("userId", inputId);
+          window.localStorage.setItem("userPw", inputPw);
+          window.location.replace("/home");
+      } else {
+          setModalOpen(true);
+      }
+      
+  } catch (e) {
+      setModalOpen(true);
+      console.log("로그인 에러..");
   }
+}
 
   return (
     <Box>
     
     <div>
-      
+      <Logo >
+        <img src={mainLogo} alt="logo"/>
+      </Logo>
       <div>
         <InputLogin placeholder="아이디" value={inputId} onChange={onChangeId} />
         <div>
@@ -102,6 +142,7 @@ const Login = () => {
         </div>
         <br />
         <ButtonLogin onClick={onClickLogin}>Login</ButtonLogin>
+        <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
         <ButtonLogin>Cancle</ButtonLogin>
         <br />
         <br />

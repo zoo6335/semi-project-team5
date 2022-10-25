@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import KhApi from "../api/KhApi";
 import Modal from "../util/Modal";
 import styled from "styled-components";
+import mainLogo from "../images/logo.PNG"
 
+
+const Logo = styled.div`
+  margin-top: -100px;
+  margin-bottom: 80px;
+  
+`
 
 const Box = styled.div`
   
@@ -122,6 +129,9 @@ const SignUp = () => {
   return (
     <Box>
         <div className="container">
+        <Logo >
+          <img src={mainLogo} alt="logo"/>
+        </Logo>
             <div>
                 <Input placeholder="아이디" value ={inputId} onChange={onChangeId}/>
             </div>
