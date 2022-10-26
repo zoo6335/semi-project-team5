@@ -48,6 +48,7 @@ const SignUp = () => {
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   const [inputCheckPw, setInputCheckPw] = useState("");
+  const [inputName, setInputName] =useState("");
   const [inputEmail, setInputEmail] = useState("");
 
   // 입력 적합성 검사
@@ -63,6 +64,8 @@ const SignUp = () => {
   const [emailMessage, setEmailMessage] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalText, setModalText] = useState("중복된 아이디 입니다.");
+
 
   const closeModal = () => {
     setModalOpen(false);
@@ -115,16 +118,28 @@ const SignUp = () => {
   
   const onClickLogin = async() => {
     console.log("Click 회원가입");
-    //let result = await EnnovaApi.userInfoCheckId(inputId);
-    let result = await KhApi.userLogin(inputId, 1234);
-    if (result.data.Code === "00") {
-        console.log("가입된 아이디가 없습니다. 다음 단계 진행 합니다.")
-        window.location.replace("/SignupS2");
-    } else {
-        console.log("아이디 및 패스워드를 재확인해 주세요.")
-        setModalOpen(true);
-    } 
-  }
+   // 가입 여부 우선 확인
+  const memberCheck = await KhApi.memberRegCheck(inputId);
+  console.log(memberCheck.data);
+   // 가입 여부 확인 후 가입 절차 진행
+
+  if (memberCheck.data.result === "OK") {
+      console.log("가입된 아이디가 없습니다. 다음 단계 진행 합니다.");
+      const memberReg = await KhApi.memberReg(inputId, inputPw, inputName, inputEmail);
+      console.log(memberReg.data.result);
+      if(memberReg.data.result === "OK") {
+          window.location.replace("/");
+      } else {
+          setModalOpen(true);
+          setModalText("회원 가입에 실패 했습니다.");
+      }
+
+  } else {
+      console.log("이미 가입된 회원 입니다.")
+      setModalOpen(true);
+      setModalText("이미 가입된 회원 입니다.");
+  } 
+}
 
   return (
     <Box>
