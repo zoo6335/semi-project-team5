@@ -34,7 +34,14 @@ const KhApi = {
             id: id,
         }
         return await axios.post(DOMAIN + "MemberCheck", regCheck, HEADER);
-    }
+    },
+
+    memberDelete: async function(id) {
+        const memberDel = {
+            id:id,
+        }
+        return await axios.delete(DOMAIN + "MemberDelServlet", memberDel, HEADER);
+    },
 
 }
 

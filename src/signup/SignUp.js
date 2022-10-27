@@ -4,9 +4,14 @@ import KhApi from "../api/KhApi";
 import Modal from "../util/Modal";
 import styled from "styled-components";
 import mainLogo from "../images/logo.PNG"
+import { MdOutlineMailOutline } from "react-icons/fa";
 
 
-const Logo = styled.div`
+
+
+const SignUp = () => {
+
+  const Logo = styled.div`
   margin-top: -100px;
   margin-bottom: 80px;
   
@@ -42,8 +47,6 @@ const BtnSignUp = styled.button`
   background-color: cornflowerblue;
 
 `;
-
-const SignUp = () => {
 
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
@@ -169,7 +172,7 @@ const SignUp = () => {
             </div>
             <br /> 
             <div>
-              <Input placeholder="이메일" value={inputEmail} onChange={onChangeEmail} />
+              <Input placeholder="email"value={inputEmail} onChange={onChangeEmail} />
             </div>
             <br />
             <div>

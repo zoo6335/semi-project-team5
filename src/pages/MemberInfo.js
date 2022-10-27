@@ -43,7 +43,7 @@ const MemberInfo = () => {
           </tr>
         ))}
       </div>
-      <Link to="/">
+      <Link to="/home">
           <p>홈으로 이동</p>
       </Link>
     </div>
