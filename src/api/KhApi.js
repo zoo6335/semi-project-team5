@@ -1,6 +1,6 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const DOMAIN = "http://localhost:8090/kh_mini_project/";
+const DOMAIN = "http://localhost:8090/kh_mini_ex/";
 
 const KhApi = {
     // 로그인 기능
@@ -40,8 +40,8 @@ const KhApi = {
         const memberDel = {
             id:id,
         }
-        return await axios.delete(DOMAIN + "MemberDelServlet", memberDel, HEADER);
-    },
+        return await axios.post(DOMAIN + "MemberDelServlet", memberDel, HEADER);
+    }
 
 }
 

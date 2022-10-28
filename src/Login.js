@@ -9,44 +9,47 @@ import KhApi from "./api/KhApi";
 import mainLogo from "./images/logo.PNG"
 
 
-const Logo = styled.div`
-  margin-top: -100px;
-  margin-bottom: 80px;
+
+const Login = () => {
+
   
+const Logo = styled.div`
+margin-top: -100px;
+margin-bottom: 80px;
+
 `
 
 const Box = styled.div`
-  
-  background-color: cornsilk;
-  margin: 100px auto;
-  padding: 1rem;
-  height: 700px;
-  width: 400px;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  
+
+background-color: cornsilk;
+margin: 100px auto;
+padding: 1rem;
+height: 700px;
+width: 400px;
+display: flex;
+text-align: center;
+align-items: center;
+box-sizing: border-box;
+
 `;
 
 const InputLogin = styled.input`
-  width: 300px;
-  height: 30px;
-  border-radius: 20px;
-  border: 0.1px solid white;
+width: 300px;
+height: 30px;
+border-radius: 20px;
+border: 0.1px solid white;
 `;
 
 const ButtonLogin = styled.button`
-  width: 150px;
-  height: 30px;
-  margin: 0 0 0 25px;
-  border-radius: 20px;
-  border: 0.1px solid cornflowerblue;
-  background-color: cornflowerblue;
+width: 150px;
+height: 30px;
+margin: 0 0 0 25px;
+border-radius: 20px;
+border: 0.1px solid cornflowerblue;
+background-color: cornflowerblue;
 
 `;
 
-const Login = () => {
 
   // const KAKAO_AUTH_URL = `/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code` 
   // const onClickKakao = () => {
@@ -107,7 +110,8 @@ const Login = () => {
     try {
       // 로그인을 위한 axios 호출
       const res = await KhApi.userLogin(inputId, inputPw);
-      console.log(res.data.result);
+      console.log(res.data);
+      
       if(res.data.result === "OK") {
           window.localStorage.setItem("userId", inputId);
           window.localStorage.setItem("userPw", inputPw);

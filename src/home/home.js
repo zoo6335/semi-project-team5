@@ -45,18 +45,22 @@ const GoHome = () => {
   const closeModal = () => {
     setModalOpen(false);
 };
+// const confirmModal = async() => {
+//     setModalOpen(false);
+//     const memberReg = await KhApi.memberDelete(localId);
+//     console.log(memberReg.data.result);
+//     if(memberReg.data.result === "OK") {
+//         window.location.replace("/");
+//     }
+// };
 
-const confirmModal = async() => {
-    setModalOpen(false);
-    const memberReg = await KhApi.memberDelete(localId);
-    console.log(memberReg.data.result);
-    if(memberReg.data.result === "OK") {
+const onClickDelete = async() => {
+    // setModalOpen(true);
+    const memberDel = await KhApi.memberDelete(localId);
+    console.log(memberDel.data.result);
+    if(memberDel.data.result === "OK") {
         window.location.replace("/");
     }
-};
-
-const onClickDelete = () => {
-    setModalOpen(true);
 }
 
 const onClickMember = () => {
@@ -83,7 +87,7 @@ return (
     <div>
       <span onClick={onClickDelete}>회원 탈퇴</span>
     </div>
-    {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>}
+    {modalOpen && <Modal open={modalOpen}  close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>}
   </Box>
 
 )
