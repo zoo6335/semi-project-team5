@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {  Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "./images/kakao_login.png";
 import Modal from "./util/Modal";
@@ -29,7 +29,6 @@ align-items: center;
 const ButtonLogin = styled.button`
 width: 150px;
 height: 50px;
-
 margin: 0 auto;
 border-radius: 20px;
 border: 0.1px solid cornflowerblue;
