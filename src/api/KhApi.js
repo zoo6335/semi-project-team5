@@ -12,9 +12,10 @@ const KhApi = {
         return await axios.post(DOMAIN + "LoginServlet", loginObj, HEADER); // 백엔드 통신 주소 
     },
     // 회원 정보 조회
-    memberInfo: async function() {
+    memberInfo: async function(id) {
         const regCmd = {
-            cmd : "MemberInfo"
+            cmd : "MemberInfo",
+            id : id
         }
         return await axios.post(DOMAIN + "MemberServlet", regCmd, HEADER);
     },
@@ -26,7 +27,7 @@ const KhApi = {
             name: name,
             mail: mail
         };
-        return await axios.post(DOMAIN + "MemberReg", memberObj, HEADER);
+        return await axios.post(DOMAIN + "MemberRegServlet", memberObj, HEADER);
     },
     // 회원 가입 여부 확인
     memberRegCheck: async function(id) {

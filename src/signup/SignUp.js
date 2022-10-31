@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import KhApi from "../api/KhApi";
 import Modal from "../util/Modal";
 import styled from "styled-components";
 import mainLogo from "../images/logo.PNG"
-import { MdOutlineMailOutline } from "react-icons/fa";
 
 
-
-
-const SignUp = () => {
-
-  const Logo = styled.div`
+const Logo = styled.div`
   margin-top: -100px;
   margin-bottom: 80px;
   
@@ -47,6 +41,10 @@ const BtnSignUp = styled.button`
   background-color: cornflowerblue;
 
 `;
+
+
+const SignUp = () => {
+
 
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
@@ -118,6 +116,9 @@ const BtnSignUp = styled.button`
     }
   }
 
+  const onChangeName = (e) => {
+    setInputName(e.target.value);
+  }
   
   const onClickLogin = async() => {
     console.log("Click 회원가입");
@@ -130,6 +131,7 @@ const BtnSignUp = styled.button`
       console.log("가입된 아이디가 없습니다. 다음 단계 진행 합니다.");
       const memberReg = await KhApi.memberReg(inputId, inputPw, inputName, inputEmail);
       console.log(memberReg.data.result);
+      console.log()
       if(memberReg.data.result === "OK") {
           window.location.replace("/");
       } else {
@@ -171,6 +173,10 @@ const BtnSignUp = styled.button`
               {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
             </div>
             <br /> 
+            <div>
+              <Input placeholder="name"value={inputName} onChange={onChangeName} />
+            </div>
+            <br />
             <div>
               <Input placeholder="email"value={inputEmail} onChange={onChangeEmail} />
             </div>

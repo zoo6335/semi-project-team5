@@ -1,17 +1,11 @@
 import { useState, useEffect } from "react";
-import { Await, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "./images/kakao_login.png";
-import axios from "axios";
 import Modal from "./util/Modal";
 import KhApi from "./api/KhApi";
 import mainLogo from "./images/logo.PNG"
 
-
-
-const Login = () => {
-
-  
 const Logo = styled.div`
 margin-top: -100px;
 margin-bottom: 80px;
@@ -46,8 +40,13 @@ margin: 0 0 0 25px;
 border-radius: 20px;
 border: 0.1px solid cornflowerblue;
 background-color: cornflowerblue;
-
 `;
+
+
+const Login = () => {
+
+
+
 
 
   // const KAKAO_AUTH_URL = `/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code` 
@@ -106,6 +105,7 @@ background-color: cornflowerblue;
   }
 
   const onClickLogin = async() => {
+    window.localStorage.setItem("isLogin", "FALSE");
     try {
       // 로그인을 위한 axios 호출
       const res = await KhApi.userLogin(inputId, inputPw);
@@ -114,6 +114,7 @@ background-color: cornflowerblue;
       if(res.data.result === "OK") {
           window.localStorage.setItem("userId", inputId);
           window.localStorage.setItem("userPw", inputPw);
+          window.localStorage.setItem("isLogin", "TRUE");
           window.location.replace("/home");
       } else {
           setModalOpen(true);

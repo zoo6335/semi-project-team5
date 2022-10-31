@@ -4,9 +4,6 @@ import KhApi from "../api/KhApi";
 import mainLogo from "../images/logo.PNG"
 
 
-
-const FindId = () => {
-
 const Logo = styled.div`
 margin-top: -100px;
 margin-bottom: 80px;
@@ -43,6 +40,9 @@ border: 0.1px solid cornflowerblue;
 background-color: cornflowerblue;
 
 `;
+
+const FindId = () => {
+
   
   const [findMember, setFindMember] = useState("");
   const [loading, setLoading] = useState(false);

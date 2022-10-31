@@ -9,16 +9,17 @@ const MemberInfo = () => {
   
   const [memberInfo, setMemberInfo] = useState("");
   const [loading, setLoading] = useState(false);
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.location.replace("/");
 
   useEffect(() => {
 
     const memberData = async () => {
       setLoading(true);
       try {
-        const response = await KhApi.memberInfo();
+        const response = await KhApi.memberInfo("ALL");
         setMemberInfo(response.data);
-        const infoId = response.data.map(e => [e.id, e.pwd, e.name, e.email]);  // 아이디 비밀번호 찾을때 쓴다
-        console.log(infoId);
+        console.log(response.data.map(e => e.id)); // 아이디만 추출
       } catch(e) {
         console.log(e);
       }

@@ -1,45 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import KhApi from "../api/KhApi";
 import mainLogo from "../images/logo.PNG"
 import Modal from "../util/Modal";
 
+  
+const Logo = styled.div`
+margin-top: -100px;
+margin-bottom: 80px;
+
+`
+
+const Box = styled.div`
+
+background-color: cornsilk;
+margin: 100px auto;
+padding: 1rem;
+height: 700px;
+width: 400px;
+display: flex;
+text-align: center;
+align-items: center;
+box-sizing: border-box;
+`;
 
 const GoHome = () => {
 
-    
-  const Logo = styled.div`
-  margin-top: -100px;
-  margin-bottom: 80px;
-
-  `
-
-  const Box = styled.div`
-
-  background-color: cornsilk;
-  margin: 100px auto;
-  padding: 1rem;
-  height: 700px;
-  width: 400px;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  box-sizing: border-box;
-  `;
-
-  const ButtonLogin = styled.button`
-  width: 150px;
-  height: 30px;
-  margin: 0 0 0 25px;
-  border-radius: 20px;
-  border: 0.1px solid cornflowerblue;
-  background-color: cornflowerblue;
-  `;
-
-
-
   const localId = window.localStorage.getItem("userId");
-  const localPw = window.localStorage.getItem("userPw");
+  // const localPw = window.localStorage.getItem("userPw");
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.replace("/");
+
+
+  const [memberInfo, setMemberInfo] = useState("");
+
+  useEffect(() => {
+
+    const memberData = async () => {
+      try {
+        // memberInfo()는 전체 회원 정보를 필요로할 때 씀
+        const response = await KhApi.memberInfo(localId); // 현재로그인된 아이디를 넘겨줌
+        setMemberInfo(response.data);
+      } catch(e) {
+        console.log(e);
+      }
+    }
+    memberData();
+  }, [])
+
+
+
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const closeModal = () => {
@@ -77,11 +88,17 @@ return (
     </div>
     <div>
       <div>
-      <span onClick={onClickMember}>회원정보 조회</span>
+        <span onClick={onClickMember}>회원정보 조회</span>
       </div>
       <div>
-        <span>아이디 : {localId} </span>
-        <span>패스워드 : {localPw}</span>
+        {memberInfo && memberInfo.map(member => (
+          <div key={member.id}>
+            <p>{member.id}</p>
+            <p>{member.name}</p>
+            <p>{member.email}</p>
+            <p>{member.join}</p>
+          </div>
+          ))}
       </div>
     </div>
     <div>
