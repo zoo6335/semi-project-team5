@@ -65,7 +65,7 @@ const onClickDelete = async() => {
 
 const onClickMember = () => {
     console.log("회원정보로 이동");
-    window.location.replace("/myinfo");
+    window.location.replace("/memberInfo");
 }
   
 return (

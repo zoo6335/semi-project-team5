@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Await, Link } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "./images/kakao_login.png";
-import SignUp from "./signup/SignUp";
 import axios from "axios";
 import Modal from "./util/Modal";
 import KhApi from "./api/KhApi";
@@ -156,7 +155,15 @@ background-color: cornflowerblue;
         <br />
         <br />
         <div>
-          <Link to ={"./signup"}  style={{ textDecoration: 'none' }}>아이디가 없으신가요?</Link>
+          <div>
+            <Link to ={"/findId"} style={{ textDecoration: 'none' }}>아이디 찾기</Link>
+          </div>
+          <div>
+            <Link to ={"/findPwd"} style={{ textDecoration: 'none' }}>비밀번호 찾기</Link>
+          </div>
+        </div>
+        <div>
+          <Link to ={"/signUp"}  style={{ textDecoration: 'none' }}>아이디가 없으신가요?</Link>
         </div>
       </div>
     </div>

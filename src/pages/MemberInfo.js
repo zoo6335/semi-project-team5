@@ -17,7 +17,8 @@ const MemberInfo = () => {
       try {
         const response = await KhApi.memberInfo();
         setMemberInfo(response.data);
-        console.log(response.data);
+        const infoId = response.data.map(e => [e.id, e.pwd, e.name, e.email]);  // 아이디 비밀번호 찾을때 쓴다
+        console.log(infoId);
       } catch(e) {
         console.log(e);
       }
@@ -37,7 +38,7 @@ const MemberInfo = () => {
         <tr>
           <th>아이디 </th><th>이름</th><th>이메일</th><th>가입일</th>
         </tr>
-        {memberInfo && memberInfo.localeCompare(member => (
+        {memberInfo && memberInfo.map((member) => (
           <tr key={member.id}>
             <td>{member.id}</td><td>{member.name}</td><td>{member.email}</td><td>{member.join}</td>
           </tr>
