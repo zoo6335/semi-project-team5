@@ -2,44 +2,39 @@ import { useState } from "react";
 import KhApi from "../api/KhApi";
 import Modal from "../util/Modal";
 import styled from "styled-components";
-import mainLogo from "../images/logo.PNG"
-
-
-const Logo = styled.div`
-  margin-top: -100px;
-  margin-bottom: 80px;
-  
-`
 
 const Box = styled.div`
-  
-  background-color: cornsilk;
-  margin: 100px auto;
-  padding: 1rem;
-  height: 700px;
-  width: 400px;
+  border: 4px solid #40BAAA;
+  border-top: none;
+  width: 1024px;
+  height: 720px;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
   display: flex;
-  text-align: center;
+  flex-direction: column;
   align-items: center;
-  box-sizing: border-box;
-  
-`;
+  justify-content: center;
+`
+
 
 const Input = styled.input`
-  width: 300px;
-  height: 30px;
+  width: 350px;
+  height: 50px;
   border-radius: 20px;
   border: 0.1px solid white;
 `;
 
 const BtnSignUp = styled.button`
   width: 150px;
-  height: 30px;
-  margin: 0 0 0 25px;
+  height: 50px;
+  margin: 0 auto;
   border-radius: 20px;
   border: 0.1px solid cornflowerblue;
   background-color: cornflowerblue;
 
+  & + & {
+    margin-left : 50px;
+  }
 `;
 
 
@@ -149,9 +144,6 @@ const SignUp = () => {
   return (
     <Box>
         <div className="container">
-        <Logo >
-          <img src={mainLogo} alt="logo"/>
-        </Logo>
             <div>
                 <Input placeholder="아이디" value ={inputId} onChange={onChangeId}/>
             </div>
@@ -185,6 +177,7 @@ const SignUp = () => {
               {(isId && isPw && isCheckPw) ? 
               <BtnSignUp className="enable_button" onClick={onClickLogin}>SignUp</BtnSignUp> :
               <BtnSignUp className="disable_button" onClick={onClickLogin}>SignUp</BtnSignUp>}
+              <BtnSignUp>Cancle</BtnSignUp>
               <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
             </div>
         </div>
