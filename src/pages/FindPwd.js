@@ -1,44 +1,38 @@
 import { useState } from "react";
 import styled from "styled-components";
 import KhApi from "../api/KhApi";
-import mainLogo from "../images/logo.PNG"
-
-
-
-const Logo = styled.div`
-margin-top: -100px;
-margin-bottom: 80px;
-`;
 
 const Box = styled.div`
-
-background-color: cornsilk;
-margin: 100px auto;
-padding: 1rem;
-height: 700px;
-width: 400px;
-display: flex;
-text-align: center;
-align-items: center;
-box-sizing: border-box;
-`;
+  border: 4px solid #40BAAA;
+  border-top: none;
+  width: 1024px;
+  height: 720px;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
 
 const InputLogin = styled.input`
-width: 300px;
-height: 30px;
+width: 350px;
+height: 50px;
 border-radius: 20px;
 border: 0.1px solid white;
 `;
 
 const ButtonLogin = styled.button`
 width: 150px;
-height: 30px;
-margin: 0 0 0 25px;
+height: 50px;
 border-radius: 20px;
 border: 0.1px solid cornflowerblue;
 background-color: cornflowerblue;
 
+  & + & {
+    margin-left : 50px;
+  }
 `;
 
 const FindPwd = () => {
@@ -94,9 +88,6 @@ const FindPwd = () => {
   return (
   <Box>
     <div>
-      <Logo >
-        <img src={mainLogo} alt="logo"/>
-      </Logo>
       <div>
         <div>
           <InputLogin placeholder="아이디" value={inputId} onChange={onChangeId} />
@@ -115,6 +106,7 @@ const FindPwd = () => {
         <br />
         <div>
           <ButtonLogin onClick={onClickFindPwd}>Find Pwd</ButtonLogin>
+          <ButtonLogin>Cancle</ButtonLogin>
         </div>
       </div>
     </div>
