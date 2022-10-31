@@ -4,18 +4,21 @@ import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./Profile";
 import SignUp from "./signup/SignUp";
-import Home from "./home/home";
 import MemberInfo from "./pages/MemberInfo";
 import FindId from "./pages/FindId";
 import FindPwd from "./pages/FindPwd";
+import MyPage from "./pages/MyPage";
+import Home from "./home/Home";
+import Header from "./components/Header";
 
 function App() {
   return (
     <Router>
-    <div className="App">
+      <Header />
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/oauth" element={<Auth />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
@@ -23,7 +26,6 @@ function App() {
         <Route path="/findId" element={<FindId />} />
         <Route path="/findPwd" element={<FindPwd />} />
       </Routes>
-    </div>
     </Router>
   );
 }

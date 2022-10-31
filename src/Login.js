@@ -1,52 +1,52 @@
 import { useState, useEffect } from "react";
-import {  Link } from "react-router-dom";
+import {  Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "./images/kakao_login.png";
 import Modal from "./util/Modal";
 import KhApi from "./api/KhApi";
-import mainLogo from "./images/logo.PNG"
-
-const Logo = styled.div`
-margin-top: -100px;
-margin-bottom: 80px;
-
-`
 
 const Box = styled.div`
-
-background-color: cornsilk;
-margin: 100px auto;
-padding: 1rem;
-height: 700px;
-width: 400px;
-display: flex;
-text-align: center;
-align-items: center;
-box-sizing: border-box;
-
-`;
+  border: 4px solid #40BAAA;
+  border-top: none;
+  width: 1024px;
+  height: 720px;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
 const InputLogin = styled.input`
-width: 300px;
-height: 30px;
+width: 350px;
+height: 50px;
 border-radius: 20px;
 border: 0.1px solid white;
+align-items: center;
 `;
 
 const ButtonLogin = styled.button`
 width: 150px;
-height: 30px;
-margin: 0 0 0 25px;
+height: 50px;
+
+margin: 0 auto;
 border-radius: 20px;
 border: 0.1px solid cornflowerblue;
 background-color: cornflowerblue;
+align-items: center;
+
+  & + & {
+    margin-left : 50px;
+  }
+
 `;
 
+const FindContainer = styled.div`
+  margin : 0 auto;
+`
 
 const Login = () => {
-
-
-
 
 
   // const KAKAO_AUTH_URL = `/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code` 
@@ -115,7 +115,7 @@ const Login = () => {
           window.localStorage.setItem("userId", inputId);
           window.localStorage.setItem("userPw", inputPw);
           window.localStorage.setItem("isLogin", "TRUE");
-          window.location.replace("/home");
+          window.location.replace("/mypage");
       } else {
           setModalOpen(true);
       }
@@ -128,12 +128,6 @@ const Login = () => {
 
   return (
     <Box>
-    
-    <div>
-      <Logo >
-        <img src={mainLogo} alt="logo"/>
-      </Logo>
-      <div>
         <InputLogin placeholder="아이디" value={inputId} onChange={onChangeId} />
         <div>
           {/* span 태그의 class에 다른 props 넣어서 false일 때 메세지가 나오도록 수정해야함 */}
@@ -145,9 +139,10 @@ const Login = () => {
           <InputLogin placeholder="패스워드" value={inputPw} onChange={onChangePw} />
         </div>
         <br />
-        <ButtonLogin onClick={onClickLogin}>Login</ButtonLogin>
-        <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
-        <ButtonLogin>Cancle</ButtonLogin>
+        <div>
+          <ButtonLogin onClick={onClickLogin}>Login</ButtonLogin>
+          <ButtonLogin>Cancle</ButtonLogin>
+        </div>
         <br />
         <br />
           <a href={KAKAO_AUTH_URL} target="_blank" rel="noreferrer noopener">
@@ -156,18 +151,15 @@ const Login = () => {
         <br />
         <br />
         <div>
-          <div>
-            <Link to ={"/findId"} style={{ textDecoration: 'none' }}>아이디 찾기</Link>
-          </div>
-          <div>
-            <Link to ={"/findPwd"} style={{ textDecoration: 'none' }}>비밀번호 찾기</Link>
-          </div>
+            <Link to ={"/findId"} style={{ textDecoration: 'none', margin: '0 50px' }}>아이디 찾기</Link>
+            <Link to ={"/findPwd"} style={{ textDecoration: 'none', margin: '0 50px' }}>비밀번호 찾기</Link>
         </div>
+        <br />
+        <br />
         <div>
           <Link to ={"/signUp"}  style={{ textDecoration: 'none' }}>아이디가 없으신가요?</Link>
         </div>
-      </div>
-    </div>
+        <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
     </Box>
   ) 
 }

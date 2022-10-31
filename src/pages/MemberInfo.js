@@ -45,7 +45,7 @@ const MemberInfo = () => {
           </tr>
         ))}
       </div>
-      <Link to="/home">
+      <Link to="/mypage">
           <p>홈으로 이동</p>
       </Link>
     </div>
