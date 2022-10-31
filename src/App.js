@@ -10,6 +10,8 @@ import FindPwd from "./pages/FindPwd";
 import MyPage from "./pages/MyPage";
 import Home from "./home/Home";
 import Header from "./components/Header";
+import About from './pages/About';
+import {TestA, TestB, TestC, TestD, TestE, TestF} from "./pages/DummyPages";
 
 function App() {
   return (
@@ -25,6 +27,11 @@ function App() {
         <Route path="/memberInfo" element={<MemberInfo />} />
         <Route path="/findId" element={<FindId />} />
         <Route path="/findPwd" element={<FindPwd />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/theme" element={<TestA />} />
+        <Route path="/freeboard" element={<TestB />} />
+        <Route path="/getparty" element={<TestC />} />
+        <Route path="/bragging" element={<TestD />} />
       </Routes>
     </Router>
   );

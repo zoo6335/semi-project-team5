@@ -1,5 +1,5 @@
 import './Home.css';
-import Carousel from "../components/Slider";
+import Carousel from "../components/Slider"
 import ThemeType from "../components/ThemeType";
 import Articles from "../components/Articles";
 import Recommend from "../components/Recommend";
