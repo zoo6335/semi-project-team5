@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import KhApi from "../api/KhApi";
+import Modal from "../util/Modal";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -38,7 +39,7 @@ background-color: cornsilk;
 const FindPwd = () => {
 
   
-  const [findMember, setFindMember] = useState("");
+  const [findPwd, setFindPwd] = useState("");
   const [loading, setLoading] = useState(false);
   
   const [inputId, setInputId] = useState("");
@@ -64,16 +65,14 @@ const FindPwd = () => {
       setLoading(true);
       try {
         const response = await KhApi.findMember();
-        setFindMember(response.data);
         const infoPwd = response.data.map(e => [e.id, e.pwd, e.name, e.email]);  // 아이디 비밀번호
-        console.log(infoPwd);
 
         infoPwd.forEach(element => {
           console.log(element[2]);
           if(element[0] === inputId &&
               element[2] === inputName &&
               element[3] === inputEmail) {
-            alert("PASSWORD : " + element[1])
+              setFindPwd(element[1]);
           }
         });
       } catch(e) {
@@ -82,12 +81,25 @@ const FindPwd = () => {
       setLoading(false); 
     }
     memberData();
-  
+    setModalOpen(true);
   }
 
-  const onClickCancle = () => {
+  const onClickCancel = () => {
     window.location.replace("/");
   }
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setModalOpen(false);
+    
+  };
+
+  const confirmModal = () => {
+    window.location.replace("/login");
+  }
+
+
 
   return (
   <Box>
@@ -110,10 +122,11 @@ const FindPwd = () => {
         <br />
         <div>
           <ButtonLogin onClick={onClickFindPwd}>Find Pwd</ButtonLogin>
-          <ButtonLogin onClick={onClickCancle}>Cancle</ButtonLogin>
+          <ButtonLogin onClick={onClickCancel}>Cancel</ButtonLogin>
         </div>
       </div>
     </div>
+    {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="비밀번호 찾기">PWD : {findPwd}</Modal>}
   </Box>
   )
 }

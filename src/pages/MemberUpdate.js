@@ -84,7 +84,7 @@ const MemberUpdate = () => {
       }
 }
 
-const onClickCancle = () => {
+const onClickCancel = () => {
   window.location.replace("/");
 }
 
@@ -160,7 +160,7 @@ const onClickCancle = () => {
               {(isId && isPw && isCheckPw) ? 
               <BtnSignUp  onClick={onClickUpdate}>Change</BtnSignUp> :
               <BtnSignUp disabled onClick={onClickUpdate}>Change</BtnSignUp>}
-              <BtnSignUp onClick={onClickCancle}>Cancle</BtnSignUp>
+              <BtnSignUp onClick={onClickCancel}>Cancel</BtnSignUp>
               <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
             </div>
         </div>

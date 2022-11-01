@@ -72,7 +72,7 @@ const Login = () => {
     setModalOpen(false);
   };
 
-  const onClickCancle = () => {
+  const onClickCancel = () => {
     window.location.replace("/");
   }
 
@@ -141,7 +141,7 @@ const Login = () => {
       <br />
       <div>
         <ButtonLogin onClick={onClickLogin}>Login</ButtonLogin>
-        <ButtonLogin onClick={onClickCancle}>Cancle</ButtonLogin>
+        <ButtonLogin onClick={onClickCancel}>Cancel</ButtonLogin>
       </div>
       <br />
       <br />

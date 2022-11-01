@@ -54,7 +54,7 @@ const FindId = () => {
     setInputEmail(e.target.value);
   }
 
-  const onClickCancle = () => {
+  const onClickCancel = () => {
     window.location.replace("/");
   }
 
@@ -65,7 +65,6 @@ const FindId = () => {
       try {
         const response = await KhApi.findMember();
         const infoId = response.data.map(e => [e.id, e.pwd, e.name, e.email]);  // 아이디 비밀번호
-        console.log(infoId);
 
         infoId.forEach(element => {
           console.log(element[2]);
@@ -81,7 +80,6 @@ const FindId = () => {
     }
     memberData();
     setModalOpen(true);
-    console.log(findId);
   }
 
 
@@ -89,10 +87,11 @@ const FindId = () => {
 
   const closeModal = () => {
     setModalOpen(false);
+    
   };
 
-  const confirmModal = async () => {
-  
+  const confirmModal = () => {
+    window.location.replace("/login");
   }
 
 
@@ -113,11 +112,11 @@ const FindId = () => {
           <br />
           <div>
             <ButtonLogin onClick={onClickFind}>Find</ButtonLogin>
-            <ButtonLogin onClick={onClickCancle}>Cancle</ButtonLogin>
+            <ButtonLogin onClick={onClickCancel}>Cancel</ButtonLogin>
           </div>
         </div>
       </div>
-      {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={false} header="아이디 찾기">ID : {findId}</Modal>}
+      {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="아이디 찾기">ID : {findId}</Modal>}
     </Box>
   );
 }

@@ -55,6 +55,7 @@
   background-color: #6c757d;
   border-radius: 5px;
   font-size: 13px;
+  margin-left: 20px;
 }
 .modal.openModal {
   display: flex;
