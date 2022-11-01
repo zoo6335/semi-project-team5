@@ -27,8 +27,8 @@ const ButtonLogin = styled.button`
 width: 150px;
 height: 50px;
 border-radius: 20px;
-border: 0.1px solid cornflowerblue;
-background-color: cornflowerblue;
+border: 0.1px solid cornsilk;
+background-color: cornsilk;
 
   & + & {
     margin-left : 50px;

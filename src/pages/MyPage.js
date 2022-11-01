@@ -27,8 +27,8 @@ const Button = styled.button`
 width: 150px;
 height: 50px;
 border-radius: 20px;
-border: 0.1px solid cornflowerblue;
-background-color: cornflowerblue;
+border: 0.1px solid cornsilk;
+background-color: cornsilk;
 
   & + & {
     margin-left : 50px;
@@ -88,17 +88,18 @@ const onClickDelete = async() => {
     }
 }
 
-const onClickMember = () => {
-    console.log("회원정보로 이동");
-    window.location.replace("/memberInfo");
-}
+// const onClickMember = () => {
+//     console.log("회원정보로 이동");
+//     window.location.replace("/memberInfo");
+// }
   
 return (
   <Box>
     <div>
-      <div>
+      {/* <div>
         <span onClick={onClickMember}>회원정보 조회</span>
-      </div>
+      </div> */}
+      <p>회원 정보</p>
       <div style={{margin : '50px auto'}}>
         {memberInfo && memberInfo.map(member => (
           <div key={member.id}>
@@ -113,6 +114,7 @@ return (
       </div>
     </div>
     <div>
+      <Button>정보 수정</Button>
       <Button onClick={onClickDelete}>회원 탈퇴</Button>
     </div>
     {modalOpen && <Modal open={modalOpen}  close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>}

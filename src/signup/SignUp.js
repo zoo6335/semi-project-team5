@@ -22,6 +22,7 @@ const Input = styled.input`
   height: 50px;
   border-radius: 20px;
   border: 0.1px solid white;
+  align-items: center;
 `;
 
 const BtnSignUp = styled.button`
@@ -29,8 +30,9 @@ const BtnSignUp = styled.button`
   height: 50px;
   margin: 0 auto;
   border-radius: 20px;
-  border: 0.1px solid cornflowerblue;
-  background-color: cornflowerblue;
+  border: 0.1px solid cornsilk;
+  background-color: cornsilk;
+  align-items: center;
 
   & + & {
     margin-left : 50px;
@@ -143,7 +145,7 @@ const SignUp = () => {
 
   return (
     <Box>
-        <div className="container">
+        <div>
             <div>
                 <Input placeholder="아이디" value ={inputId} onChange={onChangeId}/>
             </div>

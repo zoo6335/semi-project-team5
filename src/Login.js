@@ -31,8 +31,8 @@ width: 150px;
 height: 50px;
 margin: 0 auto;
 border-radius: 20px;
-border: 0.1px solid cornflowerblue;
-background-color: cornflowerblue;
+border: 0.1px solid cornsilk;
+background-color: cornsilk;
 align-items: center;
 
   & + & {
