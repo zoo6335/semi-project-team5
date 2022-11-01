@@ -85,6 +85,10 @@ const FindPwd = () => {
   
   }
 
+  const onClickCancle = () => {
+    window.location.replace("/");
+  }
+
   return (
   <Box>
     <div>
@@ -106,7 +110,7 @@ const FindPwd = () => {
         <br />
         <div>
           <ButtonLogin onClick={onClickFindPwd}>Find Pwd</ButtonLogin>
-          <ButtonLogin>Cancle</ButtonLogin>
+          <ButtonLogin onClick={onClickCancle}>Cancle</ButtonLogin>
         </div>
       </div>
     </div>

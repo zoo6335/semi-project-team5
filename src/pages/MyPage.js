@@ -3,6 +3,7 @@ import styled from "styled-components";
 import KhApi from "../api/KhApi";
 import Modal from "../util/Modal";
 
+
 const Box = styled.div`
 border: 4px solid #40BAAA;
 border-top: none;
@@ -40,7 +41,6 @@ background-color: cornsilk;
 const MyPage = () => {
 
   const localId = window.localStorage.getItem("userId");
-  const localPw = window.localStorage.getItem("userPw");
   const isLogin = window.localStorage.getItem("isLogin");
   if(isLogin === "FALSE") window.replace("/");
 
@@ -88,10 +88,11 @@ const onClickDelete = async() => {
     }
 }
 
-// const onClickMember = () => {
-//     console.log("회원정보로 이동");
-//     window.location.replace("/memberInfo");
-// }
+
+const onClickUpdate = () => {
+    // setModalOpen(false);
+    window.location.replace("/memberUpdate");
+}
   
 return (
   <Box>
@@ -114,10 +115,12 @@ return (
       </div>
     </div>
     <div>
-      <Button>정보 수정</Button>
-      <Button onClick={onClickDelete}>회원 탈퇴</Button>
+      <div>
+        <Button onClick={onClickUpdate}>정보 수정</Button>
+        <Button onClick={onClickDelete}>회원 탈퇴</Button>
+      </div>
     </div>
-    {modalOpen && <Modal open={modalOpen}  close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>}
+    {/* {modalOpen && <Modal open={modalOpen}  close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>} */}
   </Box>
 
 )

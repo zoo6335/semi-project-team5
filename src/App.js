@@ -1,4 +1,4 @@
-import Login from "./Login";
+import Login from "./pages/Login";
 import './App.css';
 import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -12,6 +12,7 @@ import Home from "./home/Home";
 import Header from "./components/Header";
 import About from './pages/About';
 import {TestA, TestB, TestC, TestD, TestE, TestF} from "./pages/DummyPages";
+import MemberUpdate from "./pages/MemberUpdate";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/freeboard" element={<TestB />} />
         <Route path="/getparty" element={<TestC />} />
         <Route path="/bragging" element={<TestD />} />
+        <Route path="/memberUpdate" element={<MemberUpdate />} />
       </Routes>
     </Router>
   );

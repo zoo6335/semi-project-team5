@@ -4,14 +4,21 @@ import '../home/Home.css';
 import Categories from "./Categories";
 
 const Header = () => {
+    const isLogin = window.localStorage.getItem("isLogin");
     return (
         <HeaderBlock>
             <img className="logo" src={logo} alt="나가방 로고" onClick={onClickLogo}></img>
-            <div className="member">
-                {/* 로그인 완료하면 회원가입-> 로그아웃, 로그인 -> 닉네임 으로 문구가 변경되게 할 예정 */}
-                <p className="signIn" onClick={onClickSignin}>회원가입</p>
-                <p className="logIn" onClick={onClickLogin}>로그인</p>
-            </div>
+                {isLogin === "TRUE" ?
+                <div className="member">
+                    <p className="signIn" onClick={onClickMyPage}>마이페이지</p>
+                    <p className="logIn" onClick={onClickLogOut}>로그아웃</p>
+                </div>
+                :
+                <div className="member">
+                    <p className="signIn" onClick={onClickSignin}>회원가입</p>
+                    <p className="logIn" onClick={onClickLogin}>로그인</p>
+                </div>
+                }
             <Categories />
         </HeaderBlock>
     );
@@ -25,6 +32,14 @@ const onClickSignin = () => {
 }
 const onClickLogin = () => {
     window.location.replace("/login");
+}
+
+const onClickLogOut = () => {
+    window.localStorage.setItem("isLogin", "FALSE");
+    window.location.replace("/");
+}
+const onClickMyPage = () => {
+    window.location.replace("/myPage");
 }
 
 const HeaderBlock = styled.div`

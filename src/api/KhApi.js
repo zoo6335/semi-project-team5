@@ -49,7 +49,18 @@ const KhApi = {
             cmd : "MemberInfo"
         }
         return await axios.post(DOMAIN + "MemberServlet", regCmd, HEADER);
-    }
+    },
+
+    memberUpdate: async function(id, pwd, name, mail) {
+        const memberObj = {
+            id: id,
+            pwd: pwd,
+            name: name,
+            mail: mail
+        };
+        return await axios.post(DOMAIN + "MemberUpdateServlet", memberObj, HEADER);
+    },
+    
 
 }
 

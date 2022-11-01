@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import kakaoImage from "./images/kakao_login.png";
-import Modal from "./util/Modal";
-import KhApi from "./api/KhApi";
+import kakaoImage from "../images/kakao_login.png";
+import Modal from "../util/Modal";
+import KhApi from "../api/KhApi";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -53,6 +53,7 @@ const Login = () => {
   //   window.location.href = KAKAO_AUTH_URL;
   // }
 
+  window.localStorage.setItem("isLogin", "FALSE");
   // 로그인 id, pw 입력 요소 
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
@@ -73,6 +74,10 @@ const Login = () => {
   const closeModal = () => {
       setModalOpen(false);
   };
+
+  const onClickCancle = () => {
+    window.location.replace("/");
+  }
 
   useEffect(() => {
   });
@@ -104,7 +109,7 @@ const Login = () => {
   }
 
   const onClickLogin = async() => {
-    window.localStorage.setItem("isLogin", "FALSE");
+
     try {
       // 로그인을 위한 axios 호출
       const res = await KhApi.userLogin(inputId, inputPw);
@@ -140,7 +145,7 @@ const Login = () => {
         <br />
         <div>
           <ButtonLogin onClick={onClickLogin}>Login</ButtonLogin>
-          <ButtonLogin>Cancle</ButtonLogin>
+          <ButtonLogin onClick={onClickCancle}>Cancle</ButtonLogin>
         </div>
         <br />
         <br />

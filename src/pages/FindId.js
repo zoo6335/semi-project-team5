@@ -53,6 +53,10 @@ const FindId = () => {
   const onChangeEmail = (e) => {
     setInputEmail(e.target.value);
   }
+  
+  const onClickCancle = () => {
+    window.location.replace("/");
+  }
 
   const onClickFind = ()=> {
 
@@ -97,7 +101,7 @@ const FindId = () => {
         <br />
         <div>
           <ButtonLogin onClick={onClickFind}>Find</ButtonLogin>
-          <ButtonLogin>Cancle</ButtonLogin>
+          <ButtonLogin onClick={onClickCancle}>Cancle</ButtonLogin>
         </div>
       </div>
     </div>
