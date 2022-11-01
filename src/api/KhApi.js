@@ -46,7 +46,8 @@ const KhApi = {
 
     findMember: async function() {
         const regCmd = {
-            cmd : "MemberInfo"
+            cmd : "MemberInfo",
+            id: "ALL"
         }
         return await axios.post(DOMAIN + "MemberServlet", regCmd, HEADER);
     },

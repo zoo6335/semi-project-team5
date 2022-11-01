@@ -69,37 +69,30 @@ const MyPage = () => {
 
   const closeModal = () => {
     setModalOpen(false);
-};
-// const confirmModal = async() => {
-//     setModalOpen(false);
-//     const memberReg = await KhApi.memberDelete(localId);
-//     console.log(memberReg.data.result);
-//     if(memberReg.data.result === "OK") {
-//         window.location.replace("/");
-//     }
-// };
+  };
 
-const onClickDelete = async() => {
-    // setModalOpen(true);
-    const memberDel = await KhApi.memberDelete(localId);
-    console.log(memberDel.data.result);
-    if(memberDel.data.result === "OK") {
+const confirmModal = async() => {
+    setModalOpen(false);
+    const memberReg = await KhApi.memberDelete(localId);
+    console.log(memberReg.data.result);
+    if(memberReg.data.result === "OK") {
         window.location.replace("/");
     }
+  }
+
+const onClickMemberDelete = () => {
+  setModalOpen(true);
 }
 
 
 const onClickUpdate = () => {
-    // setModalOpen(false);
+    setModalOpen(false);
     window.location.replace("/memberUpdate");
 }
   
 return (
   <Box>
     <div>
-      {/* <div>
-        <span onClick={onClickMember}>회원정보 조회</span>
-      </div> */}
       <p>회원 정보</p>
       <div style={{margin : '50px auto'}}>
         {memberInfo && memberInfo.map(member => (
@@ -117,13 +110,14 @@ return (
     <div>
       <div>
         <Button onClick={onClickUpdate}>정보 수정</Button>
-        <Button onClick={onClickDelete}>회원 탈퇴</Button>
+        <Button onClick={onClickMemberDelete}>회원 탈퇴</Button>
       </div>
     </div>
-    {/* {modalOpen && <Modal open={modalOpen}  close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>} */}
+    {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>}
   </Box>
 
-)
+  )
 }
+
 
 export default MyPage;

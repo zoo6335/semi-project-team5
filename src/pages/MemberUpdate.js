@@ -73,7 +73,6 @@ const MemberUpdate = () => {
   };
 
   const onClickUpdate = async() => {
-      const isLogin = window.localStorage.getItem("isLogin");
       const memberUpdate = await KhApi.memberUpdate(localId, inputPw, inputName, inputEmail);
       console.log(memberUpdate.data.result);
 
@@ -159,8 +158,8 @@ const onClickCancle = () => {
             <br />
             <div>
               {(isId && isPw && isCheckPw) ? 
-              <BtnSignUp className="enable_button" onClick={onClickUpdate}>SignUp</BtnSignUp> :
-              <BtnSignUp className="disable_button" onClick={onClickUpdate}>SignUp</BtnSignUp>}
+              <BtnSignUp  onClick={onClickUpdate}>Change</BtnSignUp> :
+              <BtnSignUp disabled onClick={onClickUpdate}>Change</BtnSignUp>}
               <BtnSignUp onClick={onClickCancle}>Cancle</BtnSignUp>
               <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
             </div>
