@@ -8,6 +8,11 @@
   font-family: 'NeoDunggeunmo';
 }
 
+.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 400px;
+  margin-bottom: 15px;
+}
+
 img {border: 0;}
 ul, li {list-style: none;}
 a {text-decoration: none;}

@@ -13,7 +13,8 @@ import Header from "./components/Header";
 import About from './pages/About';
 import {TestA, TestB, TestC, TestD, TestE, TestF} from "./pages/DummyPages";
 import MemberUpdate from "./pages/MemberUpdate";
-import Gallery from "./pages/Gallery";
+import Gallery from "./pages/GalleryInfo";
+import GalleryReg from "./pages/GalleryReg";
 
 function App() {
   return (
@@ -35,7 +36,7 @@ function App() {
         <Route path="/getparty" element={<TestC />} />
         <Route path="/bragging" element={<TestD />} />
         <Route path="/memberUpdate" element={<MemberUpdate />} />
-        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/galleryReg" element={<GalleryReg />} />
       </Routes>
     </Router>
   );

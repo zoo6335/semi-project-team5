@@ -45,7 +45,7 @@ const MemberUpdate = () => {
 
   const localId = window.localStorage.getItem("userId");
   const isLogin = window.localStorage.getItem("isLogin");
-  if(isLogin === "FALSE") window.replace("/");
+  if(isLogin === "FALSE") window.location.replace("/");
 
   const [inputPw, setInputPw] = useState("");
   const [inputCheckPw, setInputCheckPw] = useState("");
