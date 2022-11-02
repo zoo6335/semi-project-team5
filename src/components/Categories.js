@@ -25,7 +25,7 @@ const onClickParty = ()=> {
     window.location.replace("/getparty");
 }
 const onClickBrag = ()=> {
-    window.location.replace("/bragging");
+    window.location.replace("/galleryReg");
 }
 
 const CategoryBlock = styled.div`

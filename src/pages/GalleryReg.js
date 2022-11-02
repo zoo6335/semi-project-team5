@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import KhApi from "../api/KhApi";
 import styled from "styled-components";
 import React, { Component } from 'react';
@@ -51,33 +51,76 @@ const Label = styled.label`
 
 
 const GalleryReg = () => {
+
+  // const UploadImage = {
+  //   file : File,
+  //   thumbnail : String,
+  //   type : String,
+  // }
+
+  // const UploadImageFile = (e) => {
+  //   const fileList = e.target.files;
+  //   const length = fileList?.length;
+  //   if(fileList && fileList[0]){
+  //     setImg_url(URL.createObjectURL(fileList[0]));
+
+  //     setImageFile({
+  //       file : fileList[0],
+  //       thumbnail : img_url,
+  //       type: fileList[0].type.slice(0, 5),
+  //     });
+  //   }
+  // }
+
+  // const showImage = useState(() => {
+  //   if (!imageFile && imageFile == null) {
+  //     return <img alt="비어있는 프로필" />
+  //   }
+  //   return <showImageFile src={imageFile.thumbnail} alt={imageFile.type} onClick={onClickFile} />;
+  // }, [imageFile]);
+
+
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [img_url, setImg_url] = useState("");
+  // const [imageFile, setImageFile] = useState<UploadImage | null>(null);
+  const [resData, setResData] = useState("");
+
   const isLogin = window.localStorage.getItem("isLogin")
   if(isLogin === "FALSE") window.location.replace("/");
 
   const fileInput = React.useRef(null);
   
-  const handleButtonClick = e => {
-    fileInput.current.click();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const onClickFile = e => {
+    fileInputRef.current?.click();
   };
   
-  const handleChange = e => {
+  const onChangeFile = e => {
     console.log(e.target.files[0]);
   };
 
-  // const onSubmit = async () => {
-  //   try {
-  //   // 서버에 대한 요청을 비동기로 처리 함
-  //     const res =  await KhApi.memberReg(id, pwd, name, mail);
-  //     setResData(res.data);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
+  const onChangeTitle = e => {
+    setTitle(e.target.value);
+  }
+
+  const onSubmit = async () => {
+    try {
+    // 서버에 대한 요청을 비동기로 처리 함
+      const res =  await KhApi.galleryReg(title, content, img_url);
+      setResData(res.data);
+      
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <Box>
+      {/* {showImage} */}
       <div style={{ marginTop: 50 }}>
-        <Input placeholder="제목을 입력하세요."/>
+        <Input placeholder="제목을 입력하세요." onChange={onChangeTitle} />
       </div>
       <div id="editor" style={{ marginTop : 50, minHeight: 400}}>
       <CKEditor
@@ -85,7 +128,7 @@ const GalleryReg = () => {
                     config={{
                       placeholder: "내용을 입력하세요.",
                     }}
-                  
+                    
                     onReady={ editor => {
                         // You can store the "editor" and use when it is needed.
                         console.log( 'Editor is ready to use!', editor );
@@ -93,6 +136,7 @@ const GalleryReg = () => {
                     onChange={ ( event, editor ) => {
                         const data = editor.getData();
                         console.log( { event, editor, data } );
+                        setContent(editor.getData());
                     } }
                     onBlur={ ( event, editor ) => {
                         console.log( 'Blur.', editor );
@@ -102,10 +146,11 @@ const GalleryReg = () => {
                     } }
                 />
       </div>
-      <div>
-        <Label for="upload-photo">파일 선택</Label>
-        <input photo type="file" id="upload-photo" className="photo" />
-      </div>
+      <form>
+        <Label for="upload-photo"  onClick={onClickFile}>파일 선택</Label>
+        <input photo type="file" accept="image/jpg, image/jpeg, image/png" onChange={onChangeFile}
+              id="upload-photo" className="photo" />
+      </form>
     </Box>
   );
 }

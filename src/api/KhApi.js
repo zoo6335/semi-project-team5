@@ -62,6 +62,22 @@ const KhApi = {
         return await axios.post(DOMAIN + "MemberUpdateServlet", memberObj, HEADER);
     },
     
+    galleryInfo: async function(id) {
+        const regCmd = {
+            cmd : "GalleryInfo",
+            id : id
+        }
+        return await axios.post(DOMAIN + "GalleryServlet", regCmd, HEADER);
+    },
+
+    galleryReg: async function(title, content, img_url ) {
+        const reqCmd = {
+            title : title,
+            content : content,
+            image_url : img_url
+        };
+        return await axios.post(DOMAIN + "GalleryRegServlet", reqCmd, HEADER);
+    },
 
 }
 
