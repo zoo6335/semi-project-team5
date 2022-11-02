@@ -1,5 +1,5 @@
 import { useState } from "react";
-import KhApi from "../api/KhApi";
+import DjApi from "../api/DjApi";
 import Modal from "../util/Modal";
 import styled from "styled-components";
 
@@ -124,13 +124,13 @@ const SignUp = () => {
   const onClickLogin = async() => {
     console.log("Click 회원가입");
    // 가입 여부 우선 확인
-  const memberCheck = await KhApi.memberRegCheck(inputId);
+  const memberCheck = await DjApi.memberRegCheck(inputId);
   console.log(memberCheck.data);
    // 가입 여부 확인 후 가입 절차 진행
 
   if (memberCheck.data.result === "OK") {
       console.log("가입된 아이디가 없습니다. 다음 단계 진행 합니다.");
-      const memberReg = await KhApi.memberReg(inputId, inputPw, inputName, inputEmail);
+      const memberReg = await DjApi.memberReg(inputId, inputPw, inputName, inputEmail);
       console.log(memberReg.data.result);
       console.log()
       if(memberReg.data.result === "OK") {

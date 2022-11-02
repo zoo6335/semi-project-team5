@@ -1,5 +1,5 @@
 import { useReducer, useRef, useState } from "react";
-import KhApi from "../api/KhApi";
+import KhApi from "../api/DjApi";
 import styled from "styled-components";
 import React, { Component } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -108,7 +108,7 @@ const GalleryReg = () => {
   const onSubmit = async () => {
     try {
     // 서버에 대한 요청을 비동기로 처리 함
-      const res =  await KhApi.galleryReg(title, content, img_url);
+      const res =  await DjApi.galleryReg(title, content, img_url);
       setResData(res.data);
       
     } catch (e) {

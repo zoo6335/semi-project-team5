@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import KhApi from "../api/KhApi";
+import DjApi from "../api/DjApi";
 import Modal from "../util/Modal";
 import styled from "styled-components";
 
@@ -73,7 +73,7 @@ const MemberUpdate = () => {
   };
 
   const onClickUpdate = async() => {
-      const memberUpdate = await KhApi.memberUpdate(localId, inputPw, inputName, inputEmail);
+      const memberUpdate = await DjApi.memberUpdate(localId, inputPw, inputName, inputEmail);
       console.log(memberUpdate.data.result);
 
       if(memberUpdate.data.result === "OK") {

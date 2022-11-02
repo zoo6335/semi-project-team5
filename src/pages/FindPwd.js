@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import KhApi from "../api/KhApi";
+import DjApi from "../api/DjApi";
 import Modal from "../util/Modal";
 
 const Box = styled.div`
@@ -64,7 +64,7 @@ const FindPwd = () => {
     const memberData = async () => {
       setLoading(true);
       try {
-        const response = await KhApi.findMember();
+        const response = await DjApi.findMember();
         const infoPwd = response.data.map(e => [e.id, e.pwd, e.name, e.email]);  // 아이디 비밀번호
 
         infoPwd.forEach(element => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import KhApi from '../api/khApi'
+import DjApi from '../api/DjApi'
 
 const memberObj = {
   id: "",
@@ -37,7 +37,7 @@ const MemberReg = () => {
   const onSubmit = async () => {
     try {
     // 서버에 대한 요청을 비동기로 처리 함
-      const res =  await KhApi.memberReg(id, pwd, name, mail);
+      const res =  await DjApi.memberReg(id, pwd, name, mail);
       setResData(res.data);
     } catch (e) {
       console.log(e);

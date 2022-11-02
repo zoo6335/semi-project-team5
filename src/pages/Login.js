@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "../images/kakao_login.png";
 import Modal from "../util/Modal";
-import KhApi from "../api/KhApi";
+import DjApi from "../api/DjApi";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -108,7 +108,7 @@ const Login = () => {
   const onClickLogin = async () => {
     try {
       // 로그인을 위한 axios 호출
-      const res = await KhApi.userLogin(inputId, inputPw);
+      const res = await DjApi.userLogin(inputId, inputPw);
       console.log(res.data);
 
       if (res.data.result === "OK") {

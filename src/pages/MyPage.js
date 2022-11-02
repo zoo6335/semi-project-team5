@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import KhApi from "../api/KhApi";
+import DjApi from "../api/DjApi";
 import Modal from "../util/Modal";
 
 
@@ -52,7 +52,7 @@ const MyPage = () => {
     const memberData = async () => {
       try {
         // memberInfo()는 전체 회원 정보를 필요로할 때 씀
-        const response = await KhApi.memberInfo(localId); // 현재로그인된 아이디를 넘겨줌
+        const response = await DjApi.memberInfo(localId); // 현재로그인된 아이디를 넘겨줌
         setMemberInfo(response.data);
         console.log(response.data);
       } catch(e) {
