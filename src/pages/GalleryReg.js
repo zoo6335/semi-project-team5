@@ -1,5 +1,5 @@
 import { useReducer, useRef, useState } from "react";
-import KhApi from "../api/DjApi";
+import DjApi from "../api/DjApi";
 import styled from "styled-components";
 import React, { Component } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';

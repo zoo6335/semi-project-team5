@@ -73,7 +73,7 @@ const MyPage = () => {
 
 const confirmModal = async() => {
     setModalOpen(false);
-    const memberReg = await KhApi.memberDelete(localId);
+    const memberReg = await DjApi.memberDelete(localId);
     console.log(memberReg.data.result);
     if(memberReg.data.result === "OK") {
         window.location.replace("/");
