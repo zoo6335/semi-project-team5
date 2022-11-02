@@ -22,7 +22,7 @@ const onClickFB = ()=> {
     window.location.replace("/freeboard");
 }
 const onClickParty = ()=> {
-    window.location.replace("/getparty");
+    window.location.replace("/tBoardList");
 }
 const onClickBrag = ()=> {
     window.location.replace("/galleryReg");

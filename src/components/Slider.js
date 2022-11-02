@@ -1,30 +1,63 @@
 import styled from 'styled-components';
-import arrowL from "../images/arrowLeft.png";
-import arrowR from "../images/arrowRight.png";
-import React, { useLayoutEffect, useRef, useEffect, useState } from "react";
-
-// const [currenetIndex, setCurrentIndex] = useState(0);
-// 애니메이션, transition 효과로 서서히 한장씩 보여주는게 구현하기 더 나을듯..?
-// animation-iteration-count: infinite; 사용해서 무한 반복
-
+import img1 from "../images/test1.jpg";
+import img2 from "../images/test2.jpg";
+import img3 from "../images/test3.jpg";
+// 구현 미완.... 
 const Slider = () => {
     return (
-        <SliderBlock>
-            <div className="slider-list">
-            </div>
-            <img src={arrowL} alt=''></img>
-            <img src={arrowR} alt=''></img>
-        </SliderBlock>
+        <div className='box'>
+            <SlideBlock>
+                <div className='container'>
+                    <div className='inner'>
+                        <img src={img1} alt="." />
+                    </div>
+                    <div className='inner'>
+                        <img src={img2} alt="." />
+                    </div>
+                    <div className='inner'>
+                        <img src={img3} alt="." />
+                    </div>
+                </div>
+                {/* <div className='bzone'>
+                    <button className='버튼1'>🐻🐻🐻</button>
+                    <button className='버튼2'>👒👒👒</button>
+                    <button className='버튼3'>🤦‍♀️🤦‍♀️🤦‍♀️</button>
+                </div> */}
+            </SlideBlock>
+        </div>
     );
 }
 
-const SliderBlock = styled.div`
-    width: 1016px;
-    height: 250px;
-    background-color: darkgray;
-    img[src] {
-        width : 30px;
+const SlideBlock = styled.div`
+    *{border: 1px solid red;}
+    overflow:hidden;
+    margin: 0 auto;
+    padding: 0 0;
+    display: flex;
+    width: 1024px;
+    button{
+        color: red;
+        clear:both;
+    &:active{
+    }
+    }
+        
+    .container{
+        padding: 0;
+        flex-direction: row;
+        transform: translate(-1024px);
+        transition: transform 0.5s;
+    }
+    .inner img[src]{
+        width: 1024px;
+        height: 200px;
+    }
+    .bzone{
+        position: fixed;
+        left: 800px;
+        top: 300px;
     }
 `;
+
 
 export default Slider;

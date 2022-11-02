@@ -8,7 +8,7 @@ const Api = {
         const regCmd = {
             cmd : "FBoardList"
         }
-        return await axios.post(KH_DOMAIN + "BoardListServlet", regCmd, HEADER);
+        return await axios.post(KH_DOMAIN + "AllBoardListServlet", regCmd, HEADER);
     },
 
     // 게시글 상세 페이지 조회
@@ -16,7 +16,7 @@ const Api = {
         const regCmd = {
             fb_id : fb_id
         }
-        return await axios.post(KH_DOMAIN + "BoardDetailServlet", regCmd, HEADER);
+        return await axios.post(KH_DOMAIN + "DetailBoardServlet", regCmd, HEADER);
     },
     
     // 게시글(자유글) 목록 조회
@@ -67,7 +67,7 @@ const Api = {
         const idCheck = {
             fb_user_id: fb_user_id,
         }
-        return await axios.post(KH_DOMAIN + "BoardUpdateServlet", idCheck, HEADER);
+        return await axios.post(KH_DOMAIN + "UpdateBoardServlet", idCheck, HEADER);
     },
 
     // 게시글 수정
@@ -75,7 +75,7 @@ const Api = {
         const regCmd = {
             fb_id : fb_id
         }
-        return await axios.post(KH_DOMAIN + "BoardUpdateServlet", regCmd, HEADER);
+        return await axios.post(KH_DOMAIN + "UpdateBoardServlet", regCmd, HEADER);
     },
 
     // 게시글 삭제

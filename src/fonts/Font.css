@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "DungGeunMo";
+  font-weight: 100 900;
+  src: url("./DungGeunMo.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Neodgm";
+  font-weight: 100 900;
+  src: url("./neodgm.ttf");
+}

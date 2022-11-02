@@ -4,14 +4,16 @@ import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./Profile";
 import SignUp from "./signup/SignUp";
-import MemberInfo from "./pages/MemberInfo";
 import FindId from "./pages/FindId";
 import FindPwd from "./pages/FindPwd";
 import MyPage from "./pages/MyPage";
 import Home from "./home/Home";
 import Header from "./components/Header";
 import About from './pages/About';
-import {TestA, TestB, TestC, TestD, TestE, TestF} from "./pages/DummyPages";
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import ShowBoard from "./components/ShowBoard";
+import ShowRoom from "./components/ShowRoom";
+import SelectType from './components/SelectType';
 import MemberUpdate from "./pages/MemberUpdate";
 import Gallery from "./pages/GalleryInfo";
 import GalleryReg from "./pages/GalleryReg";
@@ -33,6 +35,9 @@ import FreeBoardRecommend from "./pages/freeboard/BoardMain/CategoryPages/Board_
 import FreeBoardTip from "./pages/freeboard/BoardMain/CategoryPages/Board_Tip";
 import FreeBoardWrite from "./pages/freeboard/BoardWrite";
 import BoardDetail from "./pages/freeboard/BoardDetail";
+import TBoardList from "./pages/findboard/Boardlist";
+import WriteBoard from "./pages/findboard/WriteBoard";
+import TBoardDetail from "./pages/findboard/Boardlist";
 
 
 function App() {
@@ -46,15 +51,17 @@ function App() {
         <Route path="/oauth" element={<Auth />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/memberInfo" element={<MemberInfo />} />
         <Route path="/findId" element={<FindId />} />
         <Route path="/findPwd" element={<FindPwd />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/theme" element={<TestA />} />
-        <Route path="/getparty" element={<TestC />} />
-        <Route path="/bragging" element={<TestD />} />
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
+
+        <Route path="/about" element={<About />} />
+{/* 
+        <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+        <Route path='/showBoard' element={<ShowBoard />}/>
+        <Route path='/showRoom' element={<ShowRoom />}/>
+        <Route path='/selectType' element={<SelectType />}/> */}
 
         <Route path="/introduce" element={<Introduce />} />
         <Route path="/intro" element={<Intro />} />
@@ -75,6 +82,10 @@ function App() {
         <Route path="/boardTip" element={<FreeBoardTip />}/> 
         <Route path="/boardDetail" element={<BoardDetail />} />
         <Route path="/boardWrite" element={<FreeBoardWrite />} />
+
+        <Route path="/tBoardList" element={<TBoardList />} />
+        <Route path="/tWriteBoard" element={<WriteBoard />} />
+        <Route path="/tBoardDetail" element={<TBoardDetail />} />
       </Routes>
     </Router>
   );
