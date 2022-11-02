@@ -24,9 +24,15 @@ import Intro6 from "./pages/introduce/Intro6";
 import Intro7 from "./pages/introduce/Intro7";
 import Intro8 from "./pages/introduce/Intro8";
 import Introduce from './pages/introduce/Introduce';
-import InntroMember from './pages/introduce/IntroMember'
+import InntroMember from './pages/introduce/IntroMember';
 import Review from './pages/introduce/review';
-
+import FreeBoardMain from "./pages/freeboard/BoardMain/BoardMain";
+import FreeBoardFree from "./pages/freeboard/BoardMain/CategoryPages/Board_Free";
+import FreeBoardTrade from "./pages/freeboard/BoardMain/CategoryPages/Board_Trade";
+import FreeBoardRecommend from "./pages/freeboard/BoardMain/CategoryPages/Board_Recommend";
+import FreeBoardTip from "./pages/freeboard/BoardMain/CategoryPages/Board_Tip";
+import FreeBoardWrite from "./pages/freeboard/BoardWrite";
+import BoardDetail from "./pages/freeboard/BoardDetail";
 
 
 function App() {
@@ -45,11 +51,11 @@ function App() {
         <Route path="/findPwd" element={<FindPwd />} />
         <Route path="/about" element={<About />} />
         <Route path="/theme" element={<TestA />} />
-        <Route path="/freeboard" element={<TestB />} />
         <Route path="/getparty" element={<TestC />} />
         <Route path="/bragging" element={<TestD />} />
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
+
         <Route path="/introduce" element={<Introduce />} />
         <Route path="/intro" element={<Intro />} />
         <Route path="/intro2" element={<Intro2 />} />
@@ -61,6 +67,14 @@ function App() {
         <Route path="/intro8" element={<Intro8 />} />
         <Route path="/introMember" element={<InntroMember />} />
         <Route path="/review" element={<Review />} />
+
+        <Route path="/freeboard" element={<FreeBoardMain />}/>
+        <Route path="/boardFree" element={<FreeBoardFree />}/> 
+        <Route path="/boardTrade" element={<FreeBoardTrade />}/> 
+        <Route path="/boardRecommend" element={<FreeBoardRecommend />}/> 
+        <Route path="/boardTip" element={<FreeBoardTip />}/> 
+        <Route path="/boardDetail" element={<BoardDetail />} />
+        <Route path="/boardWrite" element={<FreeBoardWrite />} />
       </Routes>
     </Router>
   );
