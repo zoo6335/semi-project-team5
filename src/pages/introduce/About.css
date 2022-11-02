@@ -1,0 +1,118 @@
+.container-About {
+    text-align: left;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    display: block;
+
+
+
+}
+
+h1 {
+    font-size: 50px;
+}
+
+
+
+span {
+    border-bottom: 1px dashed gray;
+
+}
+
+.intrduce {
+    color: #8DC0F1;
+    font-size: 30px;
+}
+
+.btn {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    margin: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    transition: all 0.1s;
+    text-shadow: 0px -2px rgba(68, 68, 68, 0.44);
+
+
+}
+
+.btn:active {
+    transform: translateY(3px);
+}
+
+.btn.site {
+    background-color: #40BAAA;
+    border: none;
+    border-bottom: 5px solid #37a092;
+}
+
+.btn.blue:active {
+    border-bottom: 2px solid #165195;
+}
+
+.btn.intro {
+    background-color: #ED77BC;
+    border: none;
+    border-bottom: 5px solid #d36aa7;
+
+
+}
+
+.btn.red:active {
+    border-bottom: 2px solid #c1370e;
+    border-top: 2px solid #c1370e;
+}
+
+.list {
+    color: gray;
+    font-size: 20px;
+
+}
+
+.list2 {
+    font-weight: 500;
+    font-size: 20px;
+    color: #ED77BC;
+
+}
+
+ul {
+    box-sizing: border-box;
+    width: 500px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    display: block;
+
+
+}
+
+.container-About>text-center {
+    color: black;
+}
+
+.pastelred-text {
+    color: #F99090;
+}
+
+
+@media (min-width: 1500px) {
+
+    .aboutcol2 {
+        width: 40%;
+        height: 40%;
+        text-align: center;
+        justify-content: center;
+        margin: auto;
+        display: block;
+    }
+}

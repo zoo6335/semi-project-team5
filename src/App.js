@@ -15,6 +15,19 @@ import {TestA, TestB, TestC, TestD, TestE, TestF} from "./pages/DummyPages";
 import MemberUpdate from "./pages/MemberUpdate";
 import Gallery from "./pages/GalleryInfo";
 import GalleryReg from "./pages/GalleryReg";
+import Intro from "./pages/introduce/Intro";
+import Intro2 from "./pages/introduce/Intro2";
+import Intro3 from "./pages/introduce/Intro3";
+import Intro4 from "./pages/introduce/Intro4";
+import Intro5 from "./pages/introduce/Intro5";
+import Intro6 from "./pages/introduce/Intro6";
+import Intro7 from "./pages/introduce/Intro7";
+import Intro8 from "./pages/introduce/Intro8";
+import Introduce from './pages/introduce/Introduce';
+import InntroMember from './pages/introduce/IntroMember'
+import Review from './pages/introduce/review';
+
+
 
 function App() {
   return (
@@ -37,6 +50,17 @@ function App() {
         <Route path="/bragging" element={<TestD />} />
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
+        <Route path="/introduce" element={<Introduce />} />
+        <Route path="/intro" element={<Intro />} />
+        <Route path="/intro2" element={<Intro2 />} />
+        <Route path="/intro3" element={<Intro3 />} />
+        <Route path="/intro4" element={<Intro4 />} />
+        <Route path="/intro5" element={<Intro5 />} />
+        <Route path="/intro6" element={<Intro6 />} />
+        <Route path="/intro7" element={<Intro7 />} />
+        <Route path="/intro8" element={<Intro8 />} />
+        <Route path="/introMember" element={<InntroMember />} />
+        <Route path="/review" element={<Review />} />
       </Routes>
     </Router>
   );

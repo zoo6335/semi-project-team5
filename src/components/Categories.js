@@ -13,10 +13,10 @@ const Categories = () => {
 }
 
 const onClickAbout = ()=> {
-    window.location.replace("/about");
+    window.location.replace("/introMember");
 }
 const onClickTheme = ()=> {
-    window.location.replace("/theme");
+    window.location.replace("/introduce");
 }
 const onClickFB = ()=> {
     window.location.replace("/freeboard");
