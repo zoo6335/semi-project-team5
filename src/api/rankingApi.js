@@ -17,7 +17,7 @@ const RankingApi = {
         }
         return await axios.post(NGB_DOMAIN + "RoomRankServlet", regCmd, HEADER);
     },
-    // 버려진 페이지..(?)
+    // 버려진 API....(사용 안하기로 회의끝)
     // // HOT 자유게시판 클릭시 보이는 디테일 페이지를 위한 api
     // showBoard: async function (postId) {
     //     const regCmd = {
