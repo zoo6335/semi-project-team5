@@ -17,30 +17,31 @@ const RankingApi = {
         }
         return await axios.post(NGB_DOMAIN + "RoomRankServlet", regCmd, HEADER);
     },
-    // HOT 자유게시판 클릭시 보이는 디테일 페이지를 위한 api
-    showBoard: async function (postId) {
-        const regCmd = {
-            cmd: "ShowBoard",
-            id: postId
-        }
-        return await axios.post(NGB_DOMAIN + "ShowBoardServlet", regCmd, HEADER);
-    },
-    // 방탈출 ranking 클릭시 보이는 디테일 페이지를 위한 api
-    showRoom: async function (postId) {
-        const regCmd = {
-            cmd: "ShowRoom",
-            id: postId
-        }
-        return await axios.post(NGB_DOMAIN + "ShowRoomServlet", regCmd, HEADER);
-    },
-    // 방탈출 카테고리 클릭시 해당 소개글들을 가져옴
-    selectType: async function (category) {
-        const regCmd = {
-            cmd: "SelectType",
-            id: category
-        }
-        return await axios.post(NGB_DOMAIN + "SelectTypeServlet", regCmd, HEADER);
-    }
+    // 버려진 API....(사용 안하기로 회의끝)
+    // // HOT 자유게시판 클릭시 보이는 디테일 페이지를 위한 api
+    // showBoard: async function (postId) {
+    //     const regCmd = {
+    //         cmd: "ShowBoard",
+    //         id: postId
+    //     }
+    //     return await axios.post(NGB_DOMAIN + "ShowBoardServlet", regCmd, HEADER);
+    // },
+    // // 방탈출 ranking 클릭시 보이는 디테일 페이지를 위한 api
+    // showRoom: async function (postId) {
+    //     const regCmd = {
+    //         cmd: "ShowRoom",
+    //         id: postId
+    //     }
+    //     return await axios.post(NGB_DOMAIN + "ShowRoomServlet", regCmd, HEADER);
+    // },
+    // // 방탈출 카테고리 클릭시 해당 소개글들을 가져옴
+    // selectType: async function (category) {
+    //     const regCmd = {
+    //         cmd: "SelectType",
+    //         id: category
+    //     }
+    //     return await axios.post(NGB_DOMAIN + "SelectTypeServlet", regCmd, HEADER);
+    // }
 
 }
 export default RankingApi;

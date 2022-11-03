@@ -11,11 +11,11 @@ const FreeBoardMain = () => {
   };
 
   function onClickMain() {
-    window.location.replace("/");
+    window.location.replace("/freeBoard");
   };
 
   function onClickFree() {
-    window.location.replace("/BoardFree");
+    window.location.replace("/boardFree");
   }
 
   function onClickTrade() {
