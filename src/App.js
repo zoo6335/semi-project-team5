@@ -36,7 +36,7 @@ import FreeBoardWrite from "./pages/freeboard/BoardWrite";
 import BoardDetail from "./pages/freeboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import WriteBoard from "./pages/findboard/WriteBoard";
-import TBoardDetail from "./pages/findboard/Boardlist";
+import TBoardDetail from "./pages/findboard/BoardDetail";
 
 
 function App() {

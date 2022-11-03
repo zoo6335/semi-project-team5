@@ -1,49 +1,49 @@
 import Form from "react-bootstrap/Form";
 import "suneditor/dist/css/suneditor.min.css";
-import nbApi from "../api/nbApi";
-import Modal from "../Util/Modal";
+import nbApi from "../../api/nbApi";
+import Modal from "../../util/Modal";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const TBoardDetail = () => {
-  const getDetail = window.localStorage.getItem("BoardDetail");
+  const getDetail = window.localStorage.getItem("Detail");
   const [boardDetail, setBoardDetail] = useState("");
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-//   const LogoBox = styled.div`
-//   box-sizing: border-box;
-//   padding-bottom: 3em;
-//   width: 1024px;
-//   margin: auto;
-//   margin-top: 2rem;
-//   font-family: "DungGeunMo";
-//   @media screen and (max-width: 768px) {
-//     width: 100%;
-//     padding-left: 1em;
-//     padding-right: 1em;
-//   }
-// `;
+  const LogoBox = styled.div`
+    box-sizing: border-box;
+    padding-bottom: 3em;
+    width: 1024px;
+    margin: auto;
+    margin-top: 2rem;
+    font-family: "DungGeunMo";
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  `;
 
-// const DetailBox = styled.div`
-//     box-sizing: border-box;
-//     padding-bottom: 3em;
-//     width: 1024px;
-//     margin: auto;
-//     margin-top: 5rem;
-//     font-family: "DungGeunMo";
-//     @media screen and (max-width: 768px) {
-//       width: 100%;
-//       padding-left: 1em;
-//       padding-right: 1em;
-//     }
-//   `;
+  const DetailBox = styled.div`
+    box-sizing: border-box;
+    padding-bottom: 3em;
+    width: 1024px;
+    margin: auto;
+    margin-top: 5rem;
+    font-family: "DungGeunMo";
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  `;
 
   //목록가기 버튼 클릭
   const onClickgoBack = (e) => {
     console.log("목록가기 버튼 클릭");
     e.preventDefault();
-    window.location.replace("/TBoardList");
+    window.location.replace("/tBoardList");
   };
 
   const onClickDelete = (e) => {
@@ -64,7 +64,7 @@ const TBoardDetail = () => {
     console.log("삭제 버튼 클릭");
     console.log(res.data.result);
     if (res.data.result === "OK") {
-      window.location.replace("/TBoardList");
+      window.location.replace("/tBoardList");
     } else {
     }
   };
@@ -93,49 +93,59 @@ const TBoardDetail = () => {
 
   return (
     <form className="boardWrite-form">
-
-      <div className="boardCategory">
-        <h1>일 행 구 하 기</h1>
-        <span>내 동료가 돼라!</span>
-      </div>
-
-        <h1 style={{ textAlign: "center" }}>게시물 내용</h1>
-        <div>
-          {boardDetail &&
-            boardDetail.map((detail) => (
-              <Form className="detailForm" key={detail.gmb_id}>
-                <Form.Group className="detailTitle">
-                  <Form.Control type="text" value={detail.gmb_title} readOnly />
-                  <span value={detail.gmb_user_id}></span>
-                </Form.Group>
-                <Form.Group className="detailContent" controlName = "detailContent1">
-                  <Form.Control type="text" value={(detail.gmb_content).replace(/<[^>]*>?/g,'')} readOnly />
-                </Form.Group>
-                <div className="setButton">
-                  <button className="listBtn" onClick={onClickgoBack}>
-                    목록
-                  </button>
-                  <button className="deleteBtn" onClick={onClickDelete}>
-                    삭제
-                  </button>
-                  <button className="editBtn" onClick={onClickEdit}>
-                    수정
-                    </button>
-                </div>
-              </Form>
-            ))}
-          {modalOpen && (
-            <Modal
-              open={modalOpen}
-              confirm={confirmModal}
-              close={closeModal}
-              type={true}
-              header="확인"
-            >
-              삭제하시겠습니까?
-            </Modal>
-          )}
+      <LogoBox>
+        <div className="boardCategory">
+          <h1>일 행 구 하 기</h1>
+          <span>내 동료가 돼라!</span>
         </div>
+      </LogoBox>
+      <DetailBox>
+      <h1 style={{ textAlign: "center" }}>게시물 내용</h1>
+      <div>
+        {boardDetail &&
+          boardDetail.map((detail) => (
+            <Form className="detailForm" key={detail.gmb_id}>
+              <Form.Group className="detailTitle">
+                <Form.Control type="text" value={detail.gmb_title} readOnly />
+                <span value={detail.gmb_user_id}></span>
+              </Form.Group>
+              <Form.Group
+                className="detailContent"
+                controlName="detailContent1"
+              >
+                <Form.Control
+                  type="text"
+                  value={detail.gmb_content.replace(/<[^>]*>?/g, "")}
+                  readOnly
+                />
+              </Form.Group>
+              <div className="setButton">
+                <button className="listBtn" onClick={onClickgoBack}>
+                  목록
+                </button>
+                <button className="deleteBtn" onClick={onClickDelete}>
+                  삭제
+                </button>
+                <button className="editBtn" onClick={onClickEdit}>
+                  수정
+                </button>
+              </div>
+            </Form>
+          ))}
+          
+        {modalOpen && (
+          <Modal
+            open={modalOpen}
+            confirm={confirmModal}
+            close={closeModal}
+            type={true}
+            header="확인"
+          >
+            삭제하시겠습니까?
+          </Modal>
+        )}
+      </div>
+      </DetailBox>
     </form>
   );
 };

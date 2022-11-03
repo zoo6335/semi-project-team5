@@ -24,33 +24,33 @@ const WriteBoard = () => {
   const onChangeTitle = (e) => setGmb_title(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
   const onChangeContent = (contentSet) => setGmb_content(contentSet);
 
-  const LogoBox = styled.div`
-    box-sizing: border-box;
-    padding-bottom: 3em;
-    width: 1024px;
-    margin: auto;
-    margin-top: 2rem;
-    font-family: "DungGeunMo";
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  `;
+  // const LogoBox2 = styled.div`
+  //   box-sizing: border-box;
+  //   padding-bottom: 3em;
+  //   width: 1024px;
+  //   margin: auto;
+  //   margin-top: 2rem;
+  //   font-family: "DungGeunMo";
+  //   @media screen and (max-width: 768px) {
+  //     width: 100%;
+  //     padding-left: 1em;
+  //     padding-right: 1em;
+  //   }
+  // `;
 
-  const WriteBox = styled.div`
-    box-sizing: border-box;
-    padding-bottom: 3em;
-    width: 1024px;
-    margin: auto;
-    margin-top: 2rem;
-    font-family: "DungGeunMo";
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  `;
+  // const WriteBox2 = styled.div`
+  //   box-sizing: border-box;
+  //   padding-bottom: 3em;
+  //   width: 1024px;
+  //   margin: auto;
+  //   margin-top: 2rem;
+  //   font-family: "DungGeunMo";
+  //   @media screen and (max-width: 768px) {
+  //     width: 100%;
+  //     padding-left: 1em;
+  //     padding-right: 1em;
+  //   }
+  // `;
 
   const onClick = (e) => {
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
@@ -78,13 +78,10 @@ const WriteBoard = () => {
 
   return (
     <Form className="boardWrite-form">
-      <LogoBox>
       <div className="boardCategory">
         <h1>일 행 구 하 기</h1>
         <span>내 동료가 돼라!</span>
       </div>
-      </LogoBox>
-      <WriteBox>
       <button className="goBackBtn" onClick={onCLickgoBack}>
         ⬅
       </button>
@@ -124,7 +121,6 @@ const WriteBoard = () => {
               ],
             }}
           />
-          </WriteBox>
         <button className="submitBtn" onClick={onClick}>
           작성완료
         </button>

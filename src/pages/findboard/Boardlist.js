@@ -10,7 +10,7 @@ const TBoardList = () => {
 
   const onClickBoardList = (val) => {
     console.log("상세 게시판으로 이동 : " + val);
-    window.localStorage.setItem("BoardDetail", val);
+    window.localStorage.setItem("Detail", val);
     window.location.replace("/tBoardDetail");
   };
 
