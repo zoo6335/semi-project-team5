@@ -1,14 +1,6 @@
 .App {
   text-align: center;
 }
-/*   재이님 코드
-.App {
-  margin: 0 auto;
-  text-align: center;
-  height: 1vh;
-  color : black;
-} */
-
 
 .App-logo {
   height: 40vmin;
@@ -44,8 +36,6 @@
     transform: rotate(360deg);
   }
 }
-
-
 
 .me-auto {
   text-align: center;
@@ -169,14 +159,9 @@
 /* 글쓰기 페이지 - 제목 입력란*/
 .title-input {
   display: block;
-  position: absolute;
+  position: sticky;
   top: 200px;
   margin: auto;
-  font-family: "Neodgm";
-}
-
-/* 글쓰기 페이지 - 에디터 */
-.sun-editor-editable {
   font-family: "Neodgm";
 }
 

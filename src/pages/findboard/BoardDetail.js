@@ -5,45 +5,45 @@ import Modal from "../Util/Modal";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const BoardDetail = () => {
-  const getDetail = window.localStorage.getItem("Detail");
+const TBoardDetail = () => {
+  const getDetail = window.localStorage.getItem("BoardDetail");
   const [boardDetail, setBoardDetail] = useState("");
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const LogoBox = styled.div`
-  box-sizing: border-box;
-  padding-bottom: 3em;
-  width: 1024px;
-  margin: auto;
-  margin-top: 2rem;
-  font-family: "DungGeunMo";
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-`;
+//   const LogoBox = styled.div`
+//   box-sizing: border-box;
+//   padding-bottom: 3em;
+//   width: 1024px;
+//   margin: auto;
+//   margin-top: 2rem;
+//   font-family: "DungGeunMo";
+//   @media screen and (max-width: 768px) {
+//     width: 100%;
+//     padding-left: 1em;
+//     padding-right: 1em;
+//   }
+// `;
 
-const DetailBox = styled.div`
-    box-sizing: border-box;
-    padding-bottom: 3em;
-    width: 1024px;
-    margin: auto;
-    margin-top: 5rem;
-    font-family: "DungGeunMo";
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  `;
+// const DetailBox = styled.div`
+//     box-sizing: border-box;
+//     padding-bottom: 3em;
+//     width: 1024px;
+//     margin: auto;
+//     margin-top: 5rem;
+//     font-family: "DungGeunMo";
+//     @media screen and (max-width: 768px) {
+//       width: 100%;
+//       padding-left: 1em;
+//       padding-right: 1em;
+//     }
+//   `;
 
   //목록가기 버튼 클릭
   const onClickgoBack = (e) => {
     console.log("목록가기 버튼 클릭");
     e.preventDefault();
-    window.location.replace("/tBoardList");
+    window.location.replace("/TBoardList");
   };
 
   const onClickDelete = (e) => {
@@ -64,7 +64,7 @@ const DetailBox = styled.div`
     console.log("삭제 버튼 클릭");
     console.log(res.data.result);
     if (res.data.result === "OK") {
-      window.location.replace("/tBoardList");
+      window.location.replace("/TBoardList");
     } else {
     }
   };
@@ -79,7 +79,6 @@ const DetailBox = styled.div`
       try {
         const response = await nbApi.onDetail(getDetail);
         setBoardDetail(response.data);
-        console.log(BoardDetail);
       } catch (e) {
         console.log(e);
       }
@@ -94,23 +93,23 @@ const DetailBox = styled.div`
 
   return (
     <form className="boardWrite-form">
-      <LogoBox>
+
       <div className="boardCategory">
         <h1>일 행 구 하 기</h1>
         <span>내 동료가 돼라!</span>
       </div>
-      </LogoBox>
-      <DetailBox>
+
         <h1 style={{ textAlign: "center" }}>게시물 내용</h1>
         <div>
           {boardDetail &&
             boardDetail.map((detail) => (
-              <Form className="detailForm" key={detail.id}>
+              <Form className="detailForm" key={detail.gmb_id}>
                 <Form.Group className="detailTitle">
-                  <Form.Control type="text" value={detail.title} readOnly />
+                  <Form.Control type="text" value={detail.gmb_title} readOnly />
+                  <span value={detail.gmb_user_id}></span>
                 </Form.Group>
                 <Form.Group className="detailContent" controlName = "detailContent1">
-                  <Form.Control type="text" value={(detail.content).replace(/<[^>]*>?/g,'')} readOnly />
+                  <Form.Control type="text" value={(detail.gmb_content).replace(/<[^>]*>?/g,'')} readOnly />
                 </Form.Group>
                 <div className="setButton">
                   <button className="listBtn" onClick={onClickgoBack}>
@@ -137,9 +136,8 @@ const DetailBox = styled.div`
             </Modal>
           )}
         </div>
-        </DetailBox>
     </form>
   );
 };
 
-export default BoardDetail;
+export default TBoardDetail;

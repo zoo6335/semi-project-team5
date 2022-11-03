@@ -7,7 +7,7 @@ import SignUp from "./signup/SignUp";
 import FindId from "./pages/FindId";
 import FindPwd from "./pages/FindPwd";
 import MyPage from "./pages/MyPage";
-import Home from "./home/Home";
+import Home from "./home/home";
 import Header from "./components/Header";
 import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';

@@ -15,14 +15,14 @@ const WriteBoard = () => {
     console.log("뒤로가기 버튼 클릭");
     window.location.replace("/TBoardList");
   };
-  
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const gmb_user_id = window.localStorage.getItem("userId");
+  const [gmb_title, setGmb_title] = useState("");
+  const [gmb_content, setGmb_content] = useState("");
   const [resData, setResData] = useState(""); // 서버에서 받는 결과 데이터
   const [modalOpen, setModalOpen] = useState(false);
 
-  const onChangeTitle = (e) => setTitle(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
-  const onChangeContent = (contentSet) => setContent(contentSet);
+  const onChangeTitle = (e) => setGmb_title(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
+  const onChangeContent = (contentSet) => setGmb_content(contentSet);
 
   const LogoBox = styled.div`
     box-sizing: border-box;
@@ -61,12 +61,12 @@ const WriteBoard = () => {
   const confirmModal = async () => {
     setModalOpen(false);
     // 서버에 대한 요청을 비동기로 처리 함
-    const res = await nbApi.onWrite(title, content);
+    const res = await nbApi.onWrite(gmb_user_id, gmb_title, gmb_content);
     setResData(res.data);
     console.log("작성완료 버튼 클릭");
     console.log(res.data.result);
     if (res.data.result === "OK") {
-      window.location.replace("/TBoardList");
+      window.location.replace("/tBoardList");
     } else {
     }
   };
@@ -77,7 +77,7 @@ const WriteBoard = () => {
   };
 
   return (
-    <form className="boardWrite-form">
+    <Form className="boardWrite-form">
       <LogoBox>
       <div className="boardCategory">
         <h1>일 행 구 하 기</h1>
@@ -89,16 +89,15 @@ const WriteBoard = () => {
         ⬅
       </button>
       <h1 style={{ textAlign: "center" }}>새글쓰기</h1>
-      <Form>
-        <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
-          <Form.Control
+      <div>
+          <input 
+            className="title-input"
             type="text"
             placeholder="제목을 입력하세요."
-            value={title}
+            value={gmb_title}
             onChange={onChangeTitle}
           />
-        </Form.Group>
-        <Form.Group className="mb-2" controlId="exampleForm.ControlTextarea1">
+          </div>
           <SunEditor
             // setContents="My contents"
             showToolbar={true}
@@ -106,7 +105,7 @@ const WriteBoard = () => {
             onChange={(content) => {
               onChangeContent(content);
             }}
-            setContents ={content}
+            setContents ={gmb_content}
             height="500px"
             setOptions={{
               buttonList: [
@@ -125,8 +124,6 @@ const WriteBoard = () => {
               ],
             }}
           />
-          </Form.Group>
-          </Form>
           </WriteBox>
         <button className="submitBtn" onClick={onClick}>
           작성완료
@@ -153,9 +150,9 @@ const WriteBoard = () => {
           작성하시겠습니까?
         </Modal>
       )}
-    </form>
+    </Form>
   );
 }
 
-export default WriteBoard;
+export default React.memo(WriteBoard);
 

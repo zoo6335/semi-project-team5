@@ -10,7 +10,7 @@ const TBoardList = () => {
 
   const onClickBoardList = (val) => {
     console.log("상세 게시판으로 이동 : " + val);
-    window.localStorage.setItem("Detail", val);
+    window.localStorage.setItem("BoardDetail", val);
     window.location.replace("/tBoardDetail");
   };
 
@@ -104,24 +104,25 @@ const TBoardList = () => {
           <BoardList>
             <thead>
               <tr>
-                <th>번호</th>
+                <th>글번호</th>
                 <th>제목</th>
-                <th>내용</th>
+                <th>작성자</th>
                 <th>작성일</th>
-                <th>댓글수</th>
+                <th>조회수</th>
               </tr>
             </thead>
-            {console.log(TBoardList)}
+            <tbody>
             {TBoardList &&
               TBoardList.map((list) => (
-                <tr key={list.id} onClick={() => onClickBoardList(list.id)}>
-                  <td>{list.id}</td>
-                  <td>{list.title}</td>
-                  <td>{(list.content).replace(/<[^>]*>?/g,'')}</td>
-                  <td>{list.writedate}</td>
-                  <td>{list.comment_num}</td>
+                <tr key={list.gmb_id} onClick={() => onClickBoardList(list.gmb_id)}>
+                  <td>{list.gmb_id}</td>
+                  <td>{list.gmb_title}</td>
+                  <td>{list.gmb_user_id}</td>
+                  <td>{list.gmb_c_date}</td>
+                  <td>{list.gmb_hit}</td>
                 </tr>
               ))}
+              </tbody>
           </BoardList>
         </BoardListBlock>
       </div>

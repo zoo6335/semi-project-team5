@@ -16,7 +16,6 @@ const Box = styled.div`
   justify-content: center;
 `
 
-
 const InputLogin = styled.input`
 width: 350px;
 height: 50px;
