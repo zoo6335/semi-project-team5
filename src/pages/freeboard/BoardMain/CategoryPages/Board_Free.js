@@ -6,7 +6,7 @@ import FreeBoardList from '../Components/FreeBoardList';
 const FreeBoardFree = () => {
 
   function onClickWrite() {
-    window.location.replace("/BoardWrite");
+    window.location.replace("/boardWrite");
   };
 
   function onClickMain() {
@@ -14,19 +14,19 @@ const FreeBoardFree = () => {
   };
 
   function onClickFree() {
-    window.location.replace("/BoardFree");
+    window.location.replace("/boardFree");
   };
 
   function onClickTrade() {
-    window.location.replace("/BoardTrade");
+    window.location.replace("/boardTrade");
   };
 
   function onClickRecommend() {
-    window.location.replace("/BoardRecommend");
+    window.location.replace("/boardRecommend");
   };
 
   function onClickTip() {
-    window.location.replace("/BoardTip");
+    window.location.replace("/boardTip");
   };
 
   return (
