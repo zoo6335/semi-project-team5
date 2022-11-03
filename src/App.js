@@ -9,7 +9,6 @@ import FindPwd from "./pages/FindPwd";
 import MyPage from "./pages/MyPage";
 import Home from "./home/Home";
 import Header from "./components/Header";
-import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ShowBoard from "./components/ShowBoard";
 import ShowRoom from "./components/ShowRoom";
@@ -56,10 +55,8 @@ function App() {
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
 
-        <Route path="/about" element={<About />} />
-{/* 
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-        <Route path='/showBoard' element={<ShowBoard />}/>
+        {/* <Route path='/showBoard' element={<ShowBoard />}/>
         <Route path='/showRoom' element={<ShowRoom />}/>
         <Route path='/selectType' element={<SelectType />}/> */}
 

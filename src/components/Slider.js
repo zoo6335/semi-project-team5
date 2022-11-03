@@ -7,7 +7,8 @@ const Slider = () => {
     return (
         <div className='box'>
             <SlideBlock>
-                <div className='container'>
+                Slider 수정중입니다...
+                {/* <div className='container'>
                     <div className='inner'>
                         <img src={img1} alt="." />
                     </div>
@@ -17,7 +18,7 @@ const Slider = () => {
                     <div className='inner'>
                         <img src={img3} alt="." />
                     </div>
-                </div>
+                </div> */}
                 {/* <div className='bzone'>
                     <button className='버튼1'>🐻🐻🐻</button>
                     <button className='버튼2'>👒👒👒</button>
@@ -38,10 +39,7 @@ const SlideBlock = styled.div`
     button{
         color: red;
         clear:both;
-    &:active{
-    }
-    }
-        
+    }  
     .container{
         padding: 0;
         flex-direction: row;

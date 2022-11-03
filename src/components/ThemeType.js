@@ -6,8 +6,8 @@ const ThemeType = () => {
     return (
         <ThemeBlock>
             <div className="icons">
-                <label className="theme-type" onClick={onClick}><img className="icon" src={ghost} alt="icon" />공포</label>
-                <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"추리"} onClick={() => onClickCategory(type.category)} />추리</label>
+                <label className="theme-type"><img className="icon" src={ghost} alt="icon" />공포</label>
+                <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"추리"} />추리</label>
                 <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"액션"} />액션</label>
                 <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"감성"} />감성</label>
                 <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"모험"} />모험</label>
@@ -19,11 +19,11 @@ const ThemeType = () => {
     )
 }
 
-const onClickCategory = (val) => {
-    console.log("방탈출 상세 페이지 이동 : " + val);
-    window.localStorage.setItem("Detail", val);  // Detail이 key, val이 value로 데이터 생성
-    window.location.replace("/selectType"); // replace 를 사용해서 이전 페이지로 이동이 불가능함..
-}
+// const onClickCategory = (val) => {
+//     console.log("방탈출 상세 페이지 이동 : " + val);
+//     window.localStorage.setItem("Detail", val);  // Detail이 key, val이 value로 데이터 생성
+//     window.location.replace("/selectType"); // replace 를 사용해서 이전 페이지로 이동이 불가능함..
+// }
 const ThemeBlock = styled.div`
     width: 1024px;
     margin: 15px;
@@ -47,14 +47,8 @@ const ThemeBlock = styled.div`
         flex-grow: 1;
         &:hover{
             filter: hue-rotate(300deg);
-            /* filter: invert(100%); */
-            /* filter: opacity(0.8) drop-shadow(0 0 0 #0000ff); */
         }
     }
 `;
-
-const onClick = () => {  // 페이지 전환
-    window.location.replace("/");
-}
 
 export default ThemeType;
