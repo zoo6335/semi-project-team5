@@ -14,7 +14,7 @@ const ThemeType = () => {
                 <Link to="/intro7" > <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"모험"} />모험</label></Link>
                 <Link to="/intro3" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"SF/판타지"} />SF/판타지</label></Link>
                 <Link to="/intro9" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"야외"} />야외</label></Link>
-                <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"19금"} />19금</label>
+                <Link to="intro10"><label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"19금"} />19금</label></Link>
             </div>
         </ThemeBlock >
     )

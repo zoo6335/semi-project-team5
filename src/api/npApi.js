@@ -1,6 +1,6 @@
 import axios from "axios";
 const HEADER = "application/json";
-const NB_DOMAIN = "http://localhost:8090/kh_mini_project/";
+const NB_DOMAIN = "http://localhost:8090/test_ex/";
 
 const npApi = {
 

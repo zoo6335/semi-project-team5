@@ -38,6 +38,9 @@ import TBoardList from "./pages/findboard/Boardlist";
 import WriteBoard from "./pages/findboard/WriteBoard";
 import TBoardDetail from "./pages/findboard/BoardDetail";
 import TEditBoard from "./pages/findboard/EditBoard";
+import Intro9 from "./pages/introduce/intro9";
+import RBoardList from "./pages/introduce/reviewlist";
+import About10 from "./pages/introduce/intro10";
 
 
 function App() {
@@ -70,14 +73,17 @@ function App() {
         <Route path="/intro6" element={<Intro6 />} />
         <Route path="/intro7" element={<Intro7 />} />
         <Route path="/intro8" element={<Intro8 />} />
+        <Route path="/intro9" element={<Intro9 />} />
+        <Route path="/intro10" element={<About10 />} />
         <Route path="/introMember" element={<InntroMember />} />
         <Route path="/review" element={<Review />} />
+        <Route path="/reviewlist" element={<RBoardList />} />
 
-        <Route path="/freeboard" element={<FreeBoardMain />}/>
-        <Route path="/boardFree" element={<FreeBoardFree />}/> 
-        <Route path="/boardTrade" element={<FreeBoardTrade />}/> 
-        <Route path="/boardRecommend" element={<FreeBoardRecommend />}/> 
-        <Route path="/boardTip" element={<FreeBoardTip />}/> 
+        <Route path="/freeboard" element={<FreeBoardMain />} />
+        <Route path="/boardFree" element={<FreeBoardFree />} />
+        <Route path="/boardTrade" element={<FreeBoardTrade />} />
+        <Route path="/boardRecommend" element={<FreeBoardRecommend />} />
+        <Route path="/boardTip" element={<FreeBoardTip />} />
         <Route path="/boardDetail" element={<BoardDetail />} />
         <Route path="/boardWrite" element={<FreeBoardWrite />} />
 

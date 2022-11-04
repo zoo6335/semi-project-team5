@@ -8,7 +8,7 @@ import introImg5 from "./images/5.png";
 import introImg6 from "./images/6.jpg";
 import introImg7 from "./images/7.jpg";
 import introImg8 from "./images/8.jpg";
-
+import introImg9 from "./images/13.png";
 
 
 
@@ -139,6 +139,21 @@ const Home = () => {
                     <p className="">경기/인천[안산] 꿈소풍 안산 2호점</p>
                 </div>
                 <Link to="/intro8"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
+            </div>
+            <div className="flex_item">
+                <div className="text">
+                    <h2>방 탈출 정보</h2>
+                </div>
+                <div className="col1">
+                    <img className="imgescape" alt="logo2" src={introImg9} style={{ height: '350px', width: '250px' }} />
+                </div>
+
+                <div className="pro">
+                    <h3> 냥냥펀치 (일상)</h3>
+                    <p className="">경기/인천[안산] 꿈소풍 안산 2호점</p>
+                </div>
+                <Link to="/intro9"><button className="btnn page">상세페이지</button></Link>
                 <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
         </div>
