@@ -4,20 +4,20 @@ import ghost from "../images/ghost.png";
 import { Link } from "react-router-dom";
 
 const ThemeType = () => {
-    return (
-        <ThemeBlock>
-            <div className="icons">
-                <Link to="/intro" ><label className="theme-type" ><img className="icon" src={ghost} alt="icon" />공포</label></Link>
-                <Link to="/intro6" ><label className="theme-type" ><img className="icon" src={ghost} alt="icon" key={"추리"} />추리</label></Link>
-                <Link to="/intro5" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"액션"} />액션</label></Link>
-                <Link to="/intro4" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"감성"} />감성</label></Link>
-                <Link to="/intro7" > <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"모험"} />모험</label></Link>
-                <Link to="/intro3" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"SF/판타지"} />SF/판타지</label></Link>
-                <Link to="/intro9" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"야외"} />야외</label></Link>
-                <label className="theme-type"><img className="icon" src={ghost} alt="icon" key={"19금"} />19금</label>
-            </div>
-        </ThemeBlock >
-    )
+  return (
+    <ThemeBlock>
+      <div className="icons">
+        <Link to="/intro" ><label className="theme-type" ><img className="icon" src={ghost} alt="icon" />공포</label></Link>
+        <Link to="/intro6" ><label className="theme-type" ><img className="icon" src={ghost} alt="icon" />추리</label></Link>
+        <Link to="/intro5" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" />액션</label></Link>
+        <Link to="/intro4" ><label className="theme-type"><img className="icon" src={ghost} alt="icon"  />감성</label></Link>
+        <Link to="/intro7" > <label className="theme-type"><img className="icon" src={ghost} alt="icon" />모험</label></Link>
+        <Link to="/intro3" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" />SF/판타지</label></Link>
+        <Link to="/intro9" ><label className="theme-type"><img className="icon" src={ghost} alt="icon" />야외</label></Link>
+        <label className="theme-type"><img className="icon" src={ghost} alt="icon"  />19금</label>
+      </div>
+    </ThemeBlock >
+  )
 }
 
 // const onClickCategory = (val) => {
@@ -53,7 +53,7 @@ const ThemeBlock = styled.div`
 `;
 
 const onClick = () => {  // 페이지 전환
-    window.location.replace("/intro");
+  window.location.replace("/intro");
 }
 
 export default ThemeType;
