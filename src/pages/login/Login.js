@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import kakaoImage from "../images/kakao_login.png";
-import Modal from "../util/Modal";
-import DjApi from "../api/DjApi";
+import kakaoImage from "../../images/kakao_login.png";
+import Modal from "../../util/Modal";
+import DjApi from "../../api/DjApi";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
