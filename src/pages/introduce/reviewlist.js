@@ -97,7 +97,7 @@ const RBoardList = () => {
                             RBoardList.map((list) => (
                                 <tr>
                                     <td>{list.title}</td>
-                                    <td>{list.content}</td>
+                                    <td>{ReactHtmlparser(list.content)}</td>
                                 </tr>
                             ))}
                     </BoardList>
