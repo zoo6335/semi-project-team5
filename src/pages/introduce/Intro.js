@@ -23,10 +23,10 @@ const About = () => {
                         <br />그들이 농성을 지속할 수 없게 하기 위해 몰래 건물 지하로 들어간다.</p>
                     <p className="pastelred-text">★ 이 테마는 공포테마이며, 조도가 매우 어둡고, 랜턴이 주어지지 않습니다.
                         <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
-                    <Link to="/introduce"><button className="btn intro">소개</button></Link>
+                    <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
 
-                    <a href="http://dreampicnicescape.com/" className="btn site" target="_blank">사이트 방문하기</a>
-                    <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                    <a href="http://dreampicnicescape.com/" className="btnn site" target="_blank">사이트 방문하기</a>
+                    <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
                 </div>
 
                 <ul>
