@@ -1,6 +1,6 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const DOMAIN = "http://localhost:8090/kh_mini_project/";
+const DOMAIN = "http://localhost:8080/kh_mini_project/";
 
 const DjApi = {
     // 로그인 기능 ( userLogin이 useState의 프로퍼티로 역할)

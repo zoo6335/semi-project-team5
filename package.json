@@ -5,6 +5,9 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^35.2.1",
     "@ckeditor/ckeditor5-react": "^5.0.2",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -28,7 +31,7 @@
     "react-kakao-maps-sdk": "^1.1.5",
     "react-router-dom": "^6.4.2",
     "react-script": "^2.0.5",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "styled-components": "^5.3.6",
     "suneditor": "^2.44.3",
     "suneditor-react": "^3.4.1",
