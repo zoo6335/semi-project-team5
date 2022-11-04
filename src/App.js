@@ -37,6 +37,7 @@ import BoardDetail from "./pages/freeboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import WriteBoard from "./pages/findboard/WriteBoard";
 import TBoardDetail from "./pages/findboard/BoardDetail";
+import TEditBoard from "./pages/findboard/EditBoard";
 
 
 function App() {
@@ -83,6 +84,8 @@ function App() {
         <Route path="/tBoardList" element={<TBoardList />} />
         <Route path="/tWriteBoard" element={<WriteBoard />} />
         <Route path="/tBoardDetail" element={<TBoardDetail />} />
+        <Route path="/tEditBoard" element={<TEditBoard />} />
+
       </Routes>
     </Router>
   );

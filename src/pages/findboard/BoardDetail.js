@@ -11,26 +11,25 @@ const TBoardDetail = () => {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
+  const Box = styled.div`
+  border: 4px solid #40BAAA;
+  border-top: 200px;
+  width: 1024px;
+  height: 720px;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
   const LogoBox = styled.div`
     box-sizing: border-box;
     padding-bottom: 3em;
     width: 1024px;
     margin: auto;
     margin-top: 2rem;
-    font-family: "DungGeunMo";
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  `;
-
-  const DetailBox = styled.div`
-    box-sizing: border-box;
-    padding-bottom: 3em;
-    width: 1024px;
-    margin: auto;
-    margin-top: 5rem;
     font-family: "DungGeunMo";
     @media screen and (max-width: 768px) {
       width: 100%;
@@ -46,17 +45,19 @@ const TBoardDetail = () => {
     window.location.replace("/tBoardList");
   };
 
+  // 버튼 누를 시 게시물 수정 화면으로 이동
+  const onClickEdit = (e) => {
+    console.log("수정하기 버튼 클릭");
+    e.preventDefault();
+    window.localStorage.setItem("EditInfo", e);
+    window.location.replace("/tEditBoard");
+  };
+  
+  // 버튼 누를 시 삭제 기능
   const onClickDelete = (e) => {
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
     setModalOpen(true);
   };
-
-  const onClickEdit = (e) => {
-    console.log("수정하기 버튼 클릭");
-    e.preventDefault();
-    window.location.replace("/EditBoard");
-  };
-
   // 삭제버튼 클릭시 모달
   const confirmModal = async () => {
     setModalOpen(false);
@@ -92,6 +93,7 @@ const TBoardDetail = () => {
   }
 
   return (
+    <Box>
     <form className="boardWrite-form">
       <LogoBox>
         <div className="boardCategory">
@@ -99,7 +101,6 @@ const TBoardDetail = () => {
           <span>내 동료가 돼라!</span>
         </div>
       </LogoBox>
-      <DetailBox>
       <h1 style={{ textAlign: "center" }}>게시물 내용</h1>
       <div>
         {boardDetail &&
@@ -145,9 +146,10 @@ const TBoardDetail = () => {
           </Modal>
         )}
       </div>
-      </DetailBox>
     </form>
+    </Box>
   );
 };
 
 export default TBoardDetail;
+
