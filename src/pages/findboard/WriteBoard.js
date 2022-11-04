@@ -15,7 +15,12 @@ const WriteBoard = () => {
     console.log("뒤로가기 버튼 클릭");
     window.location.replace("/TBoardList");
   };
-  
+  const gmb_user_id = window.localStorage.getItem("userId");
+
+  // 로그인 상태가 아닐때는 글작성할 수 없게
+  const isLogin = window.localStorage.getItem("isLogin");
+  if(isLogin === "FALSE") window.location.replace("/");
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [resData, setResData] = useState(""); // 서버에서 받는 결과 데이터
@@ -24,21 +29,20 @@ const WriteBoard = () => {
   const onChangeTitle = (e) => setTitle(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
   const onChangeContent = (contentSet) => setContent(contentSet);
 
-  const LogoBox = styled.div`
-    box-sizing: border-box;
-    padding-bottom: 3em;
-    width: 1024px;
-    margin: auto;
-    margin-top: 2rem;
-    font-family: "DungGeunMo";
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      padding-left: 1em;
-      padding-right: 1em;
-    }
-  `;
+  const Box = styled.div`
+  border: 4px solid #40BAAA;
+  border-top: 200px;
+  width: 1024px;
+  height: 720px;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
-  const WriteBox = styled.div`
+  const LogoBox = styled.div`
     box-sizing: border-box;
     padding-bottom: 3em;
     width: 1024px;
@@ -61,12 +65,12 @@ const WriteBoard = () => {
   const confirmModal = async () => {
     setModalOpen(false);
     // 서버에 대한 요청을 비동기로 처리 함
-    const res = await nbApi.onWrite(title, content);
+    const res = await nbApi.onWrite(gmb_user_id, title, content);
     setResData(res.data);
     console.log("작성완료 버튼 클릭");
     console.log(res.data.result);
     if (res.data.result === "OK") {
-      window.location.replace("/TBoardList");
+      window.location.replace("/tBoardList");
     } else {
     }
   };
@@ -77,28 +81,28 @@ const WriteBoard = () => {
   };
 
   return (
-    <form className="boardWrite-form">
+    <Box>
+    <Form className="boardWrite-form">
       <LogoBox>
       <div className="boardCategory">
         <h1>일 행 구 하 기</h1>
         <span>내 동료가 돼라!</span>
       </div>
-      </LogoBox>
-      <WriteBox>
       <button className="goBackBtn" onClick={onCLickgoBack}>
         ⬅
       </button>
+      </LogoBox>
+      
       <h1 style={{ textAlign: "center" }}>새글쓰기</h1>
-      <Form>
-        <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
-          <Form.Control
+      <div>
+          <input 
+            className="title-input"
             type="text"
             placeholder="제목을 입력하세요."
             value={title}
             onChange={onChangeTitle}
           />
-        </Form.Group>
-        <Form.Group className="mb-2" controlId="exampleForm.ControlTextarea1">
+          </div>
           <SunEditor
             // setContents="My contents"
             showToolbar={true}
@@ -125,9 +129,6 @@ const WriteBoard = () => {
               ],
             }}
           />
-          </Form.Group>
-          </Form>
-          </WriteBox>
         <button className="submitBtn" onClick={onClick}>
           작성완료
         </button>
@@ -153,9 +154,10 @@ const WriteBoard = () => {
           작성하시겠습니까?
         </Modal>
       )}
-    </form>
+    </Form>
+    </Box>
   );
 }
 
-export default WriteBoard;
+export default React.memo(WriteBoard);
 

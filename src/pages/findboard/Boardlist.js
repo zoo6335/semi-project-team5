@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import nbApi from "../../api/nbApi"
 import "../../fonts/Font.css";
 import styled from "styled-components";
-import "../../App.css";
+import "./TboardStyle.css";
+import Table from 'react-bootstrap/Table';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const TBoardList = () => {
   const [TBoardList, setTboardList] = useState("");
@@ -13,6 +15,19 @@ const TBoardList = () => {
     window.localStorage.setItem("Detail", val);
     window.location.replace("/tBoardDetail");
   };
+
+  const Box = styled.div`
+  border: 4px solid #40BAAA;
+  border-top: 200px;
+  width: 1024px;
+  height: 720px;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
   const LogoBox = styled.div`
     box-sizing: border-box;
@@ -43,26 +58,6 @@ const TBoardList = () => {
     }
   `;
 
-  const BoardList = styled.table`
-    border-collapse: collapse;
-    width: 1024px;
-    margin: auto;
-    font-size: 1.125em;
-    text-align: center;
-    @media screen and (max-width: 768px) {
-      width: 100%;
-    }
-    th,
-    td {
-      border: 1px solid #ccc;
-      padding: 2px;
-      color: black;
-    }
-    th {
-      background-color: #40baaa;
-    }
-  `;
-
   useEffect(() => {
     const BoardData = async () => {
       setLoading(true);
@@ -89,6 +84,7 @@ const TBoardList = () => {
   };
 
   return (
+    <Box>
     <form className="board-form">
       <LogoBox>
       <div className="boardCategory">
@@ -97,36 +93,38 @@ const TBoardList = () => {
         </div>
       </LogoBox>
       <div>
-        <BoardListBlock>
           <button className="WriteBtn" onClick={onClickWrite}>
             📝
           </button>
-          <BoardList>
+          <div className="BoardListTable">
+          <Table class="table table-striped">
             <thead>
               <tr>
-                <th>번호</th>
+                <th>글번호</th>
                 <th>제목</th>
-                <th>내용</th>
+                <th>작성자</th>
                 <th>작성일</th>
-                <th>댓글수</th>
+                <th>조회수</th>
               </tr>
             </thead>
-            {console.log(TBoardList)}
+            <tbody>
             {TBoardList &&
               TBoardList.map((list) => (
-                <tr key={list.id} onClick={() => onClickBoardList(list.id)}>
-                  <td>{list.id}</td>
-                  <td>{list.title}</td>
-                  <td>{(list.content).replace(/<[^>]*>?/g,'')}</td>
-                  <td>{list.writedate}</td>
-                  <td>{list.comment_num}</td>
+                <tr key={list.gmb_id} onClick={() => onClickBoardList(list.gmb_id)}>
+                  <td>{list.gmb_id}</td>
+                  <td>{list.gmb_title}</td>
+                  <td>{list.gmb_user_id}</td>
+                  <td>{list.gmb_c_date}</td>
+                  <td>{list.gmb_hit}</td>
                 </tr>
               ))}
-          </BoardList>
-        </BoardListBlock>
+              </tbody>
+          </Table>
       </div>
       {/* <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} currentPage={currentPage} paginate={paginate}></Pagination> */}
+      </div>
     </form>
+    </Box>
   );
 };
 export default TBoardList;

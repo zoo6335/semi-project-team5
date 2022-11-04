@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.review-container {
+.review-container2 {
     margin: 0 auto;
     width: 80%;
     border: 1px solid #333;
@@ -11,20 +11,20 @@
     margin-bottom: 50px;
 }
 
-.form-wrapper {
+.form-wrapper2 {
     width: 60%;
     margin: 0 auto;
 }
 
-.title-input {
+.title-input2 {
     width: 500px;
     height: 40px;
     margin: 10px;
 }
 
-.submit-button {
+.submit-button2 {
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: white;
     padding: 10px 20px 10px 20px;
     margin: 10px;
@@ -38,7 +38,7 @@
 
 }
 
-.submit-button:active {
+.submit-button2:active {
     transform: translateY(3px);
 }
 

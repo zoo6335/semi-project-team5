@@ -3,7 +3,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './review.css';
 import ReactHtmlParser from 'html-react-parser';
-// import nbApi from '../nbApi.js/npApi';
+import npApi from '../../api/npApi';
 
 
 function App2() {
@@ -14,7 +14,8 @@ function App2() {
 
 
     const [viewContent, setViewContent] = useState([]);
-    // const [resData, setResData] = useState("");
+    const [resData, setResData] = useState("");
+    const [saveTitle, setSaveTitle] = useState("");
 
 
     const getValue = e => {
@@ -24,35 +25,43 @@ function App2() {
             [name]: value
         })
     };
-    // const onSubmit = async () => {
-    //     try {
-    //         // 서버에 대한 요청을 비동기로 처리 함
-    //         const res = await nbApi.onWrite(viewContent);
-    //         setResData(res.data);
-    //         console.log("작성완료 버튼 클릭");
-    //         if (res.data.result === "OK") {
-    //             window.location.replace("/");
-    //         }
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // };  async를 만들어보았지만 감이 안잡힙니다...
+
+
+
+    const onSubmit = async (e) => {
+
+        try {
+            // 서버에 대한 요청을 비동기로 처리 함
+            const res = await npApi.onWrite(reviewContent.title, reviewContent.content);
+            console.log(reviewContent.name + reviewContent.content);
+            setResData(res.data);
+            console.log("작성완료 버튼 클릭");
+            if (res.data.result === "OK") {
+                window.location.replace("/reviewlist");
+            }
+            e.preventDefault();
+            // setSaveTitle(reviewContent.title);
+
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     return (
         <div className="App2">
             <h1>Review</h1>
-            <div className='review-container'>
-                {viewContent.map(element =>
-                    <div style={{ border: '1px solid #333' }}>
-                        <h2>{element.title}</h2>
-                        <div>
-                            {ReactHtmlParser(element.content)}
-                        </div>
-                    </div>
-                )}
+            <div className='review-container2'>
+
+
+                <h2>{reviewContent.title}</h2>
+                <div>
+                    {ReactHtmlParser(reviewContent.content)}
+                </div>
+
+
             </div>
-            <div className='form-wrapper'>
-                <input className="title-input"
+            <div className='form-wrapper2'>
+                <input className="title-input2"
                     type='text'
                     placeholder='제목'
                     onChange={getValue}
@@ -61,7 +70,7 @@ function App2() {
                 <CKEditor
 
                     editor={ClassicEditor}
-                    data="<p>후기를 입력하세요</p>"
+                    data="후기를 입력하세요"
                     onReady={editor => {
 
                         console.log('Editor is ready to use!', editor);
@@ -73,16 +82,20 @@ function App2() {
                             ...reviewContent,
                             content: data
                         })
+                        console.log("name : " + reviewContent.title);
+                        console.log("content : " + reviewContent.content);
+
                     }}
 
                 />
             </div>
             <button
-                className="submit-button"
-                onClick={(           // onSubmit을넣으면 통신하게끔 만들고싶음 ㅠ
-                ) => {
-                    setViewContent(viewContent.concat({ ...reviewContent }));
-                }}
+                className="submit-button2"
+                // onClick={(           
+                // ) => {
+                //     setViewContent(viewContent.concat({ ...reviewContent }));
+                // }}
+                onClick={onSubmit}
             >입력</button>
         </div>
     );

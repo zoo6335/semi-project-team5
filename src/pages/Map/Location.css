@@ -27,12 +27,12 @@
 
 }
 
-dl {
+.tabel-cell dl {
     margin-left: 20px;
 }
 
 
-dd {
+.table-cell dd {
     content: "";
     display: block;
     border-bottom: 2px dashed gray;
@@ -42,6 +42,7 @@ dd {
     text-align: center;
     justify-content: center;
     margin: auto;
+    color: #777777;
 }
 
 ;

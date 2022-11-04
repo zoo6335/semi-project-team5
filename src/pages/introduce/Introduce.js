@@ -8,8 +8,6 @@ import introImg5 from "./images/5.png";
 import introImg6 from "./images/6.jpg";
 import introImg7 from "./images/7.jpg";
 import introImg8 from "./images/8.jpg";
-import introImg12 from "./images/12.png";
-import dogImg from "./images/ac0227854d2400d2497b43565bd05e77.jpg";
 
 
 
@@ -30,9 +28,9 @@ const Home = () => {
                     <h3> 시민상가 철거반</h3>
                     <p className="">경기/인천[안산] 꿈소풍 안산 2호점</p>
                 </div>
-                <Link to="/intro"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
-                <Link to="/introMember"><button className="btn page2">임시페이지</button></Link>
+                <Link to="/intro"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
+
             </div>
 
             <div className="flex_item">
@@ -47,8 +45,8 @@ const Home = () => {
                     <h3> 오드의 마법사</h3>
                     <p className="">전라[광주] 러시아워 로드맨션</p>
                 </div>
-                <Link to="/intro2"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                <Link to="/intro2"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
 
             <div className="flex_item">
@@ -63,8 +61,8 @@ const Home = () => {
                     <h3> 마녀의 숨겨진 물약</h3>
                     <p className="">경상[부산] 더락 이스케이프 하단점</p>
                 </div>
-                <Link to="/intro3"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                <Link to="/intro3"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
 
             <div className="flex_item">
@@ -79,8 +77,8 @@ const Home = () => {
                     <h3> 지난날을 잊었다</h3>
                     <p className="">서울[홍대] 지구별 방탈출 홍대어드벤처점</p>
                 </div>
-                <Link to="/intro4"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                <Link to="/intro4"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
 
             <div className="flex_item">
@@ -95,8 +93,8 @@ const Home = () => {
                     <h3> 퀘스트 : 여정의 시작</h3>
                     <p className="">서울[홍대] 지구별 방탈출 홍대어드벤처점</p>
                 </div>
-                <Link to="/intro5"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                <Link to="/intro5"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
             <div className="flex_item">
                 <div className="text">
@@ -110,8 +108,8 @@ const Home = () => {
                     <h3> 최대감댁 심부름꾼</h3>
                     <p className="">서울[강남] 더클루 강남점</p>
                 </div>
-                <Link to="/intro6"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                <Link to="/intro6"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
             <div className="flex_item">
                 <div className="text">
@@ -125,8 +123,8 @@ const Home = () => {
                     <h3> 왕자 레오</h3>
                     <p className="">서울[강남] 더클루 강남점</p>
                 </div>
-                <Link to="/intro7"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                <Link to="/intro7"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
             <div className="flex_item">
                 <div className="text">
@@ -140,8 +138,8 @@ const Home = () => {
                     <h3> 냥냥펀치 (일상)</h3>
                     <p className="">경기/인천[안산] 꿈소풍 안산 2호점</p>
                 </div>
-                <Link to="/intro8"><button className="btn page">상세페이지</button></Link>
-                <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                <Link to="/intro8"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
         </div>
 
