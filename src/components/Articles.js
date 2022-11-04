@@ -6,15 +6,15 @@ const Articles = () => {
         <ArticleBlock>
             <div className="likeRank">
                 <p className="article-title">좋아요 Ranking 💖</p>
-                {/* <div className="article-box">
+                <div className="article-box">
                     <RoomRank />
-                </div> */}
+                </div>
             </div>
             <div className="hotBoard">
                 <p className="article-title">HOT 자유게시판 🔥</p>
-                {/* <div className="article-box">
+                <div className="article-box">
                     <BoardRank />
-                </div> */}
+                </div>
             </div>
         </ArticleBlock>
     )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import DjApi from "../api/DjApi";
-import Modal from "../util/Modal";
+import DjApi from "../../api/DjApi";
+import Modal from "../../util/Modal";
 
 
 const Box = styled.div`
