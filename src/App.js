@@ -1,21 +1,21 @@
-import Login from "./pages/Login";
+import Login from "./pages/login/Login";
 import './App.css';
 import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Profile from "./Profile";
-import SignUp from "./signup/SignUp";
-import FindId from "./pages/FindId";
-import FindPwd from "./pages/FindPwd";
-import MyPage from "./pages/MyPage";
+import Profile from "./pages/login/Profile";
+import SignUp from "./pages/login/SignUp";
+import FindId from "./pages/login/FindId";
+import FindPwd from "./pages/login/FindPwd";
+import MyPage from "./pages/login/MyPage";
 import Home from "./home/Home";
 import Header from "./components/Header";
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ShowBoard from "./components/ShowBoard";
 import ShowRoom from "./components/ShowRoom";
 import SelectType from './components/SelectType';
-import MemberUpdate from "./pages/MemberUpdate";
-import Gallery from "./pages/GalleryInfo";
-import GalleryReg from "./pages/GalleryReg";
+import MemberUpdate from "./pages/login/MemberUpdate";
+import Gallery from "./pages/gallery/GalleryInfo";
+import GalleryReg from "./pages/gallery/GalleryReg";
 import Intro from "./pages/introduce/Intro";
 import Intro2 from "./pages/introduce/Intro2";
 import Intro3 from "./pages/introduce/Intro3";
@@ -38,6 +38,9 @@ import TBoardList from "./pages/findboard/Boardlist";
 import WriteBoard from "./pages/findboard/WriteBoard";
 import TBoardDetail from "./pages/findboard/BoardDetail";
 import TEditBoard from "./pages/findboard/EditBoard";
+import Intro9 from "./pages/introduce/intro9";
+import RBoardList from "./pages/introduce/reviewlist";
+import About10 from "./pages/introduce/intro10";
 
 
 function App() {
@@ -70,14 +73,17 @@ function App() {
         <Route path="/intro6" element={<Intro6 />} />
         <Route path="/intro7" element={<Intro7 />} />
         <Route path="/intro8" element={<Intro8 />} />
+        <Route path="/intro9" element={<Intro9 />} />
+        <Route path="/intro10" element={<About10 />} />
         <Route path="/introMember" element={<InntroMember />} />
         <Route path="/review" element={<Review />} />
+        <Route path="/reviewlist" element={<RBoardList />} />
 
-        <Route path="/freeboard" element={<FreeBoardMain />}/>
-        <Route path="/boardFree" element={<FreeBoardFree />}/> 
-        <Route path="/boardTrade" element={<FreeBoardTrade />}/> 
-        <Route path="/boardRecommend" element={<FreeBoardRecommend />}/> 
-        <Route path="/boardTip" element={<FreeBoardTip />}/> 
+        <Route path="/freeboard" element={<FreeBoardMain />} />
+        <Route path="/boardFree" element={<FreeBoardFree />} />
+        <Route path="/boardTrade" element={<FreeBoardTrade />} />
+        <Route path="/boardRecommend" element={<FreeBoardRecommend />} />
+        <Route path="/boardTip" element={<FreeBoardTip />} />
         <Route path="/boardDetail" element={<BoardDetail />} />
         <Route path="/boardWrite" element={<FreeBoardWrite />} />
 

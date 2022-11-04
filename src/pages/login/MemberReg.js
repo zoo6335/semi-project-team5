@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import DjApi from '../api/DjApi'
+import DjApi from '../../api/DjApi'
 
 const memberObj = {
   id: "",

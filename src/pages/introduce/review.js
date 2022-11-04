@@ -49,7 +49,7 @@ function App2() {
 
     return (
         <div className="App2">
-            <h1>Review</h1>
+            <h1 className='title-review'>Review</h1>
             <div className='review-container2'>
 
 
