@@ -6,21 +6,12 @@ import "./TboardStyle.css";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const TBoardList = () => {
-  const [TBoardList, setTboardList] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const onClickBoardList = (val) => {
-    console.log("상세 게시판으로 이동 : " + val);
-    window.localStorage.setItem("Detail", val);
-    window.location.replace("/tBoardDetail");
-  };
-
-  const Box = styled.div`
+const Box = styled.div`
   border: 4px solid #40BAAA;
   border-top: 200px;
   width: 1024px;
-  height: 720px;
+  height: auto;
   margin: 0 auto;
   background-color: rgb(0, 0, 0);
   display: flex;
@@ -28,8 +19,9 @@ const TBoardList = () => {
   align-items: center;
   justify-content: center;
 `
+;
 
-  const LogoBox = styled.div`
+const LogoBox = styled.div`
     box-sizing: border-box;
     padding-bottom: 3em;
     width: 1024px;
@@ -58,6 +50,22 @@ const TBoardList = () => {
     }
   `;
 
+const isLogin = window.localStorage.getItem("isLogin");
+
+const TBoardList = () => {
+  const [TBoardList, setTboardList] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const onClickBoardList = (val) => {
+    console.log("상세 게시판으로 이동 : " + val);
+    window.localStorage.setItem("Detail", val);
+    window.location.replace("/tBoardDetail");
+  };
+
+  
+
+  
+
   useEffect(() => {
     const BoardData = async () => {
       setLoading(true);
@@ -85,45 +93,50 @@ const TBoardList = () => {
 
   return (
     <Box>
-    <form className="board-form">
-      <LogoBox>
-      <div className="boardCategory">
-        <h1>일 행 구 하 기</h1>
-        <span>내 동료가 돼라!</span>
-        </div>
-      </LogoBox>
-      <div>
-          <button className="WriteBtn" onClick={onClickWrite}>
-            📝
-          </button>
-          <div className="BoardListTable">
-          <Table class="table table-striped">
-            <thead>
-              <tr>
-                <th>글번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>작성일</th>
-                <th>조회수</th>
-              </tr>
-            </thead>
-            <tbody>
-            {TBoardList &&
-              TBoardList.map((list) => (
-                <tr key={list.gmb_id} onClick={() => onClickBoardList(list.gmb_id)}>
-                  <td>{list.gmb_id}</td>
-                  <td>{list.gmb_title}</td>
-                  <td>{list.gmb_user_id}</td>
-                  <td>{list.gmb_c_date}</td>
-                  <td>{list.gmb_hit}</td>
+      <div style={{height:"130px"}}>
+        <LogoBox>
+          <div className="boardCategory">
+            <h1>일 행 구 하 기</h1>
+            <span>내 동료가 돼라!</span>
+          </div>
+        </LogoBox>
+      </div>
+      <div style={{height:"100%", width:"100%", overflow:"scroll"}}>
+        <form className="board-form" style={{width:"100%"}}>
+          <div>
+            {isLogin === "TRUE" &&
+              <button className="WriteBtn" onClick={onClickWrite}>
+              글쓰기📝
+            </button>}
+            <div className="BoardListTable">
+            <Table class="table table-striped" style={{textAlign:"center"}}>
+              <thead>
+                <tr>
+                  <th width="80px">글번호</th>
+                  <th width="*">제목</th>
+                  <th width="100px">작성자</th>
+                  <th width="100px">작성일</th>
+                  <th width="80px">조회수</th>
                 </tr>
-              ))}
+              </thead>
+              <tbody>
+              {TBoardList &&
+                TBoardList.map((list) => (
+                  <tr key={list.gmb_id} onClick={() => onClickBoardList(list.gmb_id)}>
+                    <td>{list.gmb_id}</td>
+                    <td>{list.gmb_title}</td>
+                    <td>{list.gmb_user_id}</td>
+                    <td>{list.gmb_c_date}</td>
+                    <td>{list.gmb_hit}</td>
+                  </tr>
+                ))}
               </tbody>
-          </Table>
+            </Table>
+          </div>
+          {/* <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} currentPage={currentPage} paginate={paginate}></Pagination> */}
+          </div>
+        </form>
       </div>
-      {/* <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} currentPage={currentPage} paginate={paginate}></Pagination> */}
-      </div>
-    </form>
     </Box>
   );
 };
