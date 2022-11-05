@@ -2,18 +2,18 @@ import styled from "styled-components";
 import sgt from "../images/sgt.jpg";
 
 const Recommend = () => {
-    return (
-        <RecommendBlock>
-            <p className="rec-title">지금 딱 하기 좋은 방탈출 추천 🎃🧛‍♂️</p>
-            <div className="suggest-list">
-                <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
-                <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
-                <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
-                <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
-                <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
-            </div>
-        </RecommendBlock>
-    )
+  return (
+    <RecommendBlock>
+      <p className="rec-title">지금 딱 하기 좋은 방탈출 추천 🎅🎄</p>
+      <div className="suggest-list">
+        <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
+        <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
+        <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
+        <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
+        <lable className="suggestion"><img src={sgt} alt="추천img" className="sgt-img" />[지역] 방탈출 명</lable>
+      </div>
+    </RecommendBlock>
+  )
 }
 
 const RecommendBlock = styled.div`

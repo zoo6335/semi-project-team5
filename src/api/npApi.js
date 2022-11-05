@@ -1,8 +1,8 @@
 import axios from "axios";
 const HEADER = "application/json";
-const NB_DOMAIN = "http://localhost:8090/kh_mini_project/";
+const NB_DOMAIN = "http://localhost:8090/test_ex/";
 
-const nbApi = {
+const npApi = {
 
 
   // 게시판 글작성
@@ -12,6 +12,14 @@ const nbApi = {
       content: content
     };
     return await axios.post(NB_DOMAIN + "BoardWriteServlet", boardObj, HEADER);
+  },
+
+  RBoardList: async function () {
+    const regCmd = {
+      cmd: "RBoardList",
+    }
+    return await axios.post(NB_DOMAIN + "BoardServlet", regCmd, HEADER);
   }
+
 }
-export default nbApi;
+export default npApi;

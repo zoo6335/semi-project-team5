@@ -2,22 +2,22 @@ import styled from "styled-components";
 import BoardRank from "./BoardRank";
 import RoomRank from "./RoomRank";
 const Articles = () => {
-    return (
-        <ArticleBlock>
-            <div className="likeRank">
-                <p className="article-title">좋아요 Ranking 💖</p>
-                {/* <div className="article-box">
-                    <RoomRank />
-                </div> */}
-            </div>
-            <div className="hotBoard">
-                <p className="article-title">HOT 자유게시판 🔥</p>
-                {/* <div className="article-box">
-                    <BoardRank />
-                </div> */}
-            </div>
-        </ArticleBlock>
-    )
+  return (
+    <ArticleBlock>
+      <div className="likeRank">
+        <p className="article-title">좋아요 Ranking 💖</p>
+        <div className="article-box">
+          <RoomRank />
+        </div>
+      </div>
+      <div className="hotBoard">
+        <p className="article-title">HOT 자유게시판 🔥</p>
+        <div className="article-box">
+          <BoardRank />
+        </div>
+      </div>
+    </ArticleBlock>
+  )
 }
 
 const ArticleBlock = styled.div`
