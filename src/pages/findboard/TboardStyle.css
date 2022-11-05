@@ -184,6 +184,7 @@
     top: 140px;
     z-index: 1;
     border-radius: 5px;
+    text-emphasis-color: cornsilk;
     @media screen and (max-width: 768px) {
       width: 100%;
       padding-left: 1em;
@@ -191,8 +192,8 @@
     }
   }
   .boardCategory::after {
-    width: 1024px;
-    height: 140px;
+    width: 1015px;
+    height: 130px;
     margin : 0 auto;
     text-align: center;
     content: "";
@@ -201,20 +202,21 @@
     top: 0;
     left: 0;
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.5;
     border-radius: 10px;
-    text-emphasis-color: black;
+    text-emphasis-color: cornsilk;
   }
   
+  /* 일행구하기 */
   .boardCategory h1{
     font-size : calc(1.375rem + 1.5vw);
-    color : black;
+    color : cornsilk;
     text-align: center;
-    margin-top : 20px;
+    margin-top : 30px;
   }
   .boardCategory span{
     font-size : 2vw;
-    color : black;
+    color : cornsilk;
     text-align: center;
     margin-bottom: 20px;
   }
@@ -238,6 +240,7 @@
   
   /* 글쓰기 페이지 */
   .boardWrite-form {
+    margin-top : 150px;
     box-sizing: border-box;
     padding-bottom: 3em;
     width: 1024px;
@@ -270,7 +273,7 @@
     border-bottom: 5px solid #7e5e22;
   }
   .boardWrite-form h1 {
-    color : black;
+    color : cornsilk;
   }
   /* 글쓰기 페이지 - 제목 입력란*/
   .title-input {

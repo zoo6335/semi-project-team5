@@ -47,10 +47,9 @@ const TBoardDetail = () => {
 
   // 버튼 누를 시 게시물 수정 화면으로 이동
   const onClickEdit = (e) => {
-    console.log("수정하기 버튼 클릭");
     e.preventDefault();
-    window.localStorage.setItem("EditInfo", e);
-    window.location.replace("/tEditBoard");
+     window.location.replace("/tEditBoard");
+    
   };
   
   // 버튼 누를 시 삭제 기능
@@ -112,7 +111,7 @@ const TBoardDetail = () => {
               </Form.Group>
               <Form.Group
                 className="detailContent"
-                controlName="detailContent1"
+                controlname="detailContent1"
               >
                 <Form.Control
                   type="text"

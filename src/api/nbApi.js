@@ -49,12 +49,10 @@ const nbApi = {
   },
 
   // 게시물 수정
-  TBoardListUpdate: async function(gmb_id, gmb_title, gmb_content, gmb_u_date) {
+  TBoardListUpdate: async function(gmb_title, gmb_content) {
     const UpdateObj = {
-      gmb_id: gmb_id,
       gmb_title: gmb_title,
       gmb_content: gmb_content,
-      gmb_u_date: gmb_u_date,
     };
     return await axios.post(NB_DOMAIN + "MemberUpdateServlet", UpdateObj, HEADER);
 },

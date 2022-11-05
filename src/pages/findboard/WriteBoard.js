@@ -106,7 +106,7 @@ const WriteBoard = () => {
           <SunEditor
             // setContents="My contents"
             showToolbar={true}
-            setDefaultStyle="height: auto"
+            setDefaultStyle="height: 250px;"
             onChange={(content) => {
               onChangeContent(content);
             }}

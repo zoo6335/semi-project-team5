@@ -1,52 +1,21 @@
-import Form from "react-bootstrap/Form";
 import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 import nbApi from "../../api/nbApi";
 import Modal from "../../util/Modal";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Form from "react-bootstrap/Form";
 
 const TEditBoard = () => {
 
-  const isLogin = window.localStorage.getItem("isLogin");
-  if (isLogin === "FALSE") window.location.replace("/");
-
-  const getDetail = window.localStorage.getItem("EditInfo");
+  const localBoardId = window.localStorage.getItem ("Detail");
+  // const [beforeTitle, setBeforeTitle] = useState("");
+  // const [beforeContent, setBeforeContent] = useState("");
   const [boardDetail, setBoardDetail] = useState("");
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [inputTitle, setInputTitle] = useState("");
+  const [inputContent, setInputContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-
-  const onChangeTitle = (e) => setTitle(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
-  const onChangeContent = (contentSet) => setContent(contentSet);
-
-  // 수정완료 버튼 클릭시 모달
-  const onClickEdit = (e) => {
-    e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
-    setModalOpen(true);
-  };
-
-  // 모달 확인버튼 클릭시 동작
-  const confirmModal = async () => {
-    setModalOpen(false);
-    const res = await nbApi.TBoardListUpdate(title,content);
-    console.log("수정완료 버튼 클릭");
-    console.log(res.data.result);
-    if (res.data.result === "OK") {
-      window.location.replace("/tBoardDetail");
-    } else {
-    }
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-
-  if (loading) {
-    return <h5>대기 중...</h5>;
-  }
 
   const Box = styled.div`
     border: 4px solid #40baaa;
@@ -74,38 +43,111 @@ const TEditBoard = () => {
     }
   `;
 
+  const onChangeTitle = (e) => setInputTitle(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
+  const onChangeContent = (contentSet) => setInputContent(contentSet);
+
+  
+  // 수정완료 버튼 클릭시 모달
+  const onClickEdit = (e) => {
+    e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
+    setModalOpen(true);
+  };
+
+  // 모달 확인버튼 클릭시 동작
+  const confirmModal = async () => {
+    setModalOpen(false);
+    const res = await nbApi.TBoardListUpdate(inputTitle,inputContent);
+    console.log("수정완료 버튼 클릭");
+    console.log(res.data.result);
+    if (res.data.result === "OK") {
+      window.location.replace("/tBoardDetail");
+    } else {
+      console.log("NOK");
+    }
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  
+  useEffect(() => {
+    const BoardData = async () => {
+      setLoading(true);
+      try {
+        const response = await nbApi.onDetail(localBoardId);
+        setBoardDetail(response.data)
+        console.log(response.data);
+
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false)  
+    };
+    BoardData();
+  },[]);
+
+  if (loading) {
+    return <h5>대기 중...</h5>;
+  }
+
   return (
     <Box>
-    <form className="boardWrite-form">
+    <div className="boardWrite-form">
       <LogoBox>
         <div className="boardCategory">
           <h1>일 행 구 하 기</h1>
           <span>내 동료가 돼라!</span>
         </div>
       </LogoBox>
-      <h1 style={{ textAlign: "center", color : "white" }}>수정하기</h1>
+      <h1 style={{ textAlign: "center", color : "cornsilk" }}>수정하기</h1>
       <div>
-            <Form className="detailForm">
+        {boardDetail &&
+          boardDetail.map((detail) => (
+            <Form className="detailForm" key={detail.gmb_id}>
               <Form.Group className="detailTitle">
-                <Form.Control 
-                type="text"
-                placeholder="이전에 입력한 제목"
-                />
-              </Form.Group>
-              <Form.Group
-                className="detailContent"
-                controlName="detailContent1"
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="이전에 입력한 내용"
-                />
-              </Form.Group>
-            </Form>
-            <button className="EditBtn" onClick={onClickEdit}>
-                  수정완료
-                </button>
-        {modalOpen && (
+              <Form.Control type="text" defaultValue={detail.gmb_title}/>
+                {/* <span value={detail.gmb_user_id}></span> */}
+                </Form.Group>
+              <Form.Group className="detailContent">
+          <SunEditor
+            // setContents="My contents"
+            showToolbar={true}
+            setDefaultStyle="height: 250px;"
+            value="<p>The editor's default value</p>"
+            // default={detail.gmb_content}
+            onChange={(content) => {
+              onChangeContent(content);
+            }}
+            setContents ={inputContent}
+            height="500px"
+            setOptions={{
+              buttonList: [
+                [
+                  "bold",
+                  "underline",
+                  "italic",
+                  "strike",
+                  "list",
+                  "align",
+                  "fontSize",
+                  "formatBlock",
+                  "table",
+                  "image",
+                ],
+              ],
+            }}
+          />
+          </Form.Group>
+        <button className="submitBtn" onClick={onClickEdit}>
+          작성완료
+        </button>
+        </Form>
+              ))}
+        </div>
+        <div>
+
+           {modalOpen && (
           <Modal
             open={modalOpen}
             confirm={confirmModal}
@@ -116,10 +158,10 @@ const TEditBoard = () => {
             수정하시겠습니까?
           </Modal>
         )}
-      </div>
-    </form>
+        </div>
+        </div>
     </Box>
-  );
+);
 };
 
 export default TEditBoard;
