@@ -15,6 +15,7 @@ const WriteBlock = styled.div`
     padding: 10px;
     box-sizing: border-box;
     border-radius: 5px;
+    border: 2px dashed grey;
     resize: vertical;
   }
 `;

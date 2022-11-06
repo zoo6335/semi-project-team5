@@ -11,7 +11,7 @@ const CommentList = () => {
   useEffect(() => {
     const CommentData = async () => {
       try {
-        const response = await RankingApi.commentList(getDetail); // 전체 회원 조회
+        const response = await RankingApi.commentList(getDetail);
         setCommentDetail(response.data);
         console.log(response.data)
       } catch (e) {
@@ -24,20 +24,36 @@ const CommentList = () => {
   return (
     <div>
       <WriteContent />
-      {commentDetail && commentDetail.map(comment => (
-        <CommentBlock key={comment.postId}>
-          <p>게시글 번호 : {comment.boardId}</p>
-          <p>댓글 번호 : {comment.postId}  회원Id : {comment.id}  게시일 : {comment.postDate}</p>
-          <p>내용 : {comment.content}</p>
-        </CommentBlock>
-      ))}
+      <div className='box'>
+        {commentDetail && commentDetail.map(comment => (
+          <CommentBlock key={comment.postId}>
+            {/* <p>게시글 번호 : {comment.boardId}</p> */}
+            {/* <p>No. {comment.postId}</p> */}
+            <p className='comment' style={{ fontSize: "1.2em" }}>{comment.id} </p>
+            <p className='comment' style={{ fontSize: "0.9em" }}>{comment.postDate}</p>
+            <hr />
+            <p className='comment' style={{ fontSize: "1.15em" }}>{comment.content}</p>
+          </CommentBlock>
+        ))}
+      </div>
     </div>
   )
 }
 const CommentBlock = styled.div`
-    width: 1024px;
-    margin: 0 auto;
-    padding: 20px;
+  margin: 5px auto;
+  padding: 5px 10px;
+  border-top: 2px solid black;
+  // border-bottom: 1px solid black;
+  & > .comment{
+    margin: 2px 0;
+    color : black;
+  }
+  & > hr{
+    color: grey;
+    margin: 5px auto;
+    // border: 1px dashed grey;
+  }
+
 `;
 
 export default CommentList;
