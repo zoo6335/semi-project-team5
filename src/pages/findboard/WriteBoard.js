@@ -51,9 +51,11 @@ const WriteBoard = () => {
   const [titleInput, setTitleInput] = useState("");
   const [inputContent, setInputContent] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [applyTotal, setApplyTotal] = useState("");
 
   const onChangeTitle = (titleInput) => setTitleInput(titleInput.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
   const onChangeContent = (contentSet) => setInputContent(contentSet);
+  const onChangeApplyTotal = (applyTotal) => setApplyTotal(applyTotal.target.value);
 
   const onClick = (e) => {
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
@@ -64,7 +66,7 @@ const WriteBoard = () => {
   const confirmModal = async () => {
     setModalOpen(false);
     // 서버에 대한 요청을 비동기로 처리 함
-    const res = await nbApi.onWrite(gmb_user_id, titleInput, inputContent);
+    const res = await nbApi.onWrite(gmb_user_id, titleInput, inputContent, applyTotal);
     console.log("작성완료 버튼 클릭");
     console.log(res.data.result);
     if (res.data.result === "OK") {
@@ -106,46 +108,53 @@ const WriteBoard = () => {
             <div style={{height:"900px"}} className="table">
             <table style={{width:"1000px", margin:"15px"}}>
               <thead>
-                <col style={{width:"85px"}}/>
+                <col style={{width:"80px"}}/>
                 <col style={{width:"*"}}/>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">제목</th>
+                  <th scope="row" style={{textAlign:"center"}}>제목</th>
                   <td>
                   <input className="title-input" type="text" placeholder="제목을 입력하세요."
                     value={titleInput} onChange={onChangeTitle} style={{margin:"1px", width:"100%"}}/>
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">내용</th>
+                  <th scope="row" style={{textAlign:"center"}}>내용</th>
                   <td>
                   <SunEditor
-                // setContents="My contents"
-                showToolbar={true}
-                setDefaultStyle="height: 250px;"
-                onChange={(content) => {
-                  onChangeContent(content);
-                }}
-                setContents ={inputContent}
-                height="500px"
-                setOptions={{
-                  buttonList: [
-                    [
-                      "bold",
-                      "underline",
-                      "italic",
-                      "strike",
-                      "list",
-                      "align",
-                      "fontSize",
-                      "formatBlock",
-                      "table",
-                      "image",
-                    ],
-                  ],
-                }}
-              />
+                    // setContents="My contents"
+                    showToolbar={true}
+                    setDefaultStyle="height: 250px;"
+                    onChange={(content) => {
+                      onChangeContent(content);
+                    }}
+                    setContents ={inputContent}
+                    height="500px"
+                    setOptions={{
+                      buttonList: [
+                        [
+                          "bold",
+                          "underline",
+                          "italic",
+                          "strike",
+                          "list",
+                          "align",
+                          "fontSize",
+                          "formatBlock",
+                          "table",
+                          "image",
+                        ],
+                      ],
+                    }}
+                  />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style={{textAlign:"center"}}>인원수</th>
+                  <td>
+                  <input className="number-input" type="number"
+                    value={applyTotal} onChange={onChangeApplyTotal} min={1} max={6} style={{margin:"1px", width:"50%"}}/>
                   </td>
                 </tr>
               </tbody>

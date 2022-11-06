@@ -15,11 +15,12 @@ const nbApi = {
   },
 
   // 게시판 글작성
-  onWrite: async function (gmb_user_id, gmb_title, gmb_content) {
+  onWrite: async function (gmb_user_id, gmb_title, gmb_content, gmb_apply_total) {
     const BoardObj = {
       gmb_user_id: gmb_user_id,
       gmb_title: gmb_title,
       gmb_content: gmb_content,
+      gmb_apply_total : gmb_apply_total
     };
     return await axios.post(NB_DOMAIN + "BoardWriteServlet", BoardObj, HEADER);
   },
@@ -31,6 +32,19 @@ const nbApi = {
     };
     return await axios.post(
       NB_DOMAIN + "BoardDetailServlet",
+      DetailObj,
+      HEADER
+    );
+  },
+
+  // 게시물 조회수증가
+  onUpdateHit: async function (gmb_id, gmb_hit) {
+    const DetailObj = {
+      gmb_id: gmb_id,
+      gmb_hit: gmb_hit,
+    };
+    return await axios.post(
+      NB_DOMAIN + "BoardUpdateHitServlet",
       DetailObj,
       HEADER
     );
@@ -49,13 +63,27 @@ const nbApi = {
   },
 
   // 게시물 수정
-  TBoardListUpdate: async function(gmb_title, gmb_content, gmb_id) {
+  TBoardListUpdate: async function(gmb_title, gmb_content, gmb_apply_total, gmb_id) {
     const UpdateObj = {
       gmb_title: gmb_title,
       gmb_content: gmb_content,
       gmb_id: gmb_id,
+      gmb_apply_total: gmb_apply_total,
     };
     return await axios.post(NB_DOMAIN + "BoardUpdateServlet", UpdateObj, HEADER);
-},
+  },
+
+  // 모집 신청하기
+  onApply: async function (gmb_id, gmb_apply) {
+    const ApplyObj = {
+      gmb_id: gmb_id,
+      gmb_apply: gmb_apply,
+    };
+    return await axios.post(
+      NB_DOMAIN + "BoardApplyServlet",
+      ApplyObj,
+      HEADER
+    );
+  },
 };
 export default nbApi;
