@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
+import { faLock, faUser, faEnvelope, faUserTag } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -16,26 +18,41 @@ const Box = styled.div`
   justify-content: center;
 `
 
-const InputLogin = styled.input`
+
+const InputContainer = styled.div`
+  width: 400px;
+  height: 50px;
+  display: flex;
+`
+
+const MsgContainer = styled.div`
+  width: 400px;
+  height: 30px;
+  text-align: right;
+`
+
+const Input = styled.input`
 width: 350px;
 height: 50px;
-border-radius: 20px;
-border: 0.1px solid white;
-align-items: center;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
 `;
 
-const ButtonLogin = styled.button`
+const Button = styled.button`
 width: 150px;
 height: 50px;
-border-radius: 20px;
-border: 0.1px solid cornsilk;
-background-color: cornsilk;
+margin: 0 auto;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
 align-items: center;
 
   & + & {
-    margin-left : 50px;
+    margin-left : 100px;
   }
 `;
+
 
 const FindId = () => {
 
@@ -99,20 +116,27 @@ const FindId = () => {
     <Box>
       <div>
         <div>
-          <InputLogin placeholder="이름" value={inputName} onChange={onChangeName} />
-          <div>
+          <InputContainer>
+          <FontAwesomeIcon icon={faUserTag} size="3x"
+                                  style={{"marginRight": 10}}/> 
+            <Input placeholder="이름" value={inputName} onChange={onChangeName} />
+          </InputContainer>
+          <MsgContainer>
             {/* span 태그의 class에 다른 props 넣어서 false일 때 메세지가 나오도록 수정해야함 */}
             {/* <span className={`message ${isId ? 'success' : 'error'}`}></span> */}
             {/* {inputId > 0 && {isId} ? null : <span>{idMessage}</span>}  */}
-          </div>
-          <br />
+          </MsgContainer>
+          <InputContainer>
+          <FontAwesomeIcon icon={faEnvelope} size="3x"
+                                  style={{"marginRight": 10}}/> 
+            <Input placeholder="이메일" value={inputEmail} onChange={onChangeEmail} />
+          </InputContainer>
+          <MsgContainer>
+
+          </MsgContainer>
           <div>
-            <InputLogin placeholder="이메일" value={inputEmail} onChange={onChangeEmail} />
-          </div>
-          <br />
-          <div>
-            <ButtonLogin onClick={onClickFind}>Find</ButtonLogin>
-            <ButtonLogin onClick={onClickCancel}>Cancel</ButtonLogin>
+            <Button onClick={onClickFind}>ID ?</Button>
+            <Button onClick={onClickCancel}>Cancel</Button>
           </div>
         </div>
       </div>
