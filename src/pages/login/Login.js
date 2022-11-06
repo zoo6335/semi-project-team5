@@ -187,7 +187,7 @@ const Login = () => {
         <LoginContainer>
           {inputPw > 0 && isPw ? <FontAwesomeIcon icon={faLockOpen} size="3x" style={{"marginRight": 10}} />  :
           <FontAwesomeIcon icon={faLock} size="3x" style={{"marginRight": 10}} /> }
-          <InputLogin placeholder="    패스워드" value={inputPw} onChange={onChangePw} />
+          <InputLogin type="password" placeholder="    패스워드" value={inputPw} onChange={onChangePw} />
         </LoginContainer>
         <MsgContainer>
         {pwMessage}

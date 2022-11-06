@@ -2,6 +2,9 @@ import { useState } from "react";
 import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
 import styled from "styled-components";
+import { faIdCard, faUser, faEnvelope, faCalendarDay, faUserTag } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -16,27 +19,39 @@ const Box = styled.div`
   justify-content: center;
 `
 
+const InputContainer = styled.div`
+  width: 400px;
+  height: 50px;
+  display: flex;
+`
+
+const MsgContainer = styled.div`
+  width: 400px;
+  height: 30px;
+  text-align: right;
+`
 
 const Input = styled.input`
-  width: 350px;
-  height: 50px;
-  border-radius: 20px;
-  border: 0.1px solid white;
-  align-items: center;
+width: 350px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
 `;
 
-const BtnSignUp = styled.button`
-  width: 150px;
-  height: 50px;
-  margin: 0 auto;
-  border-radius: 20px;
-  border: 0.1px solid cornsilk;
-  background-color: cornsilk;
-  align-items: center;
+const ButtonOk = styled.button`
+width: 150px;
+height: 50px;
+margin: 0 auto;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
+align-items: center;
 
   & + & {
     margin-left : 50px;
   }
+
 `;
 
 
@@ -64,7 +79,8 @@ const SignUp = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalText, setModalText] = useState("중복된 아이디 입니다.");
 
-
+  const nullMessage = " ";
+  
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -149,44 +165,51 @@ const SignUp = () => {
 
   return (
     <Box>
-        <div>
-            <div>
+        <div style={{ "marginTop" : "-50px"}}>
+            <InputContainer>
+            <FontAwesomeIcon icon={faUser} size="3x"
+                                  style={{"marginRight": 10}}/> 
                 <Input placeholder="아이디" value ={inputId} onChange={onChangeId}/>
-            </div>
-            <div>
-              {inputId.length > 0 && <span className={`message ${isId ? 'success' : 'error'}`}>{idMessage}</span>}
-            </div>
-            <br />
-            <div>
+            </InputContainer>
+            <MsgContainer>
+              { inputId.length > 0 && <span>{idMessage}</span>}
+            </MsgContainer>
+            <InputContainer>
+            <FontAwesomeIcon icon={faLock} size="3x"
+                                  style={{"marginRight": "10px"}}/> 
               <Input placeholder="패스워드" value ={inputPw} onChange={onChangePw}/>
-            </div>
-            <br />
-            <div>
+            </InputContainer>
+            <MsgContainer style={{ "width" : "470px"}}>
               {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
-            </div>
-            <div>
+            </MsgContainer>
+            <InputContainer>
+            <FontAwesomeIcon icon={faLock} size="3x"
+                                  style={{"marginRight": 10}}/> 
               <Input className="input" placeholder="패스워드 확인" value ={inputCheckPw} onChange={onChangeCheckPw}/>
-            </div>
-            <div>
+            </InputContainer>
+            <MsgContainer>
               {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
-            </div>
-            <br /> 
-            <div>
+            </MsgContainer>
+            <InputContainer>
+            <FontAwesomeIcon icon={faUserTag} size="3x"
+                                  style={{"marginRight": 10}}/> 
               <Input placeholder="name"value={inputName} onChange={onChangeName} />
-            </div>
-            <br />
-            <div>
-              <Input placeholder="email"value={inputEmail} onChange={onChangeEmail} />
-            </div>
-            <br />
-            <div>
+            </InputContainer>
+            <MsgContainer></MsgContainer>
+            <InputContainer>
+            <FontAwesomeIcon icon={faEnvelope} size="3x"
+                                  style={{"marginRight": 10}}/> 
+              <Input placeholder="email" value={inputEmail} onChange={onChangeEmail} />
+            </InputContainer>
+            <MsgContainer></MsgContainer>
+            <MsgContainer>
               {(isId && isPw && isCheckPw) ? 
-              <BtnSignUp className="enable_button" onClick={onClickLogin}>SignUp</BtnSignUp> :
-              <BtnSignUp className="disable_button" onClick={onClickLogin}>SignUp</BtnSignUp>}
-              <BtnSignUp onClick={onClickCancle}>Cancle</BtnSignUp>
-              <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
-            </div>
+              <ButtonOk className="enable_button" onClick={onClickLogin}>SignUp</ButtonOk> :
+              <ButtonOk className="disable_button" onClick={onClickLogin}>SignUp</ButtonOk>}
+              <ButtonOk onClick={onClickCancle}>Cancle</ButtonOk>
+            </MsgContainer>
         </div>
+        <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
     </Box>
   );
 }
