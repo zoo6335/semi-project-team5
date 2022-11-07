@@ -90,18 +90,18 @@ const TBoardList = () => {
     <Box>
       <div style={{ height: "130px" }}>
         <LogoBox>
-          <div className="boardCategory">
+          <div className="boardCategory" style={{ position: "fixed" }}>
             <h1>일 행 구 하 기</h1>
             <span>내 동료가 돼라!</span>
           </div>
         </LogoBox>
       </div>
-      <div style={{ height: "100%", width: "100%", overflow: "scroll" }}>
+      <div style={{ height: "100%", width: "100%", overflow: "hidden" }}>
         <form className="board-form" style={{ width: "100%" }}>
           <div>
             {isLogin === "TRUE" && (
-              <button className="WriteBtn" onClick={onClickWrite}>
-                글쓰기📝
+              <button className="boardWriteBtn" onClick={onClickWrite}>
+                글쓰기 📝
               </button>
             )}
             <div className="BoardListTable">
@@ -114,9 +114,9 @@ const TBoardList = () => {
                     <th width="100px">모집현황</th>
                     <th width="80px">글번호</th>
                     <th width="*">제목</th>
-                    <th width="100px">작성자</th>
-                    <th width="100px">작성일</th>
-                    <th width="80px">조회수</th>
+                    <th width="150px">작성자</th>
+                    <th width="150px">작성일</th>
+                    <th width="100px">조회수</th>
                   </tr>
                 </thead>
                 <tbody>
