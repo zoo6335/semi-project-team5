@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import RankingApi from '../api/rankingApi';
+import JYApi from '../api/JYApi';
 import styled from 'styled-components';
 import '../App.css'
 
@@ -17,7 +17,7 @@ const BoardRank = () => {
     const rankData = async () => {
       setLoading(true);
       try {
-        const response = await RankingApi.boardRank("ALL");
+        const response = await JYApi.boardRank("ALL");
         setBoardRank(response.data);
         console.log(response.data)
       } catch (e) {

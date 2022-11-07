@@ -9,7 +9,7 @@ const Box = styled.div`
   border: 4px solid #40baaa;
   border-top: 200px;
   width: 1024px;
-  height: 720px;
+  height: auto;
   margin: 0 auto;
   background-color: rgb(0, 0, 0);
   display: flex;

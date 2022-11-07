@@ -8,9 +8,8 @@ const Box = styled.div`
   border: 4px solid #40baaa;
   border-top: 200px;
   width: 1024px;
-  height: 720px;
+  height: auto;
   margin: 0 auto;
-  background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,7 +103,7 @@ const TBoardDetail = () => {
   // 신청하기 버튼 누를 시 시작
   const onClickApply = (e) => {
     if (boardDetail.gmb_done === "1") {
-      window.alert("모집완료되었습니다");
+      window.alert("모집 완료되었습니다!");
       return;
     }
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정

@@ -1,5 +1,5 @@
 import Login from "./pages/login/Login";
-import './App.css';
+import "./App.css";
 import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./pages/login/Profile";
@@ -9,10 +9,10 @@ import FindPwd from "./pages/login/FindPwd";
 import MyPage from "./pages/login/MyPage";
 import Home from "./home/home";
 import Header from "./components/Header";
-import PrivacyPolicy from './pages/PrivacyPolicy';
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ShowBoard from "./components/ShowBoard";
 import ShowRoom from "./components/ShowRoom";
-import SelectType from './components/SelectType';
+import SelectType from "./components/SelectType";
 import MemberUpdate from "./pages/login/MemberUpdate";
 import Gallery from "./pages/gallery/GalleryInfo";
 import GalleryReg from "./pages/gallery/GalleryReg";
@@ -24,9 +24,9 @@ import Intro5 from "./pages/introduce/Intro5";
 import Intro6 from "./pages/introduce/Intro6";
 import Intro7 from "./pages/introduce/Intro7";
 import Intro8 from "./pages/introduce/Intro8";
-import Introduce from './pages/introduce/Introduce';
-import InntroMember from './pages/introduce/IntroMember';
-import Review from './pages/introduce/review';
+import Introduce from "./pages/introduce/Introduce";
+import InntroMember from "./pages/introduce/IntroMember";
+import Review from "./pages/introduce/review";
 import FreeBoardMain from "./pages/freeboard/BoardMain/BoardMain";
 import FreeBoardFree from "./pages/freeboard/BoardMain/CategoryPages/Board_Free";
 import FreeBoardTrade from "./pages/freeboard/BoardMain/CategoryPages/Board_Trade";
@@ -42,7 +42,6 @@ import TEditBoard from "./pages/findboard/EditBoard";
 import Intro9 from "./pages/introduce/intro9";
 import RBoardList from "./pages/introduce/reviewlist";
 import About10 from "./pages/introduce/intro10";
-
 
 function App() {
   return (
@@ -94,7 +93,6 @@ function App() {
         <Route path="/tWriteBoard" element={<WriteBoard />} />
         <Route path="/tBoardDetail" element={<TBoardDetail />} />
         <Route path="/tEditBoard" element={<TEditBoard />} />
-
       </Routes>
     </Router>
   );
