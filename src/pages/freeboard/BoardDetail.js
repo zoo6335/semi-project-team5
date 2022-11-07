@@ -3,7 +3,6 @@ import Api from "../../api/FbApi";
 import "./FreeBoardStyle.css";
 import Modal from "../../util/Modal";
 import styled from "styled-components";
-import CommentList from "../../components/comment/CommentList";
 
 const BoardDetail = () => {
   const BoardBlock = styled.div`
