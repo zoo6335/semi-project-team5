@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import './About.css';
-import Location from "../Map/Location";
+import Location3 from "../Map/Location3";
 import introImg from "./images/14.jpg";
 
 
@@ -50,7 +50,7 @@ const About10 = () => {
 
                 </ul>
 
-                <Location></Location>
+                <Location3></Location3>
 
             </div>
 
