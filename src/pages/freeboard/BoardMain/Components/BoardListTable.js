@@ -3,15 +3,16 @@ import Api from '../../../../api/FbApi';
 // import '../App.css'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../images/pacmanLoading.gif';
 
 
 const FBoardList = () => {
   const [fBoardList, setFBoardList] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const onClickBoardDetail = (val) => {
-    console.log("게시글 상세페이지로 이동 : " + val);
-    window.localStorage.setItem("Detail", val);
+  const onClickBoardDetail = (val, val2) => {
+    window.localStorage.setItem("fb_id", val);  
+    window.localStorage.setItem("fb_user_id", val2);
     window.location.replace("/BoardDetail");
   } 
 
@@ -21,7 +22,6 @@ const FBoardList = () => {
       try {
         const response = await Api.fBoardList();
         setFBoardList(response.data);
-        console.log(response.data)
       } catch (e) {
         console.log(e);
       }
@@ -30,14 +30,15 @@ const FBoardList = () => {
     BoardData();
   }, []);
 
-  // 추후 에니메이션으로 변경 예정
+  // 로딩 중 화면 gif로 변경하였으나 안 됨..
   if (loading) {
-    return <p>로딩중.. 잠시만 기다려주세요</p>
+    return <p>로딩 중 입니다.... 조금만 기다려 주세요.</p>
+    // <div><img src="../images/pacmanLoading.gif" alt="loading..."/></div>
   }
 
   return (
     <div className="BoardListTable">
-      <Table class="table table-striped">
+      <Table className="table table">
         <thead>
           <tr>
             <th>글번호</th>
@@ -51,10 +52,11 @@ const FBoardList = () => {
         <tbody>
           {console.log(fBoardList)}
           {fBoardList && fBoardList.map((list) => (
-            <tr key={list.fb_id} onClick={()=>onClickBoardDetail(list.fb_id)}>
+            <tr key={list.fb_id} onClick={()=>onClickBoardDetail(list.fb_id, list.fb_user_id)}>
               <td>{list.fb_id}</td>
               <td>{list.fb_category}</td>
-              <td>{list.fb_title}</td>
+              {/* html 태그 안 보이도록 정규식 적용 */}
+              <td>{(list.fb_title).replace(/<[^>]*>?/g,'')}</td>
               <td>{list.fb_user_id}</td>
               <td>{list.fb_c_date}</td>
               <td>{list.fb_hit}</td>
@@ -65,4 +67,5 @@ const FBoardList = () => {
     </div>
   );
 }
+
 export default FBoardList;
