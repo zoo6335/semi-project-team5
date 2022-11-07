@@ -7,7 +7,7 @@ import SignUp from "./pages/login/SignUp";
 import FindId from "./pages/login/FindId";
 import FindPwd from "./pages/login/FindPwd";
 import MyPage from "./pages/login/MyPage";
-import Home from "./home/Home";
+import Home from "./home/home";
 import Header from "./components/Header";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ShowBoard from "./components/ShowBoard";
@@ -79,12 +79,11 @@ function App() {
         <Route path="/review" element={<Review />} />
         <Route path="/reviewlist" element={<RBoardList />} />
 
-
-        <Route path="/totalBoard" element={<FreeBoardMain />}/>
-        <Route path="/boardFree" element={<FreeBoardFree />}/> 
-        <Route path="/boardTrade" element={<FreeBoardTrade />}/> 
-        <Route path="/boardRecommend" element={<FreeBoardRecommend />}/> 
-        <Route path="/boardTip" element={<FreeBoardTip />}/> 
+        <Route path="/totalBoard" element={<FreeBoardMain />} />
+        <Route path="/boardFree" element={<FreeBoardFree />} />
+        <Route path="/boardTrade" element={<FreeBoardTrade />} />
+        <Route path="/boardRecommend" element={<FreeBoardRecommend />} />
+        <Route path="/boardTip" element={<FreeBoardTip />} />
         <Route path="/boardDetail" element={<BoardDetail />} />
         <Route path="/boardWrite" element={<FreeBoardWrite />} />
         <Route path="/boardUpdate" element={<FreeBoardUpdate />} />

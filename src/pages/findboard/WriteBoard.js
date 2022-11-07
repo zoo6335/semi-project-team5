@@ -1,9 +1,12 @@
-import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
+
 import React, { useState } from "react";
-import styled from "styled-components";
-import nbApi from "../../api/nbApi";
+
 import Modal from "../../util/Modal";
+import SunEditor from "suneditor-react";
+import nbApi from "../../api/nbApi";
+import styled from "styled-components";
+
 // import ReactHtmlParser from "html-react-parser";
 
 const Box = styled.div`
@@ -12,6 +15,7 @@ const Box = styled.div`
   width: 1024px;
   height: auto;
   margin: 0 auto;
+  background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
   background-color: rgb(0, 0, 0);
@@ -35,14 +39,7 @@ const LogoBox = styled.div`
 `;
 
 const WriteBoard = () => {
-  // 뒤로가기 버튼
-  const onCLickgoBack = (e) => {
-    e.preventDefault();
-    console.log("뒤로가기 버튼 클릭");
-    window.location.replace("/TBoardList");
-  };
   const gmb_user_id = window.localStorage.getItem("userId");
-
   // 로그인 상태가 아닐때는 글작성할 수 없게
   const isLogin = window.localStorage.getItem("isLogin");
   if (isLogin === "FALSE") window.location.replace("/");
@@ -57,6 +54,14 @@ const WriteBoard = () => {
   const onChangeApplyTotal = (applyTotal) =>
     setApplyTotal(applyTotal.target.value);
 
+  // 뒤로가기 버튼
+  const onCLickgoBack = (e) => {
+    e.preventDefault();
+    console.log("뒤로가기 버튼 클릭");
+    window.location.replace("/TBoardList");
+  };
+
+  // 작성완료 버튼 클릭 시 동작하는 함수
   const onClick = (e) => {
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
     setModalOpen(true);
@@ -80,7 +85,7 @@ const WriteBoard = () => {
     }
   };
 
-  // 모달 닫힘
+  // 모달 닫기
   const closeModal = () => {
     setModalOpen(false);
   };
@@ -113,12 +118,18 @@ const WriteBoard = () => {
                 </button>
               </div>
               <div style={{ width: "85%" }}>
-                <h2 style={{ textAlign: "center", marginTop: "30px" }}>
+                <h2
+                  style={{
+                    textAlign: "center",
+                    marginTop: "30px",
+                    marginRight: "100px",
+                  }}
+                >
                   새글쓰기
                 </h2>
               </div>
             </div>
-            <div style={{ height: "900px" }} className="table">
+            <div style={{ height: "900px" }} className="write_table">
               <table style={{ width: "900px", marginLeft: "2.8rem" }}>
                 <thead>
                   <col style={{ width: "80px" }} />
@@ -136,7 +147,7 @@ const WriteBoard = () => {
                         placeholder="제목을 입력하세요."
                         value={titleInput}
                         onChange={onChangeTitle}
-                        style={{ margin: "1px", width: "100%" }}
+                        style={{ width: "100%", margin: "2px" }}
                       />
                     </td>
                   </tr>
@@ -185,7 +196,7 @@ const WriteBoard = () => {
                         onChange={onChangeApplyTotal}
                         min={1}
                         max={6}
-                        style={{ margin: "1px", width: "50%" }}
+                        style={{ margin: "2px", width: "50%" }}
                       />
                     </td>
                   </tr>
