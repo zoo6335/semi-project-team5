@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react';
-// import RankingApi from '../api/rankingApi';
+// import JYApi from '../api/JYApi';
 // import styled from 'styled-components';
 
 // const BoardBlock = styled.div`
@@ -23,7 +23,7 @@
 //     useEffect(() => {
 //         const boardData = async () => {
 //             try {
-//                 const response = await RankingApi.showBoard(getDetail); // 전체 회원 조회
+//                 const response = await JYApi.showBoard(getDetail); // 전체 회원 조회
 //                 setBoardDetail(response.data);
 //                 console.log(response.data)
 //             } catch (e) {

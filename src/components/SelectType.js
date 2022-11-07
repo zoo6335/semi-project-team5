@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react';
-// import RankingApi from '../api/rankingApi';
+// import JYApi from '../api/JYApi';
 // import styled from 'styled-components';
 // // 카테고리 클릭 시 카테고리에 맞는 방탈출 소개.. (버리게 될듯한 컴포넌트)
 // // 이 페이지는 어떻게 구성돼야 하는지 생각 해봤는데,
@@ -12,7 +12,7 @@
 //     useEffect(() => {
 //         const roomData = async () => {
 //             try {
-//                 const response = await RankingApi.selectType(getDetail); // 전체 회원 조회
+//                 const response = await JYApi.selectType(getDetail); // 전체 회원 조회
 //                 setRoomType(response.data);
 //                 console.log(response.data)
 //             } catch (e) {
