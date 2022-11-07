@@ -103,7 +103,7 @@ const Intro = () => {
                             <tr>
                                 <th scope="col">팀원</th>
                                 <th scope="col">구현부</th>
-                                <th scope="col">옵셥사항</th>
+                                <th scope="col">옵션사항</th>
 
                             </tr>
                         </thead>
