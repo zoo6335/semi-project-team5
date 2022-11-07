@@ -4,8 +4,7 @@ import JYApi from "../../api/JYApi";
 import { render } from "@testing-library/react";
 
 const WriteContent = ({ inputContent, setInputContent }) => {
-  
-  const isLogin = window.localStorage.getItem("isLogin");   // 로그인 상태가 아닐때는 글 작성할 수 없게
+  const isLogin = window.localStorage.getItem("isLogin"); // 로그인 상태가 아닐때는 글 작성할 수 없게
   if (isLogin === "FALSE") window.location.replace("/login"); // 로그인 페이지로 이동
 
   const getUserId = window.localStorage.getItem("userId"); // 유저 아이디 값 가져오기
@@ -39,6 +38,9 @@ const WriteContent = ({ inputContent, setInputContent }) => {
   );
 };
 const WriteBlock = styled.div`
+  width: 800px;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   & > textarea {
     width: 800px;
