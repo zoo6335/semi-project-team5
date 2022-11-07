@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import Api from '../../api/FbApi';
 import './FreeBoardStyle.css'
 import Modal from '../../util/Modal';
+
 import styled from 'styled-components';
+import CommentList from "../../components/comment/CommentList";
+
 
 const BoardDetail = () => {
   const getFb_id = window.localStorage.getItem("fb_id");
@@ -15,6 +18,7 @@ const BoardDetail = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [errModalOpen, setErrModalOpen] = useState(false);
   const [errModalText, setErrModelText] = useState("본인이 작성한 글만 가능합니다.");
+
 
   // 게시글 목록으로 이동
   function onClickMain() {
@@ -50,6 +54,7 @@ const BoardDetail = () => {
 
   // 게시글 수정(본인글만 수정 가능)
   const onClickUpdate = (val) => {
+
     if(getUserId === getFb_user_id) {
       console.log("게시글 수정페이지로 이동 : " + val);
       window.location.replace("/boardUpdate");
@@ -58,6 +63,7 @@ const BoardDetail = () => {
       setErrModelText("본인이 작성한 글만 수정이 가능합니다.");
     }
   } 
+
 
   // 게시글 삭제(본인글만 삭제 가능)
   function onClickDelete() {
@@ -122,12 +128,44 @@ const BoardDetail = () => {
               </div>
             ))}
           </div>
+
           
           <div className="buttonBox">
             <Button onClick={()=>onClickUpdate(getFb_id)}>수정</Button>
             <Button onClick={onClickDelete}>삭제</Button>
           </div>
           {/* 댓글 컴포넌트 위치 */}
+
+
+          <div className="read-contents-UD">
+            <button className="update" onClick={() => onClickUpdate(getDetail)}>수정</button>
+            <button className="delete" onClick={onClickDelete}>삭제</button>
+          </div>
+          {/* 댓글 컴포넌트 입니다! */}
+          <CommentList /> 
+
+          {/* 댓글 컴포넌트로 분리 예정 */}
+          {/* <div className="comment">
+            <div className="comment-read-box">
+              <div>작성자</div>
+              <div>작성 날짜</div>
+              <div>댓글 내용</div>
+              visibility:hidden 로그인id와 댓글 작성자id가 일치하는 경우에만 hidden 해제
+              <div className="comment-UD">
+                <button className="comment-update" onClick={onClickUpdate}>수정</button>
+                <button className="comment-delete" onClick={onClickDelete}>삭제</button>
+              </div>
+            </div>
+              <div className="comment-write-box">
+                <p>작성자</p>
+                <p>댓글 내용</p>
+                <div className="comment-create">
+                  <button>등록</button>
+                </div>
+              </div>
+          </div> */}
+        </div>
+
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 삭제하시겠습니까?</Modal>}
         <Modal open={errModalOpen} close={errCloseModal} header="작성자 불일치">{errModalText}</Modal>
       </BoardBlock>

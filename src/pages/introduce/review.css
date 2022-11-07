@@ -1,30 +1,41 @@
 .App2 {
     text-align: center;
+    border: 4px solid #40BAAA;
+    border-top: none;
+    width: 1024px;
+    height: 1000px;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+
 }
 
-.review-container {
+.review-container2 {
     margin: 0 auto;
     width: 80%;
     border: 1px solid #333;
     padding: 10px 0 30px 0;
     border-radius: 5px;
     margin-bottom: 50px;
+
+
 }
 
-.form-wrapper {
+.form-wrapper2 {
     width: 60%;
     margin: 0 auto;
 }
 
-.title-input {
+.title-input2 {
     width: 500px;
     height: 40px;
     margin: 10px;
 }
 
-.submit-button {
+.submit-button2 {
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: white;
     padding: 10px 20px 10px 20px;
     margin: 10px;
@@ -38,13 +49,19 @@
 
 }
 
-.submit-button:active {
+.submit-button2:active {
     transform: translateY(3px);
 }
 
-
+td {
+    color: gray !important;
+}
 
 
 .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
     min-height: 500px;
+}
+
+.title-review {
+    padding: 30px;
 }

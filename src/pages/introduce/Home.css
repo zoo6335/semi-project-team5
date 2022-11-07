@@ -6,29 +6,44 @@
     overflow: hidden;
     position: relative;
     flex-wrap: wrap;
-    flex-grow: 1;
+    flex-grow: 3;
+    border: 4px solid #40BAAA;
+    border-top: none;
+    width: 1024px;
+    height: 2000px;
+    background-color: rgb(0, 0, 0);
+    flex-direction: column;
+
+
 }
 
 .flex_item {
 
     flex-basis: 400px;
+    border: 0.5px solid #40BAAA;
+
 }
 
-.btn {
+.flex_item h2 {
+
+    padding: 20px;
+}
+
+.btnn {
     text-decoration: none;
-    font-size: 1.3rem;
-    color: white;
-    padding: 10px 20px 10px 20px;
+    font-size: 1em;
+    font-weight: 800;
+    padding: 5px 20px 10px 20px;
     margin: 10px;
     display: inline-block;
     border-radius: 10px;
     transition: all 0.1s;
-    text-shadow: 0px -2px rgba(68, 68, 68, 0.44);
-
+    /* text-shadow: 0px -2px rgba(68, 68, 68, 0.44); */
+    color: rgb(7, 7, 7);
 
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 2000px) {
 
     .flex_container {}
 }
@@ -38,17 +53,17 @@
 
 
 
-.btn:active {
+.btnn:active {
     transform: translateY(3px);
 }
 
-.btn.page {
+.btnn.page {
     background-color: #8DC0F1;
     border: none;
     border-bottom: 5px solid #80aeda;
 }
 
-.btn.page2 {
+.btnn.page2 {
     background-color: #FFD990;
     border: none;
     border-bottom: 5px solid #ecc885;
@@ -73,3 +88,6 @@
     opacity: 1;
     transform: translateX(200px);
 } */
+.pro {
+    padding: 15px;
+}

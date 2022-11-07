@@ -8,6 +8,7 @@ import TitleImg from '../images/boardTitleImg-text.png';
 
 const FreeBoardFree = () => {
 
+
   const getisLogin = window.localStorage.getItem("isLogin");
   const [ModalOpen, setModalOpen] = useState(false);
 
@@ -24,6 +25,7 @@ const FreeBoardFree = () => {
     } else {
     window.location.replace("/BoardWrite")
     }
+
   };
 
   function onClickMain() {
@@ -31,19 +33,19 @@ const FreeBoardFree = () => {
   };
 
   function onClickFree() {
-    window.location.replace("/BoardFree");
+    window.location.replace("/boardFree");
   };
 
   function onClickTrade() {
-    window.location.replace("/BoardTrade");
+    window.location.replace("/boardTrade");
   };
 
   function onClickRecommend() {
-    window.location.replace("/BoardRecommend");
+    window.location.replace("/boardRecommend");
   };
 
   function onClickTip() {
-    window.location.replace("/BoardTip");
+    window.location.replace("/boardTip");
   };
 
   return (

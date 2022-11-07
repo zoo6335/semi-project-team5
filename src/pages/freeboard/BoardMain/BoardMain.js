@@ -26,11 +26,13 @@ const FreeBoardMain = () => {
   };
 
   function onClickMain() {
+
     window.location.replace("/totalBoard");
+
   };
 
   function onClickFree() {
-    window.location.replace("/BoardFree");
+    window.location.replace("/boardFree");
   }
 
   function onClickTrade() {

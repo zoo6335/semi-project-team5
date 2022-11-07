@@ -1,15 +1,16 @@
 import { useState } from "react";
-import axios from "axios";
-import DjApi from '../api/DjApi'
+import DjApi from '../../api/DjApi'
+import styled from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faIdCard, faUser, faEnvelope, faCalendarDay, faUserTag } from "@fortawesome/free-solid-svg-icons";
 
-const memberObj = {
-  id: "",
-  pwd: "",
-  name: "",
-  addr: "",
-  mail: "",
-  phone: ""
-};
+const Input = styled.input`
+width: 350px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
+`;
 
 const MemberReg = () => {
   const [id, setId] = useState('');
@@ -48,13 +49,13 @@ const MemberReg = () => {
     <div>
       <h1>회원 정보 설정</h1>
       <br/>
-      <input type="text" placeholder='아이디 입력' value={id} onChange={onChangeId} />
+      <Input type="text" placeholder='아이디' value={id} onChange={onChangeId} />
       <br />
-      <input type="password" placeholder='패스워드 입력' value={pwd} onChange={onChangePwd} />
+      <Input type="password" placeholder='패스워드' value={pwd} onChange={onChangePwd} />
       <br />
-      <input type="text" placeholder='이름 입력' value={name} onChange={onChangeName} />
+      <Input type="text" placeholder='이름' value={name} onChange={onChangeName} />
       <br />
-      <input type="email" placeholder='메일 입력' value={mail} onChange={onChangeMail} />
+      <Input type="email" placeholder='메일' value={mail} onChange={onChangeMail} />
       <br />
       {submit && <button onClick={onSubmit}>전송</button>}
       {resData &&  resData.map(list =>(

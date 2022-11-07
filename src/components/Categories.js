@@ -50,7 +50,6 @@ const CategoryBlock = styled.div`
             color: black;
             &:hover {
                 color: blue;
-                /* #3bc9db; */
             }
         }
         & + & {

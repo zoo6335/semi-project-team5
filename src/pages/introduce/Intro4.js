@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import './About.css';
-import Location from "../Map/Location";
-import Location3 from "../Map/Location3";
 import Location4 from "../Map/Location4";
 import introImg from "./images/4.png";
 
@@ -24,10 +22,9 @@ const About4 = () => {
                         <br />아, 봄이었구나.</p>
                     <p className="pastelred-text">★ 전체 이용가 테마입니다.
                         <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
-                    <Link to="/introduce"><button className="btn intro">소개</button></Link>
-
-                    <a href="https://xn--2e0b040a4xj.com/reservation?branch=2&theme=9#list" className="btn site" target="_blank">사이트 방문하기</a>
-                    <Link to="/Review"><button className="btn page2">후기페이지</button></Link>
+                    <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
+                    <a href="https://xn--2e0b040a4xj.com/reservation?branch=2&theme=9#list" className="btnn site" target="_blank">사이트 방문하기</a>
+                    <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
                 </div>
 
                 <ul>

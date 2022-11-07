@@ -1,14 +1,15 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
-    return (
-        <FooterBlock>
-            <span>개인정보 처리방침</span>
-            <span>서비스 약관</span>
-            <span>©2022 NagaBang, Inc. All Rights Reserved.</span>
-            <span className="span_nagabang">NagaBang</span>
-        </FooterBlock>
-    )
+  return (
+    <FooterBlock>
+      <Link to="/PrivacyPolicy">개인정보 처리방침</Link>
+      <span>서비스 약관</span>
+      <span>©2022 NagaBang, Inc. All Rights Reserved.</span>
+      <span className="span_nagabang">NagaBang</span>
+    </FooterBlock>
+  )
 }
 const FooterBlock = styled.div`
     border-top: 1px solid #40BAAA;

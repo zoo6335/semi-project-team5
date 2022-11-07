@@ -24,7 +24,7 @@ const Location4 = () => {
 
         marker.setMap(map);
 
-        var iwContent = '<div style="padding:5px;">지구별 홍대어드벤처점<br><a href="http://kko.to/XWWHXMbhQ3" style="color:blue" target="_blank"> 큰지도보기</a> <a href="http://kko.to/XWWHXMbhQ3" style="color:blue" target="_blank"> 길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+        var iwContent = '<div style="padding:5px;">지구별 홍대점<br><a href="http://kko.to/XWWHXMbhQ3" style="color:blue" target="_blank"> 큰지도보기</a> <a href="http://kko.to/XWWHXMbhQ3" style="color:blue" target="_blank"> 길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             iwPosition = new kakao.maps.LatLng(37.55224536816938, 126.92215647510683); //인포윈도우 표시 위치입니다
 
         // 인포윈도우를 생성합니다
