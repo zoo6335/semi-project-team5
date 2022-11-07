@@ -7,6 +7,7 @@ import '../images/pacmanLoading.gif';
 
 
 const FBoardList = () => {
+
   const [fBoardList, setFBoardList] = useState('');
   const [loading, setLoading] = useState(false);
 

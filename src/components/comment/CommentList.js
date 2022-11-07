@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import RankingApi from '../../api/rankingApi';
+import JYApi from '../../api/JYApi';
 import styled from 'styled-components';
 import WriteContent from "./WriteComment";
 
@@ -11,7 +11,7 @@ const CommentList = () => {
   useEffect(() => {
     const CommentData = async () => {
       try {
-        const response = await RankingApi.commentList(getDetail);
+        const response = await JYApi.commentList(getDetail);
         setCommentDetail(response.data);
         console.log(response.data)
       } catch (e) {

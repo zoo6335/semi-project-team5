@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react';
-// import RankingApi from '../api/rankingApi';
+// import JYApi from '../api/JYApi';
 // import styled from 'styled-components';
 
 // const RoomDetail = () => {
@@ -10,7 +10,7 @@
 //     useEffect(() => {
 //         const roomData = async () => {
 //             try {
-//                 const response = await RankingApi.showRoom(getDetail); // 전체 회원 조회
+//                 const response = await JYApi.showRoom(getDetail); // 전체 회원 조회
 //                 setRoomDetail(response.data);
 //                 console.log(response.data)
 //             } catch (e) {

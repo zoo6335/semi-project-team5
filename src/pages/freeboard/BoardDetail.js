@@ -2,11 +2,94 @@ import { useState, useEffect } from "react";
 import Api from "../../api/FbApi";
 import "./FreeBoardStyle.css";
 import Modal from "../../util/Modal";
-
 import styled from "styled-components";
 import CommentList from "../../components/comment/CommentList";
 
 const BoardDetail = () => {
+  const BoardBlock = styled.div`
+    border: 4px solid #40baaa;
+    border-top: none;
+    width: 1024px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    // div < button 가운데 정렬 수정 필요
+    // .buttonBox {
+    //   align-items: center;
+    // }
+  `;
+
+  const BoardTitle = styled.div`
+    display: flex;
+    height: 100px;
+    padding: 30px;
+    & p {
+      font-size: 2.6em;
+      font-family: "SFont";
+      font-weight: bold;
+      color: #40baaa;
+    }
+  `;
+
+  const Button = styled.button`
+    display: inline-block;
+    font-family: "Sfont";
+    font-size: 1.4em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 2px gray;
+    width: 100px;
+    height: 40px;
+    background-color: #ed9dcc;
+    border: none;
+    border-radius: 8px;
+    margin: 10px;
+    &:hover {
+      background-color: #dbdbdb;
+    }
+  `;
+
+  const ReadTitle = styled.div`
+    border: 2px solid #8dc0f1;
+    border-radius: 20px;
+    width: 800px;
+    padding: 3px;
+    margin: 3px;
+    padding: 10px;
+  `;
+
+  const ReadInfo = styled.div`
+    border: 2px solid #8DC0F1;
+    border-radius: 20px;
+    width: 800px;
+    padding: 10px;
+    margin: 3px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    .fb_id{
+      display: none;
+
+  `;
+
+  const ReadContents = styled.div`
+    border: 2px solid #8dc0f1;
+    border-radius: 20px;
+    width: 800px;
+    height: 400px;
+    padding: 10px;
+    margin: 3px;
+  `;
+
   const getFb_id = window.localStorage.getItem("fb_id");
   const getUserId = window.localStorage.getItem("userId");
   const getFb_user_id = window.localStorage.getItem("fb_user_id");
@@ -125,44 +208,11 @@ const BoardDetail = () => {
             </div>
           ))}
       </div>
-
       <div className="buttonBox">
         <Button onClick={() => onClickUpdate(getFb_id)}>수정</Button>
         <Button onClick={onClickDelete}>삭제</Button>
       </div>
       {/* 댓글 컴포넌트 위치 */}
-
-      <div className="read-contents-UD">
-        <button className="update" onClick={() => onClickUpdate()}>
-          수정
-        </button>
-        <button className="delete" onClick={onClickDelete}>
-          삭제
-        </button>
-      </div>
-      {/* 댓글 컴포넌트 입니다! */}
-      <CommentList />
-
-      {/* 댓글 컴포넌트로 분리 예정 */}
-      {/* <div className="comment">
-            <div className="comment-read-box">
-              <div>작성자</div>
-              <div>작성 날짜</div>
-              <div>댓글 내용</div>
-              visibility:hidden 로그인id와 댓글 작성자id가 일치하는 경우에만 hidden 해제
-              <div className="comment-UD">
-                <button className="comment-update" onClick={onClickUpdate}>수정</button>
-                <button className="comment-delete" onClick={onClickDelete}>삭제</button>
-              </div>
-            </div>
-              <div className="comment-write-box">
-                <p>작성자</p>
-                <p>댓글 내용</p>
-                <div className="comment-create">
-                  <button>등록</button>
-                </div>
-              </div>
-          </div> */}
       {modalOpen && (
         <Modal
           open={modalOpen}
@@ -180,90 +230,5 @@ const BoardDetail = () => {
     </BoardBlock>
   );
 };
-
-const BoardBlock = styled.div`
-  border: 4px solid #40baaa;
-  border-top: none;
-  width: 1024px;
-  height: 100%;
-  margin: 0 auto;
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-  // div < button 가운데 정렬 수정 필요
-  // .buttonBox {
-  //   align-items: center;
-  // }
-`;
-
-const BoardTitle = styled.div`
-  display: flex;
-  height: 100px;
-  padding: 30px;
-
-  & p {
-    font-size: 2.6em;
-    font-family: "SFont";
-    font-weight: bold;
-    color: #40baaa;
-  }
-`;
-
-const Button = styled.button`
-  display: inline-block;
-  font-family: "Sfont";
-  font-size: 1.4em;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 2px gray;
-  width: 100px;
-  height: 40px;
-  background-color: #ed9dcc;
-  border: none;
-  border-radius: 8px;
-  margin: 10px;
-  &:hover {
-    background-color: #dbdbdb;
-  }
-`;
-
-const ReadTitle = styled.div`
-  border: 2px solid #8dc0f1;
-  border-radius: 20px;
-  width: 800px;
-  padding: 3px;
-  margin: 3px;
-  padding: 10px;
-`;
-
-const ReadInfo = styled.div`
-  border: 2px solid #8DC0F1;
-  border-radius: 20px;
-  width: 800px;
-  padding: 10px;
-  margin: 3px;
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  .fb_id{
-    display: none;
-
-`;
-
-const ReadContents = styled.div`
-  border: 2px solid #8dc0f1;
-  border-radius: 20px;
-  width: 800px;
-  height: 400px;
-  padding: 10px;
-  margin: 3px;
-`;
 
 export default BoardDetail;

@@ -2,7 +2,6 @@ import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
 import React, { useState } from "react";
 import styled from "styled-components";
-import Form from "react-bootstrap/Form";
 import nbApi from "../../api/nbApi";
 import Modal from "../../util/Modal";
 // import ReactHtmlParser from "html-react-parser";
@@ -27,6 +26,7 @@ const LogoBox = styled.div`
   margin: auto;
   margin-top: 2rem;
   font-family: "DungGeunMo";
+  z-index: 10;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1em;
@@ -91,7 +91,7 @@ const WriteBoard = () => {
         <div style={{ height: "20%" }}>
           <div style={{ height: "98px" }}>
             <LogoBox>
-              <div className="boardCategory">
+              <div className="boardCategory" style={{ position: "fixed" }}>
                 <h1>일 행 구 하 기</h1>
                 <span>내 동료가 돼라!</span>
               </div>
@@ -102,23 +102,24 @@ const WriteBoard = () => {
           style={{
             height: "80%",
             width: "100%",
-            backgroundColor: "black",
             zIndex: "5",
           }}
         >
           <div style={{ height: "100%", width: "100%" }}>
-            <div style={{ display: "flex", width: "100%" }}>
-              <div style={{ width: "10%" }}>
+            <div style={{ display: "flex", width: "100%", zIndex: "-10" }}>
+              <div style={{ width: "15%", margin: "15px" }}>
                 <button className="goBackBtn" onClick={onCLickgoBack}>
-                  뒤로가기⬅
+                  뒤로가기
                 </button>
               </div>
-              <div style={{ width: "80%" }}>
-                <h1 style={{ textAlign: "center" }}>새글쓰기</h1>
+              <div style={{ width: "85%" }}>
+                <h2 style={{ textAlign: "center", marginTop: "30px" }}>
+                  새글쓰기
+                </h2>
               </div>
             </div>
             <div style={{ height: "900px" }} className="table">
-              <table style={{ width: "1000px", margin: "15px" }}>
+              <table style={{ width: "900px", marginLeft: "2.8rem" }}>
                 <thead>
                   <col style={{ width: "80px" }} />
                   <col style={{ width: "*" }} />
@@ -152,7 +153,7 @@ const WriteBoard = () => {
                           onChangeContent(content);
                         }}
                         setContents={inputContent}
-                        height="500px"
+                        height="200px"
                         setOptions={{
                           buttonList: [
                             [

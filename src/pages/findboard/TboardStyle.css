@@ -34,7 +34,6 @@
   position: fixed;
   margin: 0 auto;
   top: 140px;
-  z-index: 10;
   border-radius: 5px;
   text-emphasis-color: cornsilk;
   @media screen and (max-width: 768px) {
@@ -77,12 +76,11 @@
 /* 새글쓰기 버튼 */
 .boardWriteBtn {
   font-family: "small-font";
-  margin-top: 100px;
   text-decoration: none;
   font-size: 1.3rem;
   color: white;
   padding: 5px 10px 5px 10px;
-  margin: 15px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
   display: block;
   border-radius: 10px;
   transition: all 0.1s;
@@ -92,7 +90,7 @@
   border-bottom: 5px solid #386088;
 }
 
-.boardWriteBtn:hover {
+.boardWriteBtn:active {
   transform: translateY(3px);
 }
 
@@ -104,7 +102,7 @@
   font-size: 1.3rem;
   color: white;
   padding: 5px 10px 5px 10px;
-  margin: 15px 10px 10px 10px;
+  margin: 10px 10px 10px 30px;
   display: block;
   border-radius: 10px;
   transition: all 0.1s;
@@ -114,19 +112,23 @@
   border-bottom: 5px solid #7a6744;
 }
 
-.boardWriteBtn:hover {
+.goBackBtn:hover {
   transform: translateY(3px);
 }
 
-.boardWrite-form h1 {
-  color: cornsilk;
-}
 /* 글쓰기 페이지 - 제목 입력란*/
 .title-input {
   display: block;
   position: sticky;
   top: 200px;
-  font-family: "Neodgm";
+  padding: 5px;
+}
+/* 글쓰기 페이지 - 인원수 입력란 */
+.number-input {
+  display: block;
+  position: sticky;
+  top: 200px;
+  padding: 5px;
 }
 
 /* 글쓰기 페이지 - 작성완료 버튼 */
@@ -140,6 +142,7 @@
   color: white;
   padding: 10px 20px 10px 20px;
   margin: auto;
+  margin-top: 30px;
   border-radius: 10px;
   transition: all 0.1s;
   text-shadow: 0px -2px rgba(68, 68, 68, 0.44);
@@ -148,7 +151,7 @@
   border-bottom: 5px solid #da7e7e;
 }
 
-.submitBtn:active {
+.submitBtn:hover {
   transform: translateY(3px);
 }
 

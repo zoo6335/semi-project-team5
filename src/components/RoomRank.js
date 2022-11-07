@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import RankingApi from '../api/rankingApi';
+import JYApi from '../api/JYApi';
 import styled from 'styled-components';
 import '../App.css'
 
@@ -12,7 +12,7 @@ const RoomRank = () => {
     const rankData = async () => {
       setLoading(true);
       try {
-        const response = await RankingApi.roomRank("ALL"); // 제이슨객체로 받아오고
+        const response = await JYApi.roomRank("ALL"); // 제이슨객체로 받아오고
         setRoomRank(response.data); // 그걸 객체로 받아서
         console.log(response.data) // 그 객체 모음을 찍어보는거야 
       } catch (e) {
