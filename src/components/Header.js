@@ -52,6 +52,7 @@ const HeaderBlock = styled.div`
     flex-direction: column;
     position: sticky;
     top: 0px;
+    z-index: 10;
 
     .logo {
         margin: 0 auto;

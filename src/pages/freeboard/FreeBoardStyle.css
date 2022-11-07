@@ -1,0 +1,36 @@
+/* FreeBoard 공통 */
+@font-face {
+  font-family: "LFont";
+  src: url("../../fonts/neodgm.ttf")
+}
+@font-face {
+  font-family: "MFont";
+  src: url("../../fonts/PF스타더스트\ Bold.ttf")
+}
+@font-face {
+  font-family: "SFont";
+  src: url("../../fonts/PF스타더스트S.ttf")
+}
+.container {
+  border: 4px solid #40BAAA;
+  border-top: none;
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+/* .ck.ck-editor__editable:not(.ck-editor__nested-editable) { */
+.ck.ck-editor__editable {
+  width: auto;
+  min-width: 600px;
+  height: auto;
+  min-height: 500px;
+}
+
+.button {
+  text-align: right;
+}
