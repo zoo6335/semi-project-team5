@@ -12,6 +12,7 @@ const Box = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  background-color: rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
 `;

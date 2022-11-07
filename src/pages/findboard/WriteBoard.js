@@ -13,9 +13,9 @@ const Box = styled.div`
   width: 1024px;
   height: auto;
   margin: 0 auto;
-  background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
+  background-color: rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
 `;
@@ -89,7 +89,7 @@ const WriteBoard = () => {
     <Box>
       <div style={{ height: "100%" }}>
         <div style={{ height: "20%" }}>
-          <div style={{ height: "130px" }}>
+          <div style={{ height: "98px" }}>
             <LogoBox>
               <div className="boardCategory">
                 <h1>일 행 구 하 기</h1>
@@ -98,7 +98,14 @@ const WriteBoard = () => {
             </LogoBox>
           </div>
         </div>
-        <div style={{ height: "80%" }}>
+        <div
+          style={{
+            height: "80%",
+            width: "100%",
+            backgroundColor: "black",
+            zIndex: "5",
+          }}
+        >
           <div style={{ height: "100%", width: "100%" }}>
             <div style={{ display: "flex", width: "100%" }}>
               <div style={{ width: "10%" }}>

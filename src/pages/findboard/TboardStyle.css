@@ -23,58 +23,6 @@
   font-family: "small-font";
 }
 
-/* button {
-  font-family: "small-font";
-  font-size: 1.4em;
-  font-weight: bold;
-  width: 100px;
-  height: 40px;
-  background-color: #ed77bc;
-  border: none;
-  border-radius: 8px;
-  margin: 10px;
-}
-button:hover {
-  background-color: #dbdbdb;
-  transform: translateY(-3px);
-} */
-
-/* 게시판 메인 - 목록 조회 */
-.board-read-body {
-  margin: auto;
-  width: 800px;
-}
-
-.board-title {
-  height: 100px;
-  font-family: "medium-font";
-  font-size: 2em;
-  text-align: center;
-}
-
-ul {
-  list-style: none;
-}
-li {
-  display: inline;
-  padding: 20px;
-  font-family: "medium-font";
-  font-size: 2em;
-  color: #8dc0f1;
-}
-/* li a{
-    color: #8DC0F1;
-    text-decoration-line :none;
-  } */
-li:hover {
-  background-color: #dbdbdb77;
-  border-radius: 5px;
-}
-
-td {
-  text-decoration-line: none;
-}
-
 /* 일행구하기 - 게시판 이미지 */
 .boardCategory {
   width: 1024px;
@@ -86,7 +34,7 @@ td {
   position: fixed;
   margin: 0 auto;
   top: 140px;
-  z-index: 1;
+  z-index: 10;
   border-radius: 5px;
   text-emphasis-color: cornsilk;
   @media screen and (max-width: 768px) {
@@ -103,11 +51,11 @@ td {
   content: "";
   background: url("../../images/Teamboard.png");
   position: absolute;
+  background-color: whitesmoke;
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: 0.5;
-  border-radius: 10px;
+  opacity: 0.6;
 }
 
 /* 일행구하기 - 글자 */
@@ -148,26 +96,10 @@ td {
   transform: translateY(3px);
 }
 
-/* 글쓰기 페이지 */
-.boardWrite-form {
-  box-sizing: border-box;
-  padding-bottom: 3em;
-  width: 1024px;
-  height: 900px;
-  margin: auto;
-  color: black;
-  font-family: "DungGeunMo";
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-}
-
 /* 글쓰기 페이지 - 뒤로가기 버튼 */
 .goBackBtn {
-  text-align: right;
-  justify-content: right;
+  font-family: "small-font";
+  margin-top: 100px;
   text-decoration: none;
   font-size: 1.3rem;
   color: white;
@@ -176,11 +108,16 @@ td {
   display: block;
   border-radius: 10px;
   transition: all 0.1s;
-  text-shadow: 0px -2px 2px rgba(68, 68, 68, 0.44);
+  text-shadow: 0px -2px rgba(68, 68, 68, 0.44);
   background-color: #ffd990;
   border: none;
-  border-bottom: 5px solid #7e5e22;
+  border-bottom: 5px solid #7a6744;
 }
+
+.boardWriteBtn:hover {
+  transform: translateY(3px);
+}
+
 .boardWrite-form h1 {
   color: cornsilk;
 }

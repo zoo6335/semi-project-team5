@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
-import Api from '../../api/FbApi';
-import './FreeBoardStyle.css'
-import Modal from '../../util/Modal';
+import { useState, useEffect } from "react";
+import Api from "../../api/FbApi";
+import "./FreeBoardStyle.css";
+import Modal from "../../util/Modal";
 
-import styled from 'styled-components';
+import styled from "styled-components";
 import CommentList from "../../components/comment/CommentList";
-
 
 const BoardDetail = () => {
   const getFb_id = window.localStorage.getItem("fb_id");
@@ -17,8 +16,8 @@ const BoardDetail = () => {
 
   const [modalOpen, setModalOpen] = useState(false);
   const [errModalOpen, setErrModalOpen] = useState(false);
-  const [errModalText, setErrModelText] = useState("본인이 작성한 글만 가능합니다.");
-
+  const [errModalText, setErrModelText] =
+    useState("본인이 작성한 글만 가능합니다.");
 
   // 게시글 목록으로 이동
   function onClickMain() {
@@ -27,47 +26,43 @@ const BoardDetail = () => {
 
   // 게시글 공유
   function onClickShare() {
-    return (
-      <></>
-    )
+    return <></>;
   }
 
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
   // 게시글 삭제 모달
-  const confirmModal = async() => {
-      setModalOpen(false);
-      const boardReg = await Api.fBoardDelete(getFb_id);
-      console.log(boardReg.data.result);
-      if(boardReg.data.result === "OK") {
-        window.location.replace("/totalBoard");
-      } else {
-      }
+  const confirmModal = async () => {
+    setModalOpen(false);
+    const boardReg = await Api.fBoardDelete(getFb_id);
+    console.log(boardReg.data.result);
+    if (boardReg.data.result === "OK") {
+      window.location.replace("/totalBoard");
+    } else {
+    }
   };
 
-    // 에러 모달 닫기 버튼
-    const errCloseModal = () => {
-      setErrModalOpen(false);
-    };
+  // 에러 모달 닫기 버튼
+  const errCloseModal = () => {
+    setErrModalOpen(false);
+  };
 
   // 게시글 수정(본인글만 수정 가능)
   const onClickUpdate = (val) => {
-
-    if(getUserId === getFb_user_id) {
+    if (getUserId === getFb_user_id) {
       console.log("게시글 수정페이지로 이동 : " + val);
       window.location.replace("/boardUpdate");
     } else {
       setErrModalOpen(true);
       setErrModelText("본인이 작성한 글만 수정이 가능합니다.");
     }
-  } 
-
+  };
 
   // 게시글 삭제(본인글만 삭제 가능)
   function onClickDelete() {
-    if(getUserId === getFb_user_id) {
+    if (getUserId === getFb_user_id) {
       setModalOpen(true);
     } else {
       setErrModalOpen(true);
@@ -81,8 +76,8 @@ const BoardDetail = () => {
       try {
         const response = await Api.boardDetail(getFb_id);
         setBoardDetail(response.data);
-        console.log(response.data)
-        // 
+        console.log(response.data);
+        //
         // if(getUserId !== getFb_user_id) {
         //   setIsWriter(false)
         // } else {
@@ -91,10 +86,7 @@ const BoardDetail = () => {
         // 댓글수(구현중)
         await Api.fBoardComment(getFb_id);
         // 조회수
-        await Api.fBoardHit(
-        response.data[0].fb_id,
-        response.data[0].fb_hit
-        );
+        await Api.fBoardHit(response.data[0].fb_id, response.data[0].fb_hit);
       } catch (e) {
         console.log(e);
       }
@@ -103,49 +95,56 @@ const BoardDetail = () => {
   }, []);
 
   return (
-      <BoardBlock>
-        <BoardTitle>
-            <p>게시판</p>
-        </BoardTitle>
-          <div className="button">
-            <Button onClick={onClickShare}>공유</Button>
-            <Button onClick={onClickMain}>글목록</Button>
-          </div>
-          <div>
-            {boardDetail && boardDetail.map(list => (
-              <div key={list.fb_id}>
-                {/* html 태그 안 보이도록 정규식 적용 */}
-                <ReadTitle className="read-title">{list.fb_category} {(list.fb_title).replace(/<[^>]*>?/g,'')}</ReadTitle>
-                <ReadInfo className="read-info">
-                  {/* fb_id는 display:none으로 숨겨 놓을 예정 */}
-                  <div className="fb_id">글번호 : {list.fb_id}</div>
-                  <div className="user_id">작성자 : {list.fb_user_id}</div>
-                  <div className="date">작성일 : {list.fb_c_date}</div>
-                  <div className="hit">조회수 : {list.fb_hit}</div>
-                </ReadInfo>
-                {/* html 태그 안 보이도록 정규식 적용 */}
-                <ReadContents className="read-contents">{(list.fb_content).replace(/<[^>]*>?/g,'')}</ReadContents>
-              </div>
-            ))}
-          </div>
+    <BoardBlock>
+      <BoardTitle>
+        <p>게시판</p>
+      </BoardTitle>
+      <div className="button">
+        <Button onClick={onClickShare}>공유</Button>
+        <Button onClick={onClickMain}>글목록</Button>
+      </div>
+      <div>
+        {boardDetail &&
+          boardDetail.map((list) => (
+            <div key={list.fb_id}>
+              {/* html 태그 안 보이도록 정규식 적용 */}
+              <ReadTitle className="read-title">
+                {list.fb_category} {list.fb_title.replace(/<[^>]*>?/g, "")}
+              </ReadTitle>
+              <ReadInfo className="read-info">
+                {/* fb_id는 display:none으로 숨겨 놓을 예정 */}
+                <div className="fb_id">글번호 : {list.fb_id}</div>
+                <div className="user_id">작성자 : {list.fb_user_id}</div>
+                <div className="date">작성일 : {list.fb_c_date}</div>
+                <div className="hit">조회수 : {list.fb_hit}</div>
+              </ReadInfo>
+              {/* html 태그 안 보이도록 정규식 적용 */}
+              <ReadContents className="read-contents">
+                {list.fb_content.replace(/<[^>]*>?/g, "")}
+              </ReadContents>
+            </div>
+          ))}
+      </div>
 
-          
-          <div className="buttonBox">
-            <Button onClick={()=>onClickUpdate(getFb_id)}>수정</Button>
-            <Button onClick={onClickDelete}>삭제</Button>
-          </div>
-          {/* 댓글 컴포넌트 위치 */}
+      <div className="buttonBox">
+        <Button onClick={() => onClickUpdate(getFb_id)}>수정</Button>
+        <Button onClick={onClickDelete}>삭제</Button>
+      </div>
+      {/* 댓글 컴포넌트 위치 */}
 
+      <div className="read-contents-UD">
+        <button className="update" onClick={() => onClickUpdate()}>
+          수정
+        </button>
+        <button className="delete" onClick={onClickDelete}>
+          삭제
+        </button>
+      </div>
+      {/* 댓글 컴포넌트 입니다! */}
+      <CommentList />
 
-          <div className="read-contents-UD">
-            <button className="update" onClick={() => onClickUpdate(getDetail)}>수정</button>
-            <button className="delete" onClick={onClickDelete}>삭제</button>
-          </div>
-          {/* 댓글 컴포넌트 입니다! */}
-          <CommentList /> 
-
-          {/* 댓글 컴포넌트로 분리 예정 */}
-          {/* <div className="comment">
+      {/* 댓글 컴포넌트로 분리 예정 */}
+      {/* <div className="comment">
             <div className="comment-read-box">
               <div>작성자</div>
               <div>작성 날짜</div>
@@ -164,16 +163,26 @@ const BoardDetail = () => {
                 </div>
               </div>
           </div> */}
-        </div>
-
-        {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 삭제하시겠습니까?</Modal>}
-        <Modal open={errModalOpen} close={errCloseModal} header="작성자 불일치">{errModalText}</Modal>
-      </BoardBlock>
+      {modalOpen && (
+        <Modal
+          open={modalOpen}
+          confirm={confirmModal}
+          close={closeModal}
+          type={true}
+          header="확인"
+        >
+          정말 삭제하시겠습니까?
+        </Modal>
+      )}
+      <Modal open={errModalOpen} close={errCloseModal} header="작성자 불일치">
+        {errModalText}
+      </Modal>
+    </BoardBlock>
   );
 };
 
 const BoardBlock = styled.div`
-  border: 4px solid #40BAAA;
+  border: 4px solid #40baaa;
   border-top: none;
   width: 1024px;
   height: 100%;
@@ -192,23 +201,23 @@ const BoardBlock = styled.div`
   // .buttonBox {
   //   align-items: center;
   // }
-`
+`;
 
 const BoardTitle = styled.div`
   display: flex;
-  height:100px;
+  height: 100px;
   padding: 30px;
-  
-    & p {
-      font-size: 2.6em;
-      font-family: "SFont";
-      font-weight: bold;
-      color: #40BAAA;
-    }
-`
+
+  & p {
+    font-size: 2.6em;
+    font-family: "SFont";
+    font-weight: bold;
+    color: #40baaa;
+  }
+`;
 
 const Button = styled.button`
-  display :inline-block;
+  display: inline-block;
   font-family: "Sfont";
   font-size: 1.4em;
   font-weight: bold;
@@ -220,21 +229,21 @@ const Button = styled.button`
   border: none;
   border-radius: 8px;
   margin: 10px;
-    &:hover {
+  &:hover {
     background-color: #dbdbdb;
-    }
-`
+  }
+`;
 
-const ReadTitle = styled.div `
-  border: 2px solid #8DC0F1;
+const ReadTitle = styled.div`
+  border: 2px solid #8dc0f1;
   border-radius: 20px;
   width: 800px;
   padding: 3px;
   margin: 3px;
   padding: 10px;
-`
+`;
 
-const ReadInfo = styled.div `
+const ReadInfo = styled.div`
   border: 2px solid #8DC0F1;
   border-radius: 20px;
   width: 800px;
@@ -246,15 +255,15 @@ const ReadInfo = styled.div `
   .fb_id{
     display: none;
 
-`
+`;
 
-const ReadContents = styled.div `
-  border: 2px solid #8DC0F1;
+const ReadContents = styled.div`
+  border: 2px solid #8dc0f1;
   border-radius: 20px;
   width: 800px;
   height: 400px;
   padding: 10px;
   margin: 3px;
-`
+`;
 
-export default BoardDetail
+export default BoardDetail;
