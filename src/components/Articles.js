@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import BoardRank from "./BoardRank";
 import RoomRank from "./RoomRank";
@@ -7,13 +8,13 @@ const Articles = () => {
       <div className="likeRank">
         <p className="article-title">좋아요 Ranking 💖</p>
         <div className="article-box">
-          <RoomRank />
+          <Link to='/introduce'><RoomRank /></Link>
         </div>
       </div>
       <div className="hotBoard">
         <p className="article-title">HOT 자유게시판 🔥</p>
         <div className="article-box">
-          <BoardRank />
+          <Link to='/totalBoard'><BoardRank /></Link>
         </div>
       </div>
     </ArticleBlock>
