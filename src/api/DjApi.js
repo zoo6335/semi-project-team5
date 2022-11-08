@@ -64,20 +64,13 @@ const DjApi = {
 
   galleryList: async function () {
     const regCmd = {
-      cmd: "galleryInfo",
+      cmd: "GalleryInfo",
+      gal_id: "ALL"
     };
     return await axios.post(DOMAIN + "GalleryServlet", regCmd, HEADER);
   },
 
-  // galleryDetail: async function (id) {
-  //   const regCmd = {
-  //     cmd: "GalleryInfo",
-  //     id: id,
-  //   };
-  //   return await axios.post(DOMAIN + "GalleryServlet", regCmd, HEADER);
-  // },
-
-    galleryReg: async function (title, content, img_url, user_id) {
+  galleryReg: async function (title, content, img_url, user_id) {
     const reqCmd = {
       title: title,
       content: content,
