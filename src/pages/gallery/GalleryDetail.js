@@ -3,10 +3,11 @@ import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Footer from "../../components/Footer";
 
 const Box = styled.div`
-  border: 4px solid #40baaa;
-  border-top: 200px;
+  border: 4px solid #40BAAA;
+  border-top: none;
   width: 1024px;
   height: 720px;
   margin: 0 auto;
@@ -14,15 +15,46 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+
+  .photo {
+    display: none;
+  }
+`
+
+
+const Input = styled.input`
+width: 500px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
+::placeholder {
+  color: cornsilk;
+}
 `;
 
+const Button = styled.button`
+width: 150px;
+height: 50px;
+margin: 0 auto;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
+align-items: center;
+
+  & + & {
+    margin-left : 50px;
+  }
+`;
+
+
 const GalleryDetail = () => {
-  // 현재 로그인한 아이디 정보 가져오기
+  const isLogin = window.localStorage.getItem("isLogin");
   const loginId = window.localStorage.getItem("userId");
   const getDetail = window.localStorage.getItem("Detail");
   const [galleryDetail, setGalleryDetail] = useState("");
   const [content, setContent] = useState("");
+  const [image_url, setImg_url] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
@@ -77,77 +109,26 @@ const GalleryDetail = () => {
 
 
   return (
-    <Box>
-      <div style={{ height: "100%" }}>
-        <div style={{ height: "80%" }}>
-          <div style={{ height: "100%", width: "100%" }}>
-            <div style={{ display: "flex", width: "100%" }}>
-              <div style={{ width: "100%" }}>
-                <h1 style={{ textAlign: "center" }}>게시물 상세</h1>
-              </div>
-            </div>
-            <div style={{ height: "900px" }} className="table">
-              <table style={{ width: "900px", marginLeft: "50px" }}>
-                <thead>
-                  <tr class="table-active">
-                    <th scope="col" style={{ width: "60%" }}>
-                      <br />
-                      제목 : {galleryDetail.title}
-                    </th>
-                    <th
-                      scope="col"
-                      style={{ width: "40%", textAlign: "right" }}
-                    >
-                      작성자 : {galleryDetail.user_id}
-                      <br />
-                      작성일 : {galleryDetail.gal_c_date}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <pre>{content}</pre>
-                    </td>
-                  </tr>
-                  <tr class="table-active">
-                  </tr>
-                </tbody>
-              </table>
-              <div className="setButton">
-                <button className="listBtn" onClick={onClickgoBack}>
-                  목록
-                </button>
-                {loginId === galleryDetail.user_id ? (
-                  <>
-                    <button className="deleteBtn" onClick={onClickDelete}>
-                      삭제
-                    </button>
-                    <button className="editBtn" onClick={onClickEdit}>
-                      수정
-                    </button>
-                    
-                  </>
-                ) : (
-                  <></>
-                )}
-              </div>
-            </div>
-          </div>
+    <div>
+      <Box>
+        {/* {showImage} */}
+        <div style={{ marginTop: 50 }}>
+          <p>{galleryDetail.title}</p>
         </div>
-        {modalOpen && (
-          <Modal
-            open={modalOpen}
-            confirm={confirmModal}
-            close={closeModal}
-            type={true}
-            header="갤러리 삭제">
-            글을 삭제하시겠습니까?
-          </Modal>
-        )}
-      </div>
-    </Box>
-  );
+        <div>
+          <p>{content}</p>
+        </div>
+        {isLogin === "TRUE" && loginId === galleryDetail.user_id ? (
+          <>
+            <Button onClick={onClickDelete}>삭제하기</Button>
+            <Button onClick={onClickEdit}>수정하기</Button>
+          </>)
+          : <></>}
+        {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
+      </Box>
+      <Footer />
+    </div>
+  )
 };
 
 export default GalleryDetail;

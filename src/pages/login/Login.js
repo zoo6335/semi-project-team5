@@ -60,6 +60,9 @@ height: 50px;
 border-radius: 40px 80px / 80px 40px;
 border: 3px dotted #40BAAA;
 background-color: rgb(0, 0, 0);
+::placeholder {
+  color: cornsilk;
+}
 `;
 
 const ButtonOk = styled.button`
@@ -127,8 +130,8 @@ const Login = () => {
       setIsId(true);
       setIdMessage("잘 입력하셨습니다.");
       console.log(isId);
+    }
   }
-}
 
 
 
@@ -146,8 +149,8 @@ const Login = () => {
       setIsPw(true);
       setPwMessage("잘 입력하셨습니다.");
       console.log(isPw);
+    }
   }
-}
 
   const onClickLogin = async () => {
     try {
@@ -175,21 +178,21 @@ const Login = () => {
       <InputContainer>
         <LoginContainer>
           {inputId > 0 && isId ? <FontAwesomeIcon icon={faUserCheck} size="3x"
-                                  style={{"marginRight": 10}}/> :
-            <FontAwesomeIcon icon={faUser} size="3x" style={{"marginRight": 10}}/>}
-          <InputLogin placeholder="    아이디" value={inputId} onChange={onChangeId} />
+            style={{ "marginRight": 10 }} /> :
+            <FontAwesomeIcon icon={faUser} size="3x" style={{ "marginRight": 10 }} />}
+          <InputLogin placeholder="  아이디" value={inputId} onChange={onChangeId} />
         </LoginContainer>
-      <MsgContainer style={{width: '400px'}}>
-        {idMessage}
-      </MsgContainer>
+        <MsgContainer style={{ width: '400px' }}>
+          {idMessage}
+        </MsgContainer>
         <LoginContainer>
-          {inputPw > 0 && isPw ? <FontAwesomeIcon icon={faLockOpen} size="3x" style={{"marginRight": 10}} />  :
-          <FontAwesomeIcon icon={faLock} size="3x" style={{"marginRight": 10}} /> }
-          <InputLogin type="password" placeholder="    패스워드" value={inputPw} onChange={onChangePw} />
+          {inputPw > 0 && isPw ? <FontAwesomeIcon icon={faLockOpen} size="3x" style={{ "marginRight": 10 }} /> :
+            <FontAwesomeIcon icon={faLock} size="3x" style={{ "marginRight": 10 }} />}
+          <InputLogin type="password" placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
         </LoginContainer>
         <MsgContainer>
-        {pwMessage}
-      </MsgContainer>
+          {pwMessage}
+        </MsgContainer>
       </InputContainer>
       <ButtonContainer>
         <ButtonOk onClick={onClickLogin}>Login</ButtonOk>
@@ -203,13 +206,13 @@ const Login = () => {
       <br />
       <br />
       <div>
-        <Link to={"/findId"} style={{ textDecoration: 'none', margin: '0 50px', color : '#40BAAA' }}>아이디 찾기</Link>
-        <Link to={"/findPwd"} style={{ textDecoration: 'none', margin: '0 50px', color : '#40BAAA' }}>비밀번호 찾기</Link>
+        <Link to={"/findId"} style={{ textDecoration: 'none', margin: '0 50px', color: '#40BAAA' }}>아이디 찾기</Link>
+        <Link to={"/findPwd"} style={{ textDecoration: 'none', margin: '0 50px', color: '#40BAAA' }}>비밀번호 찾기</Link>
       </div>
       <br />
       <br />
       <div>
-        <Link to={"/signUp"} style={{ textDecoration: 'none', color : '#40BAAA' }}>아이디가 없으신가요?</Link>
+        <Link to={"/signUp"} style={{ textDecoration: 'none', color: '#40BAAA' }}>아이디가 없으신가요?</Link>
       </div>
       <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
     </Box>

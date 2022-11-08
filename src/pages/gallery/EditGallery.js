@@ -6,8 +6,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Box = styled.div`
-  border: 4px solid #40baaa;
-  border-top: 200px;
+  border: 4px solid #40BAAA;
+  border-top: none;
   width: 1024px;
   height: 720px;
   margin: 0 auto;
@@ -15,7 +15,36 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+
+  .photo {
+    display: none;
+  }
+`
+
+
+const Input = styled.input`
+width: 500px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
+::placeholder {
+  color: cornsilk;
+}
+`;
+
+const Button = styled.button`
+width: 150px;
+height: 50px;
+margin: 0 auto;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
+align-items: center;
+
+  & + & {
+    margin-left : 50px;
+  }
 `;
 
 const EditGallery = () => {
@@ -78,109 +107,46 @@ const EditGallery = () => {
 
 
   return (
-    <Box>
-      <div style={{ height: "100%" }}>
-        <div style={{ height: "20%" }}>
-          <div style={{ height: "130px" }}>
-            <div>
-              <div className="boardCategory">
-                <h1>일 행 구 하 기</h1>
-                <span>내 동료가 돼라!</span>
-              </div>
-            </div>
-          </div>
+    <div>
+      <Box>
+        {/* {showImage} */}
+        <div style={{ marginTop: 50 }}>
+          <Input placeholder="  제목을 입력하세요." onChange={onChangeTitle} />
         </div>
-        <div style={{ height: "80%" }}>
-          <div style={{ height: "100%", width: "100%" }}>
-            <div style={{ display: "flex", width: "100%" }}>
-              <div style={{ width: "10%" }}>
-                <button className="goBackBtn" onClick={onCLickgoBack}>
-                  뒤로가기⬅
-                </button>
-              </div>
-              <div style={{ width: "80%" }}>
-                <h1 style={{ textAlign: "center" }}>수정하기</h1>
-              </div>
-            </div>
-            <div style={{ height: "900px" }} className="table">
-              {/* {boardDetail &&
-          boardDetail.map((detail) => ( */}
-              <table style={{ width: "1000px", margin: "15px" }}>
-                <thead>
-                  <col style={{ width: "85px" }} />
-                  <col style={{ width: "*" }} />
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">제목</th>
-                    <td>
-                      <input
-                        className="title-input"
-                        type="text"
-                        placeholder="제목을 입력하세요."
-                        value={inputTitle}
-                        onChange={onChangeTitle}
-                        style={{ margin: "1px", width: "100%" }}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">내용</th>
-                    <td>
-                      <SunEditor
-                        // setContents="My contents"
-                        showToolbar={true}
-                        setDefaultStyle="height: 250px;"
-                        onChange={(content) => {
-                          onChangeContent(content);
-                        }}
-                        setContents={inputContent}
-                        height="500px"
-                        setOptions={{
-                          buttonList: [
-                            [
-                              "bold",
-                              "underline",
-                              "italic",
-                              "strike",
-                              "list",
-                              "align",
-                              "fontSize",
-                              "formatBlock",
-                              "table",
-                              "image",
-                            ],
-                          ],
-                        }}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                  
-                  </tr>
-                </tbody>
-              </table>
-              {/* ))} */}
-              <button className="submitBtn" onClick={onClickEdit}>
-                작성완료
-              </button>
-            </div>
-          </div>
+        <div id="editor" style={{ marginTop: 50, minHeight: 400 }}>
+          <SunEditor
+            // setContents="My contents"
+            showToolbar={true}
+            setDefaultStyle="height: 300px;"
+            onChange={(content) => {
+              onChangeContent(content);
+            }}
+            setContents={inputContent}
+            height="500px"
+            setOptions={{
+              buttonList: [
+                [
+                  "bold",
+                  "underline",
+                  "italic",
+                  "strike",
+                  "list",
+                  "align",
+                  "fontSize",
+                  "formatBlock",
+                  "table",
+                  "image",
+                ],
+              ],
+            }}
+          />
         </div>
-        {modalOpen && (
-          <Modal
-            open={modalOpen}
-            confirm={confirmModal}
-            close={closeModal}
-            type={true}
-            header="확인"
-          >
-            작성하시겠습니까?
-          </Modal>
-        )}
-      </div>
-    </Box>
-  );
+        <Button onClick={onSubmit}>등록</Button>
+        {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
+      </Box>
+      <Footer />
+    </div>
+  )
 };
 
 export default EditGallery;

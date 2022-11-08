@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import DjApi from "../../api/DjApi";
+import Footer from "../../components/Footer";
 
 
 const Box = styled.div`
@@ -55,7 +56,7 @@ const GalleryList = () => {
         console.log(e);
       }
     };
-    BoardData();  
+    BoardData();
   }, []);
 
   // 상세페이지 이동
@@ -73,24 +74,27 @@ const GalleryList = () => {
   };
 
   return (
-    <Box>
-      {/* 이미지 미리보기 형식으로 올라갈 예정 */}
-      <Container>
-        <div onClick={onClickDetail} style={{ backgroundColor: "red"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "blue"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "green"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "yellowgreen"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "pink"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "black"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "purple"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "tomato"}}/>
-        <div onClick={onClickDetail} style={{ backgroundColor: "royalblue"}}/>
-      </Container>
-      <Button onClick={onClickWrite}>
-        갤러리 작성
-      </Button>
-    </Box>
-  ) 
+    <div>
+      <Box>
+        {/* 이미지 미리보기 형식으로 올라갈 예정 */}
+        <Container>
+          <div onClick={onClickDetail} style={{ backgroundColor: "red" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "blue" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "green" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "yellowgreen" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "pink" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "black" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "purple" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "tomato" }} />
+          <div onClick={onClickDetail} style={{ backgroundColor: "royalblue" }} />
+        </Container>
+        <Button onClick={onClickWrite}>
+          갤러리 작성
+        </Button>
+      </Box>
+      <Footer />
+    </div>
+  )
 }
 
 export default GalleryList;
