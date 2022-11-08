@@ -64,6 +64,7 @@ const TBoardDetail = () => {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [applyModalOpen, setApplyModalOpen] = useState(false);
+  const [errModalOpen, setErrModalOpen] = useState(false);
 
   useEffect(() => {
     const BoardData = async () => {
@@ -128,7 +129,7 @@ const TBoardDetail = () => {
   // 신청하기 버튼 누를 시 시작
   const onClickApply = (e) => {
     if (boardDetail.gmb_done === "1") {
-      window.alert("모집 완료되었습니다!");
+      setErrModalOpen(true);
       return;
     }
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
@@ -149,6 +150,10 @@ const TBoardDetail = () => {
   // 버튼 누를 시 신청 끝
   const applyModalclose = () => {
     setApplyModalOpen(false);
+  };
+
+  const errModalclose = () => {
+    setErrModalOpen(false);
   };
 
   return (
@@ -292,6 +297,9 @@ const TBoardDetail = () => {
           신청하시겠습니까?
         </Modal>
       )}
+      <Modal open={errModalOpen} close={errModalclose} header="모집 완료">
+        이미 모집이 완료되었습니다.
+      </Modal>
     </Box>
   );
 };

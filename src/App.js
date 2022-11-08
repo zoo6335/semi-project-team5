@@ -42,13 +42,6 @@ import TBoardDetail from "./pages/findboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import TEditBoard from "./pages/findboard/EditBoard";
 import WriteBoard from "./pages/findboard/WriteBoard";
-<<<<<<< HEAD
-=======
-import Intro10 from "./pages/introduce/intro10";
-import Intro11 from "./pages/introduce/intro11";
-import Intro12 from "./pages/introduce/intro12";
-
->>>>>>> 70bc886e5233252666f9db84ce29f2e42c0fbb2b
 
 function App() {
   return (
