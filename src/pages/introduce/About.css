@@ -15,6 +15,7 @@
     border: 4px solid #40BAAA;
     width: 1024px;
     height: 2000px;
+    border-top: none;
 }
 
 h1 {
@@ -23,10 +24,7 @@ h1 {
 
 
 
-span {
-    border-bottom: 1px dashed gray;
 
-}
 
 .intrduce {
     color: #8DC0F1;
@@ -78,7 +76,7 @@ span {
 .list {
     color: gray;
     font-size: 20px;
-
+    border-bottom: 1px dashed gray;
 }
 
 .list2 {
@@ -109,7 +107,7 @@ ul {
 
 .member-title {
 
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 @media (min-width: 2000px) {
@@ -122,4 +120,9 @@ ul {
         margin: auto;
         display: block;
     }
+}
+
+.text-center {
+    padding-top: 40px;
+
 }
