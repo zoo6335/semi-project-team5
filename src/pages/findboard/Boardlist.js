@@ -104,7 +104,7 @@ const TBoardList = () => {
           height: "100%",
           width: "100%",
           backgroundColor: "black",
-          zIndex: "5",
+          zIndex: "1",
         }}
       >
         <form className="board-form" style={{ width: "100%" }}>
@@ -136,7 +136,7 @@ const TBoardList = () => {
                         <td>
                           <div
                             className="badgeDiv"
-                            style={{ fontSize: "1.3rem" }}
+                            style={{ fontSize: "1rem" }}
                           >
                             {list.gmb_done === "1" ? (
                               <span class="badge rounded-pill bg-danger">
