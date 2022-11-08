@@ -8,7 +8,7 @@ const WriteContent = ({ inputContent, setInputContent }) => {
   if (isLogin === "FALSE") window.location.replace("/login"); // 로그인 페이지로 이동
 
   const getUserId = window.localStorage.getItem("userId"); // 유저 아이디 값 가져오기
-  const getDetail = window.localStorage.getItem("Detail"); // 게시판 아이디 값 가져오기
+  const getDetail = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
 
   let isSubmit = false;
 
