@@ -14,7 +14,7 @@
     background-color: white;
     border: 4px solid #40BAAA;
     width: 1024px;
-    height: 2000px;
+    height: 2200px;
     border-top: none;
 }
 
@@ -22,7 +22,9 @@ h1 {
     font-size: 50px;
 }
 
-
+.intromebers {
+    padding-bottom: 50px;
+}
 
 
 
@@ -129,4 +131,26 @@ ul {
 
 .introducetext {
     padding-top: 30px;
+}
+
+.container-About2 {
+
+    text-align: left;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    display: block;
+    color: black;
+    background-color: white;
+    border: 4px solid #40BAAA;
+    width: 1024px;
+    height: 1300px;
+    border-top: none;
+
 }
