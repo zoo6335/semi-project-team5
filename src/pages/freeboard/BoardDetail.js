@@ -3,6 +3,7 @@ import Api from "../../api/FbApi";
 import "./FreeBoardStyle.css";
 import Modal from "../../util/Modal";
 import styled from "styled-components";
+import Comment from "../../components/comment/CommentList";
 
 const BoardDetail = () => {
   const BoardBlock = styled.div`
@@ -211,7 +212,8 @@ const BoardDetail = () => {
         <Button onClick={() => onClickUpdate(getFb_id)}>수정</Button>
         <Button onClick={onClickDelete}>삭제</Button>
       </div>
-      {/* 댓글 컴포넌트 위치 */}
+      {/* 댓글 컴포넌트 위치 <- 주연: 댓글 컴포넌트 달았습니다! 일단은 하늘님 페이지 색상이랑 통일감 주려고 같은 색상을 차용했는데, 수정사항 있으면 말씀해주세요 :)  */}
+      <Comment />
       {modalOpen && (
         <Modal
           open={modalOpen}
