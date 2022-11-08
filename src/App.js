@@ -11,11 +11,13 @@ import MyPage from "./pages/login/MyPage";
 import Home from "./home/home";
 import Header from "./components/Header";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+
 import MemberUpdate from "./pages/login/MemberUpdate";
-import Gallery from "./pages/gallery/GalleryList";
+
+import Gallery from "./pages/gallery/GalleryList"
+import EditGallery from "./pages/gallery/EditGallery";
 import GalleryReg from "./pages/gallery/GalleryReg";
 import GalleryDetail from "./pages/gallery/GalleryDetail";
-import GalleryEdit from "./pages/gallery/EditGallery";
 import FreeBoardFree from "./pages/freeboard/BoardMain/CategoryPages/Board_Free";
 import FreeBoardMain from "./pages/freeboard/BoardMain/BoardMain";
 import FreeBoardRecommend from "./pages/freeboard/BoardMain/CategoryPages/Board_Recommend";
@@ -37,15 +39,10 @@ import Intro7 from "./pages/introduce/Intro7";
 import Intro8 from "./pages/introduce/Intro8";
 import Intro9 from "./pages/introduce/intro9";
 import Introduce from "./pages/introduce/Introduce";
-
-
-
-
 import RBoardList from "./pages/introduce/reviewlist";
 import KakaoRedirectHandler from "./pages/login/KakaoRedirectHandler"
 
 import Review from "./pages/introduce/review";
-
 import TBoardDetail from "./pages/findboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import TEditBoard from "./pages/findboard/EditBoard";
@@ -68,7 +65,8 @@ function App() {
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/editGallery" element={<GalleryEdit />} />
+
+        <Route path="/editGallery" element={<EditGallery />} />
         <Route path="/galleryDetail" element={<GalleryDetail />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         {/* <Route path='/showBoard' element={<ShowBoard />}/>

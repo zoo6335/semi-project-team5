@@ -156,10 +156,6 @@ const BoardDetail = () => {
         const response = await Api.boardDetail(getFb_id);
         setBoardDetail(response.data);
         console.log(response.data)
-        
-        // 댓글수
-        await Api.fBoardComment(getFb_id);
-        
         // 조회수
         await Api.fBoardHit(response.data[0].fb_id, response.data[0].fb_hit);
       } catch (e) {
