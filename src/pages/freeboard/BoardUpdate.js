@@ -5,7 +5,85 @@ import React, { useState, useEffect } from 'react';
 import Api from "../../api/FbApi";
 import Modal from '../../util/Modal';
 import styled from 'styled-components';
-// import ReactHtmlParser from "react-html-parser"
+
+const BoardBlock = styled.div`
+  .buttonBox {
+    width: 800;
+    padding-right: 50px;
+    text-align: center;
+  }
+  
+  border: 4px solid #40BAAA;
+  border-top: none;
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    
+  &.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+    min-height: 500px;
+  }
+  
+  .boardWriteCT{
+    display: flex;
+    justify-content:space-between;
+  }
+  `
+  const BoardTitle = styled.div`
+  display: flex;
+  height:100px;
+  padding: 30px;
+
+    & p {
+      font-size: 2.6em;
+      font-family: "SFont";
+      font-weight: bold;
+      color: #40BAAA;
+    }
+  `
+
+  const BoardCategory = styled.div`
+  display: inline-block;
+  margin: 0 auto;
+    & select {
+      height: 40px;
+      color: gray;
+    }
+  `
+  const Input = styled.input`
+  width: 79%;
+  height: 40px;
+  margin: 10px 0px 10px 10px; 
+  padding: 0 0 0 10px;
+  `
+
+  const Button = styled.button`
+  display :inline-block;
+  font-family: "Sfont";
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 2px gray;
+  width: 100px;
+  height: 40px;
+  background-color: #ed9dcc;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+
+    &:hover {
+    background-color: #dbdbdb;
+    }
+  `
 
 const FreeBoardUpdate = () => {
   // FB_ID 가져오기
@@ -133,7 +211,7 @@ const FreeBoardUpdate = () => {
             </div>
         ))}
 
-        <div className='write-page-button'>
+        <div className='buttonBox'>
           <Button onClick={onClickCancel}>취소</Button>
           <Button onClick={onClickCreate}>등록</Button>
         </div>
@@ -144,73 +222,4 @@ const FreeBoardUpdate = () => {
     </BoardBlock>
   );
 };
-
-const BoardBlock = styled.div`
-  border: 4px solid #40BAAA;
-  border-top: none;
-  width: 1024px;
-  height: 100%;
-  margin: 0 auto;
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    padding-left: 1em;
-    padding-right: 1em;
-  
-  & .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
-    min-height: 500px;
-  }
-
-`
-const BoardTitle = styled.div`
-  display: flex;
-  height:100px;
-  padding: 30px;
-  
-    & p {
-      font-size: 2.6em;
-      font-family: "SFont";
-      font-weight: bold;
-      color: #40BAAA;
-    }
-`
-
-const BoardCategory = styled.div`
-  display: inline-block;
-  margin: 0 auto;
-    & select {
-      height: 40px;
-      color: gray;
-    }
-`
-const Input = styled.input`
-  width: 81%;
-  height: 40px;
-  margin: 10px 0px 10px 10px; 
-  padding: 0 0 0 10px;
-`
-
-const Button = styled.button`
-  display :inline-block;
-  font-family: "Sfont";
-  font-size: 1.4em;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 2px gray;
-  width: 100px;
-  height: 40px;
-  background-color: #ed9dcc;
-  border: none;
-  border-radius: 8px;
-  margin: 10px;
-
-    &:hover {
-    background-color: #dbdbdb;
-    }
-`
-
 export default FreeBoardUpdate;

@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import './About.css';
-import Location3 from "../Map/Location3";
+import Location6 from "../Map/Location6";
 import introImg from "./images/14.jpg";
 
 
-const About10 = () => {
+const Intro10 = () => {
 
 
     return (
@@ -50,11 +50,11 @@ const About10 = () => {
 
                 </ul>
 
-                <Location3></Location3>
+                <Location6></Location6>
 
             </div>
 
         </>
     );
 }
-export default About10;
+export default Intro10;

@@ -30,7 +30,6 @@ const TipBoardList = () => {
     BoardData();
   }, []);
 
-  // 추후 에니메이션으로 변경 예정
   if (loading) {
     return <p>로딩중.. 잠시만 기다려주세요</p>
   }

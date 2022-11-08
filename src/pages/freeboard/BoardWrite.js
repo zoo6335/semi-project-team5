@@ -5,10 +5,88 @@ import React, { useState } from 'react';
 import Api from "../../api/FbApi";
 import Modal from '../../util/Modal';
 import styled from 'styled-components';
-// import ReactHtmlParser from "react-html-parser"
+
+const BoardBlock = styled.div`
+  .buttonBox {
+    width: 800;
+    padding-right: 50px;
+    text-align: center;
+  }
+  
+  border: 4px solid #40BAAA;
+  border-top: none;
+  width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    
+  &.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+    min-height: 500px;
+  }
+  
+  .boardWriteCT{
+    display: flex;
+    justify-content:space-between;
+  }
+  `
+  const BoardTitle = styled.div`
+  display: flex;
+  height:100px;
+  padding: 30px;
+
+    & p {
+      font-size: 2.6em;
+      font-family: "SFont";
+      font-weight: bold;
+      color: #40BAAA;
+    }
+  `
+
+  const BoardCategory = styled.div`
+  display: inline-block;
+  margin: 0 auto;
+    & select {
+      height: 40px;
+      color: gray;
+    }
+  `
+  const Input = styled.input`
+  width: 79%;
+  height: 40px;
+  margin: 10px 0px 10px 10px; 
+  padding: 0 0 0 10px;
+  `
+
+  const Button = styled.button`
+  display :inline-block;
+  font-family: "Sfont";
+  font-size: 1.4em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 2px gray;
+  width: 100px;
+  height: 40px;
+  background-color: #ed9dcc;
+  border: none;
+  border-radius: 8px;
+  margin: 10px;
+
+    &:hover {
+    background-color: #dbdbdb;
+    }
+  `
 
 const FreeBoardWrite = () => {
-
+  
   // 모달 팝업
   const [modalOpen, setModalOpen] = useState(false);
   const [xModalOpen, setXModalOpen] = useState(false);
@@ -94,16 +172,18 @@ const FreeBoardWrite = () => {
         <p>게시글 작성</p>
       </BoardTitle>
       <form>
-        <BoardCategory>
-            <select  value={fb_category} onChange={onChangeCategory}>
-              <option value="none" defaultValue>=== 선택 ===</option>
-              <option value="[자유글]">[자유글]</option>
-              <option value="[양도/교환]">[양도/교환]</option>
-              <option value="[테마추천]">[테마추천]</option>
-              <option value="[방탈출팁]">[방탈출팁]</option>
-            </select>
-        </BoardCategory>
-          <Input  type='text' value={fb_title}  onChange={onChangeTitle} placeholder='제목을 입력해주세요.' />
+        <div className='boardWriteCT'>
+          <BoardCategory>
+              <select  value={fb_category} onChange={onChangeCategory}>
+                <option value="none" defaultValue>=== 선택 ===</option>
+                <option value="[자유글]">[자유글]</option>
+                <option value="[양도/교환]">[양도/교환]</option>
+                <option value="[테마추천]">[테마추천]</option>
+                <option value="[방탈출팁]">[방탈출팁]</option>
+              </select>
+          </BoardCategory>
+            <Input  type='text' value={fb_title}  onChange={onChangeTitle} placeholder='제목을 입력해주세요.' />
+          </div>
           <CKEditor
             editor={ClassicEditor}
             config={{placeholder:"자유롭게 작성해주세요😊"}}
@@ -121,76 +201,4 @@ const FreeBoardWrite = () => {
     </BoardBlock>
   );
 };
-
-const BoardBlock = styled.div`
-  border: 4px solid #40BAAA;
-  border-top: none;
-  width: 1024px;
-  height: 100%;
-  margin: 0 auto;
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  @media screen and (max-width: 768px) {
-    width: 100%;
-    padding-left: 1em;
-    padding-right: 1em;
-  
-  &.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
-    min-height: 500px;
-  }
-  .buttonBox{
-    margin: 0 auot;
-  }
-
-`
-const BoardTitle = styled.div`
-  display: flex;
-  height:100px;
-  padding: 30px;
-  
-    & p {
-      font-size: 2.6em;
-      font-family: "SFont";
-      font-weight: bold;
-      color: #40BAAA;
-    }
-`
-
-const BoardCategory = styled.div`
-  display: inline-block;
-  margin: 0 auto;
-    & select {
-      height: 40px;
-      color: gray;
-    }
-`
-const Input = styled.input`
-  width: 81%;
-  height: 40px;
-  margin: 10px 0px 10px 10px; 
-  padding: 0 0 0 10px;
-`
-
-const Button = styled.button`
-  display :inline-block;
-  font-family: "Sfont";
-  font-size: 1.4em;
-  font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 2px gray;
-  width: 100px;
-  height: 40px;
-  background-color: #ed9dcc;
-  border: none;
-  border-radius: 8px;
-  margin: 10px;
-
-    &:hover {
-    background-color: #dbdbdb;
-    }
-`
-
 export default FreeBoardWrite;
