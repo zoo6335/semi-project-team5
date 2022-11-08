@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import './About.css';
-import introImg12 from "./images/12.png";
+import introImg12 from "./images/logointro.png";
 import styled from "styled-components";
 
 // const Box = styled.div`
@@ -47,7 +47,7 @@ const Intro = () => {
                 <div className="text-center">
                     <h2 className="member-title">안녕하세요 나가방입니다.</h2>
                     <div className="aboutcol2">
-                        <img className="imgescapeabout3" alt="logo2" src={introImg12} style={{ height: '60%', width: '60%' }} />
+                        <img className="imgescapeabout3" alt="logo2" src={introImg12} style={{ height: '45%', width: '45%' }} />
                     </div>
                     <div className="intromebers">
                         <h3>조원 : 조동주,정재이,박하늘,이주연,이정운 </h3>
