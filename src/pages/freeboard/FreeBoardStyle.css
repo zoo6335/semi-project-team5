@@ -23,7 +23,7 @@
   align-items: center;
   padding: 20px;
 }
-/* .ck.ck-editor__editable:not(.ck-editor__nested-editable) { */
+
 .ck.ck-editor__editable {
   width: auto;
   min-width: 600px;

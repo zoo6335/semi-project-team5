@@ -34,12 +34,18 @@ import MyPage from "./pages/login/MyPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Profile from "./pages/login/Profile";
 import RBoardList from "./pages/introduce/reviewlist";
+<<<<<<< HEAD
 import Review from "./pages/introduce/review";
 import SignUp from "./pages/login/SignUp";
 import TBoardDetail from "./pages/findboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import TEditBoard from "./pages/findboard/EditBoard";
 import WriteBoard from "./pages/findboard/WriteBoard";
+=======
+import Intro10 from "./pages/introduce/intro10";
+import Intro11 from "./pages/introduce/intro11";
+import Intro12 from "./pages/introduce/intro12";
+>>>>>>> a51b8f2dfede5516e16a7a88547e99d39abf336f
 
 function App() {
   return (
@@ -72,7 +78,9 @@ function App() {
         <Route path="/intro7" element={<Intro7 />} />
         <Route path="/intro8" element={<Intro8 />} />
         <Route path="/intro9" element={<Intro9 />} />
-        <Route path="/intro10" element={<About10 />} />
+        <Route path="/intro10" element={<Intro10 />} />
+        <Route path="/intro11" element={<Intro11 />} />
+        <Route path="/intro12" element={<Intro12 />} />
         <Route path="/introMember" element={<InntroMember />} />
         <Route path="/review" element={<Review />} />
         <Route path="/reviewlist" element={<RBoardList />} />

@@ -13,7 +13,7 @@ const ThemeType = () => {
             공포
           </label>
         </Link>
-        <Link to="/intro6">
+        <Link to="/intro11">
           <label className="theme-type">
             <img className="icon" src={ghost} alt="icon" key={"추리"} />
             추리
