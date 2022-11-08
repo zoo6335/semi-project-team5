@@ -16,6 +16,7 @@
     "bootstrap": "^5.2.2",
     "buffer": "^6.0.3",
     "cors": "^2.8.5",
+    "firebase": "^9.13.0",
     "html-react-parser": "^3.0.4",
     "http-proxy-middleware": "^2.0.6",
     "install": "^0.13.0",

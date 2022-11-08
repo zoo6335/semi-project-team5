@@ -2,9 +2,9 @@ import { useState } from "react";
 import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
 import styled from "styled-components";
-import { faIdCard, faUser, faEnvelope, faCalendarDay, faUserTag } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faUser, faEnvelope, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLock } from "@fortawesome/free-solid-svg-icons";
+
 
 const Box = styled.div`
   border: 4px solid #40BAAA;

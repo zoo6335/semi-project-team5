@@ -18,7 +18,6 @@ const Box = styled.div`
   justify-content: center;
 `
 
-
 const InputContainer = styled.div`
   width: 400px;
   height: 50px;

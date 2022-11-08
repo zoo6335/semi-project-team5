@@ -1,6 +1,5 @@
 import Login from "./pages/login/Login";
 import './App.css';
-import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./pages/login/Profile";
 import SignUp from "./pages/login/SignUp";
@@ -14,8 +13,10 @@ import ShowBoard from "./components/ShowBoard";
 import ShowRoom from "./components/ShowRoom";
 import SelectType from './components/SelectType';
 import MemberUpdate from "./pages/login/MemberUpdate";
-import Gallery from "./pages/gallery/GalleryInfo";
+import Gallery from "./pages/gallery/GalleryList";
 import GalleryReg from "./pages/gallery/GalleryReg";
+import GalleryDetail from "./pages/gallery/GalleryDetail";
+import GalleryEdit from "./pages/gallery/EditGallery";
 import Intro from "./pages/introduce/Intro";
 import Intro2 from "./pages/introduce/Intro2";
 import Intro3 from "./pages/introduce/Intro3";
@@ -41,6 +42,7 @@ import TEditBoard from "./pages/findboard/EditBoard";
 import Intro9 from "./pages/introduce/intro9";
 import RBoardList from "./pages/introduce/reviewlist";
 import About10 from "./pages/introduce/intro10";
+import KakaoRedirectHandler from "./pages/login/KakaoRedirectHandler"
 
 
 function App() {
@@ -51,14 +53,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/oauth" element={<Auth />} />
+        <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/findId" element={<FindId />} />
         <Route path="/findPwd" element={<FindPwd />} />
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
-
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/editGallery" element={<Gallery />} />
+        <Route path="/galleryDetail" element={<GalleryDetail />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         {/* <Route path='/showBoard' element={<ShowBoard />}/>
         <Route path='/showRoom' element={<ShowRoom />}/>

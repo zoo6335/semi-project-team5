@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import kakaoImage from "../../images/kakao_login_2.png";
@@ -112,12 +112,8 @@ const Login = () => {
     window.location.replace("/");
   }
 
-  useEffect(() => {
-  });
-
-
-  const REST_API_KEY = "60ef127fd63a8c35d27940735ce12e74";
-  const REDIRECT_URI = "https://localhost:3000/oauth";
+  const REST_API_KEY = "333ec9a36164c328f0d63277ae88f9df";
+  const REDIRECT_URI = "http://localhost:3000/oauth/callback/kakao";
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const onChangeId = (e) => {
@@ -133,6 +129,8 @@ const Login = () => {
       console.log(isId);
   }
 }
+
+
 
   const onChangePw = (e) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/

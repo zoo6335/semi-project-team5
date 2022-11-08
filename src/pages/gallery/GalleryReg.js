@@ -1,9 +1,10 @@
-import { useReducer, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import DjApi from "../../api/DjApi";
 import styled from "styled-components";
 import React, { Component } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import SunEditor from 'suneditor-react';
+import 'suneditor/dist/css/suneditor.min.css';
+import Modal from "../../util/Modal";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -30,13 +31,15 @@ const Input = styled.input`
 
 `;
 
+
 const Button = styled.button`
-  width: 150px;
-  height: 50px;
-  margin: 0 auto;
-  border-radius: 20px;
-  border: 0.1px solid cornsilk;
-  background-color: cornsilk;
+width: 150px;
+height: 50px;
+margin: 0 auto;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
+align-items: center;
 
   & + & {
     margin-left : 50px;
@@ -52,69 +55,53 @@ const Label = styled.label`
 
 const GalleryReg = () => {
 
-  // const UploadImage = {
-  //   file : File,
-  //   thumbnail : String,
-  //   type : String,
-  // }
-
-  // const UploadImageFile = (e) => {
-  //   const fileList = e.target.files;
-  //   const length = fileList?.length;
-  //   if(fileList && fileList[0]){
-  //     setImg_url(URL.createObjectURL(fileList[0]));
-
-  //     setImageFile({
-  //       file : fileList[0],
-  //       thumbnail : img_url,
-  //       type: fileList[0].type.slice(0, 5),
-  //     });
-  //   }
-  // }
-
-  // const showImage = useState(() => {
-  //   if (!imageFile && imageFile == null) {
-  //     return <img alt="비어있는 프로필" />
-  //   }
-  //   return <showImageFile src={imageFile.thumbnail} alt={imageFile.type} onClick={onClickFile} />;
-  // }, [imageFile]);
 
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [img_url, setImg_url] = useState("");
+  // const [img_url, setImg_url] = useState("");
+  const [inputContent, setInputContent] = useState("");
+
   // const [imageFile, setImageFile] = useState<UploadImage | null>(null);
   const [resData, setResData] = useState("");
 
+  const loginId = window.localStorage.getItem("userId");
   const isLogin = window.localStorage.getItem("isLogin")
-  if(isLogin === "FALSE") window.location.replace("/");
+  // if(isLogin === "FALSE") window.location.replace("/");
 
-  const fileInput = React.useRef(null);
   
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const onChangeTitle = e => setTitle(e.target.value);
 
-  const onClickFile = e => {
-    fileInputRef.current?.click();
+  const onChangeContent = (e) => setInputContent(e);
+  
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
   
-  const onChangeFile = e => {
-    console.log(e.target.files[0]);
-  };
+  // 임시로 이미지 주소 넣어줌
+  const img_url = ""; 
 
-  const onChangeTitle = e => {
-    setTitle(e.target.value);
-  }
-
-  const onSubmit = async () => {
-    try {
+  const confirmModal = async () => {
+    setModalOpen(false);
     // 서버에 대한 요청을 비동기로 처리 함
-      const res =  await DjApi.galleryReg(title, content, img_url);
-      setResData(res.data);
-      
-    } catch (e) {
-      console.log(e);
+    const res = await DjApi.galleryReg(title, content, img_url, loginId);
+    console.log("작성완료 버튼 클릭");
+    console.log(res.data.result);
+    if (res.data.result === "OK") {
+      window.location.replace("/galleryList");
+    } else {  
     }
+  };
+
+  
+
+  const onSubmit = (e) => {
+    e.prentDefault();
+    setModalOpen(true);
   }
+  
 
   return (
     <Box>
@@ -123,34 +110,40 @@ const GalleryReg = () => {
         <Input placeholder="제목을 입력하세요." onChange={onChangeTitle} />
       </div>
       <div id="editor" style={{ marginTop : 50, minHeight: 400}}>
-      <CKEditor
-                    editor={ ClassicEditor }
-                    config={{
-                      placeholder: "내용을 입력하세요.",
+      <SunEditor
+                    // setContents="My contents"
+                    showToolbar={true}
+                    setDefaultStyle="height: 250px;"
+                    onChange={(content) => {
+                      onChangeContent(content);
                     }}
-                    
-                    onReady={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
-                    onChange={ ( event, editor ) => {
-                        const data = editor.getData();
-                        console.log( { event, editor, data } );
-                        setContent(editor.getData());
-                    } }
-                    onBlur={ ( event, editor ) => {
-                        console.log( 'Blur.', editor );
-                    } }
-                    onFocus={ ( event, editor ) => {
-                        console.log( 'Focus.', editor );
-                    } }
-                />
+                    setContents ={inputContent}
+                    height="500px"
+                    setOptions={{
+                      buttonList: [
+                        [
+                          "bold",
+                          "underline",
+                          "italic",
+                          "strike",
+                          "list",
+                          "align",
+                          "fontSize",
+                          "formatBlock",
+                          "table",
+                          "image",
+                        ],
+                      ],
+                    }}
+                  />
       </div>
-      <form>
+      {/* <form>
         <Label for="upload-photo"  onClick={onClickFile}>파일 선택</Label>
         <input photo type="file" accept="image/jpg, image/jpeg, image/png" onChange={onChangeFile}
               id="upload-photo" className="photo" />
-      </form>
+      </form> */}
+      <Button onClick={onSubmit}></Button>
+      {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
     </Box>
   );
 }
