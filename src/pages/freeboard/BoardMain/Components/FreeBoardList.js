@@ -2,8 +2,17 @@ import { useState, useEffect } from 'react';
 import Api from '../../../../api/FbApi';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
+import styled from 'styled-components';
 
-
+const BoardListTable = styled.div`
+  .tableTable{    
+    witdh: 100%
+  }
+  &thead{
+    witdh: 1024px;
+    padding: 20px;
+  }
+`
 const FreeBoardList = () => {
   const [freeBoardList, setFreeBoardList] = useState('');
   const [loading, setLoading] = useState(false);
@@ -34,8 +43,8 @@ const FreeBoardList = () => {
   }
 
   return (
-    <div className="BoardListTable">
-      <Table className="table table">
+    <BoardListTable>
+      <Table className="tableTable" >
         <thead>
           <tr>
             <th>글번호</th>
@@ -61,7 +70,7 @@ const FreeBoardList = () => {
         ))}
         </tbody>
       </Table>
-    </div>
+    </BoardListTable>
   );
 }
 export default FreeBoardList;
