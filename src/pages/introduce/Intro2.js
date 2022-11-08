@@ -21,13 +21,15 @@ const About2 = () => {
                     <div className="aboutcol2">
                         <img className="imgescapeabout" alt="logo2" src={introImg} style={{ height: '40%', width: '40%' }} />
                     </div>
-                    <p>로드맨션에 입주하시는 입주민 여러분. 반갑습니다
-                        <br />빨간 망토를 두른 작은 고양이를 따라 로드멘션으로 들어가는 사람들 과연 그 다음은..?
-                    </p>
-                    <p className="pastelred-text">★ 추천인원 : 2인 이상 4인 이하 * 3인부터 좁을 수 있습니다.
-                        [치마 비추천]
-                        [활동성 주의!]
-                        <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
+                    <div className="introducetext" >
+                        <p>로드맨션에 입주하시는 입주민 여러분. 반갑습니다
+                            <br />빨간 망토를 두른 작은 고양이를 따라 로드멘션으로 들어가는 사람들 과연 그 다음은..?
+                        </p>
+                        <p className="pastelred-text">★ 추천인원 : 2인 이상 4인 이하 * 3인부터 좁을 수 있습니다.
+                            [치마 비추천]
+                            [활동성 주의!]
+                            <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
+                    </div>
                     <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
 
                     <a href="https://booking.naver.com/booking/12/bizes/540364" className="btnn site" target="_blank">사이트 방문하기</a>

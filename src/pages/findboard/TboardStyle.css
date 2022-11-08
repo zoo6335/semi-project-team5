@@ -35,6 +35,7 @@
   margin: 0 auto;
   top: 140px;
   border-radius: 5px;
+
   text-emphasis-color: cornsilk;
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -90,8 +91,18 @@
   border-bottom: 5px solid #386088;
 }
 
-.boardWriteBtn:active {
+.boardWriteBtn:hover {
   transform: translateY(3px);
+}
+
+/* 게시물 리스트 */
+.board-form th {
+  font-size: 1.2rem;
+}
+
+.board-form td {
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 /* 글쓰기 페이지 - 뒤로가기 버튼 */
@@ -102,7 +113,7 @@
   font-size: 1.3rem;
   color: white;
   padding: 5px 10px 5px 10px;
-  margin: 10px 10px 10px 30px;
+  margin: 10px 10px 10px 50px;
   display: block;
   border-radius: 10px;
   transition: all 0.1s;
@@ -122,6 +133,8 @@
   position: sticky;
   top: 200px;
   padding: 5px;
+  margin-bottom: 2px;
+  color: black;
 }
 /* 글쓰기 페이지 - 인원수 입력란 */
 .number-input {
@@ -129,6 +142,7 @@
   position: sticky;
   top: 200px;
   padding: 5px;
+  color: black;
 }
 
 /* 글쓰기 페이지 - 작성완료 버튼 */
@@ -178,18 +192,11 @@
   transform: translateY(3px);
 }
 
-/* 상세페이지 글 내용 화면 */
-.form-wrapper {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-
 /* 상세페이지 버튼 3종세트 */
 .setButton {
   position: relative;
   padding: 10px 10px 10px 10px;
-  margin-right: 100px;
+  margin-right: 110px;
 }
 
 /* 상세페이지 - 삭제버튼 */
