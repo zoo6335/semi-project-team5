@@ -65,6 +65,7 @@ const RankingBlock = styled.div`
   table,
   th,
   td {
+    color: white;
     font-size: 18px;
     border-collapse: collapse;
     text-align: center;

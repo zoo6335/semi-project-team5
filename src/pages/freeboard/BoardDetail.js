@@ -28,6 +28,10 @@ padding: 20px;
   margin: 10px;
   text-align: right;
 }
+.commentHr {
+  background-color: white;
+  height: 20px;
+}
 `
 
 const Button = styled.button`
@@ -39,9 +43,31 @@ color: white;
 text-shadow: 2px 2px 2px gray;
 width: 100px;
 height: 40px;
+margin: 10px;
+background-color: #ed9dcc;
+box-shadow: 3px 3px #40BAAA;
+border: solid 3px #40BAAA;
+border-radius: 6px;
+  &:hover {
+    background-color: #dbdbdb;
+    color: #ed9dcc;
+    }
+`
+
+const ButtonUD = styled.button`
+display :inline-block;
+font-family: "Sfont";
+font-size: 1.4em;
+font-weight: bold;
+color: white;
+text-shadow: 2px 2px 2px gray;
+width: 100px;
+height: 40px;
+margin: 10px;
 background-color: #ed9dcc;
 border: none;
-border-radius: 8px;
+border-radius: 6px;
+box-shadow: 3px 3px 2px gray;
 margin: 10px;
   &:hover {
   background-color: #dbdbdb;
@@ -54,9 +80,9 @@ border-radius: 20px;
 width: 800px;
 padding: 5px;
 margin: 3px;
-padding: 10px;
-font-size: 1.5em;
-color: #cdc298;
+padding: 12px;
+font-size: 1.7em;
+background-color: #303030;
 `
 
 const ReadInfo = styled.div `
@@ -65,6 +91,7 @@ border-radius: 20px;
 width: 800px;
 padding: 10px;
 margin: 5px;
+background-color: #303030;
 // display: flex;
 // align-items: center;
 // justify-content: space-between;
@@ -80,6 +107,7 @@ width: 800px;
 height: 400px;
 padding: 10px;
 margin: 5px;
+background-color: #303030;
 `
 const BoardDetail = () => {
 
@@ -87,7 +115,6 @@ const BoardDetail = () => {
   const getUserId = window.localStorage.getItem("userId");
   const getFb_user_id = window.localStorage.getItem("fb_user_id");
 
-  // const [boardComment, setBoardComment] = useState("");
   const [boardDetail, setBoardDetail] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
  
@@ -129,10 +156,6 @@ const BoardDetail = () => {
         const response = await Api.boardDetail(getFb_id);
         setBoardDetail(response.data);
         console.log(response.data)
-        // 댓글수(구현중)
-        // await Api.fBoardComment(getFb_id);
-        // setBoardComment(response.data);
-        // console.log(response.data)
         // 조회수
         await Api.fBoardHit(response.data[0].fb_id, response.data[0].fb_hit);
       } catch (e) {
@@ -166,10 +189,11 @@ const BoardDetail = () => {
         </div>
         {getFb_user_id === getUserId && (
           <div className="UD-ButtonBox">
-            <Button onClick={()=>onClickUpdate(getFb_id)}>수정</Button>
-            <Button onClick={onClickDelete}>삭제</Button>
+            <ButtonUD onClick={()=>onClickUpdate(getFb_id)}>수정</ButtonUD>
+            <ButtonUD onClick={onClickDelete}>삭제</ButtonUD>
           </div>
         )}
+        <hr className="commentHr"/>
         {/* 댓글 컴포넌트 위치 <- 주연: 댓글 컴포넌트 달았습니다! 일단은 하늘님 페이지 색상이랑 통일감 주려고 같은 색상을 차용했는데, 수정사항 있으면 말씀해주세요 :)  */}
         <Comment />
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 삭제하시겠습니까?</Modal>}
