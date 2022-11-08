@@ -11,10 +11,12 @@ const WriteContent = ({ inputContent, setInputContent }) => {
 
   const getUserId = window.localStorage.getItem("userId"); // 유저 아이디 값 가져오기
   const getBoardId = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01ff39e31dbe715a1ce2bd3354507a69ba384109
 
   const onChangeContent = (e) => setInputContent(e.target.value);
-
   const onPressEnter = async (e) => {
     if (e.key === "Enter") {
       console.log("엔터 클릭");
