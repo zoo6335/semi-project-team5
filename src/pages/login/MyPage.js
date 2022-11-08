@@ -47,7 +47,6 @@ align-items: center;
   & + & {
     margin-left : 50px;
   }
-
 `;
 
 
@@ -55,7 +54,7 @@ const MyPage = () => {
 
   const localId = window.localStorage.getItem("userId");
   const isLogin = window.localStorage.getItem("isLogin");
-  // if(isLogin === "FALSE") window.replace("/");
+  if(isLogin === "FALSE") window.replace("/");
 
 
   const [memberInfo, setMemberInfo] = useState("");

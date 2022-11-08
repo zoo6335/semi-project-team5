@@ -61,30 +61,33 @@ const ThemeType = () => {
   );
 };
 
-// const onClickCategory = (val) => {
-//     console.log("방탈출 상세 페이지 이동 : " + val);
-//     window.localStorage.setItem("Detail", val);  // Detail이 key, val이 value로 데이터 생성
-//     window.location.replace("/selectType"); // replace 를 사용해서 이전 페이지로 이동이 불가능함..
-// }
 const ThemeBlock = styled.div`
+  * {
+    text-decoration-line: none;
+  }
   width: 1024px;
   margin: 15px;
+
   .icons {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
   }
   .theme-type {
+    text-decoration: none;
     display: flex;
     flex-direction: column;
-    // text-decoration-line : none;
+    color: white;
     align-items: center;
+
     &:hover {
       cursor: pointer;
       color: blue;
       font-weight: 700;
+      transform: translate(-3px, 3px);
     }
   }
+
   .icon {
     width: 60px;
     flex-grow: 1;
@@ -93,10 +96,5 @@ const ThemeBlock = styled.div`
     }
   }
 `;
-
-const onClick = () => {
-  // 페이지 전환
-  window.location.replace("/intro");
-};
 
 export default ThemeType;

@@ -10,19 +10,24 @@ const WriteContent = ({ inputContent, setInputContent }) => {
   if (isLogin === "FALSE") window.location.replace("/login"); // 로그인 페이지로 이동
 
   const getUserId = window.localStorage.getItem("userId"); // 유저 아이디 값 가져오기
-  const getDetail = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
+  const getBoardId = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
 
-  let isSubmit = false;
 
   const onChangeContent = (e) => setInputContent(e.target.value);
 
   const onPressEnter = async (e) => {
     if (e.key === "Enter") {
       console.log("엔터 클릭");
-      const res = await JYApi.insertComment(getUserId, inputContent, getDetail);
+
+      // e.preventDefault();
+      const res = await JYApi.insertComment(
+        getUserId,
+        inputContent,
+        getBoardId
+      );
       console.log(res.data.result);
       // 댓글수 업데이트 기능(HN추가)
-      const res2 = await Api.fBoardComment(getDetail);
+      const res2 = await Api.fBoardComment(getBoardId);
       console.log(res2.data.result);
       // if (res.data.result === "OK") {
       //   setInputContent(inputContent);

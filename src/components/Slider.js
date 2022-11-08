@@ -10,13 +10,13 @@ const Slider = () => {
     <Box>
       <Carousel>
         <Carousel.Item>
-          <img src={hello} alt="First slide" />
+          <img src={gameover} alt="First slide" />
         </Carousel.Item>
         <Carousel.Item>
-          <img src={event} alt="Second slide" />
+          <img src={hello} alt="Second slide" />
         </Carousel.Item>
         <Carousel.Item>
-          <img src={gameover} alt="Third slide" />
+          <img src={event} alt="Third slide" />
         </Carousel.Item>
       </Carousel>
     </Box>
@@ -25,6 +25,7 @@ const Slider = () => {
 const Box = styled.div`
   img {
     width: 1016px; // 1024-4*2=1016px
+    height: 300px;
   }
   border-left: 4px solid #40baaa;
   border-right: 4px solid #40baaa;

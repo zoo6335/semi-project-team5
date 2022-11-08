@@ -54,7 +54,9 @@
 }
 
 td {
-    color: gray !important;
+    /* 이 속성때문에 색상 지정이 안돼서 임의로 important 삭제했습니다ㅜㅜㅜㅜ!!! */
+    /* color: gray !important; */
+    color: gray ;
 }
 
 
