@@ -55,6 +55,7 @@ const ReadNumber = styled.div`
 `;
 
 const TBoardDetail = () => {
+  const isLogin = window.localStorage.getItem("isLogin");
   // 현재 로그인한 아이디 정보 가져오기
   const loginId = window.localStorage.getItem("userId");
   const getDetail = window.localStorage.getItem("Detail");
@@ -248,7 +249,7 @@ const TBoardDetail = () => {
             <button className="listBtn" onClick={onClickgoBack}>
               목록
             </button>
-            {loginId === boardDetail.gmb_user_id ? (
+            {isLogin === "TRUE" && loginId === boardDetail.gmb_user_id ? (
               <>
                 <button className="deleteBtn" onClick={onClickDelete}>
                   삭제
