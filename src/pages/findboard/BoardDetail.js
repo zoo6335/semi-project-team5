@@ -170,7 +170,11 @@ const TBoardDetail = () => {
           </div>
           <div
             className="badgeDiv"
-            style={{ textAlign: "left", marginLeft: "110px", fontSize: "20px" }}
+            style={{
+              textAlign: "left",
+              marginLeft: "110px",
+              fontSize: "1.3rem",
+            }}
           >
             {boardDetail.gmb_done === "1" ? (
               <span class="badge rounded-pill bg-danger">모집완료</span>

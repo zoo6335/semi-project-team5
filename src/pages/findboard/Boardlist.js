@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
-import nbApi from "../../api/nbApi";
-import "../../fonts/Font.css";
-import styled from "styled-components";
-import "./TboardStyle.css";
-import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.css";
+import "../../fonts/Font.css";
+import "./TboardStyle.css";
+
+import { useEffect, useState } from "react";
+
+import Table from "react-bootstrap/Table";
+import nbApi from "../../api/nbApi";
+import styled from "styled-components";
 
 const Box = styled.div`
   border: 4px solid #40baaa;
@@ -132,15 +134,20 @@ const TBoardList = () => {
                     TBoardList.map((list) => (
                       <tr key={list.gmb_id}>
                         <td>
-                          {list.gmb_done === "1" ? (
-                            <span class="badge rounded-pill bg-danger">
-                              모집완료
-                            </span>
-                          ) : (
-                            <span class="badge rounded-pill bg-success">
-                              모집중
-                            </span>
-                          )}
+                          <div
+                            className="badgeDiv"
+                            style={{ fontSize: "1.3rem" }}
+                          >
+                            {list.gmb_done === "1" ? (
+                              <span class="badge rounded-pill bg-danger">
+                                모집완료
+                              </span>
+                            ) : (
+                              <span class="badge rounded-pill bg-success">
+                                모집중
+                              </span>
+                            )}
+                          </div>
                         </td>
                         <td>{list.gmb_id}</td>
                         <td onClick={() => onClickBoardList(list.gmb_id)}>
