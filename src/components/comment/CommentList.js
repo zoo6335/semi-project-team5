@@ -3,6 +3,54 @@ import JYApi from "../../api/JYApi";
 import styled from "styled-components";
 import WriteContent from "./WriteComment";
 
+<<<<<<< HEAD
+const CommentList = () => {
+  const getDetail = window.localStorage.getItem("fb_id");
+  console.log("자유게시판 게시물 ID : " + getDetail);
+  const [commentDetail, setCommentDetail] = useState("");
+  const [inputContent, setInputContent] = useState(""); // 댓글 내용 입력 받을 객체
+
+  useEffect(() => {
+    const CommentData = async () => {
+      try {
+        const response = await JYApi.commentList(getDetail);
+        setCommentDetail(response.data);
+        console.log(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    CommentData();
+  }, [inputContent]);
+
+  return (
+    <div>
+      <WriteContent
+        inputContent={inputContent}
+        setInputContent={setInputContent}
+      />
+      {commentDetail &&
+        commentDetail.map((comment) => (
+          <CommentBlock key={comment.postId}>
+            {/* <p className="comment">게시글 번호 test : {comment.boardId}</p>
+              <p className="comment">댓글 번호 test : {comment.postId}</p> */}
+            <p className="comment" style={{ fontSize: "1.2em" }}>
+              {comment.id}💨
+            </p>
+            <p className="comment" style={{ fontSize: "0.9em" }}>
+              ✔{comment.postDate}
+            </p>
+            <hr />
+            <p className="comment" style={{ fontSize: "1.15em" }}>
+              {comment.content}
+            </p>
+          </CommentBlock>
+        ))}
+    </div>
+  );
+};
+=======
+>>>>>>> 7c267fbb14a506a82fc85b13cfd27d240c6b4001
 const CommentBlock = styled.div`
   width: 800px;
   margin: 5px auto;

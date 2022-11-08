@@ -18,7 +18,6 @@ const Box = styled.div`
   justify-content: center;
 `
 
-
 const InputContainer = styled.div`
   width: 400px;
   height: 50px;
@@ -37,7 +36,11 @@ height: 50px;
 border-radius: 40px 80px / 80px 40px;
 border: 3px dotted #40BAAA;
 background-color: rgb(0, 0, 0);
+::placeholder {
+  color: cornsilk;
+}
 `;
+
 
 const Button = styled.button`
 width: 150px;
@@ -62,7 +65,7 @@ const FindId = () => {
   const [inputName, setInputName] = useState("");
   const [inputEmail, setInputEmail] = useState("");
   const [findId, setFindId] = useState("");
-  
+
   const onChangeName = (e) => {
     setInputName(e.target.value);
   }
@@ -104,7 +107,7 @@ const FindId = () => {
 
   const closeModal = () => {
     setModalOpen(false);
-    
+
   };
 
   const confirmModal = () => {
@@ -117,9 +120,12 @@ const FindId = () => {
       <div>
         <div>
           <InputContainer>
-          <FontAwesomeIcon icon={faUserTag} size="3x"
-                                  style={{"marginRight": 10}}/> 
-            <Input placeholder="이름" value={inputName} onChange={onChangeName} />
+            <FontAwesomeIcon icon={faUserTag} size="3x"
+              style={{ "marginRight": 10 }} />
+            <Input placeholder="  이름"
+              value={inputName}
+              onChange={onChangeName}
+            />
           </InputContainer>
           <MsgContainer>
             {/* span 태그의 class에 다른 props 넣어서 false일 때 메세지가 나오도록 수정해야함 */}
@@ -127,9 +133,9 @@ const FindId = () => {
             {/* {inputId > 0 && {isId} ? null : <span>{idMessage}</span>}  */}
           </MsgContainer>
           <InputContainer>
-          <FontAwesomeIcon icon={faEnvelope} size="3x"
-                                  style={{"marginRight": 10}}/> 
-            <Input placeholder="이메일" value={inputEmail} onChange={onChangeEmail} />
+            <FontAwesomeIcon icon={faEnvelope} size="3x"
+              style={{ "marginRight": 10 }} />
+            <Input placeholder="  EMAIL" value={inputEmail} onChange={onChangeEmail} />
           </InputContainer>
           <MsgContainer>
 

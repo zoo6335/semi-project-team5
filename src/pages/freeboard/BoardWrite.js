@@ -77,9 +77,9 @@ const BoardBlock = styled.div`
   height: 40px;
   background-color: #ed9dcc;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 2px gray;
   margin: 10px;
-
     &:hover {
     background-color: #dbdbdb;
     }

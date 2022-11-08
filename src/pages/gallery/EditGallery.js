@@ -1,11 +1,9 @@
-import { useRef, useState } from "react";
+import SunEditor from "suneditor-react";
+import "suneditor/dist/css/suneditor.min.css";
 import DjApi from "../../api/DjApi";
-import styled from "styled-components";
-import React, { Component } from 'react';
-import SunEditor from 'suneditor-react';
-import 'suneditor/dist/css/suneditor.min.css';
 import Modal from "../../util/Modal";
-import Footer from "../../components/Footer";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -49,61 +47,63 @@ align-items: center;
   }
 `;
 
-const Label = styled.label`
-  margin-top: 50px;
-  cursor: pointer;
-   /* Style as you please, it will become the visible UI component. */
-`
-
-
-const GalleryReg = () => {
-
-
-
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  // const [img_url, setImg_url] = useState("");
+const EditGallery = () => {
+  const localBoardId = window.localStorage.getItem("Detail");
+  const [inputTitle, setInputTitle] = useState("");
   const [inputContent, setInputContent] = useState("");
-
-  // const [imageFile, setImageFile] = useState<UploadImage | null>(null);
-  const [resData, setResData] = useState("");
-
-  const loginId = window.localStorage.getItem("userId");
-  const isLogin = window.localStorage.getItem("isLogin")
-  // if(isLogin === "FALSE") window.location.replace("/");
-
-
-  const onChangeTitle = e => setTitle(e.target.value);
-
-  const onChangeContent = (e) => setInputContent(e);
-
+  const [id, setId] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+
+  const onChangeTitle = (e) => setInputTitle(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
+  const onChangeContent = (contentSet) => setInputContent(contentSet);
+
+  const onCLickgoBack = (e) => {
+    e.preventDefault();
+    console.log("뒤로가기 버튼 클릭");
+    window.location.replace("/galleryList");
+  };
+
+  // 수정완료 버튼 클릭시 모달
+  const onClickEdit = (e) => {
+    e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
+    setModalOpen(true);
+  };
+
+  // 모달 확인버튼 클릭시 동작
+  const confirmModal = async () => {
+    setModalOpen(false);
+    const res = await DjApi.GalleryUpdate(
+      inputTitle,
+      inputContent,
+      id
+    );
+    console.log("수정완료 버튼 클릭");
+    console.log(res.data.result);
+    if (res.data.result === "OK") {
+      window.location.replace("/galleryDetail");
+    } else {
+      console.log("NOK");
+    }
+  };
 
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  // 임시로 이미지 주소 넣어줌
-  const img_url = "";
-
-  const confirmModal = async () => {
-    setModalOpen(false);
-    // 서버에 대한 요청을 비동기로 처리 함
-    const res = await DjApi.galleryReg(title, content, img_url, loginId);
-    console.log("작성완료 버튼 클릭");
-    console.log(res.data.result);
-    if (res.data.result === "OK") {
-      window.location.replace("/galleryList");
-    } else {
-    }
-  };
-
-
-
-  const onSubmit = (e) => {
-    e.prentDefault();
-    setModalOpen(true);
-  }
+  useEffect(() => {
+    const BoardData = async () => {
+      try {
+        const response = await DjApi.galleryDetail(localBoardId);
+        console.log(response.data);
+        setInputTitle(response.data[0].title);
+        setInputContent(response.data[0].content);
+        setId(response.data[0].id);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    BoardData();
+  }, []);
 
 
   return (
@@ -146,7 +146,7 @@ const GalleryReg = () => {
       </Box>
       <Footer />
     </div>
-  );
-}
+  )
+};
 
-export default GalleryReg;
+export default EditGallery;
