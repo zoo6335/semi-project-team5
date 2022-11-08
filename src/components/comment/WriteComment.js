@@ -15,7 +15,7 @@ const WriteContent = ({ inputContent, setInputContent }) => {
   const onPressEnter = async (e) => {
     if (e.key === "Enter") {
       console.log("엔터 클릭");
-      e.preventDefault();
+      // e.preventDefault();
       const res = await JYApi.insertComment(
         getUserId,
         inputContent,

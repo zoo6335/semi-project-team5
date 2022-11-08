@@ -8,16 +8,16 @@ const Articles = () => {
       <div className="likeRank">
         <p className="article-title">좋아요 Ranking 💖</p>
         <div className="article-box">
-          <Link to="/introduce">
+          <Link to="/introduce"  style={{textDecoration: "none"}}>
             <RoomRank />
           </Link>
         </div>
       </div>
       <div className="hotBoard">
         <p className="article-title">HOT 자유게시판 🔥</p>
-        <div className="article-box">
-          <Link to="/totalBoard">
-            <BoardRank />
+        <div className="article-box" >
+          <Link to="/totalBoard" style={{textDecoration: "none"}}>
+            <BoardRank  />
           </Link>
         </div>
       </div>
@@ -40,6 +40,7 @@ const ArticleBlock = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
   }
   .article-box {
     width: 450px;

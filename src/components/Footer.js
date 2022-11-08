@@ -9,25 +9,31 @@ const Footer = () => {
       <span>©2022 NagaBang, Inc. All Rights Reserved.</span>
       <span className="span_nagabang">NagaBang</span>
     </FooterBlock>
-  )
-}
+  );
+};
 const FooterBlock = styled.div`
-    border-top: 1px solid #40BAAA;
-    width: 1024px;
-    height: auto;
-    padding: 10px 10px;
-    font-size: 0.8em;
+  * {
+    text-decoration-line: none;
+    color: white;
+  }
 
-    & > span {
+  border-top: 1px solid #40baaa;
+  width: 1024px;
+  height: auto;
+  padding: 10px 30px;
+  font-size: 0.8em;
+
+  & > span {
     margin: 10px;
-    }
-
-    .span_nagabang{
+    color: white;
+  }
+  .span_nagabang {
     font-size: 2em;
     position: relative;
     left: 360px;
-    color: #ED77BC;
-}
+    color: #ed77bc;
+    text-shadow: -4px 0 #222, -4px 1px #999, 1px 0 #000, 0 -1px #999;
+  }
 `;
 
 export default Footer;
