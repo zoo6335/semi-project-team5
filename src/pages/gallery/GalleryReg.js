@@ -49,19 +49,11 @@ align-items: center;
   }
 `;
 
-const Label = styled.label`
-  margin-top: 50px;
-  cursor: pointer;
-   /* Style as you please, it will become the visible UI component. */
-`
-
-
 const GalleryReg = () => {
 
 
 
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
   // const [img_url, setImg_url] = useState("");
   const [inputContent, setInputContent] = useState("");
 
@@ -89,11 +81,13 @@ const GalleryReg = () => {
   const confirmModal = async () => {
     setModalOpen(false);
     // 서버에 대한 요청을 비동기로 처리 함
-    const res = await DjApi.galleryReg(title, content, img_url, loginId);
+    const res = await DjApi.galleryReg(title, inputContent, img_url, loginId);
     console.log("작성완료 버튼 클릭");
     console.log(res.data.result);
+    console.log(loginId+"1"+title+"1"+inputContent+"1"+img_url);
+
     if (res.data.result === "OK") {
-      window.location.replace("/galleryList");
+      window.location.replace("/gallery");
     } else {
     }
   };
@@ -101,13 +95,13 @@ const GalleryReg = () => {
 
 
   const onSubmit = (e) => {
-    e.prentDefault();
+    e.preventDefault();
     setModalOpen(true);
   }
 
 
   return (
-    <div>
+    <>
       <Box>
         {/* {showImage} */}
         <div style={{ marginTop: 50 }}>
@@ -145,7 +139,7 @@ const GalleryReg = () => {
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
       </Box>
       <Footer />
-    </div>
+    </>
   );
 }
 

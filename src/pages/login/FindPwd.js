@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
+import Footer from "../../components/Footer";
 import { faLock, faUser, faEnvelope, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -114,7 +115,7 @@ const FindPwd = () => {
   }
 
   const onClickCancel = () => {
-    window.location.replace("/");
+    window.location.replace("/login");
   }
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -131,6 +132,7 @@ const FindPwd = () => {
 
 
   return (
+    <>
     <Box>
       <div>
         <div>
@@ -166,6 +168,8 @@ const FindPwd = () => {
       </div>
       {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="비밀번호 찾기">PWD : {findPwd}</Modal>}
     </Box>
+  <Footer />
+  </>
   )
 }
 

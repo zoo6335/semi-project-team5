@@ -19,29 +19,41 @@ const Box = styled.div`
 
 
 const Input = styled.input`
-  width: 350px;
-  height: 50px;
-  border-radius: 20px;
-  border: 0.1px solid white;
+width: 350px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
   align-items: center;
   ::placeholder {
     color: cornsilk;
   }
 `;
 
-const BtnSignUp = styled.button`
-  width: 150px;
-  height: 50px;
-  margin: 0 auto;
-  border-radius: 20px;
-  border: 0.1px solid cornsilk;
-  background-color: cornsilk;
+const Button = styled.button`
+width: 350px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
   align-items: center;
 
   & + & {
     margin-left : 50px;
   }
 `;
+
+const InputContainer = styled.div`
+  width: 400px;
+  height: 50px;
+  text-align: center;
+`
+
+const MsgContainer = styled.div`
+  width: 600px;
+  height: 30px;
+  text-align: right;
+`
 
 
 const MemberUpdate = () => {
@@ -132,41 +144,35 @@ const MemberUpdate = () => {
 
   return (
     <Box>
-      <div>
-        <div>
+        <InputContainer>
           <Input placeholder={localId} disabled />
-        </div>
-        <br />
-        <div>
+        </InputContainer>
+        <MsgContainer></MsgContainer>
+        <InputContainer>
           <Input placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
-        </div>
-        <br />
-        <div>
+        </InputContainer>
+        <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
-        </div>
-        <div>
+        </MsgContainer>
           <Input className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
-        </div>
-        <div>
+        <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
-        </div>
-        <br />
-        <div>
+        </MsgContainer>
+        <InputContainer>
           <Input placeholder="  닉네임" value={inputName} onChange={onChangeName} />
-        </div>
-        <br />
-        <div>
+        </InputContainer>
+        <MsgContainer></MsgContainer>
+        <InputContainer>
           <Input placeholder="  EMAIL" value={inputEmail} onChange={onChangeEmail} />
-        </div>
-        <br />
+        </InputContainer>
+        <MsgContainer></MsgContainer>
         <div>
           {(isId && isPw && isCheckPw) ?
-            <BtnSignUp onClick={onClickUpdate}>Change</BtnSignUp> :
-            <BtnSignUp disabled onClick={onClickUpdate}>Change</BtnSignUp>}
-          <BtnSignUp onClick={onClickCancel}>Cancel</BtnSignUp>
+            <Button onClick={onClickUpdate}>Change</Button> :
+            <Button disabled onClick={onClickUpdate}>Change</Button>}
+          <Button onClick={onClickCancel}>Cancel</Button>
           <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
         </div>
-      </div>
     </Box>
   );
 }

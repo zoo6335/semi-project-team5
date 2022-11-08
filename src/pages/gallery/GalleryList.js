@@ -44,13 +44,14 @@ align-items: center;
 
 const GalleryList = () => {
   const isLogin = window.localStorage.getItem("isLogin");
-
   // if(isLogin === "FALSE") window.location.replace("/");
 
+  const [galleryList, setGalleryList] = useState("");
   useEffect(() => {
     const BoardData = async () => {
       try {
         const response = await DjApi.galleryList("ALL");
+        setGalleryList(response.data);
         console.log(response.data);
       } catch (e) {
         console.log(e);
@@ -78,15 +79,10 @@ const GalleryList = () => {
       <Box>
         {/* 이미지 미리보기 형식으로 올라갈 예정 */}
         <Container>
-          <div onClick={onClickDetail} style={{ backgroundColor: "red" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "blue" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "green" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "yellowgreen" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "pink" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "black" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "purple" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "tomato" }} />
-          <div onClick={onClickDetail} style={{ backgroundColor: "royalblue" }} />
+          {galleryList && 
+          galleryList.map((list) =>
+          <div onClick={() => onClickDetail(list.gal_id)} style={{ backgroundColor: "cornsilk" }}>{list.title}</div>
+          )}
         </Container>
         <Button onClick={onClickWrite}>
           갤러리 작성

@@ -8,13 +8,10 @@ const WriteContent = ({ inputContent, setInputContent }) => {
   if (isLogin === "FALSE") window.location.replace("/login"); // 로그인 페이지로 이동
 
   const getUserId = window.localStorage.getItem("userId"); // 유저 아이디 값 가져오기
-<<<<<<< HEAD
-  const getDetail = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
 
-  let isSubmit = false;
-=======
+  const getDetail = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
   const getBoardId = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
->>>>>>> 7c267fbb14a506a82fc85b13cfd27d240c6b4001
+
 
   const onChangeContent = (e) => setInputContent(e.target.value);
 

@@ -22,16 +22,6 @@ const Box = styled.div`
 `
 
 
-const Input = styled.input`
-width: 500px;
-height: 50px;
-border-radius: 40px 80px / 80px 40px;
-border: 3px dotted #40BAAA;
-background-color: rgb(0, 0, 0);
-::placeholder {
-  color: cornsilk;
-}
-`;
 
 const Button = styled.button`
 width: 150px;
@@ -61,6 +51,7 @@ const GalleryDetail = () => {
     const BoardData = async () => {
       try {
         const response = await DjApi.galleryDetail(getDetail);
+        console.log(response.data);
         setGalleryDetail(response.data[0]);
         setContent(response.data[0].content.replace(/<[^>]*>?/g, ""));
       } catch (e) {
@@ -75,7 +66,7 @@ const GalleryDetail = () => {
   const onClickgoBack = (e) => {
     console.log("목록가기 버튼 클릭");
     e.preventDefault();
-    window.location.replace("/galleryList");
+    window.location.replace("/gallery");
   };
 
   // 버튼 누를 시 게시물 수정 화면으로 이동
@@ -96,7 +87,7 @@ const GalleryDetail = () => {
     console.log("삭제 버튼 클릭");
     console.log(res.data.result);
     if (res.data.result === "OK") {
-      window.location.replace("/galleryList");
+      window.location.replace("/gallery");
     } else {
     }
   };

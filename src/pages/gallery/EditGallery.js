@@ -4,6 +4,7 @@ import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Footer from "../../components/Footer";
 
 const Box = styled.div`
   border: 4px solid #40BAAA;
@@ -141,7 +142,7 @@ const EditGallery = () => {
             }}
           />
         </div>
-        <Button onClick={onSubmit}>등록</Button>
+        <Button onClick={onClickEdit}>등록</Button>
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
       </Box>
       <Footer />
