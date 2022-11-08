@@ -53,7 +53,7 @@ const TradeBoardList = () => {
             <td>{list.fb_id}</td>
             <td>{list.fb_category}</td>
             {/* html 태그 안 보이도록 정규식 적용 */}
-            <td>{(list.fb_title).replace(/<[^>]*>?/g,'')}</td>
+            <td>{(list.fb_title).replace(/<[^>]*>?/g,'')} [{list.fb_comment_count}]</td>
             <td>{list.fb_user_id}</td>
             <td>{list.fb_c_date}</td>
             <td>{list.fb_hit}</td>
