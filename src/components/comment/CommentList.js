@@ -4,7 +4,7 @@ import styled from "styled-components";
 import WriteContent from "./WriteComment";
 
 const CommentList = () => {
-  const getDetail = window.localStorage.getItem("Detail");
+  const getDetail = window.localStorage.getItem("fb_id");
   console.log("자유게시판 게시물 ID : " + getDetail);
   const [commentDetail, setCommentDetail] = useState("");
   const [inputContent, setInputContent] = useState(""); // 댓글 내용 입력 받을 객체

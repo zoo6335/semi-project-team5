@@ -17,10 +17,12 @@ const Button = styled.button`
   margin-bottom: 20px;
   padding-right: 10px;
   background-color: #ed9dcc;
-  border: none;
-  border-radius: 8px;
+  box-shadow: 3px 3px #40BAAA;
+  border: solid 3px #40BAAA;
+  border-radius: 6px;
     &:hover {
       background-color: #dbdbdb;
+      color: #ed9dcc;
     }
 `
 
