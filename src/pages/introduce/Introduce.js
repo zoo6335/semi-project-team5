@@ -9,9 +9,9 @@ import introImg6 from "./images/6.jpg";
 import introImg7 from "./images/7.jpg";
 import introImg8 from "./images/8.jpg";
 import introImg9 from "./images/13.png";
-
-
-
+import introImg10 from "./images/14.jpg";
+import introImg11 from "./images/15.jpg";
+import introImg12 from "./images/16.png";
 
 const Home = () => {
     return (
@@ -75,7 +75,7 @@ const Home = () => {
 
                 <div className="pro">
                     <h3> 지난날을 잊었다</h3>
-                    <p className="">서울[홍대] 지구별 방탈출 홍대어드벤처점</p>
+                    <p className="">서울 지구별 방탈출 홍대점</p>
                 </div>
                 <Link to="/intro4"><button className="btnn page">상세페이지</button></Link>
                 <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
@@ -91,7 +91,7 @@ const Home = () => {
 
                 <div className="pro">
                     <h3> 퀘스트 : 여정의 시작</h3>
-                    <p className="">서울[홍대] 지구별 방탈출 홍대어드벤처점</p>
+                    <p className="">서울 지구별 방탈출 홍대점</p>
                 </div>
                 <Link to="/intro5"><button className="btnn page">상세페이지</button></Link>
                 <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
@@ -150,10 +150,55 @@ const Home = () => {
                 </div>
 
                 <div className="pro">
-                    <h3> 냥냥펀치 (일상)</h3>
-                    <p className="">경기/인천[안산] 꿈소풍 안산 2호점</p>
+                    <h3> BECOME : 시작</h3>
+                    <p className="">전용 어플리케이션으로 진행</p>
                 </div>
                 <Link to="/intro9"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
+            </div>
+            <div className="flex_item">
+                <div className="text">
+                    <h2>방 탈출 정보</h2>
+                </div>
+                <div className="col1">
+                    <img className="imgescape" alt="logo2" src={introImg10} style={{ height: '350px', width: '250px' }} />
+                </div>
+
+                <div className="pro">
+                    <h3> 러브에센스 (19금)</h3>
+                    <p className="">서울[강남] 세븐클루스</p>
+                </div>
+                <Link to="/intro10"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
+            </div>
+            <div className="flex_item">
+                <div className="text">
+                    <h2>방 탈출 정보</h2>
+                </div>
+                <div className="col1">
+                    <img className="imgescape" alt="logo2" src={introImg11} style={{ height: '350px', width: '250px' }} />
+                </div>
+
+                <div className="pro">
+                    <h3> 환생 (추리)</h3>
+                    <p className="">서울[강남] 세븐클루스</p>
+                </div>
+                <Link to="/intro11"><button className="btnn page">상세페이지</button></Link>
+                <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
+            </div>
+            <div className="flex_item">
+                <div className="text">
+                    <h2>방 탈출 정보</h2>
+                </div>
+                <div className="col1">
+                    <img className="imgescape" alt="logo2" src={introImg12} style={{ height: '350px', width: '250px' }} />
+                </div>
+
+                <div className="pro">
+                    <h3> 미스테리 동호회 </h3>
+                    <p className="">[부산] 더락 이스케이프 하단점</p>
+                </div>
+                <Link to="/intro12"><button className="btnn page">상세페이지</button></Link>
                 <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
             </div>
         </div>

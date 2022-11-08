@@ -65,3 +65,14 @@ td {
 .title-review {
     padding: 30px;
 }
+
+.contatiner-review {
+
+    border: 4px solid #40BAAA;
+
+    width: 1024px;
+    height: 2000px;
+    justify-content: center;
+    margin: auto;
+
+}

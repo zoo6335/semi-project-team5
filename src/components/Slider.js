@@ -24,8 +24,11 @@ const Slider = () => {
 };
 const Box = styled.div`
   img {
-    width: 1024px;
+    width: 1016px; // 1024-4*2=1016px
   }
+  border-left: 4px solid #40baaa;
+  border-right: 4px solid #40baaa;
+  box-sizing: border-box;
 `;
 
 export default Slider;

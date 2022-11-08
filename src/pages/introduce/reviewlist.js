@@ -21,6 +21,7 @@ const RBoardList = () => {
     margin: 0 auto;
     font-size: 1.3em;
     text-align: center;
+    
     @media screen and (max-width: 768px) {
       width: 100%;
     
@@ -50,7 +51,10 @@ const RBoardList = () => {
       width: 100%;
       padding-left: 1em;
       padding-right: 1em;
-      
+      border: 4px solid #40BAAA;
+      border-top: none;
+      width: 1024px;
+      height: 2000px;
     }
   `;
 
@@ -80,7 +84,7 @@ const RBoardList = () => {
     }
 
     return (
-        <div className="contatiner">
+        <div className="contatiner-review">
             <div>
                 <BoardListBlock>
                     <button className="btnn page2" onClick={onClickWrite} >리뷰쓰기</button>

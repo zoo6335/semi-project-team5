@@ -41,6 +41,18 @@ const RankingApi = {
       HEADER
     );
   },
+  // 댓글 삭제 api
+  deleteComment: async function (postId) {
+    console.log("댓글 번호 : " + postId);
+    const regCmd = {
+      postId: String(postId),
+    };
+    return await axios.post(
+      NGB_DOMAIN + "DeleteCommentServlet",
+      regCmd,
+      HEADER
+    );
+  },
 
   // 버려진 API....(사용 안하기로 회의끝)
   // // HOT 자유게시판 클릭시 보이는 디테일 페이지를 위한 api

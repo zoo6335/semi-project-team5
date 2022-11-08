@@ -17,11 +17,13 @@ const About4 = () => {
                     <div className="aboutcol2">
                         <img className="imgescapeabout" alt="logo2" src={introImg} style={{ height: '40%', width: '40%' }} />
                     </div>
-                    <p>남자는 하염없이 걷고 또 걸었다.긴 걸음 끝에 작은 사진관을 마주했다.
-                        <br />문을 열고 들어가려는 찰나,연분홍빛 벚꽃잎이 콧등을 스쳤다.
-                        <br />아, 봄이었구나.</p>
-                    <p className="pastelred-text">★ 전체 이용가 테마입니다.
-                        <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
+                    <div className="introducetext" >
+                        <p>남자는 하염없이 걷고 또 걸었다.긴 걸음 끝에 작은 사진관을 마주했다.
+                            <br />문을 열고 들어가려는 찰나,연분홍빛 벚꽃잎이 콧등을 스쳤다.
+                            <br />아, 봄이었구나.</p>
+                        <p className="pastelred-text">★ 전체 이용가 테마입니다.
+                            <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
+                    </div>
                     <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
                     <a href="https://xn--2e0b040a4xj.com/reservation?branch=2&theme=9#list" className="btnn site" target="_blank">사이트 방문하기</a>
                     <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
