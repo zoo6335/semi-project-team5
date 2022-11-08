@@ -19,7 +19,7 @@ const onClickTheme = ()=> {
     window.location.replace("/introduce");
 }
 const onClickFB = ()=> {
-    window.location.replace("/freeboard");
+    window.location.replace("/totalBoard");
 }
 const onClickParty = ()=> {
     window.location.replace("/tBoardList");

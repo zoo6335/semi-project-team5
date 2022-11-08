@@ -1,15 +1,17 @@
-import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
-import nbApi from "../../api/nbApi";
+
+import React, { useEffect, useState } from "react";
+
 import Modal from "../../util/Modal";
-import React, { useState, useEffect } from "react";
+import SunEditor from "suneditor-react";
+import nbApi from "../../api/nbApi";
 import styled from "styled-components";
 
 const Box = styled.div`
   border: 4px solid #40baaa;
   border-top: 200px;
   width: 1024px;
-  height: 720px;
+  height: auto;
   margin: 0 auto;
   background-color: rgb(0, 0, 0);
   display: flex;
@@ -21,9 +23,10 @@ const LogoBox = styled.div`
   box-sizing: border-box;
   padding-bottom: 3em;
   width: 1024px;
-  height: 140px;
-  margin: auto;
+  height: auto;
+  margin-top: 2rem;
   font-family: "DungGeunMo";
+  z-index: 10;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1em;
@@ -45,6 +48,25 @@ const TEditBoard = () => {
   const onChangeApplyTotal = (applyTotal) =>
     setApplyTotal(applyTotal.target.value);
 
+  useEffect(() => {
+    const BoardData = async () => {
+      setLoading(true);
+      try {
+        const response = await nbApi.onDetail(localBoardId);
+        console.log(response.data);
+        setInputTitle(response.data[0].gmb_title);
+        setInputContent(response.data[0].gmb_content);
+        setApplyTotal(response.data[0].gmb_apply_total);
+        setId(response.data[0].gmb_id);
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    BoardData();
+  }, []);
+
+  // 뒤로가기 버튼
   const onCLickgoBack = (e) => {
     e.preventDefault();
     console.log("뒤로가기 버튼 클릭");
@@ -75,27 +97,10 @@ const TEditBoard = () => {
     }
   };
 
+  // 모달 닫기
   const closeModal = () => {
     setModalOpen(false);
   };
-
-  useEffect(() => {
-    const BoardData = async () => {
-      setLoading(true);
-      try {
-        const response = await nbApi.onDetail(localBoardId);
-        console.log(response.data);
-        setInputTitle(response.data[0].gmb_title);
-        setInputContent(response.data[0].gmb_content);
-        setApplyTotal(response.data[0].gmb_apply_total);
-        setId(response.data[0].gmb_id);
-      } catch (e) {
-        console.log(e);
-      }
-      setLoading(false);
-    };
-    BoardData();
-  }, []);
 
   if (loading) {
     return <h5>대기 중...</h5>;
@@ -103,119 +108,131 @@ const TEditBoard = () => {
 
   return (
     <Box>
-      <div style={{ height: "100%" }}>
-        <div style={{ height: "20%" }}>
-          <div style={{ height: "130px" }}>
-            <LogoBox>
-              <div className="boardCategory">
-                <h1>일 행 구 하 기</h1>
-                <span>내 동료가 돼라!</span>
-              </div>
-            </LogoBox>
+      <div style={{ height: "130px" }}>
+        <LogoBox>
+          <div className="boardCategory" style={{ position: "fixed" }}>
+            <h1>일 행 구 하 기</h1>
+            <span>내 동료가 돼라!</span>
           </div>
-        </div>
-        <div style={{ height: "80%" }}>
-          <div style={{ height: "100%", width: "100%" }}>
-            <div style={{ display: "flex", width: "100%" }}>
-              <div style={{ width: "10%" }}>
-                <button className="goBackBtn" onClick={onCLickgoBack}>
-                  뒤로가기⬅
-                </button>
-              </div>
-              <div style={{ width: "80%" }}>
-                <h1 style={{ textAlign: "center" }}>수정하기</h1>
-              </div>
-            </div>
-            <div style={{ height: "900px" }} className="table">
-              {/* {boardDetail &&
-          boardDetail.map((detail) => ( */}
-              <table style={{ width: "1000px", margin: "15px" }}>
-                <thead>
-                  <col style={{ width: "85px" }} />
-                  <col style={{ width: "*" }} />
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">제목</th>
-                    <td>
-                      <input
-                        className="title-input"
-                        type="text"
-                        placeholder="제목을 입력하세요."
-                        value={inputTitle}
-                        onChange={onChangeTitle}
-                        style={{ margin: "1px", width: "100%" }}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">내용</th>
-                    <td>
-                      <SunEditor
-                        // setContents="My contents"
-                        showToolbar={true}
-                        setDefaultStyle="height: 250px;"
-                        onChange={(content) => {
-                          onChangeContent(content);
-                        }}
-                        setContents={inputContent}
-                        height="500px"
-                        setOptions={{
-                          buttonList: [
-                            [
-                              "bold",
-                              "underline",
-                              "italic",
-                              "strike",
-                              "list",
-                              "align",
-                              "fontSize",
-                              "formatBlock",
-                              "table",
-                              "image",
-                            ],
-                          ],
-                        }}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row" style={{ textAlign: "center" }}>
-                      인원수
-                    </th>
-                    <td>
-                      <input
-                        className="number-input"
-                        type="number"
-                        value={applyTotal}
-                        onChange={onChangeApplyTotal}
-                        min={1}
-                        max={6}
-                        style={{ margin: "1px", width: "50%" }}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              {/* ))} */}
-              <button className="submitBtn" onClick={onClickEdit}>
-                작성완료
-              </button>
-            </div>
-          </div>
-        </div>
-        {modalOpen && (
-          <Modal
-            open={modalOpen}
-            confirm={confirmModal}
-            close={closeModal}
-            type={true}
-            header="확인"
-          >
-            작성하시겠습니까?
-          </Modal>
-        )}
+        </LogoBox>
       </div>
+
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          backgroundColor: "black",
+          zIndex: "1",
+        }}
+      >
+        <div style={{ display: "flex", width: "100%" }}>
+          <div style={{ width: "15%", margin: "15px" }}>
+            <button className="goBackBtn" onClick={onCLickgoBack}>
+              뒤로가기
+            </button>
+          </div>
+          <div style={{ width: "85%" }}>
+            <h2
+              style={{
+                textAlign: "center",
+                marginTop: "30px",
+                marginRight: "100px",
+              }}
+            >
+              수정하기
+            </h2>
+          </div>
+        </div>
+        <div style={{ height: "900px" }} className="write_table">
+          <table style={{ width: "900px", margin: "2.8rem" }}>
+            <thead>
+              <col style={{ width: "80px" }} />
+              <col style={{ width: "*" }} />
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" style={{ textAlign: "center" }}>
+                  제목
+                </th>
+                <td>
+                  <input
+                    className="title-input"
+                    type="text"
+                    placeholder="제목을 입력하세요."
+                    value={inputTitle}
+                    onChange={onChangeTitle}
+                    style={{ width: "100%" }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" style={{ textAlign: "center" }}>
+                  내용
+                </th>
+                <td>
+                  <SunEditor
+                    // setContents="My contents"
+                    showToolbar={true}
+                    setDefaultStyle="height: 250px;"
+                    onChange={(content) => {
+                      onChangeContent(content);
+                    }}
+                    setContents={inputContent}
+                    height="200px"
+                    setOptions={{
+                      buttonList: [
+                        [
+                          "bold",
+                          "underline",
+                          "italic",
+                          "strike",
+                          "list",
+                          "align",
+                          "fontSize",
+                          "formatBlock",
+                          "table",
+                          "image",
+                        ],
+                      ],
+                    }}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th scope="row" style={{ textAlign: "center" }}>
+                  인원수
+                </th>
+                <td>
+                  <input
+                    className="number-input"
+                    type="number"
+                    placeholder="1-6명까지 입력 가능합니다."
+                    value={applyTotal}
+                    onChange={onChangeApplyTotal}
+                    min={1}
+                    max={6}
+                    style={{ marginTop: "3px", width: "50%" }}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button className="submitBtn" onClick={onClickEdit}>
+            작성완료
+          </button>
+        </div>
+      </div>
+      {modalOpen && (
+        <Modal
+          open={modalOpen}
+          confirm={confirmModal}
+          close={closeModal}
+          type={true}
+          header="확인"
+        >
+          수정하시겠습니까?
+        </Modal>
+      )}
     </Box>
   );
 };

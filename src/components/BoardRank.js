@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import RankingApi from '../api/rankingApi';
+import JYApi from '../api/JYApi';
 import styled from 'styled-components';
 import '../App.css'
 
@@ -17,7 +17,7 @@ const BoardRank = () => {
     const rankData = async () => {
       setLoading(true);
       try {
-        const response = await RankingApi.boardRank("ALL");
+        const response = await JYApi.boardRank("ALL");
         setBoardRank(response.data);
         console.log(response.data)
       } catch (e) {
@@ -55,25 +55,20 @@ const BoardRank = () => {
 }
 
 const RankingBlock = styled.div`
-    box-sizing: border-box;
-    table, th, td {
-        font-size: 18px;
-        border-collapse : collapse;  
-        text-align: center;
-        height: 28px;
-    }
-    tr{ // 테이블 행 아래 보더 지정
-        border-bottom: 2px dashed rgba(0,0,0,0.5);
-        &:hover{
-            cursor:pointer;
-        }
-    }
-    th{ // 제목행
-        color: white;
-        text-shadow: -4px 0 #000, -4px 1px #000, 1px 0 #000, 0 -1px #000;
-        &:hover{
-            cursor: default;
-        }
-    }
+  box-sizing: border-box;
+  table, th, td {
+    font-size: 18px;
+    border-collapse : collapse;  
+    text-align: center;
+    height: 28px;
+  }
+  tr{ // 테이블 행 아래 보더 지정
+    border-bottom: 2px dashed rgba(0,0,0,0.5);
+
+  }
+  th{ // 제목행
+    color: white;
+    text-shadow: -4px 0 #000, -4px 1px #000, 1px 0 #000, 0 -1px #000;
+  }
 `;
 export default BoardRank;

@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
-import nbApi from "../../api/nbApi";
-import "../../fonts/Font.css";
-import styled from "styled-components";
-import "./TboardStyle.css";
-import Table from "react-bootstrap/Table";
 import "bootstrap/dist/css/bootstrap.css";
+import "../../fonts/Font.css";
+import "./TboardStyle.css";
+
+import { useEffect, useState } from "react";
+
+import Table from "react-bootstrap/Table";
+import nbApi from "../../api/nbApi";
+import styled from "styled-components";
 
 const Box = styled.div`
   border: 4px solid #40baaa;
@@ -12,9 +14,9 @@ const Box = styled.div`
   width: 1024px;
   height: auto;
   margin: 0 auto;
-  background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
+  background-color: rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
 `;
@@ -26,6 +28,7 @@ const LogoBox = styled.div`
   margin: auto;
   margin-top: 2rem;
   font-family: "DungGeunMo";
+  z-index: 10;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1em;
@@ -90,18 +93,25 @@ const TBoardList = () => {
     <Box>
       <div style={{ height: "130px" }}>
         <LogoBox>
-          <div className="boardCategory">
+          <div className="boardCategory" style={{ position: "fixed" }}>
             <h1>일 행 구 하 기</h1>
             <span>내 동료가 돼라!</span>
           </div>
         </LogoBox>
       </div>
-      <div style={{ height: "100%", width: "100%", overflow: "scroll" }}>
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          backgroundColor: "black",
+          zIndex: "1",
+        }}
+      >
         <form className="board-form" style={{ width: "100%" }}>
-          <div>
+          <div style={{ margin: "30px" }}>
             {isLogin === "TRUE" && (
-              <button className="WriteBtn" onClick={onClickWrite}>
-                글쓰기📝
+              <button className="boardWriteBtn" onClick={onClickWrite}>
+                글쓰기 📝
               </button>
             )}
             <div className="BoardListTable">
@@ -112,11 +122,11 @@ const TBoardList = () => {
                 <thead>
                   <tr>
                     <th width="100px">모집현황</th>
-                    <th width="80px">글번호</th>
+                    <th width="150px">글번호</th>
                     <th width="*">제목</th>
-                    <th width="100px">작성자</th>
-                    <th width="100px">작성일</th>
-                    <th width="80px">조회수</th>
+                    <th width="150px">작성자</th>
+                    <th width="150px">작성일</th>
+                    <th width="100px">조회수</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -124,15 +134,20 @@ const TBoardList = () => {
                     TBoardList.map((list) => (
                       <tr key={list.gmb_id}>
                         <td>
-                          {list.gmb_done === "1" ? (
-                            <span class="badge rounded-pill bg-danger">
-                              모집완료
-                            </span>
-                          ) : (
-                            <span class="badge rounded-pill bg-success">
-                              모집중
-                            </span>
-                          )}
+                          <div
+                            className="badgeDiv"
+                            style={{ fontSize: "1rem" }}
+                          >
+                            {list.gmb_done === "1" ? (
+                              <span class="badge rounded-pill bg-danger">
+                                모집완료
+                              </span>
+                            ) : (
+                              <span class="badge rounded-pill bg-success">
+                                모집중
+                              </span>
+                            )}
+                          </div>
                         </td>
                         <td>{list.gmb_id}</td>
                         <td onClick={() => onClickBoardList(list.gmb_id)}>

@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react';
 import Api from '../../../../api/FbApi';
-// import '../App.css'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
+import styled from 'styled-components';
 
-
+const BoardListTable = styled.div`
+  .tableTable{    
+    witdh: 100%
+  }
+  &thead{
+    witdh: 1024px;
+    padding: 20px;
+  }
+`
 const FreeBoardList = () => {
   const [freeBoardList, setFreeBoardList] = useState('');
   const [loading, setLoading] = useState(false);
@@ -30,14 +38,13 @@ const FreeBoardList = () => {
     BoardData();
   }, []);
 
-  // 추후 에니메이션으로 변경 예정
   if (loading) {
     return <p>로딩중.. 잠시만 기다려주세요</p>
   }
 
   return (
-    <div className="BoardListTable">
-      <Table class="table table-striped">
+    <BoardListTable>
+      <Table className="tableTable" >
         <thead>
           <tr>
             <th>글번호</th>
@@ -54,7 +61,8 @@ const FreeBoardList = () => {
             <tr key={list.fb_id} onClick={()=>onClickBoardDetail(list.fb_id)}>
             <td>{list.fb_id}</td>
             <td>{list.fb_category}</td>
-            <td>{list.fb_title}</td>
+            {/* html 태그 안 보이도록 정규식 적용 */}
+            <td>{(list.fb_title).replace(/<[^>]*>?/g,'')}</td>
             <td>{list.fb_user_id}</td>
             <td>{list.fb_c_date}</td>
             <td>{list.fb_hit}</td>
@@ -62,7 +70,7 @@ const FreeBoardList = () => {
         ))}
         </tbody>
       </Table>
-    </div>
+    </BoardListTable>
   );
 }
 export default FreeBoardList;
