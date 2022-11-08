@@ -1,12 +1,12 @@
-import "./App.css";
-
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-
-import Auth from "./Auth";
+import Login from "./pages/login/Login";
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Profile from "./pages/login/Profile";
+import SignUp from "./pages/login/SignUp";
 import BoardDetail from "./pages/freeboard/BoardDetail";
+
 import FindId from "./pages/login/FindId";
 import FindPwd from "./pages/login/FindPwd";
-<<<<<<< HEAD
 import MyPage from "./pages/login/MyPage";
 import Home from "./home/home";
 import Header from "./components/Header";
@@ -15,8 +15,10 @@ import ShowBoard from "./components/ShowBoard";
 import ShowRoom from "./components/ShowRoom";
 import SelectType from "./components/SelectType";
 import MemberUpdate from "./pages/login/MemberUpdate";
-import Gallery from "./pages/gallery/GalleryInfo";
-=======
+import Gallery from "./pages/gallery/GalleryList";
+import GalleryReg from "./pages/gallery/GalleryReg";
+import GalleryDetail from "./pages/gallery/GalleryDetail";
+import GalleryEdit from "./pages/gallery/EditGallery";
 import FreeBoardFree from "./pages/freeboard/BoardMain/CategoryPages/Board_Free";
 import FreeBoardMain from "./pages/freeboard/BoardMain/BoardMain";
 import FreeBoardRecommend from "./pages/freeboard/BoardMain/CategoryPages/Board_Recommend";
@@ -24,7 +26,6 @@ import FreeBoardTip from "./pages/freeboard/BoardMain/CategoryPages/Board_Tip";
 import FreeBoardTrade from "./pages/freeboard/BoardMain/CategoryPages/Board_Trade";
 import FreeBoardUpdate from "./pages/freeboard/BoardUpdate";
 import FreeBoardWrite from "./pages/freeboard/BoardWrite";
->>>>>>> 7c267fbb14a506a82fc85b13cfd27d240c6b4001
 import GalleryReg from "./pages/gallery/GalleryReg";
 import Header from "./components/Header";
 import Home from "./home/home";
@@ -48,12 +49,15 @@ import MyPage from "./pages/login/MyPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Profile from "./pages/login/Profile";
 import RBoardList from "./pages/introduce/reviewlist";
+import KakaoRedirectHandler from "./pages/login/KakaoRedirectHandler"
+
 import Review from "./pages/introduce/review";
 import SignUp from "./pages/login/SignUp";
 import TBoardDetail from "./pages/findboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import TEditBoard from "./pages/findboard/EditBoard";
 import WriteBoard from "./pages/findboard/WriteBoard";
+
 
 function App() {
   return (
@@ -63,14 +67,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/oauth" element={<Auth />} />
+        <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/findId" element={<FindId />} />
         <Route path="/findPwd" element={<FindPwd />} />
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
-
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/editGallery" element={<Gallery />} />
+        <Route path="/galleryDetail" element={<GalleryDetail />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         {/* <Route path='/showBoard' element={<ShowBoard />}/>
         <Route path='/showRoom' element={<ShowRoom />}/>

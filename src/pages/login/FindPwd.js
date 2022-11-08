@@ -36,6 +36,9 @@ height: 50px;
 border-radius: 40px 80px / 80px 40px;
 border: 3px dotted #40BAAA;
 background-color: rgb(0, 0, 0);
+::placeholder {
+  color: cornsilk;
+}
 `;
 
 const Button = styled.button`
@@ -54,17 +57,17 @@ align-items: center;
 
 const FindPwd = () => {
 
-  
+
   const [findPwd, setFindPwd] = useState("");
 
   const [idMessage, setIdMessage] = useState("");
   const [isId, setIsId] = useState(false);
-  
+
   const [inputId, setInputId] = useState("");
   const [inputName, setInputName] = useState("");
-  const [inputEmail, setInputEmail] =useState("");
+  const [inputEmail, setInputEmail] = useState("");
 
-  
+
   const onChangeId = (e) => {
     setInputId(e.target.value);
     if (e.target.value.length <= 4 || e.target.value.length > 20) {
@@ -76,8 +79,8 @@ const FindPwd = () => {
       setIsId(true);
       setIdMessage("잘 입력하셨습니다.");
       console.log(isId);
+    }
   }
-}
 
   const onChangeName = (e) => {
     setInputName(e.target.value);
@@ -87,7 +90,7 @@ const FindPwd = () => {
     setInputEmail(e.target.value);
   }
 
-  const onClickFindPwd = ()=> {
+  const onClickFindPwd = () => {
 
     const memberData = async () => {
       try {
@@ -96,13 +99,13 @@ const FindPwd = () => {
 
         infoPwd.forEach(element => {
           console.log(element[2]);
-          if(element[0] === inputId &&
-              element[2] === inputName &&
-              element[3] === inputEmail) {
-              setFindPwd(element[1]);
+          if (element[0] === inputId &&
+            element[2] === inputName &&
+            element[3] === inputEmail) {
+            setFindPwd(element[1]);
           }
         });
-      } catch(e) {
+      } catch (e) {
         console.log(e);
       }
     }
@@ -118,7 +121,7 @@ const FindPwd = () => {
 
   const closeModal = () => {
     setModalOpen(false);
-    
+
   };
 
   const confirmModal = () => {
@@ -128,41 +131,41 @@ const FindPwd = () => {
 
 
   return (
-  <Box>
-    <div>
+    <Box>
       <div>
-        <InputContainer>
-        <FontAwesomeIcon icon={faUser} size="3x"
-                                  style={{"marginRight": 10}}/> 
-          <Input placeholder="아이디" value={inputId} onChange={onChangeId} />
-        </InputContainer>
-        <MsgContainer>
-          { inputId.length > 0 && <span>{idMessage}</span>}
-        </MsgContainer>
-        <InputContainer>
-        <FontAwesomeIcon icon={faUserTag} size="3x"
-                                  style={{"marginRight": 10}}/> 
-          <Input placeholder="이름" value={inputName} onChange={onChangeName} />
-        </InputContainer>
-        <MsgContainer>
-          {/* span 태그의 class에 다른 props 넣어서 false일 때 메세지가 나오도록 수정해야함 */}
-          {/* <span className={`message ${isId ? 'success' : 'error'}`}></span> */}
-          {/* {inputId > 0 && {isId} ? null : <span>{idMessage}</span>}  */}
-        </MsgContainer>
-        <InputContainer>  
-        <FontAwesomeIcon icon={faEnvelope} size="3x"
-                                  style={{"marginRight": 10}}/> 
-          <Input placeholder="이메일" value={inputEmail} onChange={onChangeEmail} />
-        </InputContainer>
-        <MsgContainer></MsgContainer>
         <div>
-          <Button onClick={onClickFindPwd}>PASSWORD ?</Button>
-          <Button onClick={onClickCancel}>Cancel</Button>
+          <InputContainer>
+            <FontAwesomeIcon icon={faUser} size="3x"
+              style={{ "marginRight": 10 }} />
+            <Input placeholder="  아이디" value={inputId} onChange={onChangeId} />
+          </InputContainer>
+          <MsgContainer>
+            {inputId.length > 0 && <span>{idMessage}</span>}
+          </MsgContainer>
+          <InputContainer>
+            <FontAwesomeIcon icon={faUserTag} size="3x"
+              style={{ "marginRight": 10 }} />
+            <Input placeholder="  닉네임" value={inputName} onChange={onChangeName} />
+          </InputContainer>
+          <MsgContainer>
+            {/* span 태그의 class에 다른 props 넣어서 false일 때 메세지가 나오도록 수정해야함 */}
+            {/* <span className={`message ${isId ? 'success' : 'error'}`}></span> */}
+            {/* {inputId > 0 && {isId} ? null : <span>{idMessage}</span>}  */}
+          </MsgContainer>
+          <InputContainer>
+            <FontAwesomeIcon icon={faEnvelope} size="3x"
+              style={{ "marginRight": 10 }} />
+            <Input placeholder="  EMAIL" value={inputEmail} onChange={onChangeEmail} />
+          </InputContainer>
+          <MsgContainer></MsgContainer>
+          <div>
+            <Button onClick={onClickFindPwd}>PASSWORD ?</Button>
+            <Button onClick={onClickCancel}>Cancel</Button>
+          </div>
         </div>
       </div>
-    </div>
-    {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="비밀번호 찾기">PWD : {findPwd}</Modal>}
-  </Box>
+      {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="비밀번호 찾기">PWD : {findPwd}</Modal>}
+    </Box>
   )
 }
 
