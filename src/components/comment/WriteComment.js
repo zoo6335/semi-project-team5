@@ -8,20 +8,21 @@ const WriteContent = ({ inputContent, setInputContent }) => {
   if (isLogin === "FALSE") window.location.replace("/login"); // 로그인 페이지로 이동
 
   const getUserId = window.localStorage.getItem("userId"); // 유저 아이디 값 가져오기
-  const getDetail = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
-
-  let isSubmit = false;
+  const getBoardId = window.localStorage.getItem("fb_id"); // 게시판 아이디 값 가져오기
 
   const onChangeContent = (e) => setInputContent(e.target.value);
 
   const onPressEnter = async (e) => {
     if (e.key === "Enter") {
       console.log("엔터 클릭");
-      const res = await JYApi.insertComment(getUserId, inputContent, getDetail);
+      e.preventDefault();
+      const res = await JYApi.insertComment(
+        getUserId,
+        inputContent,
+        getBoardId
+      );
       console.log(res.data.result);
-      // if (res.data.result === "OK") {
-      //   setInputContent(inputContent);
-      // }
+      // setInputContent("");
     }
   };
 
@@ -32,7 +33,6 @@ const WriteContent = ({ inputContent, setInputContent }) => {
         onKeyPress={onPressEnter}
         name="writer"
         placeholder="👉 댓글을 입력하세요 !"
-        // value={isSubmit ? "" : undefined}
       />
     </WriteBlock>
   );
@@ -44,7 +44,6 @@ const WriteBlock = styled.div`
   margin: 0 auto;
   & > textarea {
     width: 800px;
-    // height: 70px;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 5px;

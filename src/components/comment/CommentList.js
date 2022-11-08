@@ -27,9 +27,10 @@ const CommentBlock = styled.div`
     border: none;
     border-radius: 5px;
     padding: 0px 7px;
+    float: right;
     position: relative;
-    left: 730px;
-    bottom: 95px;
+    right: 10px;
+    top: 10px;
     color: white;
     background-color: red;
     font-size: 0.9em;
@@ -42,25 +43,26 @@ const CommentBlock = styled.div`
 `;
 
 const CommentList = () => {
-  const getBoardid = window.localStorage.getItem("fb_id");
+  const getBoardId = window.localStorage.getItem("fb_id");
   const getUserId = window.localStorage.getItem("userId"); // 삭제시 현 유저아이디 대조용
-  console.log("자유게시판 게시물 ID : " + getBoardid);
+
+  console.log("자유게시판 게시물 ID : " + getBoardId);
   const [commentDetail, setCommentDetail] = useState("");
   const [inputContent, setInputContent] = useState(""); // 댓글 내용 입력 받을 객체
+  const [deleteComplete, setDeleteComplete] = useState(false);
 
   // 댓글 조회
   useEffect(() => {
     const CommentData = async () => {
       try {
-        const response = await JYApi.commentList(getBoardid);
+        const response = await JYApi.commentList(getBoardId);
         setCommentDetail(response.data);
-        console.log(response.data);
       } catch (e) {
         console.log(e);
       }
     };
     CommentData();
-  }, [inputContent]);
+  }, [deleteComplete, inputContent]);
 
   // 삭제 버튼 클릭 시
   const onClickButton = async (postId) => {
@@ -69,7 +71,8 @@ const CommentList = () => {
     const res = await JYApi.deleteComment(postId);
     console.log(res.data.result);
     if (res.data.result === "OK") {
-    }
+      setDeleteComplete(true);
+    } else setDeleteComplete(false);
   };
 
   return (
@@ -83,6 +86,15 @@ const CommentList = () => {
           <CommentBlock key={comment.postId}>
             {/* <p className="comment">게시글 번호 test : {comment.boardId}</p>
             <p className="comment">댓글 번호 test : {comment.postId}</p> */}
+            {/* 같은 아이디일 경우에만 삭제 버튼이 보임 */}
+            {getUserId === comment.id && (
+              <button
+                className="deleteBt"
+                onClick={() => onClickButton(comment.postId)}
+              >
+                삭제
+              </button>
+            )}
             <p className="comment" style={{ fontSize: "1.2em" }}>
               {comment.id}💨
             </p>
@@ -93,14 +105,6 @@ const CommentList = () => {
             <p className="comment" style={{ fontSize: "1.15em" }}>
               {comment.content}
             </p>
-            {getUserId === comment.id && (
-              <button
-                className="deleteBt"
-                onClick={() => onClickButton(comment.postid)}
-              >
-                삭제
-              </button>
-            )}
           </CommentBlock>
         ))}
     </div>

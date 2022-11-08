@@ -45,7 +45,7 @@ const RankingApi = {
   deleteComment: async function (postId) {
     console.log("댓글 번호 : " + postId);
     const regCmd = {
-      postId: postId,
+      postId: String(postId),
     };
     return await axios.post(
       NGB_DOMAIN + "DeleteCommentServlet",
