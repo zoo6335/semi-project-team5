@@ -12,7 +12,9 @@
     display: block;
     color: black;
     background-color: white;
-
+    border: 4px solid #40BAAA;
+    width: 1024px;
+    height: 2000px;
 }
 
 h1 {
@@ -106,11 +108,11 @@ ul {
 }
 
 
-@media (min-width: 1500px) {
+@media (min-width: 2000px) {
 
     .aboutcol2 {
-        width: 40%;
-        height: 40%;
+        width: 75%;
+        height: 75%;
         text-align: center;
         justify-content: center;
         margin: auto;
