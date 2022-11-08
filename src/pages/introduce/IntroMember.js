@@ -45,7 +45,7 @@ const Intro = () => {
 
             <div className="container-About ">
                 <div className="text-center">
-                    <h2>안녕하세요 나가방입니다.</h2>
+                    <h2 className="member-title">안녕하세요 나가방입니다.</h2>
                     <div className="aboutcol2">
                         <img className="imgescapeabout3" alt="logo2" src={introImg12} style={{ height: '60%', width: '60%' }} />
                     </div>
