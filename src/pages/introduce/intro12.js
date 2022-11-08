@@ -16,14 +16,16 @@ const Intro12 = () => {
                     <div className="aboutcol2">
                         <img className="imgescapeabout" alt="logo2" src={introImg} style={{ height: '40%', width: '40%' }} />
                     </div>
-                    <p>우리들은 미제사건을 파헤치는 미스터리 동호회 회원이다.
-                        <br />이상정신병원 실종사건은 10대들만 실종되었던 미제사건이다.
-                        <br />이때 병원장이 용의자로 지목이 되었지만 병원장도 현재 실종된 사건이다.
-                        <br />이 사건을 풀기 위해 정신병원에 들어갔다. 그 순간 모든 문이 잠기고 나갈 수가 없다.
-                        <br />사건의 진실을 알아내고 무사히 이곳을 빠져나가야 한다.
-                    </p>
-                    <p className="pastelred-text">★ 공포 테마입니다.
-                        <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
+                    <div div className="introducetext" >
+                        <p>우리들은 미제사건을 파헤치는 미스터리 동호회 회원이다.
+                            <br />이상정신병원 실종사건은 10대들만 실종되었던 미제사건이다.
+                            <br />이때 병원장이 용의자로 지목이 되었지만 병원장도 현재 실종된 사건이다.
+                            <br />이 사건을 풀기 위해 정신병원에 들어갔다. 그 순간 모든 문이 잠기고 나갈 수가 없다.
+                            <br />사건의 진실을 알아내고 무사히 이곳을 빠져나가야 한다.
+                        </p>
+                        <p className="pastelred-text">★ 공포 테마입니다.
+                            <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
+                    </div>
                     <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
 
                     <a href="https://booking.naver.com/booking/12/bizes/762346" className="btnn site" target="_blank">사이트 방문하기</a>
