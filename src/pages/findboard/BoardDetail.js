@@ -56,7 +56,6 @@ const ReadNumber = styled.div`
 
 const TBoardDetail = () => {
   const isLogin = window.localStorage.getItem("isLogin");
-  // 현재 로그인한 아이디 정보 가져오기
   const loginId = window.localStorage.getItem("userId");
   const getDetail = window.localStorage.getItem("Detail");
   const [boardDetail, setBoardDetail] = useState("");
