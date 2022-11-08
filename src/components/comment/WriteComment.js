@@ -1,42 +1,54 @@
 import styled from "styled-components";
-import { useState, useEffect } from 'react';
-import JYApi from '../../api/JYApi';
+import { useState, useEffect } from "react";
+import JYApi from "../../api/JYApi";
+import { render } from "@testing-library/react";
 
-const WriteContent = () => {
-  const getDetail = window.localStorage.getItem("Detail"); // 로컬스토리지 값 가져오기
-  
-  // 로그인 상태가 아닐때는 글작성할 수 없게
-  const isLogin = window.localStorage.getItem("isLogin");
-  if(isLogin === "FALSE") window.location.replace("/");
+const WriteContent = ({ inputContent, setInputContent }) => {
+  const isLogin = window.localStorage.getItem("isLogin"); // 로그인 상태가 아닐때는 글 작성할 수 없게
+  if (isLogin === "FALSE") window.location.replace("/login"); // 로그인 페이지로 이동
 
-  const [inputContent, setInputContent] = useState(""); // 댓글 내용 입력 받을 객체
-  
-  useEffect(() => {
-    const CommentData = async () => {
-      try {
-        
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    
-  }, []);
+  const getUserId = window.localStorage.getItem("userId"); // 유저 아이디 값 가져오기
+  const getDetail = window.localStorage.getItem("Detail"); // 게시판 아이디 값 가져오기
+
+  let isSubmit = false;
+
+  const onChangeContent = (e) => setInputContent(e.target.value);
+
+  const onPressEnter = async (e) => {
+    if (e.key === "Enter") {
+      console.log("엔터 클릭");
+      const res = await JYApi.insertComment(getUserId, inputContent, getDetail);
+      console.log(res.data.result);
+      // if (res.data.result === "OK") {
+      //   setInputContent(inputContent);
+      // }
+    }
+  };
 
   return (
     <WriteBlock>
-      <textarea name="writer" placeholder="👉 댓글을 입력하세요 !" />
+      <textarea
+        onChange={onChangeContent}
+        onKeyPress={onPressEnter}
+        name="writer"
+        placeholder="👉 댓글을 입력하세요 !"
+        // value={isSubmit ? "" : undefined}
+      />
     </WriteBlock>
-  )
-}
+  );
+};
 const WriteBlock = styled.div`
+  width: 800px;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   & > textarea {
     width: 800px;
-    height: 70px;
+    // height: 70px;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 5px;
-    border: 2px dashed grey;
+    border: 5px solid grey;
     resize: vertical;
   }
 `;

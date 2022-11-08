@@ -12,9 +12,9 @@ const Box = styled.div`
   width: 1024px;
   height: auto;
   margin: 0 auto;
-  background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: column;
+  background-color: rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
 `;
@@ -26,6 +26,7 @@ const LogoBox = styled.div`
   margin: auto;
   margin-top: 2rem;
   font-family: "DungGeunMo";
+  z-index: 10;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1em;
@@ -96,9 +97,16 @@ const TBoardList = () => {
           </div>
         </LogoBox>
       </div>
-      <div style={{ height: "100%", width: "100%", overflow: "hidden" }}>
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          backgroundColor: "black",
+          zIndex: "5",
+        }}
+      >
         <form className="board-form" style={{ width: "100%" }}>
-          <div>
+          <div style={{ margin: "30px" }}>
             {isLogin === "TRUE" && (
               <button className="boardWriteBtn" onClick={onClickWrite}>
                 글쓰기 📝
@@ -112,7 +120,7 @@ const TBoardList = () => {
                 <thead>
                   <tr>
                     <th width="100px">모집현황</th>
-                    <th width="80px">글번호</th>
+                    <th width="150px">글번호</th>
                     <th width="*">제목</th>
                     <th width="150px">작성자</th>
                     <th width="150px">작성일</th>

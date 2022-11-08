@@ -1,7 +1,7 @@
-import "suneditor/dist/css/suneditor.min.css";
-import nbApi from "../../api/nbApi";
+import React, { useEffect, useState } from "react";
+
 import Modal from "../../util/Modal";
-import React, { useState, useEffect } from "react";
+import nbApi from "../../api/nbApi";
 import styled from "styled-components";
 
 const Box = styled.div`
@@ -12,6 +12,7 @@ const Box = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  background-color: rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
 `;
@@ -28,6 +29,30 @@ const LogoBox = styled.div`
     padding-left: 1em;
     padding-right: 1em;
   }
+`;
+
+const ReadTitle = styled.div`
+  border: 2px solid #8dc0f1;
+  border-radius: 20px;
+  width: 800px;
+  height: 80px;
+  margin: 5px 55px;
+`;
+const ReadContents = styled.div`
+  border: 2px solid #8dc0f1;
+  border-radius: 20px;
+  width: 800px;
+  height: 300px;
+  padding: 10px;
+  margin: 5px 55px;
+`;
+const ReadNumber = styled.div`
+  border: 2px solid #8dc0f1;
+  border-radius: 20px;
+  width: 800px;
+  height: 50px;
+  padding: 10px;
+  margin: 5px 55px;
 `;
 
 const TBoardDetail = () => {
@@ -129,87 +154,108 @@ const TBoardDetail = () => {
   return (
     <Box>
       <div style={{ height: "100%" }}>
-        <div style={{ height: "20%" }}>
-          <div style={{ height: "130px" }}>
-            <LogoBox>
-              <div className="boardCategory">
-                <h1>일 행 구 하 기</h1>
-                <span>내 동료가 돼라!</span>
-              </div>
-            </LogoBox>
-          </div>
+        <div style={{ height: "130px" }}>
+          <LogoBox>
+            <div className="boardCategory">
+              <h1>일 행 구 하 기</h1>
+              <span>내 동료가 돼라!</span>
+            </div>
+          </LogoBox>
         </div>
         <div style={{ height: "80%" }}>
           <div style={{ height: "100%", width: "100%" }}>
-            <div style={{ display: "flex", width: "100%" }}>
-              <div style={{ width: "100%" }}>
-                <h1 style={{ textAlign: "center" }}>게시물 상세</h1>
-              </div>
+            <div style={{ width: "100%" }}>
+              <h2 style={{ textAlign: "center" }}>게시물 상세</h2>
             </div>
-            <div style={{ height: "900px" }} className="table">
-              <table style={{ width: "900px", marginLeft: "50px" }}>
-                <thead>
-                  <tr class="table-active">
-                    <th scope="col" style={{ width: "60%" }}>
-                      {boardDetail.gmb_done === "1" ? (
-                        <span class="badge rounded-pill bg-danger">
-                          모집완료
-                        </span>
-                      ) : (
-                        <span class="badge rounded-pill bg-success">
-                          모집중
-                        </span>
-                      )}
-                      <br />
-                      제목 : {boardDetail.gmb_title}
+          </div>
+          <div
+            className="badgeDiv"
+            style={{ textAlign: "left", marginLeft: "110px", fontSize: "20px" }}
+          >
+            {boardDetail.gmb_done === "1" ? (
+              <span class="badge rounded-pill bg-danger">모집완료</span>
+            ) : (
+              <span class="badge rounded-pill bg-success">모집중</span>
+            )}
+          </div>
+          <div style={{ height: "900px" }} className="table">
+            <table
+              style={{
+                width: "900px",
+                marginLeft: "50px",
+                borderCollapse: "collapse",
+              }}
+            >
+              <thead>
+                <ReadTitle>
+                  <tr class="tableTitle">
+                    <th
+                      rowSpan={2}
+                      style={{
+                        width: "90%",
+                        fontSize: "1.5rem",
+                        verticalAlign: "middle",
+                      }}
+                    >
+                      {boardDetail.gmb_title}
                     </th>
                     <th
                       scope="col"
-                      style={{ width: "40%", textAlign: "right" }}
+                      style={{
+                        width: "30%",
+                        fontSize: "1.2rem",
+                      }}
                     >
-                      작성자 : {boardDetail.gmb_user_id}
+                      {boardDetail.gmb_user_id}
                       <br />
-                      작성일 : {boardDetail.gmb_c_date}
+                      {boardDetail.gmb_c_date}
                     </th>
                   </tr>
-                </thead>
-                <tbody>
+                </ReadTitle>
+              </thead>
+
+              <tbody>
+                <ReadContents>
                   <tr>
                     <td>
-                      <pre>{content}</pre>
+                      <pre style={{ fontSize: "1.2rem", fontFamily: "unset" }}>
+                        {content}
+                      </pre>
                     </td>
                   </tr>
-                  <tr class="table-active">
-                    <td>
+                </ReadContents>
+                <tr class="table-active">
+                  <ReadNumber>
+                    <td style={{ fontSize: "1.2rem" }}>
                       모집현황 : {boardDetail.gmb_apply}/
                       {boardDetail.gmb_apply_total}
                     </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div className="setButton">
-                <button className="listBtn" onClick={onClickgoBack}>
-                  목록
-                </button>
-                {loginId === boardDetail.gmb_user_id ? (
-                  <>
-                    <button className="deleteBtn" onClick={onClickDelete}>
-                      삭제
+                  </ReadNumber>
+                </tr>
+              </tbody>
+            </table>
+            <div className="setButton">
+              <button className="listBtn" onClick={onClickgoBack}>
+                목록
+              </button>
+              {loginId === boardDetail.gmb_user_id ? (
+                <>
+                  <button className="deleteBtn" onClick={onClickDelete}>
+                    삭제
+                  </button>
+                  {boardDetail.gmb_done !== "1" && (
+                    <button className="editBtn" onClick={onClickEdit}>
+                      수정
                     </button>
-                    {boardDetail.gmb_done !== "1" && (
-                      <button className="editBtn" onClick={onClickEdit}>
-                        수정
-                      </button>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <button className="applyBtn" onClick={onClickApply}>
-                      모집신청
-                    </button>
-                  </>
-                )}
-              </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <button className="applyBtn" onClick={onClickApply}>
+                    모집신청
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>

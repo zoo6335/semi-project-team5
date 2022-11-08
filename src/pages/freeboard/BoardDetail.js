@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
-import Api from '../../api/FbApi';
-import './FreeBoardStyle.css'
-import Modal from '../../util/Modal';
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
+import Api from "../../api/FbApi";
+import "./FreeBoardStyle.css";
+import Modal from "../../util/Modal";
+import styled from "styled-components";
+import Comment from "../../components/comment/CommentList";
 import BoardTitleHeader from './BoardMain/Components/BoardTitle';
 
 const BoardBlock = styled.div`
@@ -98,16 +99,16 @@ const BoardDetail = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
   // 게시글 삭제 모달
-  const confirmModal = async() => {
-      setModalOpen(false);
-      const boardReg = await Api.fBoardDelete(getFb_id);
-      console.log(boardReg.data.result);
-      if(boardReg.data.result === "OK") {
-        window.location.replace("/totalBoard");
-      } else {
-      }
+  const confirmModal = async () => {
+    setModalOpen(false);
+    const boardReg = await Api.fBoardDelete(getFb_id);
+    console.log(boardReg.data.result);
+    if (boardReg.data.result === "OK") {
+      window.location.replace("/totalBoard");
+    } else {
+    }
   };
 
   // 게시글 수정
@@ -133,10 +134,7 @@ const BoardDetail = () => {
         // setBoardComment(response.data);
         // console.log(response.data)
         // 조회수
-        await Api.fBoardHit(
-        response.data[0].fb_id,
-        response.data[0].fb_hit
-        );
+        await Api.fBoardHit(response.data[0].fb_id, response.data[0].fb_hit);
       } catch (e) {
         console.log(e);
       }
@@ -172,7 +170,8 @@ const BoardDetail = () => {
             <Button onClick={onClickDelete}>삭제</Button>
           </div>
         )}
-          {/* 댓글 컴포넌트 위치 */}
+        {/* 댓글 컴포넌트 위치 <- 주연: 댓글 컴포넌트 달았습니다! 일단은 하늘님 페이지 색상이랑 통일감 주려고 같은 색상을 차용했는데, 수정사항 있으면 말씀해주세요 :)  */}
+        <Comment />
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 삭제하시겠습니까?</Modal>}
       </BoardBlock>
   )

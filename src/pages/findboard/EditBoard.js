@@ -1,8 +1,10 @@
-import SunEditor from "suneditor-react";
 import "suneditor/dist/css/suneditor.min.css";
-import nbApi from "../../api/nbApi";
+
+import React, { useEffect, useState } from "react";
+
 import Modal from "../../util/Modal";
-import React, { useState, useEffect } from "react";
+import SunEditor from "suneditor-react";
+import nbApi from "../../api/nbApi";
 import styled from "styled-components";
 
 const Box = styled.div`
@@ -21,9 +23,10 @@ const LogoBox = styled.div`
   box-sizing: border-box;
   padding-bottom: 3em;
   width: 1024px;
-  height: 140px;
-  margin: auto;
+  height: auto;
+  margin-top: 2rem;
   font-family: "DungGeunMo";
+  z-index: 10;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1em;
@@ -45,6 +48,25 @@ const TEditBoard = () => {
   const onChangeApplyTotal = (applyTotal) =>
     setApplyTotal(applyTotal.target.value);
 
+  useEffect(() => {
+    const BoardData = async () => {
+      setLoading(true);
+      try {
+        const response = await nbApi.onDetail(localBoardId);
+        console.log(response.data);
+        setInputTitle(response.data[0].gmb_title);
+        setInputContent(response.data[0].gmb_content);
+        setApplyTotal(response.data[0].gmb_apply_total);
+        setId(response.data[0].gmb_id);
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    BoardData();
+  }, []);
+
+  // 뒤로가기 버튼
   const onCLickgoBack = (e) => {
     e.preventDefault();
     console.log("뒤로가기 버튼 클릭");
@@ -75,27 +97,10 @@ const TEditBoard = () => {
     }
   };
 
+  // 모달 닫기
   const closeModal = () => {
     setModalOpen(false);
   };
-
-  useEffect(() => {
-    const BoardData = async () => {
-      setLoading(true);
-      try {
-        const response = await nbApi.onDetail(localBoardId);
-        console.log(response.data);
-        setInputTitle(response.data[0].gmb_title);
-        setInputContent(response.data[0].gmb_content);
-        setApplyTotal(response.data[0].gmb_apply_total);
-        setId(response.data[0].gmb_id);
-      } catch (e) {
-        console.log(e);
-      }
-      setLoading(false);
-    };
-    BoardData();
-  }, []);
 
   if (loading) {
     return <h5>대기 중...</h5>;
@@ -105,38 +110,46 @@ const TEditBoard = () => {
     <Box>
       <div style={{ height: "100%" }}>
         <div style={{ height: "20%" }}>
-          <div style={{ height: "130px" }}>
+          <div style={{ height: "98px" }}>
             <LogoBox>
-              <div className="boardCategory">
+              <div className="boardCategory" style={{ position: "fixed" }}>
                 <h1>일 행 구 하 기</h1>
                 <span>내 동료가 돼라!</span>
               </div>
             </LogoBox>
           </div>
         </div>
-        <div style={{ height: "80%" }}>
+        <div style={{ height: "80%", width: "100%" }}>
           <div style={{ height: "100%", width: "100%" }}>
             <div style={{ display: "flex", width: "100%" }}>
-              <div style={{ width: "10%" }}>
+              <div style={{ width: "15%", margin: "15px" }}>
                 <button className="goBackBtn" onClick={onCLickgoBack}>
                   뒤로가기⬅
                 </button>
               </div>
-              <div style={{ width: "80%" }}>
-                <h1 style={{ textAlign: "center" }}>수정하기</h1>
+              <div style={{ width: "85%" }}>
+                <h2
+                  style={{
+                    textAlign: "center",
+                    marginTop: "30px",
+                    marginRight: "100px",
+                  }}
+                >
+                  수정하기
+                </h2>
               </div>
             </div>
-            <div style={{ height: "900px" }} className="table">
-              {/* {boardDetail &&
-          boardDetail.map((detail) => ( */}
-              <table style={{ width: "1000px", margin: "15px" }}>
+            <div style={{ height: "900px" }} className="write_table">
+              <table style={{ width: "900px", margin: "2.8rem" }}>
                 <thead>
-                  <col style={{ width: "85px" }} />
+                  <col style={{ width: "80px" }} />
                   <col style={{ width: "*" }} />
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">제목</th>
+                    <th scope="row" style={{ textAlign: "center" }}>
+                      제목
+                    </th>
                     <td>
                       <input
                         className="title-input"
@@ -144,12 +157,14 @@ const TEditBoard = () => {
                         placeholder="제목을 입력하세요."
                         value={inputTitle}
                         onChange={onChangeTitle}
-                        style={{ margin: "1px", width: "100%" }}
+                        style={{ margin: "2px", width: "100%" }}
                       />
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row">내용</th>
+                    <th scope="row" style={{ textAlign: "center" }}>
+                      내용
+                    </th>
                     <td>
                       <SunEditor
                         // setContents="My contents"
@@ -159,7 +174,7 @@ const TEditBoard = () => {
                           onChangeContent(content);
                         }}
                         setContents={inputContent}
-                        height="500px"
+                        height="200px"
                         setOptions={{
                           buttonList: [
                             [
@@ -197,7 +212,6 @@ const TEditBoard = () => {
                   </tr>
                 </tbody>
               </table>
-              {/* ))} */}
               <button className="submitBtn" onClick={onClickEdit}>
                 작성완료
               </button>
@@ -212,7 +226,7 @@ const TEditBoard = () => {
             type={true}
             header="확인"
           >
-            작성하시겠습니까?
+            수정하시겠습니까?
           </Modal>
         )}
       </div>
