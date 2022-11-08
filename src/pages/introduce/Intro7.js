@@ -18,11 +18,12 @@ const About7 = () => {
                     <div className="aboutcol2">
                         <img className="imgescapeabout" alt="logo2" src={introImg} style={{ height: '40%', width: '40%' }} />
                     </div>
-                    <p>나난, 평화로운 클루 성에 사는 왕자 레오.
-                        <br /> 평소와 같이 아침에 눈을 떠보니 부모님, 사부님을 비롯한 모두의 흔적이 보이지 않는다.
-                        <br />모두 어디로 간 거지? 내가 찾아봐야겠어!
-
-                    </p>
+                    < div className="introducetext" >
+                        <p>나난, 평화로운 클루 성에 사는 왕자 레오.
+                            <br /> 평소와 같이 아침에 눈을 떠보니 부모님, 사부님을 비롯한 모두의 흔적이 보이지 않는다.
+                            <br />모두 어디로 간 거지? 내가 찾아봐야겠어!
+                        </p>
+                    </div>
                     <p className="pastelred-text">★ 전체 이용가 테마입니다.
                         <br />테마를 꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
                     <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
