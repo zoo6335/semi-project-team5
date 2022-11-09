@@ -1,5 +1,5 @@
 import Login from "./pages/login/Login";
-import './App.css';
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Profile from "./pages/login/Profile";
 import SignUp from "./pages/login/SignUp";
@@ -14,7 +14,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 import MemberUpdate from "./pages/login/MemberUpdate";
 
-import Gallery from "./pages/gallery/GalleryList"
+import Gallery from "./pages/gallery/GalleryList";
 import EditGallery from "./pages/gallery/EditGallery";
 import GalleryReg from "./pages/gallery/GalleryReg";
 import GalleryDetail from "./pages/gallery/GalleryDetail";
@@ -40,14 +40,14 @@ import Intro8 from "./pages/introduce/Intro8";
 import Intro9 from "./pages/introduce/intro9";
 import Introduce from "./pages/introduce/Introduce";
 import RBoardList from "./pages/introduce/reviewlist";
-import KakaoRedirectHandler from "./pages/login/KakaoRedirectHandler"
+import KakaoRedirectHandler from "./pages/login/KakaoRedirectHandler";
 
 import Review from "./pages/introduce/review";
 import TBoardDetail from "./pages/findboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import TEditBoard from "./pages/findboard/EditBoard";
 import WriteBoard from "./pages/findboard/WriteBoard";
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -57,7 +57,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
+        <Route
+          path="/oauth/callback/kakao"
+          element={<KakaoRedirectHandler />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/findId" element={<FindId />} />
@@ -71,7 +74,7 @@ function App() {
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         {/* <Route path='/showBoard' element={<ShowBoard />}/>
         <Route path='/showRoom' element={<ShowRoom />}/>
-        <Route path='/selectType' element={<SelectType />}/> */}
+      <Route path='/selectType' element={<SelectType />}/> */}
 
         <Route path="/introduce" element={<Introduce />} />
         <Route path="/intro" element={<Intro />} />
@@ -104,6 +107,7 @@ function App() {
         <Route path="/tBoardDetail" element={<TBoardDetail />} />
         <Route path="/tEditBoard" element={<TEditBoard />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
