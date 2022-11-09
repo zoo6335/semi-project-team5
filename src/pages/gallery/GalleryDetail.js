@@ -22,17 +22,6 @@ const Box = styled.div`
 `
 
 
-const Input = styled.input`
-width: 500px;
-height: 50px;
-border-radius: 40px 80px / 80px 40px;
-border: 3px dotted #40BAAA;
-background-color: rgb(0, 0, 0);
-::placeholder {
-  color: cornsilk;
-}
-`;
-
 const Button = styled.button`
 width: 150px;
 height: 50px;
@@ -61,6 +50,7 @@ const GalleryDetail = () => {
     const BoardData = async () => {
       try {
         const response = await DjApi.galleryDetail(getDetail);
+        console.log(response.data);
         setGalleryDetail(response.data[0]);
         setContent(response.data[0].content.replace(/<[^>]*>?/g, ""));
       } catch (e) {
@@ -75,7 +65,7 @@ const GalleryDetail = () => {
   const onClickgoBack = (e) => {
     console.log("목록가기 버튼 클릭");
     e.preventDefault();
-    window.location.replace("/galleryList");
+    window.location.replace("/gallery");
   };
 
   // 버튼 누를 시 게시물 수정 화면으로 이동
@@ -89,14 +79,14 @@ const GalleryDetail = () => {
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
     setModalOpen(true);
   };
-  // 삭제버튼 클릭시 모달
+
   const confirmModal = async () => {
     setModalOpen(false);
     const res = await DjApi.galleryDelete(getDetail);
     console.log("삭제 버튼 클릭");
     console.log(res.data.result);
     if (res.data.result === "OK") {
-      window.location.replace("/galleryList");
+      window.location.replace("/gallery");
     } else {
     }
   };
@@ -109,14 +99,17 @@ const GalleryDetail = () => {
 
 
   return (
-    <div>
+    <>
       <Box>
         {/* {showImage} */}
         <div style={{ marginTop: 50 }}>
-          <p>{galleryDetail.title}</p>
+          <span>제목 : {galleryDetail.title}</span>
         </div>
         <div>
-          <p>{content}</p>
+          <span>내용 : {content}</span>
+        </div>
+        <div>
+          <img src={`${galleryDetail.image_url}`} alt = "" style={{"width":"400px", "height":"400px"}}/>
         </div>
         {isLogin === "TRUE" && loginId === galleryDetail.user_id ? (
           <>
@@ -127,7 +120,7 @@ const GalleryDetail = () => {
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
       </Box>
       <Footer />
-    </div>
+    </>
   )
 };
 

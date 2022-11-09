@@ -82,7 +82,6 @@ const DjApi = {
 
   galleryDetail: async function (gal_id) {
     const detailObj = {
-      cmd: "GalleryInfo",
       gal_id: gal_id,
     };
     return await axios.post(

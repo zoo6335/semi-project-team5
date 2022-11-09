@@ -4,6 +4,7 @@ import Modal from "../../util/Modal";
 import styled from "styled-components";
 import { faLock, faUser, faEnvelope, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Footer from "../../components/Footer";
 
 
 const Box = styled.div`
@@ -167,8 +168,9 @@ const SignUp = () => {
   }
 
   return (
+    <>
     <Box>
-      <div style={{ "marginTop": "-50px" }}>
+      <div style={{ }}>
         <InputContainer>
           <FontAwesomeIcon icon={faUser} size="3x"
             style={{ "marginRight": 10 }} />
@@ -177,6 +179,7 @@ const SignUp = () => {
         <MsgContainer>
           {inputId.length > 0 && <span>{idMessage}</span>}
         </MsgContainer>
+        <br/>
         <InputContainer>
           <FontAwesomeIcon icon={faLock} size="3x"
             style={{ "marginRight": "10px" }} />
@@ -185,6 +188,7 @@ const SignUp = () => {
         <MsgContainer style={{ "width": "470px" }}>
           {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
         </MsgContainer>
+        <br/>
         <InputContainer>
           <FontAwesomeIcon icon={faLock} size="3x"
             style={{ "marginRight": 10 }} />
@@ -193,18 +197,21 @@ const SignUp = () => {
         <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
         </MsgContainer>
+        <br/>
         <InputContainer>
           <FontAwesomeIcon icon={faUserTag} size="3x"
             style={{ "marginRight": 10 }} />
           <Input placeholder="  닉네임" value={inputName} onChange={onChangeName} />
         </InputContainer>
         <MsgContainer></MsgContainer>
+        <br/>
         <InputContainer>
           <FontAwesomeIcon icon={faEnvelope} size="3x"
             style={{ "marginRight": 10 }} />
           <Input placeholder="  EMAIL" value={inputEmail} onChange={onChangeEmail} />
         </InputContainer>
         <MsgContainer></MsgContainer>
+        <br/>
         <MsgContainer>
           {(isId && isPw && isCheckPw) ?
             <ButtonOk className="enable_button" onClick={onClickLogin}>SignUp</ButtonOk> :
@@ -214,6 +221,8 @@ const SignUp = () => {
       </div>
       <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
     </Box>
+    <Footer />
+    </>
   );
 }
 

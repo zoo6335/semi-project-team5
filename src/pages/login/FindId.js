@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
+import Footer from "../../components/Footer";
 import { faLock, faUser, faEnvelope, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -75,7 +76,7 @@ const FindId = () => {
   }
 
   const onClickCancel = () => {
-    window.location.replace("/");
+    window.location.replace("/login");
   }
 
   const onClickFind = () => {
@@ -116,13 +117,14 @@ const FindId = () => {
 
 
   return (
+    <>
     <Box>
       <div>
         <div>
           <InputContainer>
             <FontAwesomeIcon icon={faUserTag} size="3x"
               style={{ "marginRight": 10 }} />
-            <Input placeholder="  이름"
+            <Input placeholder="  닉네임"
               value={inputName}
               onChange={onChangeName}
             />
@@ -148,6 +150,8 @@ const FindId = () => {
       </div>
       {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="아이디 찾기">ID : {findId}</Modal>}
     </Box>
+    <Footer />
+    </>
   );
 }
 

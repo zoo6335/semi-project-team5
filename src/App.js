@@ -65,6 +65,7 @@ function App() {
         <Route path="/memberUpdate" element={<MemberUpdate />} />
         <Route path="/galleryReg" element={<GalleryReg />} />
         <Route path="/gallery" element={<Gallery />} />
+
         <Route path="/editGallery" element={<EditGallery />} />
         <Route path="/galleryDetail" element={<GalleryDetail />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />

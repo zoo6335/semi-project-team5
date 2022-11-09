@@ -30,11 +30,10 @@ const RoomRank = () => {
       <table>
         <thead>
           <tr className="row-title">
-            <th>순위</th>
-            <th>분류</th>
-            <th>테마명</th>
-            <th>좋아요</th>
-            <th></th>
+            <th width="50px">순위</th>
+            <th width="100px">분류</th>
+            <th width="200px">테마명</th>
+            <th width="70px">좋아요</th>
           </tr>
         </thead>
         <tbody>
@@ -42,10 +41,10 @@ const RoomRank = () => {
             roomRank.map((room) => (
               // <tr key={room.postId} onClick={() => onClickRoomDetail(room.postId)}>
               <tr key={room.postId}>
-                <td width="50px">{room.rank}위</td>
-                <td width="100px">{room.category}</td>
-                <td width="200px">{room.title}</td>
-                <td width="70px">{room.like}</td>
+                <td>{room.rank}위</td>
+                <td>{room.category}</td>
+                <td>{room.title}</td>
+                <td>{room.like}</td>
               </tr>
             ))}
         </tbody>
@@ -54,22 +53,20 @@ const RoomRank = () => {
   );
 };
 
-// const onClickRoomDetail = (val) => {
-//   console.log("방탈출 소개 상세 페이지 이동 : " + val);
-//   window.localStorage.setItem("Detail", val);  // Detail이 key, val이 value로 데이터 생성
-//   window.location.replace("/showRoom"); // replace 를 사용해서 이전 페이지로 이동이 불가능함..
-// }
-
 const RankingBlock = styled.div`
   box-sizing: border-box;
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
   table,
   th,
   td {
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     border-collapse: collapse;
     text-align: center;
-    height: 28px;
+    height: 29px;
   }
   tr {
     // 테이블 행 아래 보더 지정
@@ -79,6 +76,12 @@ const RankingBlock = styled.div`
     // 제목행
     color: white;
     text-shadow: -4px 0 #000, -4px 1px #000, 1px 0 #000, 0 -1px #000;
+  }
+  td {
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 `;
 

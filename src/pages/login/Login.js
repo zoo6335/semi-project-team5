@@ -4,6 +4,7 @@ import styled from "styled-components";
 import kakaoImage from "../../images/kakao_login_2.png";
 import Modal from "../../util/Modal";
 import DjApi from "../../api/DjApi";
+import Footer from "../../components/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faUserCheck } from "@fortawesome/free-solid-svg-icons";
@@ -32,7 +33,7 @@ const InputContainer = styled.div`
 
 const LoginContainer = styled.div`
   width: 400px;
-  height: 70px;
+  height: 50px;
   display: flex;
 `
 
@@ -42,14 +43,14 @@ const ImgContainer = styled.img`
 `
 
 const MsgContainer = styled.div`
-  width: 470px;
+  width: 400px;
   height: 30px;
   text-align: right;
 `
 
 const ButtonContainer = styled.div`
   width: 400px;
-  padding: 80px 0 0 40px;
+
   flex-wrap: wrap reverse;
 `
 
@@ -75,7 +76,7 @@ background-color: rgb(0, 0, 0);
 align-items: center;
 
   & + & {
-    margin-left : 50px;
+    margin-left : 100px;
   }
 
 `;
@@ -174,8 +175,10 @@ const Login = () => {
   };
 
   return (
+    <>
     <Box>
       <InputContainer>
+      <MsgContainer></MsgContainer>
         <LoginContainer>
           {inputId > 0 && isId ? <FontAwesomeIcon icon={faUserCheck} size="3x"
             style={{ "marginRight": 10 }} /> :
@@ -194,28 +197,31 @@ const Login = () => {
           {pwMessage}
         </MsgContainer>
       </InputContainer>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
       <ButtonContainer>
         <ButtonOk onClick={onClickLogin}>Login</ButtonOk>
         <ButtonOk onClick={onClickCancel}>Cancel</ButtonOk>
       </ButtonContainer>
-      <br />
-      <br />
+      
       <a href={KAKAO_AUTH_URL} target="_blank" rel="noreferrer noopener">
         <ImgContainer src={kakaoImage} alt="kakao login" />
       </a>
-      <br />
-      <br />
+      <br/>
       <div>
         <Link to={"/findId"} style={{ textDecoration: 'none', margin: '0 50px', color: '#40BAAA' }}>아이디 찾기</Link>
         <Link to={"/findPwd"} style={{ textDecoration: 'none', margin: '0 50px', color: '#40BAAA' }}>비밀번호 찾기</Link>
       </div>
-      <br />
-      <br />
+      <br/>
       <div>
         <Link to={"/signUp"} style={{ textDecoration: 'none', color: '#40BAAA' }}>아이디가 없으신가요?</Link>
       </div>
       <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
     </Box>
+    <Footer />
+    </>
   );
 };
 
