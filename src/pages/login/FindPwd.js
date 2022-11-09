@@ -132,7 +132,6 @@ const FindPwd = () => {
 
 
   return (
-    <>
     <Box>
       <div>
         <div>
@@ -168,8 +167,6 @@ const FindPwd = () => {
       </div>
       {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="비밀번호 찾기">PWD : {findPwd}</Modal>}
     </Box>
-  <Footer />
-  </>
   )
 }
 

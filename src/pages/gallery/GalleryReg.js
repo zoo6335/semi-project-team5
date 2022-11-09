@@ -76,7 +76,7 @@ const GalleryReg = () => {
   };
 
   // 임시로 이미지 주소 넣어줌
-  const img_url = "";
+  const img_url = '/assets/gallery1.jpg';
 
   const confirmModal = async () => {
     setModalOpen(false);
@@ -84,14 +84,11 @@ const GalleryReg = () => {
     const res = await DjApi.galleryReg(title, inputContent, img_url, loginId);
     console.log("작성완료 버튼 클릭");
     console.log(res.data.result);
-    console.log(loginId+"1"+title+"1"+inputContent+"1"+img_url);
 
     if (res.data.result === "OK") {
       window.location.replace("/gallery");
-    } else {
     }
   };
-
 
 
   const onSubmit = (e) => {
@@ -101,7 +98,6 @@ const GalleryReg = () => {
 
 
   return (
-    <>
       <Box>
         {/* {showImage} */}
         <div style={{ marginTop: 50 }}>
@@ -138,8 +134,6 @@ const GalleryReg = () => {
         <Button onClick={onSubmit}>등록</Button>
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
       </Box>
-      <Footer />
-    </>
   );
 }
 
