@@ -12,13 +12,14 @@ const Footer = () => {
   );
 };
 const FooterBlock = styled.div`
-background-color:black;
+  background-color: black;
   * {
     text-decoration-line: none;
     color: white;
   }
   border: 4px solid #40baaa;
   border-top: 1px solid #40baaa;
+  margin: 0 auto;
   width: 1024px;
   height: 65px;
   padding: 10px 30px;

@@ -1,23 +1,9 @@
-import Login from "./pages/login/Login";
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Profile from "./pages/login/Profile";
-import SignUp from "./pages/login/SignUp";
+import "./App.css";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import BoardDetail from "./pages/freeboard/BoardDetail";
-
+import EditGallery from "./pages/gallery/EditGallery";
 import FindId from "./pages/login/FindId";
 import FindPwd from "./pages/login/FindPwd";
-import MyPage from "./pages/login/MyPage";
-import Home from "./home/home";
-import Header from "./components/Header";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-
-import MemberUpdate from "./pages/login/MemberUpdate";
-
-import Gallery from "./pages/gallery/GalleryList"
-import EditGallery from "./pages/gallery/EditGallery";
-import GalleryReg from "./pages/gallery/GalleryReg";
-import GalleryDetail from "./pages/gallery/GalleryDetail";
 import FreeBoardFree from "./pages/freeboard/BoardMain/CategoryPages/Board_Free";
 import FreeBoardMain from "./pages/freeboard/BoardMain/BoardMain";
 import FreeBoardRecommend from "./pages/freeboard/BoardMain/CategoryPages/Board_Recommend";
@@ -25,6 +11,11 @@ import FreeBoardTip from "./pages/freeboard/BoardMain/CategoryPages/Board_Tip";
 import FreeBoardTrade from "./pages/freeboard/BoardMain/CategoryPages/Board_Trade";
 import FreeBoardUpdate from "./pages/freeboard/BoardUpdate";
 import FreeBoardWrite from "./pages/freeboard/BoardWrite";
+import Gallery from "./pages/gallery/GalleryList";
+import GalleryDetail from "./pages/gallery/GalleryDetail";
+import GalleryReg from "./pages/gallery/GalleryReg";
+import Header from "./components/Header";
+import Home from "./home/home";
 import InntroMember from "./pages/introduce/IntroMember";
 import Intro from "./pages/introduce/Intro";
 import Intro10 from "./pages/introduce/intro10";
@@ -39,15 +30,20 @@ import Intro7 from "./pages/introduce/Intro7";
 import Intro8 from "./pages/introduce/Intro8";
 import Intro9 from "./pages/introduce/intro9";
 import Introduce from "./pages/introduce/Introduce";
+import KakaoRedirectHandler from "./pages/login/KakaoRedirectHandler";
+import Login from "./pages/login/Login";
+import MemberUpdate from "./pages/login/MemberUpdate";
+import MyPage from "./pages/login/MyPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Profile from "./pages/login/Profile";
 import RBoardList from "./pages/introduce/reviewlist";
-import KakaoRedirectHandler from "./pages/login/KakaoRedirectHandler"
-
 import Review from "./pages/introduce/review";
+import SignUp from "./pages/login/SignUp";
 import TBoardDetail from "./pages/findboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import TEditBoard from "./pages/findboard/EditBoard";
 import WriteBoard from "./pages/findboard/WriteBoard";
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -57,7 +53,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/oauth/callback/kakao" element={<KakaoRedirectHandler />} />
+        <Route
+          path="/oauth/callback/kakao"
+          element={<KakaoRedirectHandler />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/findId" element={<FindId />} />
@@ -69,9 +68,6 @@ function App() {
         <Route path="/editGallery" element={<EditGallery />} />
         <Route path="/galleryDetail" element={<GalleryDetail />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-        {/* <Route path='/showBoard' element={<ShowBoard />}/>
-        <Route path='/showRoom' element={<ShowRoom />}/>
-        <Route path='/selectType' element={<SelectType />}/> */}
 
         <Route path="/introduce" element={<Introduce />} />
         <Route path="/intro" element={<Intro />} />
@@ -104,6 +100,7 @@ function App() {
         <Route path="/tBoardDetail" element={<TBoardDetail />} />
         <Route path="/tEditBoard" element={<TEditBoard />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

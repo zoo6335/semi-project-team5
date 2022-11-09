@@ -108,7 +108,6 @@ const EditGallery = () => {
 
 
   return (
-    <div>
       <Box>
         {/* {showImage} */}
         <div style={{ marginTop: 50 }}>
@@ -145,8 +144,6 @@ const EditGallery = () => {
         <Button >등록</Button>
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
       </Box>
-      <Footer />
-    </div>
   )
 };
 

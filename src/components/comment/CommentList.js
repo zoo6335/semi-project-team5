@@ -1,3 +1,4 @@
+import Api from "../../api/FbApi";
 import { useState, useEffect } from "react";
 import JYApi from "../../api/JYApi";
 import styled from "styled-components";

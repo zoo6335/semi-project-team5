@@ -33,7 +33,7 @@ function App2() {
         try {
             // 서버에 대한 요청을 비동기로 처리 함
             const res = await npApi.onWrite(reviewContent.title, reviewContent.content);
-            console.log(reviewContent.name + reviewContent.content);
+            console.log(reviewContent.title + reviewContent.content);
             setResData(res.data);
             console.log("작성완료 버튼 클릭");
             if (res.data.result === "OK") {

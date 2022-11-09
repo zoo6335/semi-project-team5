@@ -117,7 +117,6 @@ const FindId = () => {
 
 
   return (
-    <>
     <Box>
       <div>
         <div>
@@ -150,8 +149,6 @@ const FindId = () => {
       </div>
       {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="아이디 찾기">ID : {findId}</Modal>}
     </Box>
-    <Footer />
-    </>
   );
 }
 
