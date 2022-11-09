@@ -86,9 +86,9 @@ const RecommendBlock = styled.div`
     font-size: 0.8em;
 
     &:hover {
-      // font-weight: 600;
       transform: translate(-3px, 3px);
       cursor: pointer;
+      text-shadow: 3px 5px 5px pink;
     }
   }
 `;

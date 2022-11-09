@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 import JYApi from "../../api/JYApi";
-import { render } from "@testing-library/react";
 import Api from "../../api/FbApi";
 
 const WriteContent = ({ inputContent, setInputContent }) => {
-
   const isLogin = window.localStorage.getItem("isLogin"); // 로그인 상태가 아닐때는 글 작성할 수 없게
   if (isLogin === "FALSE") window.location.replace("/login"); // 로그인 페이지로 이동
 
@@ -15,8 +12,6 @@ const WriteContent = ({ inputContent, setInputContent }) => {
   const onPressEnter = async (e) => {
     if (e.key === "Enter") {
       console.log("엔터 클릭");
-
-      // e.preventDefault();
       const res = await JYApi.insertComment(
         getUserId,
         inputContent,
@@ -39,7 +34,6 @@ const WriteContent = ({ inputContent, setInputContent }) => {
         onKeyPress={onPressEnter}
         name="writer"
         placeholder="👉 댓글을 입력하세요 !"
-        // value={isSubmit ? "" : undefined}
       />
     </WriteBlock>
   );

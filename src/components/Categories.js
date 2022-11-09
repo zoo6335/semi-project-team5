@@ -49,7 +49,7 @@ const CategoryBlock = styled.div`
     font-size: 1.125rem;
     cursor: pointer;
     text-decoration: none;
-    padding-bottom: 0.25rem;
+    // padding-bottom: 0.25rem;
 
     &:hover {
       font-weight: 600;
