@@ -53,7 +53,6 @@ const GalleryList = () => {
       try {
         const response = await DjApi.galleryList("ALL");
         setGalleryList(response.data);
-        console.log(response.data);
       } catch (e) {
         console.log(e);
       }
@@ -76,7 +75,7 @@ const GalleryList = () => {
   };
 
   return (
-    <div>
+    <>
       <Box>
         {/* 이미지 미리보기 형식으로 올라갈 예정 */}
         <ImgContainer>
@@ -87,12 +86,15 @@ const GalleryList = () => {
               </div>
           )}
         </ImgContainer>
-        <Button onClick={onClickWrite}>
-          갤러리 작성
-        </Button>
+        {isLogin != "FALSE" ? isLogin &&  (
+        <>
+          <Button onClick={onClickWrite}>
+            갤러리 작성
+          </Button>
+        </>) 
+        : <></>}
       </Box>
-      <Footer />
-    </div>
+      </>
   )
 }
 

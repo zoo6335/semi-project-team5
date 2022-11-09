@@ -31,7 +31,7 @@ background-color: rgb(0, 0, 0);
 `;
 
 const Button = styled.button`
-width: 350px;
+width: 150px;
 height: 50px;
 border-radius: 40px 80px / 80px 40px;
 border: 3px dotted #40BAAA;
@@ -145,7 +145,7 @@ const MemberUpdate = () => {
   return (
     <Box>
         <InputContainer>
-          <Input placeholder={localId} disabled />
+          <Input placeholder={`  ${localId}`} disabled />
         </InputContainer>
         <MsgContainer></MsgContainer>
         <InputContainer>

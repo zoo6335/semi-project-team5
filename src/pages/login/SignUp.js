@@ -168,7 +168,6 @@ const SignUp = () => {
   }
 
   return (
-    <>
     <Box>
       <div style={{ }}>
         <InputContainer>
@@ -221,8 +220,6 @@ const SignUp = () => {
       </div>
       <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
     </Box>
-    <Footer />
-    </>
   );
 }
 
