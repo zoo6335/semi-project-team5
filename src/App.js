@@ -6,7 +6,6 @@ import BoardDetail from "./pages/freeboard/BoardDetail";
 import EditGallery from "./pages/gallery/EditGallery";
 import FindId from "./pages/login/FindId";
 import FindPwd from "./pages/login/FindPwd";
-import Footer from "./components/Footer";
 import FreeBoardFree from "./pages/freeboard/BoardMain/CategoryPages/Board_Free";
 import FreeBoardMain from "./pages/freeboard/BoardMain/BoardMain";
 import FreeBoardRecommend from "./pages/freeboard/BoardMain/CategoryPages/Board_Recommend";
@@ -72,7 +71,7 @@ function App() {
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         {/* <Route path='/showBoard' element={<ShowBoard />}/>
         <Route path='/showRoom' element={<ShowRoom />}/>
-        <Route path='/selectType' element={<SelectType />}/> */}
+      <Route path='/selectType' element={<SelectType />}/> */}
 
         <Route path="/introduce" element={<Introduce />} />
         <Route path="/intro" element={<Intro />} />
@@ -105,7 +104,6 @@ function App() {
         <Route path="/tBoardDetail" element={<TBoardDetail />} />
         <Route path="/tEditBoard" element={<TEditBoard />} />
       </Routes>
-      <Footer />
     </Router>
   );
 }
