@@ -57,13 +57,6 @@ const EditGallery = () => {
 
   const onChangeTitle = (e) => setInputTitle(e.target.value); // 현재 이벤트가 발생한 입력창의 값을 useState에 세팅
   const onChangeContent = (contentSet) => setInputContent(contentSet);
-
-  const onCLickgoBack = (e) => {
-    e.preventDefault();
-    console.log("뒤로가기 버튼 클릭");
-    window.location.replace("/galleryList");
-  };
-
   // 수정완료 버튼 클릭시 모달
   const onClickEdit = (e) => {
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
@@ -73,10 +66,10 @@ const EditGallery = () => {
   // 모달 확인버튼 클릭시 동작
   const confirmModal = async () => {
     setModalOpen(false);
-    const res = await DjApi.GalleryUpdate(
+    const res = await DjApi.galleryUpdate(
+      id,
       inputTitle,
       inputContent,
-      id
     );
     console.log("수정완료 버튼 클릭");
     console.log(res.data.result);
@@ -95,7 +88,6 @@ const EditGallery = () => {
     const BoardData = async () => {
       try {
         const response = await DjApi.galleryDetail(localBoardId);
-        console.log(response.data);
         setInputTitle(response.data[0].title);
         setInputContent(response.data[0].content);
         setId(response.data[0].id);
@@ -106,12 +98,11 @@ const EditGallery = () => {
     BoardData();
   }, []);
 
-
   return (
       <Box>
         {/* {showImage} */}
         <div style={{ marginTop: 50 }}>
-          <Input placeholder="  제목을 입력하세요." onChange={onChangeTitle} />
+          <Input value={`${inputTitle}`} onChange={onChangeTitle} />
         </div>
         <div id="editor" style={{ marginTop: 50, minHeight: 400 }}>
           <SunEditor
@@ -141,8 +132,8 @@ const EditGallery = () => {
             }}
           />
         </div>
-        <Button >등록</Button>
-        {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
+        <Button onClick={onClickEdit}>수정</Button>
+        {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 수정">글을 수정하시겠습니까?</Modal>}
       </Box>
   )
 };

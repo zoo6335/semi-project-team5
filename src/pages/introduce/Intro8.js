@@ -24,7 +24,7 @@ const About8 = () => {
                         <p className="pastelred-text">★ 전체 이용가 테마입니다.
                             <br />테마를 꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
                     </div>
-                    <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
+                    <Link to="/introduce"><button className="btnn intro">테마 목록</button></Link>
 
                     <a href="http://dreampicnicescape.com/" className="btnn site" target="_blank">사이트 방문하기</a>
                     <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>

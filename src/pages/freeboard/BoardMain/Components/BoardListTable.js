@@ -3,19 +3,6 @@ import Api from '../../../../api/FbApi';
 import '../../FreeBoardStyle.css'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
-import styled from 'styled-components';
-
-// 글씨 초과시 글씨 자르기(구현중)
-const FBoardTable = styled.table`
-  font-size: 1em;
-  table-layout: fixed;
-    & tbodt tr td{
-    text-overflow: ellipsis;
-    overflow: fidden;
-    white-space: nowrap;
-    // color: cornsilk;
-    }
-`
 
 const FBoardList = () => {
 
@@ -47,7 +34,6 @@ const FBoardList = () => {
   }
 
   return (
-    <FBoardTable className="BoardListTable">
       <Table className="fBoardTable">
         <thead>
           <tr>
@@ -66,7 +52,7 @@ const FBoardList = () => {
               <td>{list.fb_id}</td>
               <td>{list.fb_category}</td>
               {/* html 태그 안 보이도록 정규식 적용 */}
-              <td>{(list.fb_title).replace(/<[^>]*>?/g,'')} [{list.fb_comment_count}]</td>
+              <td className='tr-title'>{(list.fb_title).replace(/<[^>]*>?/g,'')} [{list.fb_comment_count}]</td>
               <td>{list.fb_user_id}</td>
               <td>{list.fb_c_date}</td>
               <td>{list.fb_hit}</td>
@@ -74,7 +60,6 @@ const FBoardList = () => {
           ))}
         </tbody>
       </Table>
-    </FBoardTable>
   );
 }
 
