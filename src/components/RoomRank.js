@@ -30,10 +30,10 @@ const RoomRank = () => {
       <table>
         <thead>
           <tr className="row-title">
-            <th width="50px">순위</th>
-            <th width="100px">분류</th>
-            <th width="200px">테마명</th>
-            <th width="70px">좋아요</th>
+            <th width="40px">순위</th>
+            <th width="50px">분류</th>
+            <th width="90px">테마명</th>
+            <th width="50px">좋아요</th>
           </tr>
         </thead>
         <tbody>

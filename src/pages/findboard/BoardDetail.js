@@ -264,11 +264,14 @@ const TBoardDetail = () => {
                     수정
                   </button>
                 )}
-                {/* 로그인 상태일때만 모집신청 버튼 나타남 */}
-                <button className="applyBtn" onClick={onClickApply}>
-                  모집신청
-                </button>
               </>
+            ) : (
+              <></>
+            )}
+            {isLogin === "TRUE" && loginId !== boardDetail.gmb_user_id ? (
+              <button className="applyBtn" onClick={onClickApply}>
+                모집신청
+              </button>
             ) : (
               <></>
             )}
