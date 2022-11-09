@@ -62,22 +62,55 @@ const DjApi = {
     return await axios.post(DOMAIN + "MemberUpdateServlet", memberObj, HEADER);
   },
 
-  galleryInfo: async function (id) {
+  galleryList: async function () {
     const regCmd = {
       cmd: "GalleryInfo",
-      id: id,
+      gal_id: "ALL"
     };
     return await axios.post(DOMAIN + "GalleryServlet", regCmd, HEADER);
   },
 
-  galleryReg: async function (title, content, img_url) {
+  galleryReg: async function (title, content, img_url, user_id) {
     const reqCmd = {
       title: title,
       content: content,
       image_url: img_url,
+      user_id : user_id,
     };
     return await axios.post(DOMAIN + "GalleryRegServlet", reqCmd, HEADER);
   },
+
+  galleryDetail: async function (gal_id) {
+    const detailObj = {
+      gal_id: gal_id,
+    };
+    return await axios.post(
+      DOMAIN + "GalleryDetailServlet",
+      detailObj,
+      HEADER
+    );
+  },
+
+  galleryDelete: async function (gal_id) {
+    const deleteObj = {
+      gal_id: gal_id,
+    };
+    return await axios.post(
+      DOMAIN + "GalleryDeleteServlet",
+      deleteObj,
+      HEADER
+    );
+  },
+
+  galleryUpdate: async function(gal_id,title, content) {
+    const updateObj = {
+      gal_id: gal_id,
+      title: title,
+      content: content,
+    };
+    return await axios.post(DOMAIN + "GalleryUpdateServlet", updateObj, HEADER);
+  },
+
 };
 
 export default DjApi;

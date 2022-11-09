@@ -19,20 +19,23 @@ const Box = styled.div`
 
 
 const Input = styled.input`
-  width: 350px;
-  height: 50px;
-  border-radius: 20px;
-  border: 0.1px solid white;
+width: 350px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
   align-items: center;
+  ::placeholder {
+    color: cornsilk;
+  }
 `;
 
-const BtnSignUp = styled.button`
-  width: 150px;
-  height: 50px;
-  margin: 0 auto;
-  border-radius: 20px;
-  border: 0.1px solid cornsilk;
-  background-color: cornsilk;
+const Button = styled.button`
+width: 350px;
+height: 50px;
+border-radius: 40px 80px / 80px 40px;
+border: 3px dotted #40BAAA;
+background-color: rgb(0, 0, 0);
   align-items: center;
 
   & + & {
@@ -40,16 +43,28 @@ const BtnSignUp = styled.button`
   }
 `;
 
+const InputContainer = styled.div`
+  width: 400px;
+  height: 50px;
+  text-align: center;
+`
+
+const MsgContainer = styled.div`
+  width: 600px;
+  height: 30px;
+  text-align: right;
+`
+
 
 const MemberUpdate = () => {
 
   const localId = window.localStorage.getItem("userId");
   const isLogin = window.localStorage.getItem("isLogin");
-  if(isLogin === "FALSE") window.location.replace("/");
+  if (isLogin === "FALSE") window.location.replace("/");
 
   const [inputPw, setInputPw] = useState("");
   const [inputCheckPw, setInputCheckPw] = useState("");
-  const [inputName, setInputName] =useState("");
+  const [inputName, setInputName] = useState("");
   const [inputEmail, setInputEmail] = useState("");
 
   // 입력 적합성 검사
@@ -72,28 +87,28 @@ const MemberUpdate = () => {
     setModalOpen(false);
   };
 
-  const onClickUpdate = async() => {
-      const memberUpdate = await DjApi.memberUpdate(localId, inputPw, inputName, inputEmail);
-      console.log(memberUpdate.data.result);
+  const onClickUpdate = async () => {
+    const memberUpdate = await DjApi.memberUpdate(localId, inputPw, inputName, inputEmail);
+    console.log(memberUpdate.data.result);
 
-      if(memberUpdate.data.result === "OK") {
-          window.location.replace("/");
-      } else {
-          setModalOpen(true);
-          setModalText("회원 정보 수정에 실패 했습니다.");
-      }
-}
+    if (memberUpdate.data.result === "OK") {
+      window.location.replace("/");
+    } else {
+      setModalOpen(true);
+      setModalText("회원 정보 수정에 실패 했습니다.");
+    }
+  }
 
-const onClickCancel = () => {
-  window.location.replace("/");
-}
+  const onClickCancel = () => {
+    window.location.replace("/");
+  }
 
 
   const onChangePw = (e) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/
     setInputPw(e.target.value);
     //  a.test(b)  => b가 a와 매칭되면 true
-    if(!passwordRegex.test(e.target.value)) {
+    if (!passwordRegex.test(e.target.value)) {
       setPwMessage("비밀번호는 글자, 숫자, 특수문자 조합으로 8자 이상 20자 이하로 구성해주세요.");
       setIsPw(false);
     }
@@ -103,18 +118,18 @@ const onClickCancel = () => {
     setInputCheckPw(e.target.value);
 
     if (e.target.value !== inputPw) {
-        setCheckPwMessage('비밀 번호가 일치하지 않습니다.')
-        setIsCheckPw(false);
+      setCheckPwMessage('비밀 번호가 일치하지 않습니다.')
+      setIsCheckPw(false);
     } else {
-        setCheckPwMessage('비밀 번호가 일치 합니다.')
-        setIsCheckPw(true);
-    }      
+      setCheckPwMessage('비밀 번호가 일치 합니다.')
+      setIsCheckPw(true);
+    }
   }
 
   const onChangeEmail = (e) => {
     setInputEmail(e.target.value);
 
-    if( e.target.value.indexOf("@") === -1 ) {
+    if (e.target.value.indexOf("@") === -1) {
       setEmailMessage("이메일 주소는 @가 필수적으로 들어가야합니다.")
       setIsEmail(false);
     } else {
@@ -125,44 +140,38 @@ const onClickCancel = () => {
   const onChangeName = (e) => {
     setInputName(e.target.value);
   }
-  
+
 
   return (
     <Box>
+        <InputContainer>
+          <Input placeholder={localId} disabled />
+        </InputContainer>
+        <MsgContainer></MsgContainer>
+        <InputContainer>
+          <Input placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
+        </InputContainer>
+        <MsgContainer>
+          {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
+        </MsgContainer>
+          <Input className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
+        <MsgContainer>
+          {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
+        </MsgContainer>
+        <InputContainer>
+          <Input placeholder="  닉네임" value={inputName} onChange={onChangeName} />
+        </InputContainer>
+        <MsgContainer></MsgContainer>
+        <InputContainer>
+          <Input placeholder="  EMAIL" value={inputEmail} onChange={onChangeEmail} />
+        </InputContainer>
+        <MsgContainer></MsgContainer>
         <div>
-            <div>
-                <Input placeholder={localId} disabled/>
-            </div>
-            <br />
-            <div>
-              <Input placeholder="패스워드" value ={inputPw} onChange={onChangePw}/>
-            </div>
-            <br />
-            <div>
-              {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
-            </div>
-            <div>
-              <Input className="input" placeholder="패스워드 확인" value ={inputCheckPw} onChange={onChangeCheckPw}/>
-            </div>
-            <div>
-              {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
-            </div>
-            <br /> 
-            <div>
-              <Input placeholder="name"value={inputName} onChange={onChangeName} />
-            </div>
-            <br />
-            <div>
-              <Input placeholder="email"value={inputEmail} onChange={onChangeEmail} />
-            </div>
-            <br />
-            <div>
-              {(isId && isPw && isCheckPw) ? 
-              <BtnSignUp  onClick={onClickUpdate}>Change</BtnSignUp> :
-              <BtnSignUp disabled onClick={onClickUpdate}>Change</BtnSignUp>}
-              <BtnSignUp onClick={onClickCancel}>Cancel</BtnSignUp>
-              <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
-            </div>
+          {(isId && isPw && isCheckPw) ?
+            <Button onClick={onClickUpdate}>Change</Button> :
+            <Button disabled onClick={onClickUpdate}>Change</Button>}
+          <Button onClick={onClickCancel}>Cancel</Button>
+          <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
         </div>
     </Box>
   );

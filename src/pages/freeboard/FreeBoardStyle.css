@@ -36,6 +36,6 @@
   text-align: right;
 }
 
-.boardListTd {
-  color: #bab2b2;
+.fBoardTable tbody tr td {
+  color: #c6c1af;
 }

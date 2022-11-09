@@ -31,6 +31,7 @@ const LogoBox = styled.div`
   margin-top: 2rem;
   font-family: "DungGeunMo";
   z-index: 10;
+  position: fixed;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1em;

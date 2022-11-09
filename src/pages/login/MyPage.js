@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
+import Footer from "../../components/Footer";
 import { faIdCard, faUser, faEnvelope, faCalendarDay, faUserTag } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -47,7 +48,6 @@ align-items: center;
   & + & {
     margin-left : 50px;
   }
-
 `;
 
 
@@ -55,7 +55,7 @@ const MyPage = () => {
 
   const localId = window.localStorage.getItem("userId");
   const isLogin = window.localStorage.getItem("isLogin");
-  // if(isLogin === "FALSE") window.replace("/");
+  if(isLogin === "FALSE") window.replace("/");
 
 
   const [memberInfo, setMemberInfo] = useState("");
@@ -104,8 +104,8 @@ const onClickUpdate = () => {
 }
   
 return (
+  <>
   <Box>
-    
     <InfoBox>
       <div style={{textAlign: "center"}}>
         <FontAwesomeIcon icon={faIdCard} size="3x"
@@ -148,7 +148,8 @@ return (
     </div>
     {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="확인">정말 탈퇴하시겠습니까?</Modal>}
   </Box>
-
+  <Footer />
+</>
   )
 }
 

@@ -1,3 +1,4 @@
+import Api from "../../api/FbApi";
 import { useState, useEffect } from "react";
 import JYApi from "../../api/JYApi";
 import styled from "styled-components";
@@ -70,6 +71,9 @@ const CommentList = () => {
     console.log("postid: " + postId);
     const res = await JYApi.deleteComment(postId);
     console.log(res.data.result);
+    // 댓글수 업데이트 기능(HN추가)
+    const res2 = await Api.fBoardComment(getBoardId);
+    console.log(res2.data.result);
     if (res.data.result === "OK") {
       setDeleteComplete(true);
     } else setDeleteComplete(false);
