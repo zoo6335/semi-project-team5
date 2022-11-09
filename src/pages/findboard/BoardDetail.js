@@ -36,6 +36,7 @@ const ReadTitle = styled.div`
   height: 80px;
   padding: 10px;
   margin: 5px 55px;
+  background-color: #303030;
 `;
 const ReadContents = styled.div`
   border: 2px solid #8dc0f1;
@@ -44,6 +45,7 @@ const ReadContents = styled.div`
   height: 300px;
   padding: 10px;
   margin: 5px 55px;
+  background-color: #303030;
 `;
 const ReadNumber = styled.div`
   border: 2px solid #8dc0f1;
@@ -52,6 +54,7 @@ const ReadNumber = styled.div`
   height: 50px;
   padding: 10px;
   margin: 5px 55px;
+  background-color: #303030;
 `;
 
 const TBoardDetail = () => {
@@ -241,7 +244,7 @@ const TBoardDetail = () => {
               </ReadContents>
               <tr class="table-active">
                 <ReadNumber>
-                  <td style={{ fontSize: "1.2rem" }}>
+                  <td style={{ fontSize: "1.2rem", color: "#c6c1af" }}>
                     모집현황 : {boardDetail.gmb_apply}/
                     {boardDetail.gmb_apply_total}
                   </td>

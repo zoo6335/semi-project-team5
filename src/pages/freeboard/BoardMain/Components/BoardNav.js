@@ -14,6 +14,7 @@ margin: 20px 0;
   font-weight: bold;
   margin:0;
   color: #8DC0F1;
+  text-shadow: 2px 2px #958888;
     &:hover {
       background-color: #dbdbdb77;
       border-radius: 5px;
