@@ -30,8 +30,6 @@ const LogoBox = styled.div`
   margin: auto;
   margin-top: 2rem;
   font-family: "DungGeunMo";
-  z-index: 10;
-  position: fixed;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1em;
@@ -95,7 +93,7 @@ const WriteBoard = () => {
     <Box>
       <div style={{ height: "130px" }}>
         <LogoBox>
-          <div className="boardCategory" style={{ position: "fixed" }}>
+          <div className="boardCategory">
             <h1>일 행 구 하 기</h1>
             <span>내 동료가 돼라!</span>
           </div>
