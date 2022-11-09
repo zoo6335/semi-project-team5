@@ -3,6 +3,19 @@ import Api from '../../../../api/FbApi';
 import '../../FreeBoardStyle.css'
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
+import styled from 'styled-components';
+
+// 글씨 초과시 글씨 자르기(구현중)
+const FBoardTable = styled.table`
+  font-size: 1em;
+  table-layout: fixed;
+    & tbodt tr td{
+    text-overflow: ellipsis;
+    overflow: fidden;
+    white-space: nowrap;
+    // color: cornsilk;
+    }
+`
 
 const FBoardList = () => {
 
@@ -29,15 +42,13 @@ const FBoardList = () => {
     BoardData();
   }, []);
 
-  // 로딩 중 화면 gif로 변경하였으나 안 됨..
   if (loading) {
-    return <p>로딩 중 입니다.... 조금만 기다려 주세요.</p>
-    // <div><img src="../images/pacmanLoading.gif" alt="loading..."/></div>
+    return <p>로딩중.. 잠시만 기다려주세요</p>
   }
 
   return (
-    <div className="BoardListTable">
-      <Table className="table table">
+    <FBoardTable className="BoardListTable">
+      <Table className="fBoardTable">
         <thead>
           <tr>
             <th>글번호</th>
@@ -63,7 +74,7 @@ const FBoardList = () => {
           ))}
         </tbody>
       </Table>
-    </div>
+    </FBoardTable>
   );
 }
 

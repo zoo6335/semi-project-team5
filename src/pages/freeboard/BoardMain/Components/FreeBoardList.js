@@ -3,6 +3,7 @@ import Api from '../../../../api/FbApi';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
 import styled from 'styled-components';
+import '../../FreeBoardStyle.css'
 
 const BoardListTable = styled.div`
   .tableTable{    
@@ -44,7 +45,7 @@ const FreeBoardList = () => {
 
   return (
     <BoardListTable>
-      <Table className="tableTable" >
+      <Table className="fBoardTable" >
         <thead>
           <tr>
             <th>글번호</th>

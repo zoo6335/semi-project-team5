@@ -83,6 +83,7 @@ margin: 3px;
 padding: 12px;
 font-size: 1.7em;
 background-color: #303030;
+color: #ded9c5;
 `
 
 const ReadInfo = styled.div `
@@ -92,14 +93,14 @@ width: 800px;
 padding: 10px;
 margin: 5px;
 background-color: #303030;
-// display: flex;
-// align-items: center;
-// justify-content: space-between;
 .fb_id{
   display: none;
-
+}
+.user_id,
+.date {
+  color: #ded9c5;
+}
 `
-
 const ReadContents = styled.div `
 border: 2px solid #8DC0F1;
 border-radius: 20px;
@@ -108,6 +109,7 @@ height: 400px;
 padding: 10px;
 margin: 5px;
 background-color: #303030;
+color: #ded9c5;
 `
 const BoardDetail = () => {
 
