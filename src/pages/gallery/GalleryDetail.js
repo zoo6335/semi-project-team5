@@ -22,7 +22,6 @@ const Box = styled.div`
 `
 
 
-
 const Button = styled.button`
 width: 150px;
 height: 50px;
@@ -80,7 +79,7 @@ const GalleryDetail = () => {
     e.preventDefault(); // 모달이 자동으로 꺼지지 않게 설정
     setModalOpen(true);
   };
-  // 삭제버튼 클릭시 모달
+
   const confirmModal = async () => {
     setModalOpen(false);
     const res = await DjApi.galleryDelete(getDetail);
@@ -100,14 +99,17 @@ const GalleryDetail = () => {
 
 
   return (
-    <div>
+    <>
       <Box>
         {/* {showImage} */}
         <div style={{ marginTop: 50 }}>
-          <p>{galleryDetail.title}</p>
+          <span>제목 : {galleryDetail.title}</span>
         </div>
         <div>
-          <p>{content}</p>
+          <span>내용 : {content}</span>
+        </div>
+        <div>
+          <img src={`${galleryDetail.image_url}`} alt = "" style={{"width":"400px", "height":"400px"}}/>
         </div>
         {isLogin === "TRUE" && loginId === galleryDetail.user_id ? (
           <>
@@ -118,7 +120,7 @@ const GalleryDetail = () => {
         {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="갤러리 작성">글을 등록하시겠습니까?</Modal>}
       </Box>
       <Footer />
-    </div>
+    </>
   )
 };
 

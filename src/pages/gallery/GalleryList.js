@@ -4,6 +4,7 @@ import DjApi from "../../api/DjApi";
 import Footer from "../../components/Footer";
 
 
+
 const Box = styled.div`
   border: 4px solid #40BAAA;
   border-top: none;
@@ -17,14 +18,12 @@ const Box = styled.div`
   justify-content: center;
 `
 
-
-const Container = styled.div`
+const ImgContainer = styled.image`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: repeat(auto-fit, minmax(200px, 1fr));
   row-gap: 10px;
   column-gap: 10px;
-  background-color : cornsilk;
   width: 720px;
   height: 800px;
 `
@@ -42,9 +41,11 @@ align-items: center;
   }
 `;
 
+
 const GalleryList = () => {
   const isLogin = window.localStorage.getItem("isLogin");
   // if(isLogin === "FALSE") window.location.replace("/");
+
 
   const [galleryList, setGalleryList] = useState("");
   useEffect(() => {
@@ -78,12 +79,14 @@ const GalleryList = () => {
     <div>
       <Box>
         {/* 이미지 미리보기 형식으로 올라갈 예정 */}
-        <Container>
+        <ImgContainer>
           {galleryList && 
           galleryList.map((list) =>
-          <div onClick={() => onClickDetail(list.gal_id)} style={{ backgroundColor: "cornsilk" }}>{list.title}</div>
+          <div>
+            <img src={`${list.image_url}`} alt="이미지!!!" onClick={() => onClickDetail(list.id)} style={{"width" : "220px", "height" : "240px"}} />
+              </div>
           )}
-        </Container>
+        </ImgContainer>
         <Button onClick={onClickWrite}>
           갤러리 작성
         </Button>
