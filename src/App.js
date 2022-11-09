@@ -6,7 +6,6 @@ import Auth from "./Auth";
 import BoardDetail from "./pages/freeboard/BoardDetail";
 import FindId from "./pages/login/FindId";
 import FindPwd from "./pages/login/FindPwd";
-<<<<<<< HEAD
 import MyPage from "./pages/login/MyPage";
 import Home from "./home/home";
 import Header from "./components/Header";
@@ -16,7 +15,6 @@ import ShowRoom from "./components/ShowRoom";
 import SelectType from "./components/SelectType";
 import MemberUpdate from "./pages/login/MemberUpdate";
 import Gallery from "./pages/gallery/GalleryInfo";
-=======
 import FreeBoardFree from "./pages/freeboard/BoardMain/CategoryPages/Board_Free";
 import FreeBoardMain from "./pages/freeboard/BoardMain/BoardMain";
 import FreeBoardRecommend from "./pages/freeboard/BoardMain/CategoryPages/Board_Recommend";
@@ -24,10 +22,7 @@ import FreeBoardTip from "./pages/freeboard/BoardMain/CategoryPages/Board_Tip";
 import FreeBoardTrade from "./pages/freeboard/BoardMain/CategoryPages/Board_Trade";
 import FreeBoardUpdate from "./pages/freeboard/BoardUpdate";
 import FreeBoardWrite from "./pages/freeboard/BoardWrite";
->>>>>>> 7c267fbb14a506a82fc85b13cfd27d240c6b4001
 import GalleryReg from "./pages/gallery/GalleryReg";
-import Header from "./components/Header";
-import Home from "./home/home";
 import InntroMember from "./pages/introduce/IntroMember";
 import Intro from "./pages/introduce/Intro";
 import Intro10 from "./pages/introduce/intro10";
@@ -43,9 +38,6 @@ import Intro8 from "./pages/introduce/Intro8";
 import Intro9 from "./pages/introduce/intro9";
 import Introduce from "./pages/introduce/Introduce";
 import Login from "./pages/login/Login";
-import MemberUpdate from "./pages/login/MemberUpdate";
-import MyPage from "./pages/login/MyPage";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Profile from "./pages/login/Profile";
 import RBoardList from "./pages/introduce/reviewlist";
 import Review from "./pages/introduce/review";
