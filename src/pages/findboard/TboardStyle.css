@@ -45,7 +45,7 @@
 }
 .boardCategory::after {
   width: 1020px;
-  height: 130px;
+  height: 140px;
   margin: 0 auto;
   text-align: center;
   content: "";
@@ -64,7 +64,7 @@
   color: cornsilk;
   text-shadow: -6px 0 #000, -4px 1px #000, 1px 0 #000, 0 -1px #000;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 45px;
 }
 .boardCategory span {
   font-size: 2vw;
