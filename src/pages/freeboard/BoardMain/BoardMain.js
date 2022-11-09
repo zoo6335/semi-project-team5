@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import BoardTitleHeader from './Components/BoardTitle';
 import BoardCategory from './Components/BoardNav';
 import BoardWriteButton from './Components/BoardWriteButton';
+import { Link } from 'react-router-dom';
 
 const BoardBlock = styled.div`
   border: 4px solid #40BAAA;
@@ -30,7 +31,7 @@ const FreeBoardMain = () => {
     <BoardBlock>
       <BoardTitleHeader />
       <BoardCategory />
-      <BoardWriteButton />
+      <Link to="/boardWrite"><BoardWriteButton /></Link>
       <FBoardList />
     </BoardBlock>
   );
