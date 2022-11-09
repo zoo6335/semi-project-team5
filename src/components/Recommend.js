@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import sgt from "../images/sgt.jpg";
 import intro7 from "../pages/introduce/images/7.jpg";
 import intro5 from "../pages/introduce/images/5.png";
 import intro8 from "../pages/introduce/images/8.jpg";
@@ -33,13 +32,13 @@ const Recommend = () => {
         <Link to="/intro5">
           <lable className="suggestion">
             <img src={intro5} alt="추천img" className="sgt-img" />
-            [핫플 !] 퀘스트:여정의 시작
+            [핫플 인기] 퀘스트:여정의 시작
           </lable>
         </Link>
         <Link to="/intro10">
           <lable className="suggestion">
             <img src={intro10} alt="추천img" className="sgt-img" />
-            [데이트 추천] 러브에센스
+            [데이트에 딱!] 러브에센스
           </lable>
         </Link>
       </div>
