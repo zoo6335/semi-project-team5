@@ -30,14 +30,10 @@ const BoardWriteButton = () => {
 
   const getisLogin = window.localStorage.getItem("isLogin");
 
-  const onClickWrite = () => {
-    window.location.replace("/BoardWrite")
-  };
-
   return (
     <ButtonBox>
       {getisLogin === "TRUE" && (
-        <Button onClick={onClickWrite}>📝글쓰기</Button>
+        <Button>📝글쓰기</Button>
       )}
     </ButtonBox>
   )
