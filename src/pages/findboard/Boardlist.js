@@ -25,6 +25,7 @@ const LogoBox = styled.div`
   box-sizing: border-box;
   padding-bottom: 3em;
   width: 1024px;
+  height: auto;
   margin: auto;
   margin-top: 2rem;
   font-family: "DungGeunMo";

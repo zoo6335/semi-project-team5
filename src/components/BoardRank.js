@@ -29,11 +29,10 @@ const BoardRank = () => {
       <table>
         <thead>
           <tr className="row-title">
-            <th>순위</th>
-            <th>분류</th>
-            <th>제목</th>
-            <th>조회수</th>
-            <th></th>
+            <th width="50px">순위</th>
+            <th width="100px">분류</th>
+            <th width="230px">제목</th>
+            <th width="60px">조회수</th>
           </tr>
         </thead>
         <tbody>
@@ -41,10 +40,10 @@ const BoardRank = () => {
             boardRank.map((board) => (
               // <tr key={board.postId} onClick={() => onClickBoardDetail(board.postId)}>
               <tr key={board.postId}>
-                <td width="50px">{board.rank}위</td>
-                <td width="100px">{board.category}</td>
-                <td width="200px">{board.title}</td>
-                <td width="70px">{board.view}</td>
+                <td>{board.rank}위</td>
+                <td>{board.category}</td>
+                <td>{board.title.replace(/<[^>]*>?/g, "")}</td>
+                <td>{board.view}</td>
               </tr>
             ))}
         </tbody>
@@ -54,27 +53,37 @@ const BoardRank = () => {
 };
 
 const RankingBlock = styled.div`
-*{
-  text-decoration:none;
-}
   box-sizing: border-box;
+  table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  * {
+    text-decoration: none;
+  }
   table,
   th,
   td {
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     border-collapse: collapse;
     text-align: center;
-    height: 28px;
+    height: 29px;
   }
+  // 테이블 행 아래 보더 지정
   tr {
-    // 테이블 행 아래 보더 지정
     border-bottom: 2px dashed rgba(0, 0, 0, 0.5);
   }
+  // 제목행
   th {
-    // 제목행
     color: white;
     text-shadow: -4px 0 #000, -4px 1px #000, 1px 0 #000, 0 -1px #000;
+  }
+  td {
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 `;
 export default BoardRank;
