@@ -175,7 +175,6 @@ const Login = () => {
   };
 
   return (
-    <>
     <Box>
       <InputContainer>
       <MsgContainer></MsgContainer>
@@ -220,8 +219,6 @@ const Login = () => {
       </div>
       <Modal open={modalOpen} close={closeModal} header="오류">아이디 및 패스워드를 재확인해 주세요.</Modal>
     </Box>
-    <Footer />
-    </>
   );
 };
 

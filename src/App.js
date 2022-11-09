@@ -1,7 +1,5 @@
 import "./App.css";
-
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-
 import BoardDetail from "./pages/freeboard/BoardDetail";
 import EditGallery from "./pages/gallery/EditGallery";
 import FindId from "./pages/login/FindId";
@@ -45,6 +43,7 @@ import TBoardDetail from "./pages/findboard/BoardDetail";
 import TBoardList from "./pages/findboard/Boardlist";
 import TEditBoard from "./pages/findboard/EditBoard";
 import WriteBoard from "./pages/findboard/WriteBoard";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -69,9 +68,6 @@ function App() {
         <Route path="/editGallery" element={<EditGallery />} />
         <Route path="/galleryDetail" element={<GalleryDetail />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-        {/* <Route path='/showBoard' element={<ShowBoard />}/>
-        <Route path='/showRoom' element={<ShowRoom />}/>
-      <Route path='/selectType' element={<SelectType />}/> */}
 
         <Route path="/introduce" element={<Introduce />} />
         <Route path="/intro" element={<Intro />} />
@@ -104,6 +100,7 @@ function App() {
         <Route path="/tBoardDetail" element={<TBoardDetail />} />
         <Route path="/tEditBoard" element={<TEditBoard />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

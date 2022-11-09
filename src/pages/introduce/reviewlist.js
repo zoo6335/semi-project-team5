@@ -87,7 +87,7 @@ const RBoardList = () => {
         <div className="contatiner-review">
             <div>
                 <BoardListBlock>
-                    <button className="btnn page2" onClick={onClickWrite} >리뷰쓰기</button>
+                    <Link to={"/review"}><button className="btnn page2">리뷰쓰기</button></Link>
                     <BoardList>
                         <thead>
                             <tr>
