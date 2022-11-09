@@ -30,7 +30,7 @@ const About2 = () => {
                             [활동성 주의!]
                             <br />꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
                     </div>
-                    <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
+                    <Link to="/introduce"><button className="btnn intro">테마 목록</button></Link>
 
                     <a href="https://booking.naver.com/booking/12/bizes/540364" className="btnn site" target="_blank">사이트 방문하기</a>
                     <Link to="/Review"><button className="btnn page2">후기페이지</button></Link>
