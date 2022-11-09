@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import JYApi from "../../api/JYApi";
 import styled from "styled-components";
 import WriteContent from "./WriteComment";
-import Api from "../../api/FbApi";
 
 const CommentBlock = styled.div`
   width: 800px;
