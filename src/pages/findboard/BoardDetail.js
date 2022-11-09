@@ -253,6 +253,7 @@ const TBoardDetail = () => {
             <button className="listBtn" onClick={onClickgoBack}>
               목록
             </button>
+            {/* 로그인 상태이면서 작성자명이 일치해야만 버튼이 나타남 */}
             {isLogin === "TRUE" && loginId === boardDetail.gmb_user_id ? (
               <>
                 <button className="deleteBtn" onClick={onClickDelete}>
@@ -263,13 +264,13 @@ const TBoardDetail = () => {
                     수정
                   </button>
                 )}
-              </>
-            ) : (
-              <>
+                {/* 로그인 상태일때만 모집신청 버튼 나타남 */}
                 <button className="applyBtn" onClick={onClickApply}>
                   모집신청
                 </button>
               </>
+            ) : (
+              <></>
             )}
           </div>
         </div>
