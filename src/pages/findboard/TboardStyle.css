@@ -33,7 +33,7 @@
   justify-content: center;
   position: fixed;
   margin: 0 auto;
-  top: 140px;
+  top: 160px;
   border-radius: 5px;
 
   text-emphasis-color: cornsilk;
@@ -49,12 +49,12 @@
   margin: 0 auto;
   text-align: center;
   content: "";
+  position: fixed;
   background: url("../../images/Teamboard.png");
-  position: absolute;
   background-color: whitesmoke;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  top: 150;
+  left: 50;
+  z-index: -3;
   opacity: 0.6;
 }
 
@@ -64,7 +64,7 @@
   color: cornsilk;
   text-shadow: -6px 0 #000, -4px 1px #000, 1px 0 #000, 0 -1px #000;
   text-align: center;
-  margin-top: 45px;
+  margin-top: 40px;
 }
 .boardCategory span {
   font-size: 2vw;
