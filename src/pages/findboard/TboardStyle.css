@@ -74,6 +74,10 @@
   margin-bottom: 20px;
 }
 
+.BoardListTable td {
+  color: #c6c1af;
+}
+
 /* 새글쓰기 버튼 */
 .boardWriteBtn {
   font-family: "small-font";
