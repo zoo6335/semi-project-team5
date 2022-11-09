@@ -39,7 +39,7 @@ function App2() {
             if (res.data.result === "OK") {
                 window.location.replace("/reviewlist");
             }
-            e.preventDefault();
+            // e.preventDefault();
             // setSaveTitle(reviewContent.title);
 
         } catch (e) {
@@ -70,7 +70,7 @@ function App2() {
                 <CKEditor
 
                     editor={ClassicEditor}
-                    data="후기를 입력하세요"
+                    data="후기를 작성해주세요"
                     onReady={editor => {
 
                         console.log('Editor is ready to use!', editor);

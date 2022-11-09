@@ -23,7 +23,7 @@ const About5 = () => {
                             * 지구별 어드벤처 입문 테마로 추천드립니다.
                             <br />테마를 꼭 숙지하시고 예약 부탁드리며, 예약 후 테마 특성 미숙지로 인한 테마 변경 및 환불은 불가합니다.</p>
                     </div>
-                    <Link to="/introduce"><button className="btnn intro">테마 소개</button></Link>
+                    <Link to="/introduce"><button className="btnn intro">테마 목록</button></Link>
 
                     <a href="https://xn--2e0b040a4xj.com/reservation?branch=2&theme=7&date=2022-10-31#list" className="btnn site" target="_blank">사이트 방문하기</a>
 
