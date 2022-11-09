@@ -38,6 +38,11 @@
 
 .fBoardTable tbody tr td {
   color: #c6c1af;
+  cursor: pointer;
+}
+
+.fBoardTable tbody tr td:hover {
+  text-decoration: underline;
 }
 
 .fBoardTable tr th {
