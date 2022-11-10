@@ -1,11 +1,11 @@
 // 일행구하기 게시판 API
 
 import axios from "axios";
+
 const HEADER = "application/json";
 const NB_DOMAIN = "http://localhost:8090/kh_mini_project/";
 
 const nbApi = {
-
   // 게시판 리스트 불러오기
   TBoardList: async function () {
     const regCmd = {
@@ -15,12 +15,17 @@ const nbApi = {
   },
 
   // 게시판 글작성
-  onWrite: async function (gmb_user_id, gmb_title, gmb_content, gmb_apply_total) {
+  onWrite: async function (
+    gmb_user_id,
+    gmb_title,
+    gmb_content,
+    gmb_apply_total
+  ) {
     const BoardObj = {
       gmb_user_id: gmb_user_id,
       gmb_title: gmb_title,
       gmb_content: gmb_content,
-      gmb_apply_total : gmb_apply_total
+      gmb_apply_total: gmb_apply_total,
     };
     return await axios.post(NB_DOMAIN + "BoardWriteServlet", BoardObj, HEADER);
   },
@@ -63,14 +68,23 @@ const nbApi = {
   },
 
   // 게시물 수정
-  TBoardListUpdate: async function(gmb_title, gmb_content, gmb_apply_total, gmb_id) {
+  TBoardListUpdate: async function (
+    gmb_title,
+    gmb_content,
+    gmb_apply_total,
+    gmb_id
+  ) {
     const UpdateObj = {
       gmb_title: gmb_title,
       gmb_content: gmb_content,
       gmb_id: gmb_id,
       gmb_apply_total: gmb_apply_total,
     };
-    return await axios.post(NB_DOMAIN + "BoardUpdateServlet", UpdateObj, HEADER);
+    return await axios.post(
+      NB_DOMAIN + "BoardUpdateServlet",
+      UpdateObj,
+      HEADER
+    );
   },
 
   // 모집 신청하기
@@ -79,11 +93,7 @@ const nbApi = {
       gmb_id: gmb_id,
       gmb_apply: gmb_apply,
     };
-    return await axios.post(
-      NB_DOMAIN + "BoardApplyServlet",
-      ApplyObj,
-      HEADER
-    );
+    return await axios.post(NB_DOMAIN + "BoardApplyServlet", ApplyObj, HEADER);
   },
 };
 export default nbApi;
