@@ -106,14 +106,21 @@ const MemberUpdate = () => {
 
   const onChangePw = (e) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/
+
     setInputPw(e.target.value);
     //  a.test(b)  => b가 a와 매칭되면 true
     if (!passwordRegex.test(e.target.value)) {
       setPwMessage("비밀번호는 글자, 숫자, 특수문자 조합으로 8자 이상 20자 이하로 구성해주세요.");
       setIsPw(false);
+      console.log(isPw);
     }
-    else setIsPw(true);
+    else {
+      setIsPw(true);
+      setPwMessage("잘 입력하셨습니다.");
+      console.log(isPw);
+    }
   }
+
   const onChangeCheckPw = (e) => {
     setInputCheckPw(e.target.value);
 
