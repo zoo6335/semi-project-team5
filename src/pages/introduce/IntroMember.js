@@ -44,12 +44,12 @@ const Intro = () => {
     <>
       <div className="container-About2 ">
         <div className="text-center">
-          <h2 className="member-title">안녕하세요 나가방입니다.</h2>
+          <h2 className="member-title" style={{color:"black"}}>안녕하세요 나가방입니다.</h2>
 
           <div className="intromebers">
-            <h3>조원 : 조동주,정재이,박하늘,이주연,이정운 </h3>
-            <h4>프로젝트 기간 : 10/18 ~ 11/10 </h4>
-            <h4>
+            <h3 style={{color:"black"}}>조원 : 조동주,정재이,박하늘,이주연,이정운 </h3>
+            <h4 style={{color:"black"}}>프로젝트 기간 : 10/18 ~ 11/10 </h4>
+            <h4 style={{color:"black"}}>
               노션주소 :{" "}
               <a href="https://www.notion.so/KH-18d971a0d4c34e5386998cddfa75b701">
                 5조 노션
