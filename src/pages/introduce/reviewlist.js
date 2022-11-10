@@ -26,11 +26,14 @@ const RBoardList = () => {
       width: 100%;
     
     }
-    th,
     td {
       border: 1px solid #ccc;
       padding: 2px;
-      color: grey;
+      color:  #40BAAA;
+;
+    }
+    .retitle {
+        color: grey;
     }
     th {
       background-color: #40BAAA;
@@ -100,7 +103,7 @@ const RBoardList = () => {
                         {RBoardList &&
                             RBoardList.map((list) => (
                                 <tr>
-                                    <td>{list.title}</td>
+                                    <td className="retitle">{list.title}</td>
                                     <td>{ReactHtmlparser(list.content)}</td>
                                 </tr>
                             ))}
