@@ -192,7 +192,7 @@ const SignUp = () => {
         <InputContainer>
           <FontAwesomeIcon icon={faLock} size="3x"
             style={{ "marginRight": "10px" }} />
-          <Input placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
+          <Input type="password" placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
         </InputContainer>
         <MsgContainer style={{ "width": "470px" }}>
           {pwMessage}
@@ -201,7 +201,7 @@ const SignUp = () => {
         <InputContainer>
           <FontAwesomeIcon icon={faLock} size="3x"
             style={{ "marginRight": 10 }} />
-          <Input className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
+          <Input type="password" className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
         </InputContainer>
         <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
