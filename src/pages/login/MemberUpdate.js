@@ -106,14 +106,21 @@ const MemberUpdate = () => {
 
   const onChangePw = (e) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/
+
     setInputPw(e.target.value);
     //  a.test(b)  => b가 a와 매칭되면 true
     if (!passwordRegex.test(e.target.value)) {
       setPwMessage("비밀번호는 글자, 숫자, 특수문자 조합으로 8자 이상 20자 이하로 구성해주세요.");
       setIsPw(false);
+      console.log(isPw);
     }
-    else setIsPw(true);
+    else {
+      setIsPw(true);
+      setPwMessage("잘 입력하셨습니다.");
+      console.log(isPw);
+    }
   }
+
   const onChangeCheckPw = (e) => {
     setInputCheckPw(e.target.value);
 
@@ -149,12 +156,12 @@ const MemberUpdate = () => {
         </InputContainer>
         <MsgContainer></MsgContainer>
         <InputContainer>
-          <Input placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
+          <Input type="password" placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
         </InputContainer>
         <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
         </MsgContainer>
-          <Input className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
+          <Input type="password" className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
         <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
         </MsgContainer>

@@ -94,22 +94,32 @@ const SignUp = () => {
     if (e.target.value.length <= 4 || e.target.value.length > 20) {
       setIdMessage("5글자 이상 20글자 미만으로 입력해주세요.");
       setIsId(false);
-    } else {
-      setIdMessage("올바른 형식 입니다.");
+      console.log(isId);
+    }
+    else {
       setIsId(true);
+      setIdMessage("잘 입력하셨습니다.");
+      console.log(isId);
     }
   }
 
   const onChangePw = (e) => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/
+
     setInputPw(e.target.value);
     //  a.test(b)  => b가 a와 매칭되면 true
     if (!passwordRegex.test(e.target.value)) {
       setPwMessage("비밀번호는 글자, 숫자, 특수문자 조합으로 8자 이상 20자 이하로 구성해주세요.");
       setIsPw(false);
+      console.log(isPw);
     }
-    else setIsPw(true);
+    else {
+      setIsPw(true);
+      setPwMessage("잘 입력하셨습니다.");
+      console.log(isPw);
+    }
   }
+
   const onChangeCheckPw = (e) => {
     setInputCheckPw(e.target.value);
 
@@ -137,7 +147,7 @@ const SignUp = () => {
     setInputName(e.target.value);
   }
 
-  const onClickCancle = () => {
+  const onClickCancel = () => {
     window.location.replace("/");
   }
 
@@ -176,22 +186,22 @@ const SignUp = () => {
           <Input placeholder="  아이디" value={inputId} onChange={onChangeId} />
         </InputContainer>
         <MsgContainer>
-          {inputId.length > 0 && <span>{idMessage}</span>}
+          {idMessage}
         </MsgContainer>
         <br/>
         <InputContainer>
           <FontAwesomeIcon icon={faLock} size="3x"
             style={{ "marginRight": "10px" }} />
-          <Input placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
+          <Input type="password" placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
         </InputContainer>
         <MsgContainer style={{ "width": "470px" }}>
-          {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
+          {pwMessage}
         </MsgContainer>
         <br/>
         <InputContainer>
           <FontAwesomeIcon icon={faLock} size="3x"
             style={{ "marginRight": 10 }} />
-          <Input className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
+          <Input type="password" className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
         </InputContainer>
         <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
@@ -215,7 +225,7 @@ const SignUp = () => {
           {(isId && isPw && isCheckPw) ?
             <ButtonOk className="enable_button" onClick={onClickLogin}>SignUp</ButtonOk> :
             <ButtonOk className="disable_button" onClick={onClickLogin}>SignUp</ButtonOk>}
-          <ButtonOk onClick={onClickCancle}>Cancle</ButtonOk>
+          <ButtonOk onClick={onClickCancel}>Cancel</ButtonOk>
         </MsgContainer>
       </div>
       <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
