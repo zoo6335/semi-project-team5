@@ -156,12 +156,12 @@ const MemberUpdate = () => {
         </InputContainer>
         <MsgContainer></MsgContainer>
         <InputContainer>
-          <Input placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
+          <Input type="password" placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
         </InputContainer>
         <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isPw ? 'success' : 'error'}`}>{pwMessage}</span>)}
         </MsgContainer>
-          <Input className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
+          <Input type="password" className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
         <MsgContainer>
           {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
         </MsgContainer>
