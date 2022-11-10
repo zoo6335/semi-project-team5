@@ -1,12 +1,13 @@
 import "suneditor/dist/css/suneditor.min.css";
+
+import React, { useEffect, useState } from "react";
+
 import DjApi from "../../api/DjApi";
 import Modal from "../../util/Modal";
-import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Footer from "../../components/Footer";
 
 const Box = styled.div`
-  border: 4px solid #40BAAA;
+  border: 4px solid #40baaa;
   border-top: none;
   width: 1024px;
   height: 720px;
@@ -19,27 +20,27 @@ const Box = styled.div`
   .photo {
     display: none;
   }
-`
+`;
 const Button = styled.button`
-width: 150px;
-height: 50px;
-margin: 0 auto;
-border-radius: 40px 80px / 80px 40px;
-border: 3px dotted #40BAAA;
-background-color: rgb(0, 0, 0);
-align-items: center;
+  width: 150px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 40px 80px / 80px 40px;
+  border: 3px dotted #40baaa;
+  background-color: rgb(0, 0, 0);
+  align-items: center;
 
   & + & {
-    margin-left : 100px;
+    margin-left: 100px;
   }
 `;
 const ButtonContainer = styled.div`
   width: 400px;
 
   flex-wrap: wrap reverse;
-`
+`;
 const ReadTitle = styled.div`
-  border: 3px dotted #40BAAA;
+  border: 3px dotted #40baaa;
   border-radius: 40px 80px / 80px 40px;
   width: 800px;
   height: 80px;
@@ -48,7 +49,7 @@ const ReadTitle = styled.div`
 `;
 
 const ReadContents = styled.div`
-  border: 3px dotted #40BAAA;
+  border: 3px dotted #40baaa;
   border-radius: 40px 80px / 80px 40px;
   width: 800px;
   height: 550px;
@@ -71,14 +72,13 @@ const GalleryDetail = () => {
         console.log(response.data);
         setGalleryDetail(response.data[0]);
         setContent(response.data[0].content.replace(/<[^>]*>?/g, ""));
-        console.log(galleryDetail)
+        console.log(galleryDetail);
       } catch (e) {
         console.log(e);
       }
     };
     BoardData();
   }, []);
-
 
   // 버튼 누를 시 게시물 수정 화면으로 이동
   const onClickEdit = (e) => {
@@ -109,58 +109,74 @@ const GalleryDetail = () => {
   };
 
   return (
-      <Box>
-        <table
-            style={{
-              width: "900px",
-              marginLeft: "50px",
-              borderCollapse: "collapse",
-            }}
-          >
-            <thead>
-              <ReadTitle>
-                <tr class="tableTitle">
-                  <th
-                    rowSpan={2}
-                    style={{
-                      width: "90%",
-                      fontSize: "1.5rem",
-                      verticalAlign: "middle",
-                    }}
-                  >
-                    {galleryDetail.title}
-                  </th>
-                  <th
-                    scope="col"
-                    style={{
-                      width: "30%",
-                      fontSize: "1.2rem",
-                    }}
-                  >
-                    {galleryDetail.user_id}
-                    <br />
-                    {galleryDetail.create_date}
-                  </th>
-                </tr>
-              </ReadTitle>
-            </thead>
+    <Box>
+      <table
+        style={{
+          width: "900px",
+          marginLeft: "50px",
+          borderCollapse: "collapse",
+        }}
+      >
+        <thead>
+          <ReadTitle>
+            <tr class="tableTitle">
+              <th
+                rowSpan={2}
+                style={{
+                  width: "90%",
+                  fontSize: "1.5rem",
+                  verticalAlign: "middle",
+                }}
+              >
+                {galleryDetail.title}
+              </th>
+              <th
+                scope="col"
+                style={{
+                  width: "30%",
+                  fontSize: "1.2rem",
+                }}
+              >
+                {galleryDetail.user_id}
+                <br />
+                {galleryDetail.create_date}
+              </th>
+            </tr>
+          </ReadTitle>
+        </thead>
 
-              <ReadContents style={{"textAlign" : "center", "alignContent": "center"}}>
-                  <img src={`${galleryDetail.image_url}`} alt = "" style={{ "width":"400px", "height":"400px" , "marginTop" : "20px"}}/>
-                  <p style={{"margin": "50px auto"}}>{content}</p>
-              </ReadContents>
-          </table>
-        <ButtonContainer>
+        <ReadContents style={{ textAlign: "center", alignContent: "center" }}>
+          <img
+            src={`${galleryDetail.image_url}`}
+            alt=""
+            style={{ width: "400px", height: "400px", marginTop: "20px" }}
+          />
+          <p style={{ margin: "50px auto" }}>{content}</p>
+        </ReadContents>
+      </table>
+      <ButtonContainer>
         {isLogin === "TRUE" && loginId === galleryDetail.user_id ? (
           <>
             <Button onClick={onClickDelete}>삭제하기</Button>
             <Button onClick={onClickEdit}>수정하기</Button>
-            </> )
-          : (<></>)}
-        {modalOpen && <Modal open={modalOpen} confirm={confirmModal} close={closeModal} type={true} header="삭제">정말 삭제하시겠습니까?</Modal>}
-        </ButtonContainer>
-      </Box>
-  )
+          </>
+        ) : (
+          <></>
+        )}
+        {modalOpen && (
+          <Modal
+            open={modalOpen}
+            confirm={confirmModal}
+            close={closeModal}
+            type={true}
+            header="삭제"
+          >
+            정말 삭제하시겠습니까?
+          </Modal>
+        )}
+      </ButtonContainer>
+    </Box>
+  );
 };
 
 export default GalleryDetail;

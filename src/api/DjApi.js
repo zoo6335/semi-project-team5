@@ -1,6 +1,7 @@
 import axios from "axios";
+
 const HEADER = "application/json";
-const DOMAIN = "http://localhost:8090/kh_mini_project/";
+const DOMAIN = "http://192.168.110.34:8090/kh_mini_project/";
 
 const DjApi = {
   // 로그인 기능 ( userLogin이 useState의 프로퍼티로 역할)
@@ -65,7 +66,7 @@ const DjApi = {
   galleryList: async function () {
     const regCmd = {
       cmd: "GalleryInfo",
-      gal_id: "ALL"
+      gal_id: "ALL",
     };
     return await axios.post(DOMAIN + "GalleryServlet", regCmd, HEADER);
   },
@@ -75,7 +76,7 @@ const DjApi = {
       title: title,
       content: content,
       image_url: img_url,
-      user_id : user_id,
+      user_id: user_id,
     };
     return await axios.post(DOMAIN + "GalleryRegServlet", reqCmd, HEADER);
   },
@@ -84,25 +85,17 @@ const DjApi = {
     const detailObj = {
       gal_id: gal_id,
     };
-    return await axios.post(
-      DOMAIN + "GalleryDetailServlet",
-      detailObj,
-      HEADER
-    );
+    return await axios.post(DOMAIN + "GalleryDetailServlet", detailObj, HEADER);
   },
 
   galleryDelete: async function (gal_id) {
     const deleteObj = {
       gal_id: gal_id,
     };
-    return await axios.post(
-      DOMAIN + "GalleryDeleteServlet",
-      deleteObj,
-      HEADER
-    );
+    return await axios.post(DOMAIN + "GalleryDeleteServlet", deleteObj, HEADER);
   },
 
-  galleryUpdate: async function(gal_id,title, content) {
+  galleryUpdate: async function (gal_id, title, content) {
     const updateObj = {
       gal_id: gal_id,
       title: title,
@@ -110,7 +103,6 @@ const DjApi = {
     };
     return await axios.post(DOMAIN + "GalleryUpdateServlet", updateObj, HEADER);
   },
-
 };
 
 export default DjApi;

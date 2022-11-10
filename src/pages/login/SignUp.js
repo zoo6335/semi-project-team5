@@ -1,14 +1,18 @@
-import { useState } from "react";
+import {
+  faEnvelope,
+  faLock,
+  faUser,
+  faUserTag,
+} from "@fortawesome/free-solid-svg-icons";
+
 import DjApi from "../../api/DjApi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Modal from "../../util/Modal";
 import styled from "styled-components";
-import { faLock, faUser, faEnvelope, faUserTag } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Footer from "../../components/Footer";
-
+import { useState } from "react";
 
 const Box = styled.div`
-  border: 4px solid #40BAAA;
+  border: 4px solid #40baaa;
   border-top: none;
   width: 1024px;
   height: 720px;
@@ -18,50 +22,46 @@ const Box = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const InputContainer = styled.div`
   width: 400px;
   height: 50px;
   display: flex;
-`
+`;
 
 const MsgContainer = styled.div`
   width: 400px;
   height: 30px;
   text-align: right;
-`
+`;
 
 const Input = styled.input`
-width: 350px;
-height: 50px;
-border-radius: 40px 80px / 80px 40px;
-border: 3px dotted #40BAAA;
-background-color: rgb(0, 0, 0);
-::placeholder {
-  color: cornsilk;
-}
+  width: 350px;
+  height: 50px;
+  border-radius: 40px 80px / 80px 40px;
+  border: 3px dotted #40baaa;
+  background-color: rgb(0, 0, 0);
+  ::placeholder {
+    color: cornsilk;
+  }
 `;
 
 const ButtonOk = styled.button`
-width: 150px;
-height: 50px;
-margin: 0 auto;
-border-radius: 40px 80px / 80px 40px;
-border: 3px dotted #40BAAA;
-background-color: rgb(0, 0, 0);
-align-items: center;
+  width: 150px;
+  height: 50px;
+  margin: 0 auto;
+  border-radius: 40px 80px / 80px 40px;
+  border: 3px dotted #40baaa;
+  background-color: rgb(0, 0, 0);
+  align-items: center;
 
   & + & {
-    margin-left : 50px;
+    margin-left: 50px;
   }
-
 `;
 
-
 const SignUp = () => {
-
-
   const [inputId, setInputId] = useState("");
   const [inputPw, setInputPw] = useState("");
   const [inputCheckPw, setInputCheckPw] = useState("");
@@ -95,61 +95,62 @@ const SignUp = () => {
       setIdMessage("5글자 이상 20글자 미만으로 입력해주세요.");
       setIsId(false);
       console.log(isId);
-    }
-    else {
+    } else {
       setIsId(true);
       setIdMessage("잘 입력하셨습니다.");
       console.log(isId);
     }
-  }
+  };
 
   const onChangePw = (e) => {
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/
+    const passwordRegex =
+      /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/;
 
     setInputPw(e.target.value);
     //  a.test(b)  => b가 a와 매칭되면 true
     if (!passwordRegex.test(e.target.value)) {
-      setPwMessage("비밀번호는 글자, 숫자, 특수문자 조합으로 8자 이상 20자 이하로 구성해주세요.");
+      setPwMessage(
+        "비밀번호는 글자, 숫자, 특수문자 조합으로 8자 이상 20자 이하로 구성해주세요."
+      );
       setIsPw(false);
       console.log(isPw);
-    }
-    else {
+    } else {
       setIsPw(true);
       setPwMessage("잘 입력하셨습니다.");
       console.log(isPw);
     }
-  }
+  };
 
   const onChangeCheckPw = (e) => {
     setInputCheckPw(e.target.value);
 
     if (e.target.value !== inputPw) {
-      setCheckPwMessage('비밀 번호가 일치하지 않습니다.')
+      setCheckPwMessage("비밀 번호가 일치하지 않습니다.");
       setIsCheckPw(false);
     } else {
-      setCheckPwMessage('비밀 번호가 일치 합니다.')
+      setCheckPwMessage("비밀 번호가 일치 합니다.");
       setIsCheckPw(true);
     }
-  }
+  };
 
   const onChangeEmail = (e) => {
     setInputEmail(e.target.value);
 
     if (e.target.value.indexOf("@") === -1) {
-      setEmailMessage("이메일 주소는 @가 필수적으로 들어가야합니다.")
+      setEmailMessage("이메일 주소는 @가 필수적으로 들어가야합니다.");
       setIsEmail(false);
     } else {
       setIsEmail(true);
     }
-  }
+  };
 
   const onChangeName = (e) => {
     setInputName(e.target.value);
-  }
+  };
 
   const onClickCancel = () => {
     window.location.replace("/");
-  }
+  };
 
   const onClickLogin = async () => {
     console.log("Click 회원가입");
@@ -160,77 +161,123 @@ const SignUp = () => {
 
     if (memberCheck.data.result === "OK") {
       console.log("가입된 아이디가 없습니다. 다음 단계 진행 합니다.");
-      const memberReg = await DjApi.memberReg(inputId, inputPw, inputName, inputEmail);
+      const memberReg = await DjApi.memberReg(
+        inputId,
+        inputPw,
+        inputName,
+        inputEmail
+      );
       console.log(memberReg.data.result);
-      console.log()
+      console.log();
       if (memberReg.data.result === "OK") {
         window.location.replace("/");
       } else {
         setModalOpen(true);
         setModalText("회원 가입에 실패 했습니다.");
       }
-
     } else {
-      console.log("이미 가입된 회원 입니다.")
+      console.log("이미 가입된 회원 입니다.");
       setModalOpen(true);
       setModalText("이미 가입된 회원 입니다.");
     }
-  }
+  };
 
   return (
     <Box>
-      <div style={{ }}>
+      <div style={{}}>
         <InputContainer>
-          <FontAwesomeIcon icon={faUser} size="3x"
-            style={{ "marginRight": 10 }} />
+          <FontAwesomeIcon
+            icon={faUser}
+            size="3x"
+            style={{ marginRight: 10 }}
+          />
           <Input placeholder="  아이디" value={inputId} onChange={onChangeId} />
         </InputContainer>
-        <MsgContainer>
-          {idMessage}
-        </MsgContainer>
-        <br/>
+        <MsgContainer>{idMessage}</MsgContainer>
+        <br />
         <InputContainer>
-          <FontAwesomeIcon icon={faLock} size="3x"
-            style={{ "marginRight": "10px" }} />
-          <Input type="password" placeholder="  패스워드" value={inputPw} onChange={onChangePw} />
+          <FontAwesomeIcon
+            icon={faLock}
+            size="3x"
+            style={{ marginRight: "10px" }}
+          />
+          <Input
+            type="password"
+            placeholder="  패스워드"
+            value={inputPw}
+            onChange={onChangePw}
+          />
         </InputContainer>
-        <MsgContainer style={{ "width": "470px" }}>
-          {pwMessage}
-        </MsgContainer>
-        <br/>
+        <MsgContainer style={{ width: "400px" }}>{pwMessage}</MsgContainer>
+        <br />
         <InputContainer>
-          <FontAwesomeIcon icon={faLock} size="3x"
-            style={{ "marginRight": 10 }} />
-          <Input type="password" className="input" placeholder="  패스워드 확인" value={inputCheckPw} onChange={onChangeCheckPw} />
+          <FontAwesomeIcon
+            icon={faLock}
+            size="3x"
+            style={{ marginRight: 10 }}
+          />
+          <Input
+            type="password"
+            className="input"
+            placeholder="  패스워드 확인"
+            value={inputCheckPw}
+            onChange={onChangeCheckPw}
+          />
         </InputContainer>
         <MsgContainer>
-          {inputPw.length > 0 && (<span className={`message ${isCheckPw ? 'success' : 'error'}`}>{checkPwMessage}</span>)}
+          {inputPw.length > 0 && (
+            <span className={`message ${isCheckPw ? "success" : "error"}`}>
+              {checkPwMessage}
+            </span>
+          )}
         </MsgContainer>
-        <br/>
+        <br />
         <InputContainer>
-          <FontAwesomeIcon icon={faUserTag} size="3x"
-            style={{ "marginRight": 10 }} />
-          <Input placeholder="  닉네임" value={inputName} onChange={onChangeName} />
+          <FontAwesomeIcon
+            icon={faUserTag}
+            size="3x"
+            style={{ marginRight: 10 }}
+          />
+          <Input
+            placeholder="  닉네임"
+            value={inputName}
+            onChange={onChangeName}
+          />
         </InputContainer>
         <MsgContainer></MsgContainer>
-        <br/>
+        <br />
         <InputContainer>
-          <FontAwesomeIcon icon={faEnvelope} size="3x"
-            style={{ "marginRight": 10 }} />
-          <Input placeholder="  EMAIL" value={inputEmail} onChange={onChangeEmail} />
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            size="3x"
+            style={{ marginRight: 10 }}
+          />
+          <Input
+            placeholder="  EMAIL"
+            value={inputEmail}
+            onChange={onChangeEmail}
+          />
         </InputContainer>
         <MsgContainer></MsgContainer>
-        <br/>
+        <br />
         <MsgContainer>
-          {(isId && isPw && isCheckPw) ?
-            <ButtonOk className="enable_button" onClick={onClickLogin}>SignUp</ButtonOk> :
-            <ButtonOk className="disable_button" onClick={onClickLogin}>SignUp</ButtonOk>}
+          {isId && isPw && isCheckPw ? (
+            <ButtonOk className="enable_button" onClick={onClickLogin}>
+              SignUp
+            </ButtonOk>
+          ) : (
+            <ButtonOk className="disable_button" onClick={onClickLogin}>
+              SignUp
+            </ButtonOk>
+          )}
           <ButtonOk onClick={onClickCancel}>Cancel</ButtonOk>
         </MsgContainer>
       </div>
-      <Modal open={modalOpen} close={closeModal} header="오류">중복된 아이디 입니다.</Modal>
+      <Modal open={modalOpen} close={closeModal} header="오류">
+        중복된 아이디 입니다.
+      </Modal>
     </Box>
   );
-}
+};
 
 export default SignUp;

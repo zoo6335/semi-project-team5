@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const HEADER = "application/json";
-const NB_DOMAIN = "http://localhost:8090/kh_mini_project/";
+const NB_DOMAIN = "http://192.168.110.34:8090/kh_mini_project/";
 
 const nbApi = {
   // 게시판 리스트 불러오기

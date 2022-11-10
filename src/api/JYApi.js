@@ -1,6 +1,7 @@
 import axios from "axios";
+
 const HEADER = "application/json";
-const NGB_DOMAIN = "http://localhost:8090/kh_mini_project/";
+const NGB_DOMAIN = "http://192.168.110.34:8090/kh_mini_project/";
 
 const RankingApi = {
   // HOT 자유게시판 ranking api
